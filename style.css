@@ -762,6 +762,9 @@ ol ol {
 }
 
 #banner h1 {
+  position: absolute;
+  right: 0;
+  width: min(15em, 100%);
   margin: 0;
   color: white;
   text-align: right;
