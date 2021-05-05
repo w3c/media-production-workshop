@@ -874,3 +874,7 @@ figure {
   margin-bottom: 0;
   color: #333;
 }
+
+dfn {
+  font-weight: bolder;
+}
