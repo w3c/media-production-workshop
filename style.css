@@ -279,7 +279,7 @@ dt {
 }
 
 img {
-  display: block;
+  display: inline-block;
   max-width: 100%;
 }
 
@@ -764,7 +764,7 @@ ol ol {
 #banner h1 {
   position: absolute;
   right: 0;
-  width: min(15em, 100%);
+  width: min(16em, 100%);
   margin: 0;
   color: white;
   text-align: right;
