@@ -18,28 +18,19 @@
           <p>
             <a href="https://www.w3.org/"><img alt="W3C" src=
             "media/w3c_home_nb-v.svg" height="48" width="72"></a>
-            <a href="https://www.smpte.org/"><img alt="W3C" src=
-            "media/smpte_logo.svg" height="48"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "media/smpte_logo.png" height="48"></a>
           </p>
           <div class="banner-title">
             <h1>
-              <span class="todo">[PROPOSED]</span>
-              <br/>
               W3C/SMPTE Joint Workshop on Professional Media Production on the Web
             </h1>
           </div>
           <p class="attribution">
             <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
           </p>
-          <p><span class="todo">9-18 November 2021 [TENTATIVE]</span>; online event</p>
+          <p>9-18 November 2021; online event</p>
         </div>
-      </div>
-      <div class="todo">
-        <p>
-          This is a draft Call for Participation for a possible but not yet
-          confirmed W3C/SMPTE joint workshop. This document may be updated, replaced or
-          obsoleted by other documents at any time.
-        </p>
       </div>
       <nav class="menu" id="menu">
         <ul>
@@ -74,9 +65,6 @@
       <h2 class="footnote">
         Important Dates
       </h2>
-      <p class="todo">
-        Important: Tentative schedule, dates will be adjusted as needed.
-      </p>
       <dl>
         <dt>As soon as possible</dt>
         <dd>Submit a proposal for a talk</dd>
@@ -88,12 +76,31 @@
         <dd>Public release of all accepted talks</dd>
 
         <dt>5 November 2021</dt>
-        <dd>Deadline to register as workshop participant</dd>
+        <dd>Deadline to <a href="https://www.w3.org/2002/09/wbs/1/media-production-ws-2021/">register as workshop participant</a></dd>
 
         <dt>9-18 November 2021</dt>
         <dd>Four live sessions (1h30 each)
         <br/>part of SMPTE's ATC</dd>
       </dl>
+    </aside>
+    <aside class="box" id="submit-form">
+      <h2 class="footnote">
+        Submit a talk proposal
+      </h2>
+      <label for="speaker-name">Your name:</label>
+      <input id="speaker-name" placeholder="Your name" maxlength="64">
+
+      <label for="speaker-bio">Your bio:</label>
+      <input id="speaker-bio" placeholder="Your related experience or expertise" maxlength="64">
+
+      <label for="talk-title">Talk title:</label>
+      <input id="talk-title" placeholder="Your talk title" maxlength="64">
+
+      <label for="talk-abstract">Talk abstract:</label>
+      <textarea id="talk-abstract" placeholder="Summarize in a single paragraph the major aspects of the proposal you want to present." rows="3" maxlength="512"></textarea>
+
+      <button id="submit-button">Submit</button>
+      <small>(Submit opens a prepopulated mail compose window. You may customize your submission at this point before sending it.)</small>
     </aside>
     <main id="main" class="main">
       <section id="home">
@@ -193,7 +200,7 @@
             delivered as a combination of a slideset (in HTML or PDF) and a
             recorded audio or video of the speaker (<strong>without</strong>
             screen recording of the slides)
-            <span class="todo"><strong>before 15 October 2021</strong></span>.
+            <strong>before 15 October 2021</strong>.
           </p>
           <p>
             These two elements will then be synchronized and combined to allow
@@ -220,9 +227,10 @@
             way accessible to people with disabilities</a>.
           </p>
           <p>
-            Talks are expected to be delivered in English
-            <span class="todo">(TODO: figure out whether we may accept talks in
-            other languages, notably Chinese and Japanese?)</span>.
+            Talks are expected to be delivered in English. Please
+            <a href="mailto:group-media-production-pc@w3.org">contact the
+            Program Committee</a> if you would like to submit a talk in another
+            language.
           </p>
           <p>
             W3C will provide transcripts and captions for all the selected
@@ -272,5 +280,6 @@
       </p>
     </footer>
     <script src="script.js"></script>
+    <script src="submit.js"></script>
   </body>
 </html>
