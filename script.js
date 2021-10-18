@@ -55,5 +55,35 @@
                 }
             }
         }
+
+        const toggle = document.querySelector('[data-action=toggle]');
+        if (toggle) {
+            const button = document.createElement('button');
+            button.innerHTML = 'Expand talks descriptions ▶';
+            button.setAttribute('data-action', 'expand');
+            toggle.appendChild(button);
+
+            button.addEventListener('click', _ => {
+                if (button.getAttribute('data-action') === 'expand') {
+                    button.setAttribute('data-action', 'collapse');
+                    button.innerHTML = 'Collapse talks descriptions ▼';
+                    [...document.querySelectorAll('details.talk')].forEach(talk => {
+                        if (!talk.hasAttribute('open')) {
+                            talk.setAttribute('open', '');
+                        }
+                    });
+                }
+                else {
+                    button.setAttribute('data-action', 'expand');
+                    button.innerHTML = 'Expand talks descriptions ▶';
+                    [...document.querySelectorAll('details.talk')].forEach(talk => {
+                        if (talk.hasAttribute('open')) {
+                            talk.removeAttribute('open');
+                        }
+                    });
+                }
+            });
+        }
+
     });
 })();

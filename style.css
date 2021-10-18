@@ -23,7 +23,7 @@ body {
   hyphens: manual;
   margin: 0 auto;
   max-width: 65em;
-  padding: 3em;
+  padding: 1em;
 }
 
 .header :first-child {
@@ -893,4 +893,119 @@ button {
   margin: 20px 0 0 0;
   width: 100%;
   height: 1.5rem;
+}
+
+
+div.talks > details {
+  border: 1px solid #ccc;
+  border-radius: .6em;
+  box-shadow: .3em .3em 0 rgba(0,0,0,.1);
+  margin-top: 20px;
+  padding: 1em;
+}
+
+div.talks > details > summary > div {
+  display: flex;
+  height: 120px;
+}
+
+div.talks > details > summary > div > div {
+  flex-grow: 1;
+}
+
+div.talks > details > summary img {
+  flex-basis: 100px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: .6em;
+}
+
+div.talks > details > summary {
+  position: relative;
+  list-style: none;
+}
+
+div.talks > details > summary::-webkit-details-marker {
+  display: none;
+}
+
+div.talks > details > summary > div:after {
+  content: 'more ►';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  cursor: pointer;
+  color: gray;
+}
+
+div.talks > details[open] > summary > div:after {
+  content: 'less ▼';
+  cursor: pointer;
+}
+
+div.talks > details[open] > summary img {
+  display: none;
+}
+
+div.talks h4 {
+  color: #005a9c;
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media all and (min-width: 500px) {
+  body {
+    padding: 3em;
+  }
+
+  div.talks h4 {
+    font-size: 1.3em;
+  }
+}
+
+div.talks dt {
+  margin: 0;
+}
+
+div.talks dd {
+     margin: 0;
+     padding-left: 1rem;
+}
+
+div.talks dd + dd { font-style: italic;}
+
+div.talks dd + dt {
+  padding-top: 1rem;
+}
+
+div.talks .speaker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-style: italic;
+}
+
+div.talks .speaker img {
+  order: 2;
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  border-radius: .6em;
+}
+
+@media all and (min-width: 600px) {
+  div.talks .speaker {
+    flex-direction: initial;
+    align-items: initial;
+  }
+}
+
+div.talks .speaker span {
+  font-weight: bold;
+}
+
+[data-action=toggle] button {
+  width: 300px;
+  margin-top: 0;
+  height: inherit;
 }
