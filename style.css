@@ -163,6 +163,19 @@ a.ref {
   margin-top: 0;
 }
 
+#sponsoring {
+  background-color: white;
+}
+
+#sponsoring p {
+  text-align: center;
+}
+
+.small {
+  color: #777;
+  font-size: 1rem;
+}
+
 .image-paragraph-host {
   margin-bottom: .75em;
 }
