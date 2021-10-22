@@ -1,0 +1,778 @@
+﻿WEBVTT
+
+1
+00:00:00.818 --> 00:00:03.357
+<v ->Hello, and welcome to my talk.</v>
+
+2
+00:00:03.357 --> 00:00:05.830
+In this presentation I'm going to talk about
+
+3
+00:00:07.160 --> 00:00:10.900
+how Clipchamp has adopted WebCodecs
+
+4
+00:00:10.900 --> 00:00:14.210
+in the past 12 months, round about.
+
+5
+00:00:14.210 --> 00:00:16.794
+Clipchamp is a in browser video editor.
+
+slide-3
+00:00:16.794 --> 00:00:19.560
+At Clipchamp our mission is to empower anyone,
+
+7
+00:00:19.560 --> 00:00:21.350
+to tell stories worth sharing.
+
+slide-4
+00:00:21.350 --> 00:00:26.090
+And what that looks like is we have built a fully
+
+9
+00:00:26.090 --> 00:00:27.963
+in-browser video editor.
+
+slide-5
+00:00:29.420 --> 00:00:34.120
+And we firmly believed from the early days of when we
+
+11
+00:00:34.120 --> 00:00:38.420
+founded the company that only in-browser platforms offer
+
+12
+00:00:38.420 --> 00:00:40.930
+the convenience of such a cloud service
+
+13
+00:00:40.930 --> 00:00:43.970
+combined with the speed of a desktop application,
+
+14
+00:00:43.970 --> 00:00:46.890
+and we fused that kind of in browser paradigm.
+
+slide-6
+00:00:46.890 --> 00:00:49.750
+For once, probably the most important reason is that
+
+16
+00:00:49.750 --> 00:00:52.030
+caters for a great user experience.
+
+17
+00:00:52.030 --> 00:00:56.490
+And the reason for that is video files are large.
+
+18-p
+00:00:56.490 --> 00:00:59.050
+It also comes with this fantastic advantage from a
+
+19
+00:00:59.050 --> 00:01:02.560
+commercial perspective that it has near zero runtime cost.
+
+20
+00:01:02.560 --> 00:01:05.400
+The hardware has already been paid for.
+
+21-p
+00:01:05.400 --> 00:01:09.340
+And finally, there's also the aspect of privacy,
+
+22
+00:01:09.340 --> 00:01:12.350
+obviously very important in this day and age
+
+23
+00:01:12.350 --> 00:01:15.560
+that everything you do not upload to a cloud service,
+
+24
+00:01:15.560 --> 00:01:17.790
+but that stays on your devices is obviously
+
+25
+00:01:17.790 --> 00:01:21.230
+kind of subject to a perfect privacy.
+
+slide-7
+00:01:21.230 --> 00:01:24.360
+The browser remains a challenging platform, as you all know,
+
+27
+00:01:24.360 --> 00:01:26.410
+especially when you do heavy lifting like
+
+28
+00:01:26.410 --> 00:01:28.170
+video encoding or decoding.
+
+29-p
+00:01:28.170 --> 00:01:31.940
+And that is obviously first and foremost resource allocation
+
+30
+00:01:31.940 --> 00:01:35.040
+memory and storage. Performance is
+
+31
+00:01:35.040 --> 00:01:38.290
+equally important. Video encoding is expensive.
+
+32
+00:01:38.290 --> 00:01:42.170
+If you use software encoding paradigm, as we,
+
+33
+00:01:42.170 --> 00:01:46.010
+for the longest time have done, access to low-level hardware
+
+34
+00:01:46.010 --> 00:01:48.050
+capabilities, again, it's limited.
+
+35
+00:01:48.050 --> 00:01:52.140
+Yes, these days you do have WebAssembly SIMD and we've
+
+36
+00:01:52.140 --> 00:01:53.870
+made good use of that. You do have WebGL for a long time.
+
+37
+00:01:53.870 --> 00:01:57.840
+WebGPU has just launched and thankfully,
+
+38
+00:01:57.840 --> 00:02:00.520
+that's where WebCodecs fit in.
+
+39-p
+00:02:00.520 --> 00:02:05.290
+We now also have access to a circuitry that's devoted to
+
+40
+00:02:05.290 --> 00:02:08.880
+hardware accelerated video and audio decoding and encoding.
+
+41
+00:02:08.880 --> 00:02:10.690
+And that's fantastic for us.
+
+42-p
+00:02:10.690 --> 00:02:12.360
+The two aspects that I encircled
+
+43
+00:02:12.360 --> 00:02:14.770
+in purple here, performance and access to
+
+44
+00:02:14.770 --> 00:02:16.640
+low level hardware capabilities,
+
+45
+00:02:16.640 --> 00:02:21.640
+are obviously the challenges that WebCodecs addresses
+
+slide-8
+00:02:22.258 --> 00:02:25.520
+Talking about a lot of video processing pipelines
+
+47
+00:02:25.520 --> 00:02:29.380
+specifically about probably the most challenging part
+
+48
+00:02:29.380 --> 00:02:33.500
+which is when you're exporting a video project that you've
+
+49
+00:02:34.564 --> 00:02:36.930
+been editing, where you put together various pieces of footage.
+
+50
+00:02:36.930 --> 00:02:39.510
+So that project which combines all of that,
+
+51
+00:02:39.510 --> 00:02:42.410
+or can combine all of that, turn that into an MP4 file,
+
+52
+00:02:42.410 --> 00:02:45.760
+which you can then distribute around the web.
+
+slide-8
+00:02:45.760 --> 00:02:47.090
+That is quite an involved process. And again,
+
+54
+00:02:47.090 --> 00:02:48.840
+we run it all in the browser and currently
+
+55
+00:02:48.840 --> 00:02:51.680
+it's subdivided into three stages.
+
+56-p
+00:02:51.680 --> 00:02:56.680
+Here we have the decoder which takes care of extracting
+
+57
+00:02:56.730 --> 00:02:58.250
+a stream of, you know,
+
+58
+00:02:58.250 --> 00:03:01.510
+kind of raw frames from your source footage
+
+59
+00:03:01.510 --> 00:03:04.030
+and then passed into the middle stage,
+
+60
+00:03:04.030 --> 00:03:07.100
+which we call the compositor that is where, you know,
+
+61
+00:03:07.100 --> 00:03:11.850
+kind of all of those pieces of footage are combined,
+
+62
+00:03:11.850 --> 00:03:14.760
+effects are layered on top. And that one again,
+
+63
+00:03:14.760 --> 00:03:18.920
+produces a composed stream of raw frames,
+
+64
+00:03:18.920 --> 00:03:21.313
+which is then passed until the encoder,
+
+65
+00:03:22.247 --> 00:03:24.880
+which turns it into an MP4 file.
+
+66-p
+00:03:24.880 --> 00:03:28.913
+We basically retrofitted WebCodecs into this architecture.
+
+slide-9
+00:03:29.770 --> 00:03:33.240
+And the way we did that is we combined that
+
+68
+00:03:33.240 --> 00:03:35.290
+WebAssembly build of FFmpeg that
+
+69
+00:03:35.290 --> 00:03:38.948
+I was just showing you with the WebCodecs API
+
+70
+00:03:38.948 --> 00:03:43.948
+and the way to do that is we created codec stubs, inside FFmpeg,
+
+71
+00:03:44.118 --> 00:03:47.910
+and what those codec stubs then do is they call out from
+
+72
+00:03:47.910 --> 00:03:51.970
+that WebAssembly build into JavaScript land.
+
+73-p
+00:03:51.970 --> 00:03:54.670
+And that is basically to go through the WebCodecs API
+
+74
+00:03:55.820 --> 00:03:58.570
+lifecycle a lot better to say that video encoder API,
+
+75
+00:03:58.570 --> 00:04:00.850
+inside of that WebCodecs specification,
+
+76
+00:04:00.850 --> 00:04:04.000
+initially, you initialize and configure your video encoder
+
+77
+00:04:04.000 --> 00:04:04.833
+instance, obviously.
+
+78-p
+00:04:04.833 --> 00:04:09.730
+And then you go through the process of pushing in the raw
+
+79
+00:04:09.730 --> 00:04:13.446
+frames and then pulling out the encoded chunks,
+
+80
+00:04:13.446 --> 00:04:16.150
+which are then put back to FFmpeg,
+
+81
+00:04:16.150 --> 00:04:18.390
+which then puts them into the container format.
+
+82
+00:04:18.390 --> 00:04:21.010
+And lastly, you close down and de-initialize
+
+83
+00:04:21.010 --> 00:04:22.543
+your video encoder instance.
+
+slide-10
+00:04:26.690 --> 00:04:29.330
+Now that has worked really well for us,
+
+85
+00:04:29.330 --> 00:04:31.030
+but didn't come without some gotchas.
+
+86
+00:04:31.030 --> 00:04:34.000
+And that's maybe the most interesting part of this talk.
+
+87-p
+00:04:34.000 --> 00:04:35.820
+And maybe then also, you know,
+
+88
+00:04:35.820 --> 00:04:38.610
+kind of stimulate some discussions around what can be done
+
+89
+00:04:38.610 --> 00:04:41.860
+about that for others who have had the same challenges.
+
+90-p
+00:04:41.860 --> 00:04:44.610
+What we had to do is, you know, create an artificial,
+
+91
+00:04:44.610 --> 00:04:48.640
+pre-flight dry run of the video encoder using the same
+
+92
+00:04:48.640 --> 00:04:51.278
+parameters, same resolution, same everything,
+
+93
+00:04:51.278 --> 00:04:53.883
+just to generate that piece of extra data.
+
+94-p
+00:04:54.770 --> 00:04:55.670
+And I think in WebCodecs
+
+95
+00:04:55.670 --> 00:04:59.960
+API parliance, it's called a description.
+
+96
+00:04:59.960 --> 00:05:02.550
+And it's basically for, if you know about H.264,
+
+97
+00:05:02.550 --> 00:05:07.043
+they have these binary units in there,
+
+98
+00:05:08.020 --> 00:05:10.980
+which are basically metadata, SPS/PPS, and that has to
+
+99
+00:05:10.980 --> 00:05:15.980
+be placed or has to be put back to FFmpeg,
+
+100
+00:05:16.050 --> 00:05:18.350
+such that it can be put in the container format at the
+
+101
+00:05:18.350 --> 00:05:20.560
+right place. Now leave it at that.
+
+102
+00:05:20.560 --> 00:05:23.300
+But that has given us a bit of a bit of headache to,
+
+103
+00:05:23.300 --> 00:05:24.869
+to get this right.
+
+104-p
+00:05:24.869 --> 00:05:28.670
+One concern, which has less to do with WebCodecs,
+
+105
+00:05:28.670 --> 00:05:31.510
+but more with the fact that FFmpeg as such
+
+106
+00:05:31.510 --> 00:05:34.110
+is obviously normally used as a command line tool,
+
+107
+00:05:34.110 --> 00:05:37.040
+And that means it's typically a synchronous call stack and
+
+108
+00:05:37.040 --> 00:05:40.240
+that's inherently not a good fit for WebCodecs,
+
+109
+00:05:40.240 --> 00:05:42.620
+which is like any browser,
+
+110
+00:05:42.620 --> 00:05:44.900
+almost any browser API asynchronous.
+
+111
+00:05:44.900 --> 00:05:47.900
+You have to break up the synchronous call stack for FFmpeg
+
+112
+00:05:47.900 --> 00:05:50.810
+into multiple asynchronous calls.
+
+slide-11
+00:05:50.810 --> 00:05:53.425
+And lastly, we have a bit of a wishlist.
+
+114
+00:05:53.425 --> 00:05:58.425
+Obviously WebCodecs 1.0 or the current version of WebCodecs,
+
+115
+00:05:58.610 --> 00:05:59.450
+I should say, it's great.
+
+116
+00:05:59.450 --> 00:06:03.180
+A big thank you goes out to all the people that have pushed
+
+117
+00:06:03.180 --> 00:06:05.880
+for this standard, who have implemented it in browsers.
+
+118-p
+00:06:07.180 --> 00:06:10.148
+I can only imagine that it might've been a hard sell because like,
+
+119
+00:06:10.148 --> 00:06:13.403
+you know, it's a very specialized capability.
+
+120
+00:06:13.403 --> 00:06:16.830
+Nevertheless, it's, you know,
+
+121
+00:06:16.830 --> 00:06:19.243
+kind of fantastic that this has happened.
+
+122-p
+00:06:20.210 --> 00:06:21.990
+That being said, if you're hoping that
+
+123
+00:06:21.990 --> 00:06:25.570
+it doesn't remain this way, but that further in
+
+124
+00:06:25.570 --> 00:06:27.360
+iterations on that standard.
+
+125
+00:06:27.360 --> 00:06:30.390
+And there are a few things we are hoping for that would make
+
+126
+00:06:30.390 --> 00:06:32.860
+our lives a little bit easier.
+
+127-p
+00:06:32.860 --> 00:06:35.090
+One thing we were struggling with, and maybe again,
+
+128
+00:06:35.090 --> 00:06:39.570
+have only a crushed in place, there's not an active
+
+129
+00:06:39.570 --> 00:06:43.385
+back pressure on the VideoEncoder object where
+
+130
+00:06:43.385 --> 00:06:47.630
+the VideoEncoder object actively tells you, you know,
+
+131
+00:06:47.630 --> 00:06:52.020
+kind of throttle the way you pass raw video frames,
+
+132
+00:06:52.020 --> 00:06:55.560
+and basically my buffers are all full.
+
+133
+00:06:55.560 --> 00:06:58.080
+So it'd be good to see some sort of event coming out of
+
+134
+00:06:58.080 --> 00:07:00.740
+video encoder object that actively tells people
+
+135
+00:07:00.740 --> 00:07:02.673
+"stop until I tell you otherwise".
+
+136-p
+00:07:05.130 --> 00:07:06.750
+Another concern is right now,
+
+137
+00:07:06.750 --> 00:07:08.410
+the way to
+
+138
+00:07:08.410 --> 00:07:09.820
+kind of configure video encoders
+
+139
+00:07:09.820 --> 00:07:11.980
+is largely through the bit rate.
+
+140
+00:07:11.980 --> 00:07:15.190
+And that's okay for many typical workloads,
+
+141
+00:07:15.190 --> 00:07:17.190
+think about streaming scenario and so forth,
+
+142
+00:07:17.190 --> 00:07:19.190
+but in our case for video editor,
+
+143
+00:07:19.190 --> 00:07:22.050
+you are probably a bit more focused on a,
+
+144
+00:07:22.050 --> 00:07:25.020
+you are probably a bit more obsessed about quality.
+
+145
+00:07:25.020 --> 00:07:26.800
+So visual quality that is.
+
+146
+00:07:26.800 --> 00:07:30.820
+It would be good to have some sort of semantic
+
+147
+00:07:30.820 --> 00:07:31.653
+quality tuning knob,
+
+148
+00:07:31.653 --> 00:07:35.750
+which is more like an abstract parameter which just says,
+
+149
+00:07:35.750 --> 00:07:38.260
+you know, kind of, from zero to one,
+
+150
+00:07:38.260 --> 00:07:41.730
+one means perfect quality, zero means crap quality
+
+151
+00:07:41.730 --> 00:07:43.640
+and you know, anything in between,
+
+152
+00:07:43.640 --> 00:07:47.050
+but that gives you like a bit of a more objective means
+
+153
+00:07:47.050 --> 00:07:49.423
+to control the quality other than the bit rate.
+
+154-p
+00:07:52.223 --> 00:07:54.080
+Obviously with HDR, there's more
+
+155
+00:07:54.080 --> 00:07:57.177
+and more displays being in use, like on forums already,
+
+156
+00:07:57.177 --> 00:08:02.177
+commonplace TV is pretty much the same,
+
+157
+00:08:02.270 --> 00:08:04.680
+PC monitors, maybe not quite as much yet,
+
+158
+00:08:04.680 --> 00:08:06.700
+but be good to see that being supported
+
+159
+00:08:06.700 --> 00:08:09.140
+by WebCodecs as well.
+
+160-p
+00:08:09.140 --> 00:08:10.400
+HEVC decoding,
+
+161
+00:08:10.400 --> 00:08:14.370
+and I know that's an entire discussion around IP and patent
+
+162
+00:08:15.440 --> 00:08:18.580
+liability and so forth, but pretty much if WebCodecs
+
+163
+00:08:18.580 --> 00:08:21.870
+could tap into any codec that is installed on the device,
+
+164
+00:08:21.870 --> 00:08:24.470
+even if it's selective, like if on some devices,
+
+165
+00:08:24.470 --> 00:08:26.980
+HEVC is not supported, fine,
+
+166
+00:08:26.980 --> 00:08:30.090
+and we have to offer a fallback in some sort of software
+
+167
+00:08:30.090 --> 00:08:31.806
+service side encoding,
+
+168
+00:08:31.806 --> 00:08:33.570
+but it would be good if at least the codecs that are
+
+169
+00:08:33.570 --> 00:08:36.160
+installed would be kind of funneled through index posts,
+
+170
+00:08:36.160 --> 00:08:37.513
+through WebCodecs.
+
+171-p
+00:08:38.417 --> 00:08:42.050
+And unfortunately there's certain well-known companies that
+
+172
+00:08:42.050 --> 00:08:45.770
+push for HEVC despite the difficult IP situation.
+
+173
+00:08:45.770 --> 00:08:46.900
+So that's something that's an
+
+174
+00:08:46.900 --> 00:08:48.400
+audience we want to cater for.
+
+175-p
+00:08:50.100 --> 00:08:52.320
+And I mentioned that synchronous flavor of the WebCodecs
+
+176
+00:08:52.320 --> 00:08:56.340
+API inside workers would be useful as well.
+
+177-p
+00:08:56.340 --> 00:09:00.380
+I didn't include the demuxing and muxing part. I mean,
+
+178
+00:09:00.380 --> 00:09:03.420
+we support these through FFmpeg. And I wouldn't claim
+
+179
+00:09:03.420 --> 00:09:05.833
+this goes with our challenges probably for new adopters of
+
+180
+00:09:05.833 --> 00:09:09.570
+the WebCodecs API is one of the greatest concerns.
+
+181-p
+00:09:09.570 --> 00:09:14.250
+In general, WebCodecs as such doesn't offer anything
+
+182
+00:09:14.250 --> 00:09:19.250
+by way of kind of pausing a video file.
+
+183
+00:09:19.660 --> 00:09:22.450
+So the demuxing part, or
+
+184
+00:09:22.450 --> 00:09:24.543
+producing like an MP4 file.
+
+185-p
+00:09:27.829 --> 00:09:30.323
+I don't know what the solution to that might be.
+
+186
+00:09:30.323 --> 00:09:33.340
+There's obviously a lot of complexity in this part.
+
+187
+00:09:33.340 --> 00:09:36.541
+And FFmpeg already does all of that.
+
+188
+00:09:36.541 --> 00:09:38.240
+So that's why I didn't include it.
+
+189
+00:09:38.240 --> 00:09:41.090
+I'm not sure if it's a good idea to include this into
+
+190
+00:09:41.090 --> 00:09:44.496
+WebCodecs, because this is a bit of a different concern,
+
+191
+00:09:44.496 --> 00:09:47.453
+even though pretty much anyone using WebCodecs would
+
+192
+00:09:47.453 --> 00:09:49.853
+probably have to deal with it one way or another.
+
+slide-12
+00:09:51.740 --> 00:09:53.780
+And that concludes my talk.
+
+194
+00:09:53.780 --> 00:09:56.113
+Thank you. And I'm free for questions.
+

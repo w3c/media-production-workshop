@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel=stylesheet href="zilla-slab.css">
+<link rel="katex/katex.min.css">
+<title>
+  Memory access patterns in Web Codecs
+</title>
+<meta charset="utf-8">
+<style>
+body {
+  font-family: "Zilla Slab";
+}
+
+blockquote {
+  border-left: 10px solid black;
+  padding-left: 0.33em;
+}
+
+
+blink {
+    -webkit-animation: 1s linear infinite condemned_blink_effect; // for android
+    animation: 1s linear infinite condemned_blink_effect;
+}
+@-webkit-keyframes condemned_blink_effect { // for android
+    0% {
+            visibility: hidden;
+        }
+    50% {
+            visibility: hidden;
+        }
+    100% {
+            visibility: visible;
+        }
+}
+@keyframes condemned_blink_effect {
+    0% {
+            visibility: hidden;
+        }
+    50% {
+            visibility: hidden;
+        }
+    100% {
+            visibility: visible;
+        }
+}
+
+.t2 {
+  position: absolute;
+  top: 3cm;
+  font-size: 4em;
+  color: red;
+  font-weight: 700;
+  transform: rotate(45deg);
+}
+
+h1, .logo {
+  font-family: "Zilla Slab Highlight";
+  font-weight: 700;
+}
+iframe {
+  width: 100%;
+  height: 600px;
+}
+
+@font-face{
+    font-family: 'Fira Code';
+    src: url('FiraCode-Regular.woff2') format('woff2'),
+    font-weight: 400;
+    font-style: normal;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code';
+}
+
+a, a:visited {
+  color: black;
+  text-decoration: none;
+  border-bottom: 1px dashed black;
+  font-family: "Fira Code";
+}
+
+dt {
+  font-weight: 700;
+  line-height: 2em;
+}
+
+dd {
+  border-left: 5px solid black;
+  padding-left: 10px;
+}
+
+.bigger {
+  font-size: 1.5em;
+}
+
+.big {
+  font-size: 2em;
+}
+
+</style>
+</head>
+<body>
+<textarea id="source">
+  class: center, middle
+
+  # Memory access patterns in Web Codecs
+
+  ### Current state and future developments
+
+  Paul Adenot
+
+  <span class="big logo">mozilla</span>
+
+  W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+
+  ---
+
+  class: center, middle
+
+  ##  [`memcpy` is murder](https://www.google.com/search?q=memcpy+is+murder)
+
+  ---
+
+  # Some numbers for a frame
+
+  - YUV420 1080p video frame SDR:<br> 1920 \* 1980 \* 2 ≈ **4MB**
+  - YUV420 4k video frame SDR:<br> 3840 \* 2160 \* 2 ≈ **16MB**
+  - P010 (≈YUV420 10-bits) 4k video frame HDR:<br> 3840 \* 2160 \* 4 ≈ **32MB**
+
+  ---
+
+  # Time for a copy on really fast desktop workstation
+
+  AVX512 `memcpy` + DDR4 + optimized C++ = close to best case
+
+  - Hot caches
+    - YUV420 1080p video frame SDR ≈ 1.5ms
+    - YUV420 4k video frame SDR ≈ 6.6ms
+    - P010 4k 10-bits video frame HDR ≈ 15ms
+  - Cold caches
+    - YUV420 1080p video frame SDR ≈ 4.5ms
+    - YUV420 4k video frame SDR ≈ 17ms
+    - P010 4k 10-bits video frame HDR ≈ 33ms
+
+  ---
+
+  # GPU to CPU readback and upload
+
+  - Hardware decoded frames in GPU memory sometimes need to be copied to regular
+    memory, this is very expensive
+  - It's always better to keep the `VideoFrame`s on the GPU _if possible_
+
+  ---
+
+  # Why copy
+
+  - Custom post-processing in JavaScript or WASM
+  - Necessary to move data over to the WASM heap
+  - Sometimes necessary to work with other Web APIs
+
+  ---
+
+  #  WebCodecs tries very hard to minimize copies
+
+  - Memory not explicitely visible: optimizations happen under the hood (e.g.
+      copy on write), GPU surfaces are efficiently referenced
+  - Explicit `copyTo` methods to make it extra clear
+  - `clone()` method does *not* do a deep-copy
+
+  ---
+
+  # Necessary copies part 1 - easy fixes
+
+  - `decode` input: data is copied ([WebCodecs issue #104](https://github.com/w3c/webcodecs/issues/104))
+  - `VideoFrame` and `AudioData` `copyTo`: no way to "steal" the underlying
+      memory yet ([WebCodecs issue #287](https://github.com/w3c/webcodecs/issues/287))
+  - memory cycling / allocator pressure ([WebCodecs issue #212](https://github.com/w3c/webcodecs/issues/212))
+
+  ---
+
+  # Buffer stealing
+
+  ```webidl
+  partial interface VideoFrame {
+    // closes the VideoFrame and transfer memory
+    Promise<ArrayBuffer> detach();
+  };
+  ```
+
+  (similar for `AudioData`).
+
+  ---
+
+  # Limit native allocator pressure
+
+  ```webidl
+  partial interface AudioDecoder {
+    // Detaches destination (need to be big enough) 
+    // and write into it
+    // Detaches the memory in EncodedAudioChunk
+    undefined decode(EncodedAudioChunk chunk,
+                     ArrayBuffer destination);
+  };
+
+  // `input` is the memory that was owned by `chunk`
+  callback AudioDataOutputCallback =
+      undefined(AudioData output, ArrayBuffer input);
+  ```
+
+  ---
+
+  # Necessary copies part 2 - harder problems
+
+  - Necessity to copy from/to the WASM heap
+  - Danger of `SharedArrayBuffer` vs. non-auditable codecs
+  - No read-only memory ranges
+  - No read-only memory: can't use memory ranges in encoder/decoders (BYOB)
+
+  Summary and positions at <https://github.com/WICG/reducing-memory-copies>,
+  WebCodecs positions [issue #1](https://github.com/WICG/reducing-memory-copies/issues/1).
+
+  ---
+
+  # Conclusion
+
+  There are problems, but there are also solutions in the works.
+
+  Generally, lots of common scenario work really well, but advance use-cases
+  can be improved.
+
+</textarea>
+<script src="remark-latest.min.js">
+</script>
+<script src="katex/katex.min.js">
+</script>
+<script>
+var slideshow = remark.create();
+setTimeout(function() {
+  for (i of document.querySelectorAll(".math")) {
+    var tex = i.getAttribute("tex");
+    katex.render(tex, i, { throwOnError: true });
+  }
+}, 1000);
+</script>
+</body>
+<style>
+.remark-slide-content {
+    font-size: 28px;
+}
+.small {
+    font-size: 24px;
+}
+
+.small2 {
+    font-size: 25px;
+}
+
+.katex-html {
+  display: none;
+}
+</style>
+</html>

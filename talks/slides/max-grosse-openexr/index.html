@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>EXR on the web for ML</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/drs.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+        <section>
+          <h2>Reviewing production OpenEXR files on the web for ML</h2>
+          <div>Max Grosse, Principal Software Engineer DisneyResearch|Studios</div>
+        </section>
+        <section>
+          <h3>Production images?</h3>
+          <ul>
+            <li>OpenEXR files</li>
+            <li>High resolution, 1080p and up</li>
+            <li>Extended / High Dynamic Range</li>
+            <li>16-bit or 32-bit floating point</li>
+            <li>Not only final composed color data
+              <ul>
+                <li>Alpha masks</li>
+                <li>Feature buffers from the renderer</li>
+                <li>Error maps</li>
+                <li>...</li>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h3>Example Use Case: Denoiser</h3>
+          <ul>
+            <li><em>Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings</em>, Rousselle et al, ACM SIGGRAPH 2017
+            <li>Deep learning for denoising rendered images</li>
+            <li>Suitable for production</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Introducting: JERI.io</h3>
+              <ul>
+                <li>The <em>JavaScript Extended-Range Image Viewer</em></li>
+                <li>HTTP server directly serves OpenEXR images with config</li>
+                <li>Pure client-side app to decode EXR directly in the browser</li>
+                <li>Thus, client receives original, unmodified pixels</li>
+                <li>Like a very fancy, configurable, <code>&lt;img&gt;</code> tag for EXRs</li>
+              </ul>
+        </section>
+        <section>
+          <h3>EXR on the web</h3>
+          <div class="two-column">
+            <div class="col smaller">
+              <ul>
+                <li>OpenEXR compiled to WebAssembly</li>
+                <li>Emscripten did the job</li>
+                <li>Speed is fine for our use cases, in particular when caching</li>
+                <li>Now we have EXRs in the browser!</li>
+              </ul>
+            </div>
+            <div class="col">
+              <img src="data/exr_em_wa.svg" width="200" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Usable EXR on the web</h3>
+          <div class="two-column">
+            <div class="col smaller">
+              <ul>
+                <li>Want to be able to change gamma, exposure</li>
+                <li>Want to visualize error metrics and compare inputs</li>
+                <li>Use WebGL for all image processing client-side</li>
+                <li>Done in TypeScript with support for React.js</li>
+              </ul>
+            </div>
+            <div class="col">
+              <video src="data/exposure-demo.m4v" data-autoplay loop>
+              </video>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>Configuration</h3>
+          <div class="two-column">
+            <div class="col smaller">
+              <ul>
+                <li>JSON to configure viewer</li>
+                <li>Images to load and from where</li>
+                <li>How to group these images</li>
+                <li>Which metrics, images to compare</li>
+              </ul>
+            </div>
+            <div class="col smaller" data-trim data-noescape>
+              <pre><code>const config = {
+  title: 'root',
+  children: [
+    { title: 'Improved', image: 'glass.exr' },
+    { title: 'Reference', image: 'glass-ref.exr' },
+    {
+      title: 'SSIM',
+      lossMap: {
+        'function': 'SSIM',
+        imageA: 'glass.exr',
+        imageB: 'glass-ref.exr'
+      }
+    },
+  ]
+};</code></pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h3>JERI Demo</h3>
+          <img src="data/jeri_demo_ice2_poster.png" />
+        </section>
+        <section data-background-video="data/jeri_demo_ice2.m4v" data-background-size="contain" data-background-repeat="false">
+        </section>
+        <section>
+          <h3>Integration</h3>
+          <video data-autoplay loop>
+            <source src="data/rhea_demo_blackout.m4v">
+          </video>
+        </section>
+        <section>
+          <h3>https://jeri.io</h3>
+          <h4>Released as Open Source</h4>
+        </section>
+        <section>
+          <h2>Thank you</h2>
+          <div style="opacity: 0.7; font-size: 0.4em">max.grosse@disneyresearch.com</div>
+        </section>
+			</div>
+      <div class="footer">
+        <img src="data/drs-nologo-white.svg" class="logo" id="drs-footer-logo" />
+        <img src="data/wds-nonconf-white.svg" class="wds" />
+        <img src="data/dr-overlay-copyright.png" class="copyright" />
+        <div class="copy2">no unauthorized copying or use</div>
+      </div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+        // --Begin  Max
+        // width: '100%',
+        // height: '100%',
+        // center: true,
+        transition: 'slide', // fade|none
+        parallaxBackgroundImage: 'data/bg1.png',
+        parallaxBackgroundSize: '3637px 1143px',
+        // --End Max
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,633 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:05.160
+Welcome to my presentation on Reviewing production
+
+2
+00:00:05.160 --> 00:00:08.040
+OpenEXR files on the web for Machine Learning.
+
+3
+00:00:08.040 --> 00:00:10.480
+I'm Max Grosse, Principal Software Engineer at
+
+4
+00:00:10.480 --> 00:00:12.280
+DisneyResearch|Studios.
+
+6-p
+00:00:12.280 --> 00:00:13.760
+I will show you a little bit of our
+
+7
+00:00:13.760 --> 00:00:15.600
+machine learning pipeline we employ here,
+
+8
+00:00:15.600 --> 00:00:17.960
+and how dealing with feature film production assets
+
+9
+00:00:17.960 --> 00:00:19.760
+provides a unique challenge in this,
+
+10
+00:00:19.760 --> 00:00:24.600
+and how we address it using modern web technology.
+
+slide-2
+00:00:24.640 --> 00:00:26.280
+As we are part of the Studio segment of
+
+13
+00:00:26.280 --> 00:00:28.080
+the Walt Disney Company, we naturally
+
+14
+00:00:28.080 --> 00:00:29.920
+deal with production assets.
+
+15-p
+00:00:29.920 --> 00:00:31.560
+When it comes to images, this typically
+
+16
+00:00:31.560 --> 00:00:33.120
+means we deal with higher resolution,
+
+17
+00:00:33.120 --> 00:00:36.600
+1080p at least, up to 4k and even more.
+
+18
+00:00:36.600 --> 00:00:38.800
+Additionally, the imagery is typically
+
+19
+00:00:38.800 --> 00:00:40.600
+of high dynamic range, stored in the
+
+20
+00:00:40.600 --> 00:00:43.520
+OpenEXR file format as 16-bit or 32-bit
+
+21
+00:00:43.520 --> 00:00:45.520
+floating points.
+
+23-p
+00:00:45.520 --> 00:00:47.280
+For many applications, we also need to
+
+24
+00:00:47.280 --> 00:00:49.400
+inspect other aspects of images
+
+25
+00:00:49.400 --> 00:00:51.840
+apart from the final composed color data.
+
+26
+00:00:51.840 --> 00:00:53.760
+These can be feature buffers from rendering,
+
+27
+00:00:53.760 --> 00:00:56.280
+such as depth, normals, or alpha masks
+
+28
+00:00:56.280 --> 00:00:58.760
+and provided as separate inputs so you can
+
+29
+00:00:58.760 --> 00:01:01.160
+quickly determine for each final color pixel
+
+30
+00:01:01.160 --> 00:01:03.440
+the depth or normal that goes along with it.
+
+31-p
+00:01:03.440 --> 00:01:06.720
+To inspect the training data that
+
+33
+00:01:06.720 --> 00:01:09.240
+gets fed into our deep neural networks,
+
+34
+00:01:09.240 --> 00:01:11.920
+to view error maps on the validation,
+
+35
+00:01:11.920 --> 00:01:14.080
+and generally being able to judge
+
+36
+00:01:14.080 --> 00:01:16.200
+the visual quality of our results -
+
+37
+00:01:16.200 --> 00:01:19.080
+or enable artists to properly judge these -
+
+38
+00:01:19.080 --> 00:01:20.720
+we require a little bit more than
+
+39
+00:01:20.720 --> 00:01:23.000
+a cut-out thumbnail of a jpeg image within,
+
+40
+00:01:23.000 --> 00:01:24.840
+for example, Tensorboard.
+
+slide-3
+00:01:26.000 --> 00:01:30.520
+An example is our work on Kernel-Predicting
+
+43
+00:01:30.520 --> 00:01:32.760
+Convolutional Networks for Denoising Monte
+
+44
+00:01:32.760 --> 00:01:35.160
+Carlo Renderings that my colleagues published
+
+45
+00:01:35.160 --> 00:01:37.600
+in 2017 at ACM SIGGRAPH.
+
+47-p
+00:01:38.440 --> 00:01:40.920
+This introduces a deep learning approach for
+
+48
+00:01:40.920 --> 00:01:42.880
+denoising Monte-Carlo rendered images that
+
+49
+00:01:42.880 --> 00:01:46.000
+produces high-quality results suitable for production.
+
+slide-4
+00:01:47.360 --> 00:01:49.200
+This is when work on JERI started,
+
+52
+00:01:49.200 --> 00:01:51.720
+the JavaScript Extended-Range image viewer.
+
+54-p
+00:01:51.720 --> 00:01:55.560
+The idea is that we can have a remote,
+
+55
+00:01:55.560 --> 00:01:58.400
+or local, HTTP server that serves not only
+
+56
+00:01:58.400 --> 00:02:01.680
+the OpenEXR images we are interested in directly,
+
+57
+00:02:01.680 --> 00:02:04.440
+but also an HTML5-based viewer such that
+
+58
+00:02:04.440 --> 00:02:06.440
+these OpenEXR images can be directly
+
+59
+00:02:06.440 --> 00:02:09.880
+inspected within a modern browser.
+
+61-p
+00:02:09.880 --> 00:02:11.720
+In particular, this allows conveniently
+
+62
+00:02:11.720 --> 00:02:13.840
+reviewing result images stored on
+
+63
+00:02:13.840 --> 00:02:15.680
+our compute cluster without the need
+
+64
+00:02:15.680 --> 00:02:17.760
+to explicitly copy or mount it locally.
+
+66-p
+00:02:18.280 --> 00:02:20.120
+This also guarantees that the client
+
+67
+00:02:20.120 --> 00:02:21.680
+receives the original images,
+
+68
+00:02:21.680 --> 00:02:23.320
+without any additional compression,
+
+69
+00:02:23.320 --> 00:02:25.400
+providing full control over the very exact
+
+70
+00:02:25.400 --> 00:02:27.560
+pixel values that will be displayed.
+
+72
+00:02:27.960 --> 00:02:29.480
+It functions like a very configurable
+
+73
+00:02:29.480 --> 00:02:31.880
+<img> tag with a lot of additional features
+
+74
+00:02:31.880 --> 00:02:34.520
+to dig deep into extended-range images.
+
+slide-5
+00:02:36.720 --> 00:02:38.680
+For this, we have compiled the OpenEXR
+
+77
+00:02:38.680 --> 00:02:41.560
+library to WebAssembly using EMScripten.
+
+79-p
+00:02:41.560 --> 00:02:43.920
+The EMScripten toolchain still lacks a bit
+
+80
+00:02:43.920 --> 00:02:45.200
+in terms of quality of life,
+
+81
+00:02:45.200 --> 00:02:47.040
+so this was a bit of a tedious process
+
+82
+00:02:47.040 --> 00:02:49.320
+to get right, however once built,
+
+83
+00:02:49.320 --> 00:02:50.680
+it can be potentially used in
+
+84
+00:02:50.680 --> 00:02:52.320
+a variety of applications.
+
+86-p
+00:02:52.320 --> 00:02:55.920
+Decoding speed was not our primary concern,
+
+87
+00:02:55.920 --> 00:02:58.680
+so we did not perform any extensive benchmarks
+
+88
+00:02:58.680 --> 00:03:01.040
+on how fast it can decode EXR images
+
+89
+00:03:01.040 --> 00:03:02.520
+compared to a native solution.
+
+90
+00:03:02.520 --> 00:03:05.120
+Typically, even on local network,
+
+91
+00:03:05.120 --> 00:03:06.920
+we will already have a small delay for
+
+92
+00:03:06.920 --> 00:03:10.080
+downloading the EXR, so decoding speed did not
+
+93
+00:03:10.080 --> 00:03:12.520
+show to be an issue to our users so far.
+
+95-p
+00:03:13.400 --> 00:03:15.600
+In particular with some local caching,
+
+96
+00:03:15.600 --> 00:03:17.520
+switching the loaded images usually
+
+97
+00:03:17.520 --> 00:03:19.080
+is instantaneous anyways.
+
+slide-6
+00:03:20.840 --> 00:03:23.280
+Given the extended range nature of
+
+100
+00:03:23.280 --> 00:03:26.160
+the input imagery, we need a way to control things
+
+101
+00:03:26.160 --> 00:03:28.680
+like gamma and exposure - also in case we want to
+
+102
+00:03:28.680 --> 00:03:31.960
+drill into details at particular dark or bright regions.
+
+104-p
+00:03:31.960 --> 00:03:36.440
+Deep learning is commonly driven by a loss function,
+
+105
+00:03:36.440 --> 00:03:39.040
+which in our case is often a combination of
+
+106
+00:03:39.040 --> 00:03:42.120
+image difference metrics. Visualizing this error
+
+107
+00:03:42.120 --> 00:03:43.720
+is of great importance in helping
+
+108
+00:03:43.720 --> 00:03:45.200
+develop the desired model.
+
+110-p
+00:03:45.200 --> 00:03:48.120
+For all these visualization aspects,
+
+111
+00:03:48.120 --> 00:03:50.360
+we have opted to facilitate WebGL.
+
+112
+00:03:50.360 --> 00:03:52.600
+This was a very natural choice and provides
+
+113
+00:03:52.600 --> 00:03:54.400
+a very efficient and convenient way to
+
+114
+00:03:54.400 --> 00:03:57.840
+change the way things get displayed without too much code
+
+115
+00:03:57.840 --> 00:04:00.920
+and without modifying the original pixel values directly.
+
+117-p
+00:04:00.920 --> 00:04:04.200
+In particular, this offloads all the pixel operations
+
+118
+00:04:04.200 --> 00:04:06.600
+to the GPU, keeping the user experience smooth
+
+119
+00:04:06.600 --> 00:04:09.160
+and avoiding manipulating large arrays of pixels
+
+120
+00:04:09.160 --> 00:04:11.440
+directly in a single JavaScript thread.
+
+122-p
+00:04:11.440 --> 00:04:15.880
+The basic viewer application then was written
+
+123
+00:04:15.880 --> 00:04:18.320
+in mostly TypeScript with React.js, optionally
+
+124
+00:04:18.320 --> 00:04:21.080
+handling the UI aspects and helping integrating
+
+125
+00:04:21.080 --> 00:04:23.480
+the viewer into other React.js projects.
+
+slide-7
+00:04:23.480 --> 00:04:27.680
+The viewer itself is configured by providing
+
+128
+00:04:27.680 --> 00:04:31.480
+a JSON file that describes which EXR images to load,
+
+129
+00:04:31.480 --> 00:04:34.760
+the remote paths to find them, which images to group,
+
+130
+00:04:34.760 --> 00:04:37.800
+the images that should be used to generate error maps
+
+131
+00:04:37.800 --> 00:04:39.600
+(i.e. image differences).
+
+slide-8
+00:04:39.600 --> 00:04:46.440
+Here's a quick demonstration of JERI in action.
+
+135-p
+00:04:46.440 --> 00:04:49.720
+The examples are right from the jeri website
+
+136
+00:04:49.720 --> 00:04:51.880
+and only intended to illustrate the idea,
+
+137
+00:04:51.880 --> 00:04:53.960
+note that these are not production assets and
+
+138
+00:04:53.960 --> 00:04:56.800
+the results are far worse than our production
+
+139
+00:04:56.800 --> 00:05:00.720
+results and serve only as illustration.
+
+141-p
+00:05:00.720 --> 00:05:04.640
+In this example, we have a noise input
+
+142
+00:05:04.640 --> 00:05:07.040
+that we might have gotten from our renderer.
+
+144-p
+00:05:07.080 --> 00:05:09.680
+We can now toggle to "Improved" to inspect
+
+145
+00:05:09.680 --> 00:05:12.560
+the results from a simple denoiser.
+
+147-p
+00:05:12.560 --> 00:05:18.480
+We can now zoom in and pan around
+
+148
+00:05:18.480 --> 00:05:25.720
+to really compare even on a pixel level.
+
+150-p
+00:05:25.760 --> 00:05:34.640
+Ultimately, we are interested in
+
+151
+00:05:34.640 --> 00:05:36.280
+how we compare to a ground truth,
+
+152
+00:05:36.280 --> 00:05:38.760
+or reference, which is also available here
+
+153
+00:05:38.760 --> 00:05:43.120
+and we can simply toggle to that as well.
+
+155-p
+00:05:43.120 --> 00:05:45.160
+As you see for example there's quite some detail
+
+156
+00:05:45.160 --> 00:05:46.880
+lost in the ice cubes.
+
+158-p
+00:05:46.880 --> 00:05:48.600
+Even better though is to have an error map
+
+159
+00:05:48.600 --> 00:05:51.600
+between the output and the reference
+
+160
+00:05:51.600 --> 00:05:54.400
+computed on the fly, as you can see here.
+
+162-p
+00:05:54.400 --> 00:05:57.000
+Here we can also adjust the exposure,
+
+163
+00:05:57.000 --> 00:05:58.920
+so we can better visualize parts
+
+164
+00:05:58.920 --> 00:06:01.720
+we could otherwise not see in that detail.
+
+166-p
+00:06:01.720 --> 00:06:07.080
+Of course the exposure adjustment work
+
+167
+00:06:07.080 --> 00:06:09.080
+for color images just the same.
+
+169-p
+00:06:09.080 --> 00:06:14.520
+We can repeat that for a different set of images,
+
+170
+00:06:14.520 --> 00:06:17.480
+if we want to see how it performed on different input.
+
+slide-9
+00:06:17.480 --> 00:06:24.200
+We have integrated it into our ML monitoring system
+
+173
+00:06:24.200 --> 00:06:25.960
+that is running on our cluster.
+
+175-p
+00:06:26.000 --> 00:06:28.120
+Here you can see a more typical use case
+
+176
+00:06:28.120 --> 00:06:29.840
+where you can see the recorded training
+
+177
+00:06:29.840 --> 00:06:31.960
+runs on the left, and a lot of different
+
+178
+00:06:31.960 --> 00:06:34.400
+sets of images and metrics displayed in
+
+179
+00:06:34.400 --> 00:06:36.480
+the main plane, allowing to quickly
+
+180
+00:06:36.480 --> 00:06:39.080
+drill down and monitor your progress and results.
+
+182-p
+00:06:39.080 --> 00:06:42.400
+For example we can look at different
+
+183
+00:06:42.400 --> 00:06:44.720
+validation images, different channel sets
+
+184
+00:06:44.720 --> 00:06:47.200
+and at different points in time during the training.
+
+185
+00:06:47.200 --> 00:06:50.120
+At any time we could also fire up a Tensorboard
+
+186
+00:06:50.120 --> 00:06:52.440
+to look at other recorded metrics or
+
+187
+00:06:52.440 --> 00:06:55.440
+write a report on our results, so a web-based
+
+188
+00:06:55.440 --> 00:06:58.080
+solution like JERI really fits in nicely.
+
+slide-10
+00:06:58.120 --> 00:07:04.040
+We have released JERI as Open Source Software,
+
+191
+00:07:04.040 --> 00:07:07.200
+you can try it out yourself and integrate it
+
+192
+00:07:07.200 --> 00:07:11.160
+into your own solutions, see jeri.io for details.
+
+slide-11
+00:07:11.160 --> 00:07:15.600
+That's all from my side.
+
+195
+00:07:15.600 --> 00:07:19.840
+Thanks you for your attention.

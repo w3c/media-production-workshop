@@ -1,0 +1,861 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.860
+<v ->Greetings from Sweden.</v>
+
+2
+00:00:01.860 --> 00:00:04.480
+This is Ulf over at Soundtrap from Spotify
+
+3
+00:00:05.670 --> 00:00:06.880
+and I'm going to give a talk
+
+4
+00:00:06.880 --> 00:00:11.730
+around some audio latency aspects of the web standards
+
+5
+00:00:11.730 --> 00:00:12.880
+and the browser states.
+
+slide-2
+00:00:14.810 --> 00:00:16.930
+So let's go to the slide number two
+
+7
+00:00:16.930 --> 00:00:18.310
+directly and just watch
+
+8
+00:00:18.310 --> 00:00:21.617
+a small clip showcasing using Soundtrap.
+
+9-p
+00:00:25.784 --> 00:00:28.367
+(gentle music)
+
+10-p
+00:00:36.136 --> 00:00:39.219
+(enthusiastic music)
+
+11-p
+00:41.190 --> 00:42.130
+Okay.
+
+12
+00:42.130 --> 00:45.480
+So, what you saw and heard was me messing about
+
+13
+00:45.480 --> 00:47.340
+with the product itself,
+
+14
+00:47.340 --> 00:48.640
+playing some notes,
+
+15
+00:48.640 --> 00:51.203
+and playback of a project.
+
+slide-3
+00:53.660 --> 00:54.493
+Slide number three.
+
+17
+00:54.493 --> 00:56.300
+What is Soundtrap then?
+
+18-p
+00:56.300 --> 00:57.700
+Well, Soundtrap is
+
+19
+00:57.700 --> 01:00.340
+an online collaborative DAW and DAW is,
+
+20
+01:00.340 --> 01:01.860
+as you may know,
+
+21
+01:01.860 --> 01:03.773
+a Digital Audio Workstation.
+
+22-p
+01:05.540 --> 01:06.610
+And,
+
+23
+01:06.610 --> 01:08.533
+this means that we have features such as multi-track
+
+24
+01:08.533 --> 01:10.400
+with a media recording and editing.
+
+25
+01:10.400 --> 01:11.990
+We have software instruments,
+
+26
+01:11.990 --> 01:13.730
+we have audio effects, reverbs, filters,
+
+27
+01:13.730 --> 01:15.243
+guitar, automation and so on.
+
+28
+01:16.740 --> 01:19.240
+And we implement all of this through heavy use
+
+29
+01:19.240 --> 01:21.930
+of web standards such as Web Audio, Web media,
+
+30
+01:21.930 --> 01:23.720
+media recorder, media stream
+
+31
+01:23.720 --> 01:24.820
+and so on and so forth
+
+slide-4
+01:26.700 --> 01:27.690
+Slide number four
+
+33-p
+01:27.690 --> 01:31.180
+But as I mentioned that we focusing here today on aspects of
+
+34
+01:31.180 --> 01:32.113
+audio latency,
+
+35
+01:33.310 --> 01:34.740
+and
+
+36
+01:34.740 --> 01:39.500
+it is essential to many of our use cases of Soundtrap.
+
+37-p
+01:39.500 --> 01:41.750
+Specifically here, we want to mention
+
+38
+01:42.840 --> 01:44.940
+the case of monitoring,
+
+39
+01:44.940 --> 01:45.773
+and that is
+
+40
+01:46.750 --> 01:48.440
+immediate
+
+41
+01:48.440 --> 01:49.690
+feedback
+
+42
+01:49.690 --> 01:50.620
+from what you record.
+
+43
+01:50.620 --> 01:54.160
+So you would record from mic, process stuff in web audio and
+
+44
+01:54.160 --> 01:56.700
+play back through your speaker
+
+45
+01:56.700 --> 01:58.153
+as it go.
+
+46-p
+01:59.270 --> 02:03.140
+A good example of that is a guitarist that uses the
+
+47
+02:03.140 --> 02:06.310
+DAW as a substitute really for
+
+48
+02:06.310 --> 02:08.800
+the hardware,
+
+49
+02:08.800 --> 02:11.233
+as pedals and amplifiers.
+
+50-p
+02:12.830 --> 02:15.280
+And they play along
+
+51
+02:15.280 --> 02:16.380
+with what they hear.
+
+52
+02:16.380 --> 02:18.250
+I mean, it matters what the output,
+
+53
+02:18.250 --> 02:19.400
+resulting output is,
+
+54
+02:19.400 --> 02:21.880
+like, how hard should I string to get this kind of tone
+
+55
+02:21.880 --> 02:23.330
+in my repo, whatever.
+
+56-p
+02:24.660 --> 02:27.200
+And another example is the key
+
+57
+02:27.200 --> 02:30.150
+that is playing using the DAW
+
+58
+02:30.150 --> 02:32.630
+as a software instrument essentially. And
+
+59
+02:32.630 --> 02:35.320
+if there's a substantial lag from pressing a key to
+
+60
+02:35.320 --> 02:37.440
+hearing it the note you get for an orphan.
+
+61
+02:37.440 --> 02:40.500
+Additionally you play alone
+
+62
+02:40.500 --> 02:43.663
+every already existing track or set of tracks.
+
+slide-5
+02:47.209 --> 02:49.570
+Next slide number five.
+
+64-p
+02:49.570 --> 02:50.403
+Well,
+
+65
+02:51.340 --> 02:52.720
+what is
+
+66
+02:52.720 --> 02:53.570
+this current state?
+
+67
+02:53.570 --> 02:56.530
+I mean, we can see something like 30ms best case
+
+68
+02:58.995 --> 03:01.440
+round-trip latency, which is
+
+69
+03:01.440 --> 03:04.900
+passable for monitoring purposes, but not great.
+
+70
+03:04.900 --> 03:06.320
+And then it's, in some cases it's not sufficient
+
+71
+03:06.320 --> 03:07.740
+to delay low, we think,
+
+72
+03:07.740 --> 03:10.630
+and we'd like to get this much lowered to be able to compete
+
+73
+03:10.630 --> 03:12.933
+with the native offerings. Really.
+
+74-p
+03:13.960 --> 03:18.753
+I mean, 10ms is a good target, that really is decent.
+
+slide-6
+03:20.830 --> 03:21.840
+The second problem
+
+76
+03:23.630 --> 03:25.420
+that we have in our use case that is
+
+77
+03:25.420 --> 03:28.570
+maybe not immediately clear obvious to people is
+
+78
+03:29.850 --> 03:32.810
+you record several things in succession
+
+79
+03:33.770 --> 03:35.265
+and you need to align them.
+
+80
+03:35.265 --> 03:36.660
+(chuckles)
+
+81
+03:36.660 --> 03:40.380
+Sounds obvious, but it is trickier than you might think.
+
+82
+03:42.600 --> 03:44.570
+That we call recording latency compensation.
+
+83
+03:44.570 --> 03:47.570
+There are probably other words for it as well.
+
+84-p
+03:47.570 --> 03:51.940
+In order to show that you need two things really,
+
+85
+03:51.940 --> 03:53.500
+you need
+
+86
+03:53.500 --> 03:54.130
+to know
+
+87
+03:54.130 --> 03:55.440
+what is the round-trip latency.
+
+88
+03:55.440 --> 03:58.710
+You need to know that actually, actual latency.
+
+89
+03:58.710 --> 04:02.160
+And you need to know when the data arrived
+
+90
+04:02.160 --> 04:05.343
+towards your storage or stream, or what have you.
+
+91
+04:08.340 --> 04:11.163
+To be able to when you play them back later,
+
+92
+04:12.900 --> 04:14.910
+the data that ou aggregated, the relative alignment of
+
+93
+04:14.910 --> 04:18.430
+what you heard and what you produced should be retained.
+
+slide-7
+04:20.710 --> 04:21.640
+Slide number seven.
+
+95-p
+04:21.640 --> 04:25.310
+And what do we mean by roundtrip latency? Well,
+
+96
+04:25.310 --> 04:28.140
+that is several things combined. It's the input latency,
+
+97
+04:28.140 --> 04:31.560
+it's the processing latency and it's the output latency.
+
+98
+04:31.560 --> 04:35.900
+And that's not very surprising, I guess.
+
+99
+04:35.900 --> 04:38.493
+But we'll get back to why it gets complicated.
+
+100-p
+04:40.160 --> 04:42.810
+Then what if we have the wrong information or
+
+101
+04:42.810 --> 04:44.730
+really no information,
+
+102
+04:44.730 --> 04:48.343
+we can't do a good job, we would have misaligned playback,
+
+103
+04:49.710 --> 04:51.520
+and obviously we do something,
+
+104
+04:51.520 --> 04:55.500
+but that involves educated guesswork and that's not ideal.
+
+105
+04:55.500 --> 04:58.890
+We'd like to explicitly know what the latencies are that are
+
+106
+04:58.890 --> 04:59.723
+involved here.
+
+107-p
+05:01.100 --> 05:04.110
+I mean, if not doing anything, the user would have to
+
+108
+05:05.230 --> 05:06.220
+manually align,
+
+109
+05:06.220 --> 05:07.623
+which is far from ideal.
+
+slide-8
+05:10.965 --> 05:12.730
+And slide number eight.
+
+111-p
+05:12.730 --> 05:14.190
+The point is
+
+112
+05:14.190 --> 05:17.430
+that both the input and output paths
+
+113
+05:17.430 --> 05:19.523
+have many pieces or steps involved.
+
+114
+05:21.350 --> 05:24.600
+And these things look differently on different audio stacks
+
+115
+05:24.600 --> 05:26.623
+and/or operating systems and what have you.
+
+116-p
+05:27.760 --> 05:29.800
+The latencies introduced by these steps are
+
+117
+05:29.800 --> 05:31.240
+also vastly different,
+
+118
+05:31.240 --> 05:32.970
+and not all of them,
+
+119
+05:32.970 --> 05:37.820
+allow knowing this, so naturally strive for
+
+120
+05:37.820 --> 05:42.100
+picking technical solutions data that allow this.
+
+121
+05:42.100 --> 05:44.160
+To allow knowing this, sorry, I should say.
+
+122-p
+05:45.750 --> 05:47.990
+It's not just the
+
+123
+05:48.900 --> 05:51.830
+path towards the browser or from the browser thought
+
+124
+05:51.830 --> 05:53.820
+may have hidden latencies. It could also be
+
+125
+05:53.820 --> 05:56.353
+within the browser itself if you're not careful.
+
+126
+05:57.620 --> 06:00.380
+And here we try to illustrate this with,
+
+127
+06:00.380 --> 06:01.540
+well,
+
+128
+06:01.540 --> 06:02.510
+bear with us.
+
+129
+06:02.510 --> 06:05.980
+We pretend that the media stream track setting latency
+
+130
+06:05.980 --> 06:07.430
+property
+
+131
+06:07.430 --> 06:11.380
+is a good indication of the input path latency.
+
+132
+06:11.380 --> 06:13.980
+Might not be, but we can return to that.
+
+133-p
+06:13.980 --> 06:17.510
+Anyway, so we operate in the Web Audio world.
+
+134
+06:17.510 --> 06:19.460
+So that means that we take
+
+135
+06:19.460 --> 06:20.910
+that number from the setting,
+
+136
+06:22.150 --> 06:23.990
+and then we can see it
+
+137
+06:23.990 --> 06:26.190
+probably isn't the same once you sort of
+
+138
+06:26.190 --> 06:27.370
+stepped into the Web Audio world,
+
+139
+06:27.370 --> 06:28.880
+because there's a node there as well,
+
+140
+06:28.880 --> 06:32.270
+which may or may not do any additional buffering and that
+
+141
+06:32.270 --> 06:35.270
+additional buffering or latency is not exposed anywhere.
+
+142-p
+06:35.270 --> 06:37.323
+But it ought to be, otherwise
+
+143
+06:38.420 --> 06:40.120
+we don't have good
+
+144
+06:40.120 --> 06:41.253
+accurate numbers.
+
+slide-9
+06:44.390 --> 06:45.443
+Slide number nine.
+
+146-p
+06:46.750 --> 06:48.220
+For completeness,
+
+147
+06:48.220 --> 06:50.600
+I'll just talk a little bit about the output
+
+148
+06:50.600 --> 06:53.110
+and the processing steps.
+
+149-p
+06:53.110 --> 06:53.943
+And
+
+150
+06:54.800 --> 06:57.640
+it has a certain quantum size or block size,
+
+151
+06:57.640 --> 06:59.600
+or which is separate quantum sum.
+
+152
+06:59.600 --> 07:02.843
+That latency also needs to be known and tracked somewhere.
+
+153-p
+07:04.150 --> 07:07.470
+And likewise for the input, the output latencies
+
+154
+07:07.470 --> 07:09.693
+also need to be exposed somehow somewhere.
+
+155-p
+07:10.820 --> 07:13.480
+If you take a closer look at the Web Audio context property
+
+156
+07:13.480 --> 07:16.840
+outputLatency, it does seem to indicate that is
+
+157
+07:16.840 --> 07:20.400
+the block size as well as the output path combined,
+
+158
+07:20.400 --> 07:21.663
+but it's not immediately clear.
+
+slide-10
+07:23.930 --> 07:25.930
+Slide number 10.
+
+160-p
+07:26.790 --> 07:28.950
+The other aspect to get
+
+161
+07:28.950 --> 07:32.270
+compensation done correctly is knowing accurately
+
+162
+07:33.340 --> 07:37.420
+when your data arrived. As I mentioned earlier.
+
+163
+07:37.420 --> 07:39.550
+It can be done in
+
+164
+07:39.550 --> 07:40.600
+various ways, but
+
+165
+07:41.670 --> 07:43.340
+not really.
+
+166
+07:43.340 --> 07:45.663
+There's no brilliant way to do it.
+
+167-p
+07:47.480 --> 07:50.550
+Traditionally. We've been using the media recorder
+
+168
+07:52.730 --> 07:53.840
+and
+
+169
+07:53.840 --> 07:55.670
+it's nice in many ways,
+
+170
+07:55.670 --> 07:58.900
+because that allows you to sort of encode the file
+
+171
+07:58.900 --> 07:59.540
+and things like that.
+
+172-p
+07:59.540 --> 08:00.373
+But there's no,
+
+173
+08:00.373 --> 08:05.000
+as far as we can see spec-wise or guarantees that
+
+174
+08:05.000 --> 08:06.550
+when you start it, it's going to start
+
+175
+08:06.550 --> 08:07.383
+immediately.
+
+176
+08:07.383 --> 08:10.570
+And even if it were you're still going to be like a
+
+177
+08:10.570 --> 08:13.900
+quantum material of your sample, but then it started,
+
+178
+08:13.900 --> 08:13.940
+you get the idea.
+
+179-p
+08:14.840 --> 08:17.300
+And I mean, a second option could be like,
+
+180
+08:17.300 --> 08:19.570
+you do something custom based on the worklet.
+
+181
+08:19.570 --> 08:21.200
+You know everything then,
+
+182
+08:21.200 --> 08:22.920
+but then you have to do everything as well.
+
+183
+08:22.920 --> 08:25.460
+And even if using something like WebCodecs,
+
+184
+08:25.460 --> 08:27.510
+it seems that you still have to packetize
+
+185
+08:29.160 --> 08:31.920
+into like a container from it, which is, I mean,
+
+186
+08:31.920 --> 08:33.670
+it can be done, but it's not ideal.
+
+slide-11
+08:35.900 --> 08:36.940
+Okay and slide 11.
+
+188-p
+08:36.940 --> 08:38.930
+To conclude the stock,
+
+189
+08:38.930 --> 08:41.710
+first off the input and output latency are
+
+190
+08:42.830 --> 08:43.663
+maybe
+
+191
+08:43.663 --> 08:45.300
+spec-ed.
+
+192
+08:45.300 --> 08:48.980
+It's not clear that they are the full parts that we
+
+193
+08:48.980 --> 08:49.813
+intend to hear.
+
+194-p
+08:50.960 --> 08:52.263
+And then specifically,
+
+195
+08:54.600 --> 08:56.570
+we have some thoughts around the MediaStreamSourceNode
+
+196
+08:56.570 --> 09:01.570
+and similar translation pieces between different
+
+197
+09:01.610 --> 09:04.733
+standards, like any additional latency needs to be exposed.
+
+198-p
+09:06.430 --> 09:09.900
+And then, there seems to be an opportunity to
+
+199
+09:09.900 --> 09:11.540
+spice up the media stream recorder,
+
+200
+09:11.540 --> 09:14.620
+to get accurate timing information by some callback or
+
+201
+09:14.620 --> 09:16.800
+something.
+
+202-p
+09:16.800 --> 09:17.753
+Finally, the WebCodecs API
+
+203
+09:17.753 --> 09:19.390
+is very nice, but
+
+204
+09:19.390 --> 09:21.700
+there's something missing in the sense that we
+
+205
+09:21.700 --> 09:24.660
+don't have packetization, or containerization
+
+206
+09:24.660 --> 09:27.230
+or whatever the correct term would be.
+
+207-p
+09:27.230 --> 09:28.580
+And finally, of course,
+
+208
+09:28.580 --> 09:31.420
+we just want to encourage all the implementers to get the
+
+209
+09:31.420 --> 09:33.800
+input and output latencies
+
+210
+09:34.520 --> 09:36.930
+low obviously,
+
+211
+09:36.930 --> 09:40.850
+and pick drivers that allows exposing the information
+
+212
+09:42.470 --> 09:43.530
+because we need it
+
+213
+09:43.530 --> 09:44.363
+to do a good job.
+
+slide-12
+09:45.200 --> 09:46.490
+Thank you. That's all for us.
+
+215
+09:46.490 --> 09:48.123
+And see you at the discussions.

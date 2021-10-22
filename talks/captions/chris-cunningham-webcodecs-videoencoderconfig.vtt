@@ -1,0 +1,846 @@
+﻿WEBVTT
+
+1
+00:00:01.860 --> 00:00:03.430
+<v ->Hi, I'm Chris Cunningham.</v>
+
+2
+00:00:03.430 --> 00:00:05.870
+If you missed my earlier WebCodecs primer talk,
+
+3
+00:00:05.870 --> 00:00:08.350
+I encourage you to check that one out first.
+
+4-p
+00:00:08.350 --> 00:00:09.660
+In this talk, I'm going to focus
+
+5
+00:00:09.660 --> 00:00:12.493
+on WebCodecs encoding configuration.
+
+6
+00:00:13.400 --> 00:00:16.590
+The idea is to surface what we have
+
+7
+00:00:16.590 --> 00:00:17.790
+and the reasoning behind it,
+
+8
+00:00:17.790 --> 00:00:21.330
+and have you tell us what to prioritize next.
+
+9
+00:00:21.330 --> 00:00:23.470
+If you look at our configuration structure
+
+10
+00:00:23.470 --> 00:00:27.070
+and compare that to FFmpeg or libvpx,
+
+11
+00:00:27.070 --> 00:00:29.620
+it will immediately be clear that we have
+
+12
+00:00:29.620 --> 00:00:31.560
+lots of knobs we could consider adding.
+
+13-p
+00:00:31.560 --> 00:00:33.610
+Having said that, there are lots of folks who
+
+14
+00:00:33.610 --> 00:00:36.420
+are using WebCodecs and encoding
+
+15
+00:00:36.420 --> 00:00:39.040
+in media production settings and apps.
+
+16
+00:00:39.040 --> 00:00:41.313
+So don't let this talk scare you off.
+
+slide-2
+00:00:42.950 --> 00:00:44.180
+Before I get into the structure,
+
+18
+00:00:44.180 --> 00:00:46.260
+I wanna mention the underlying design principle,
+
+19
+00:00:46.260 --> 00:00:49.110
+which is "don't constrain features
+
+20
+00:00:49.110 --> 00:00:51.630
+or quality unless the user asks for it".
+
+21-p
+00:00:51.630 --> 00:00:53.460
+So for encoding defaults,
+
+22
+00:00:53.460 --> 00:00:56.490
+this might mean we don't constrain quality
+
+23
+00:00:56.490 --> 00:00:57.693
+for the sake of latency.
+
+24
+00:00:58.600 --> 00:01:01.500
+We don't constrain bit rate unless requested.
+
+25
+00:01:01.500 --> 00:01:03.553
+So it's VBR by default.
+
+26
+00:01:04.760 --> 00:01:08.000
+We allow B-frames wherever the profile
+
+27
+00:01:08.000 --> 00:01:10.193
+that is configured would allow B-frames.
+
+slide-3
+00:01:11.480 --> 00:01:12.713
+Another thing to mention.
+
+29
+00:01:13.970 --> 00:01:16.670
+When you start encoding, the output callback will
+
+30
+00:01:16.670 --> 00:01:18.650
+also admit a metadata dictionary
+
+31
+00:01:18.650 --> 00:01:20.890
+that contains the video decoding config.
+
+32
+00:01:20.890 --> 00:01:22.180
+This is obviously very important
+
+33
+00:01:22.180 --> 00:01:25.560
+if you want to eventually decode the content you encoded.
+
+34-p
+00:01:25.560 --> 00:01:28.100
+And then it admits that same config
+
+35
+00:01:28.100 --> 00:01:30.570
+anytime the configuration changes,
+
+36
+00:01:30.570 --> 00:01:33.210
+such that, now you need a slightly different configuration
+
+37
+00:01:33.210 --> 00:01:35.650
+to decode what is now being output.
+
+38-p
+00:01:35.650 --> 00:01:37.980
+So I mention this because it's useful
+
+39
+00:01:37.980 --> 00:01:41.010
+to describe some of the encoder configuration parameters
+
+40
+00:01:41.010 --> 00:01:42.300
+we're about to get into, in terms of
+
+41
+00:01:42.300 --> 00:01:45.433
+their effect on the admitted decoder config.
+
+slide-4
+00:01:47.550 --> 00:01:50.450
+All right, so here we have just a screenshot
+
+43
+00:01:50.450 --> 00:01:51.370
+from the spec.
+
+44
+00:01:51.370 --> 00:01:53.570
+This is the video encoder config dictionary.
+
+45
+00:01:54.909 --> 00:01:56.350
+At the top, we've got the required parameters.
+
+46
+00:01:56.350 --> 00:01:58.873
+So we have codec, which is a codec string,
+
+47
+00:01:59.720 --> 00:02:02.610
+very similar to what you would see in MSE
+
+48
+00:02:02.610 --> 00:02:04.800
+or media capabilities.
+
+49
+00:02:04.800 --> 00:02:07.800
+This is like for H.264, 
+
+50
+00:02:07.800 --> 00:02:11.930
+It's av1 dot profile byte, level byte.
+
+51
+00:02:11.930 --> 00:02:16.900
+For VP9, it's VP09 dot profile dot so-on.
+
+52
+00:02:16.900 --> 00:02:19.320
+AV1, AV01.
+
+53
+00:02:19.320 --> 00:02:22.900
+For all codecs that are usable WebCodecs,
+
+54
+00:02:22.900 --> 00:02:26.520
+you can go to the WebCodecs specification "Codec Registry",
+
+55
+00:02:26.520 --> 00:02:29.300
+and there you can look up the specific codec strings
+
+56
+00:02:29.300 --> 00:02:30.763
+to use for a given codec.
+
+57-p
+00:02:31.970 --> 00:02:34.433
+All right, so next we have width and height,
+
+58
+00:02:35.400 --> 00:02:38.170
+and this is the number of pixels to encode.
+
+59
+00:02:38.170 --> 00:02:40.610
+So for video frames, this corresponds
+
+60
+00:02:40.610 --> 00:02:43.170
+to visible width and visible height.
+
+61
+00:02:43.170 --> 00:02:46.970
+For decoder config, this corresponds to display.
+
+62
+00:02:46.970 --> 00:02:48.500
+No.
+
+63
+00:02:48.500 --> 00:02:51.423
+It's again visible with and visible height.
+
+64
+00:02:52.820 --> 00:02:54.690
+If you give us a video frame with a visible width
+
+65
+00:02:54.690 --> 00:02:57.330
+and height that don't match these dimensions,
+
+66
+00:02:57.330 --> 00:03:00.650
+we will actually scale the frame before we encode,
+
+67
+00:03:00.650 --> 00:03:02.240
+and that is originally motivated
+
+68
+00:03:02.240 --> 00:03:04.860
+by RTC use cases, where the camera's open
+
+69
+00:03:04.860 --> 00:03:06.420
+to the high resolution, but then
+
+70
+00:03:06.420 --> 00:03:09.240
+you want the encoder to be able to encode
+
+71
+00:03:09.240 --> 00:03:12.720
+at whatever resolution, because your needs fluctuate
+
+72
+00:03:12.720 --> 00:03:14.893
+with the changes in bit rate and CPU load.
+
+73-p
+00:03:17.300 --> 00:03:20.690
+Okay, so moving on, we are now into optional parameters.
+
+74
+00:03:20.690 --> 00:03:22.770
+So there's displayWisth and displayHeight.
+
+75
+00:03:22.770 --> 00:03:24.270
+If not provided, these default
+
+76
+00:03:24.270 --> 00:03:26.970
+to the width and height we just talked about,
+
+77
+00:03:26.970 --> 00:03:27.910
+and generally, that's probably
+
+78
+00:03:27.910 --> 00:03:29.010
+what most people want.
+
+79
+00:03:29.930 --> 00:03:31.740
+Where this is interesting is for things
+
+80
+00:03:31.740 --> 00:03:34.750
+like anamorphic content, where the pixel's
+
+81
+00:03:34.750 --> 00:03:37.160
+actually wider than it is tall
+
+82
+00:03:37.160 --> 00:03:38.690
+when finally rendered.
+
+83
+00:03:38.690 --> 00:03:42.683
+So we actually stretch the rendered video just slightly.
+
+84-p
+00:03:44.030 --> 00:03:45.390
+Then we have bit rate.
+
+85
+00:03:45.390 --> 00:03:49.270
+So the default is implementer-defined.
+
+86
+00:03:49.270 --> 00:03:51.610
+In Chrome, it's gonna be whatever the underlying codec,
+
+87
+00:03:51.610 --> 00:03:53.110
+like let's say libvpx would use,
+
+88
+00:03:53.110 --> 00:03:54.950
+if you didn't specify a bit rate.
+
+89
+00:03:54.950 --> 00:03:57.060
+That's probably not what you want.
+
+90
+00:03:57.060 --> 00:03:58.360
+So if you're using this production,
+
+91
+00:03:58.360 --> 00:04:00.800
+I recommend setting bit rate,
+
+92
+00:04:00.800 --> 00:04:03.620
+in which case I also recommend setting the next knob,
+
+93
+00:04:03.620 --> 00:04:05.080
+which is frame rate.
+
+94
+00:04:05.080 --> 00:04:06.930
+So the value here can be rough,
+
+95
+00:04:06.930 --> 00:04:09.900
+like variable frame rate video's common.
+
+96
+00:04:09.900 --> 00:04:12.570
+But the idea is to guide the rate controller.
+
+97
+00:04:12.570 --> 00:04:14.650
+Bit rate is bits per second.
+
+98
+00:04:14.650 --> 00:04:17.420
+And so you need to know how many frames per second
+
+99
+00:04:17.420 --> 00:04:19.620
+to know how many bits to give a given frame.
+
+100-p
+00:04:21.510 --> 00:04:24.130
+On our roadmap, we intend to also use frame timestamps
+
+101
+00:04:24.130 --> 00:04:24.963
+to refine this.
+
+102
+00:04:24.963 --> 00:04:27.610
+So the minute that you said 30 fps,
+
+103
+00:04:27.610 --> 00:04:29.740
+but we detected it's actually closer
+
+104
+00:04:29.740 --> 00:04:31.650
+to 25 in this one segment of your video,
+
+105
+00:04:31.650 --> 00:04:34.120
+or it's much higher than that in some other segment,
+
+106
+00:04:34.120 --> 00:04:36.780
+we should adjust rate control accordingly.
+
+107
+00:04:36.780 --> 00:04:39.280
+But even then, it's good to provide
+
+108
+00:04:39.280 --> 00:04:40.890
+some sort of baseline upfront,
+
+109
+00:04:40.890 --> 00:04:42.670
+because we won't have any timestamps
+
+110
+00:04:42.670 --> 00:04:45.963
+until some initial frames come in.
+
+111-p
+00:04:47.550 --> 00:04:50.320
+All right, so I'm gonna go out of order
+
+112
+00:04:50.320 --> 00:04:52.490
+just a second and keep talking about bit rate.
+
+113
+00:04:52.490 --> 00:04:54.160
+Next thing I'm gonna say is bitrateMode.
+
+114
+00:04:54.160 --> 00:04:55.690
+So this is second from the bottom.
+
+115
+00:04:55.690 --> 00:04:57.813
+So this is variable by default,
+
+116
+00:04:59.040 --> 00:05:01.490
+and then the alternative is, of course, constant.
+
+117-p
+00:05:03.040 --> 00:05:04.740
+We aren't super prescriptive about
+
+118
+00:05:04.740 --> 00:05:06.550
+how constant or how variable, like
+
+119
+00:05:06.550 --> 00:05:08.930
+what is the buffer size that we're talking about here?
+
+120
+00:05:08.930 --> 00:05:11.800
+And that reflects the reality that WebCodecs is built
+
+121
+00:05:11.800 --> 00:05:13.270
+on top of many codec compilations,
+
+122
+00:05:13.270 --> 00:05:16.523
+which, themselves, are not super prescriptive or consistent.
+
+123-p
+00:05:17.460 --> 00:05:19.640
+Having said that, some libraries do offer a
+
+124
+00:05:19.640 --> 00:05:20.550
+lot more knobs here,
+
+125
+00:05:20.550 --> 00:05:23.460
+so options to configure the buffer size,
+
+126
+00:05:23.460 --> 00:05:25.700
+the amount of overshoot or undershoot,
+
+127
+00:05:25.700 --> 00:05:28.390
+and we are open to adding those.
+
+128
+00:05:28.390 --> 00:05:29.840
+Let us know if you need them.
+
+129-p
+00:05:31.480 --> 00:05:32.880
+Okay, so now I'm gonna go back up
+
+130
+00:05:32.880 --> 00:05:34.580
+and start with the ones that I missed.
+
+131-p
+00:05:34.580 --> 00:05:36.000
+hardwareAcceleration:
+
+132
+00:05:36.000 --> 00:05:39.510
+so the wording here, it reads like a hint.
+
+133
+00:05:39.510 --> 00:05:40.550
+No preference.
+
+134
+00:05:40.550 --> 00:05:42.790
+Prefer hardware.
+
+135
+00:05:42.790 --> 00:05:46.210
+But browsers have the option to treat
+
+136
+00:05:46.210 --> 00:05:48.170
+this as a hint or to treat it as a requirement,
+
+137
+00:05:48.170 --> 00:05:50.920
+and in Chrome, we treat it as a requirement.
+
+138-p
+00:05:50.920 --> 00:05:52.167
+So if you say prefer hardware
+
+139
+00:05:52.167 --> 00:05:53.920
+and we don't have the hardware,
+
+140
+00:05:53.920 --> 00:05:55.420
+or if we can't support some aspect
+
+141
+00:05:55.420 --> 00:05:57.320
+of your configuration in hardware,
+
+142
+00:05:57.320 --> 00:06:01.140
+we will fail to configure, which is fine.
+
+143
+00:06:01.140 --> 00:06:02.640
+It can be actually very useful.
+
+144
+00:06:02.640 --> 00:06:04.680
+You can use the isConfigSupported check
+
+145
+00:06:04.680 --> 00:06:07.913
+in advance to figure out where the support will lie.
+
+146
+00:06:09.150 --> 00:06:10.470
+But you could, let's say if you were
+
+147
+00:06:10.470 --> 00:06:11.880
+really worried about power savings
+
+148
+00:06:11.880 --> 00:06:13.040
+and you had a lot of flexibility
+
+149
+00:06:13.040 --> 00:06:14.780
+in the codec that you were choosing,
+
+150
+00:06:14.780 --> 00:06:17.170
+you could use this to iterate over options
+
+151
+00:06:17.170 --> 00:06:20.730
+on the platform to see, okay, it has accelerated encoding
+
+152
+00:06:20.730 --> 00:06:23.430
+for 264, but maybe not for VP9,
+
+153
+00:06:23.430 --> 00:06:25.040
+so that's the one I'm gonna use
+
+154
+00:06:25.040 --> 00:06:26.550
+because I'm very power-conscious
+
+155
+00:06:26.550 --> 00:06:28.343
+on this platform, whatever.
+
+156
+00:06:30.710 --> 00:06:32.950
+Or maybe you have a WASM fallback that you prefer.
+
+157
+00:06:32.950 --> 00:06:37.240
+So you wanna use our hardware encoding,
+
+158
+00:06:37.240 --> 00:06:38.730
+but if it's gonna be software,
+
+159
+00:06:38.730 --> 00:06:40.120
+you prefer to use your software,
+
+160
+00:06:40.120 --> 00:06:41.783
+and that's also totally fine.
+
+161-p
+00:06:42.770 --> 00:06:44.680
+Most folks will probably just take the default
+
+162
+00:06:44.680 --> 00:06:47.900
+of no preference, and for that default,
+
+163
+00:06:47.900 --> 00:06:50.020
+Chrome will always try to find hardware
+
+164
+00:06:50.020 --> 00:06:52.270
+for the codec and then fall back to software
+
+165
+00:06:52.270 --> 00:06:54.190
+if hardware wasn't available.
+
+166-p
+00:06:54.190 --> 00:06:57.460
+So actually a small caveat on that.
+
+167
+00:06:57.460 --> 00:07:01.070
+It will find hardware above a certain resolution cut-off.
+
+168
+00:07:01.070 --> 00:07:03.200
+So below a certain resolution point,
+
+169
+00:07:03.200 --> 00:07:07.800
+using a hardware-accelerated codec is not desirable.
+
+170
+00:07:07.800 --> 00:07:09.560
+It actually can be a little bit
+
+171
+00:07:09.560 --> 00:07:11.850
+more in startup costs and no savings in power,
+
+172
+00:07:11.850 --> 00:07:13.350
+in which case we use software.
+
+173-p
+00:07:14.480 --> 00:07:16.700
+All right, scalabilityMode.
+
+174
+00:07:16.700 --> 00:07:18.720
+So this is a string that identifies patterns
+
+175
+00:07:18.720 --> 00:07:20.443
+of layering for scalable codecs.
+
+176
+00:07:21.410 --> 00:07:23.190
+For media production, you probably don't care about this.
+
+177
+00:07:23.190 --> 00:07:25.183
+You probably just want one layer.
+
+178
+00:07:26.080 --> 00:07:28.670
+This is probably more interesting for RTC folks.
+
+179
+00:07:28.670 --> 00:07:31.170
+The lead spec here, WebRTC SVC,
+
+180
+00:07:31.170 --> 00:07:32.990
+has lots more details in the diagrams
+
+181
+00:07:32.990 --> 00:07:35.343
+and patterns of scalability layering.
+
+182
+00:07:37.460 --> 00:07:39.060
+And then finally latencyMode.
+
+183
+00:07:39.060 --> 00:07:44.060
+So this is, by default, "quality",
+
+184
+00:07:44.310 --> 00:07:47.570
+where the other option is, what is it?
+
+185
+00:07:47.570 --> 00:07:48.403
+"realtime".
+
+186
+00:07:49.350 --> 00:07:52.383
+So most folks in this group probably want quality,
+
+187
+00:07:53.370 --> 00:07:54.840
+but it's interesting to talk about realtime,
+
+188
+00:07:54.840 --> 00:07:58.450
+because obviously very useful for realtime scenarios.
+
+189
+00:07:58.450 --> 00:08:00.680
+But there's an interaction with some of the knobs above,
+
+190
+00:08:00.680 --> 00:08:02.900
+which is that, in realtime, we strive
+
+191
+00:08:02.900 --> 00:08:07.900
+to get the frames out and achieve the bit rate target
+
+192
+00:08:08.690 --> 00:08:11.510
+and the frame rate target more strictly.
+
+193
+00:08:11.510 --> 00:08:13.910
+We'll actually use frame rate as kind of a deadline.
+
+194
+00:08:13.910 --> 00:08:18.060
+So if we can't encode a frame in realtime mode
+
+195
+00:08:19.547 --> 00:08:22.880
+and maintain the frame rate, in terms of our output,
+
+196
+00:08:22.880 --> 00:08:27.880
+then we will drop frames, where encoders support that.
+
+slide-5
+00:08:29.950 --> 00:08:32.930
+Okay, so those are our different knobs
+
+198
+00:08:32.930 --> 00:08:34.083
+that we have so far.
+
+199
+00:08:35.120 --> 00:08:37.210
+This is a link to our GitHub.
+
+200
+00:08:37.210 --> 00:08:39.410
+Please let us know what you need.
+
+201
+00:08:39.410 --> 00:08:41.270
+We like to prioritize things by impact.
+
+202
+00:08:41.270 --> 00:08:45.550
+So if you can tell us why you need it,
+
+203
+00:08:45.550 --> 00:08:47.500
+what is it you plan to do with it,
+
+204
+00:08:47.500 --> 00:08:51.073
+how is it gonna be a better experience for your users,
+
+205
+00:08:52.160 --> 00:08:55.780
+if you come to our GitHub and you already see an issue filed
+
+206
+00:08:55.780 --> 00:08:59.100
+for the knob that you want, pile on.
+
+207
+00:08:59.100 --> 00:09:01.150
+Again, that's impact, to say, hey,
+
+208
+00:09:01.150 --> 00:09:03.810
+there's five apps that want this knob.
+
+209
+00:09:03.810 --> 00:09:05.810
+Okay, we'll pay attention to that, sure.
+
+210-p
+00:09:06.950 --> 00:09:08.020
+Yeah, that's it.
+
+211
+00:09:08.020 --> 00:09:09.570
+Thank you so much for watching.
+

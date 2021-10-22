@@ -1,0 +1,510 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.600
+Hi, my name is Junyue.
+
+2
+00:00:03.600 --> 00:00:05.760
+I'm a software engineer who works for
+
+3
+00:00:05.760 --> 00:00:07.880
+multi-media team at Bytedance.
+
+4
+00:00:07.880 --> 00:00:10.840
+Today I will talk about our web based non-linear
+
+5
+00:00:10.840 --> 00:00:14.520
+video editor written in C++ and built with
+
+6
+00:00:14.520 --> 00:00:17.720
+WebAssembly and EMScripten.
+
+slide-2
+00:00:17.720 --> 00:00:19.600
+Slide 2
+
+9
+00:00:19.600 --> 00:00:22.440
+This is the agenda of my talk.
+
+10
+00:00:22.440 --> 00:00:25.520
+First I will introduce what the video editor is.
+
+11
+00:00:25.520 --> 00:00:28.800
+Secondly I will briefly introduce how it works.
+
+12
+00:00:28.800 --> 00:00:31.480
+And lastly I will talk about some needs
+
+13
+00:00:31.480 --> 00:00:33.720
+for our development.
+
+slide-3
+00:00:33.760 --> 00:00:36.040
+Slide 3
+
+16
+00:00:36.040 --> 00:00:38.800
+Video editing is very important for every
+
+17
+00:00:38.800 --> 00:00:40.680
+video content creator.
+
+18
+00:00:40.680 --> 00:00:44.240
+It is one of the last steps of video creation.
+
+19
+00:00:44.240 --> 00:00:48.120
+It turns your media clips into a complete story.
+
+20
+00:00:48.120 --> 00:00:51.280
+There are many video editing software including
+
+21
+00:00:51.280 --> 00:00:55.480
+desktop applications, mobile applications
+
+22
+00:00:55.480 --> 00:00:58.320
+or maybe some cloud based software.
+
+24-p
+00:00:58.320 --> 00:01:03.120
+What we are buiding is a web based multi-track video editor.
+
+25
+00:01:03.120 --> 00:01:06.640
+Users can use a web browser to add video clips,
+
+26
+00:01:06.640 --> 00:01:11.840
+audio clips, subtitles, transitions and special effects.
+
+27
+00:01:11.840 --> 00:01:15.480
+By taking advantage of web technology and
+
+28
+00:01:15.480 --> 00:01:19.560
+cloud based storage, users can open the projects
+
+29
+00:01:19.560 --> 00:01:24.600
+with any computer at any time and continue to work.
+
+slide-4
+00:01:24.600 --> 00:01:26.800
+Slide 4
+
+32
+00:01:26.800 --> 00:01:29.280
+At first our core engine code was written
+
+33
+00:01:29.280 --> 00:01:32.720
+for native platforms in C++.
+
+34
+00:01:32.720 --> 00:01:35.320
+It is a multi-threaded engine which runs
+
+35
+00:01:35.320 --> 00:01:40.440
+on Android, iOS, Windows and MacOS.
+
+36
+00:01:40.440 --> 00:01:43.400
+With the improvement of the browser's support
+
+37
+00:01:43.400 --> 00:01:46.320
+for WebAssembly, we now have the opportunity
+
+38
+00:01:46.320 --> 00:01:49.040
+to migrate the engine to the web.
+
+40-p
+00:01:50.640 --> 00:01:53.920
+We use WebGL and other technologies for
+
+41
+00:01:53.920 --> 00:01:55.880
+real-time video rendering.
+
+42
+00:01:55.880 --> 00:02:00.720
+In fact, WebAssembly is not a very new technology anymore,
+
+43
+00:02:00.720 --> 00:02:02.680
+so I won't talk about every detail of
+
+44
+00:02:02.680 --> 00:02:05.760
+WebAssembly and EMScripten here.
+
+slide-5
+00:02:05.760 --> 00:02:07.240
+Slide 5
+
+47
+00:02:07.240 --> 00:02:11.360
+This diagram shows a simplest structure of the application.
+
+48
+00:02:11.360 --> 00:02:15.600
+We provide JS APIs to the web page to control the engine.
+
+49
+00:02:15.600 --> 00:02:20.800
+The JS APIs call to C++ engine compiled with EMScripten.
+
+50
+00:02:20.800 --> 00:02:25.040
+And the C++ engine calls the browser feature APIs
+
+51
+00:02:25.040 --> 00:02:29.560
+provided by EMScripten to use all the features.
+
+52
+00:02:29.560 --> 00:02:33.840
+Such as WebGL for video and special effect rendering,
+
+53
+00:02:33.840 --> 00:02:41.160
+WebAudio for audio playback, Web Workers for multi-threaded
+
+54
+00:02:41.160 --> 00:02:47.240
+runtime and IndexedDB for file system persistence.
+
+slide-6
+00:02:47.240 --> 00:02:49.080
+Slide 6
+
+57
+00:02:49.080 --> 00:02:52.200
+This is a diagram to illustrate the simplest process to
+
+58
+00:02:52.200 --> 00:02:55.240
+show what browser features are used in the processing route.
+
+60-p
+00:02:55.240 --> 00:02:59.000
+First, the video part.
+
+61
+00:02:59.000 --> 00:03:02.520
+For each video track, we first use WebAssembly
+
+62
+00:03:02.520 --> 00:03:04.640
+to decode the video frame.
+
+63
+00:03:04.640 --> 00:03:10.160
+After we get the decoded video, we convert it into texture,
+
+64
+00:03:10.160 --> 00:03:14.040
+and then blend the textures of multiple video tracks
+
+65
+00:03:14.040 --> 00:03:16.640
+and display it on canvas through WebGL.
+
+67-p
+00:03:16.640 --> 00:03:22.120
+For the audio part, we also use WebAssembly to decode,
+
+68
+00:03:22.120 --> 00:03:27.520
+and then send the decoded data to WebAudio API for playback.
+
+70-p
+00:03:28.440 --> 00:03:31.120
+Of course, for any kind of video player,
+
+71
+00:03:31.120 --> 00:03:34.280
+audio and video synchronization is indispensable.
+
+72
+00:03:34.280 --> 00:03:38.800
+Here is just the simplest processing route.
+
+73
+00:03:38.800 --> 00:03:41.000
+I have omitted many steps.
+
+74
+00:03:41.000 --> 00:03:43.760
+The actual situation is much more complex than
+
+75
+00:03:43.760 --> 00:03:45.120
+that shown in the figure.
+
+slide-7
+00:03:45.120 --> 00:03:47.000
+Slide 7
+
+78
+00:03:47.000 --> 00:03:51.560
+So far, we've basically made the whole application work,
+
+79
+00:03:51.560 --> 00:03:54.680
+but that doesn't mean it's perfect.
+
+80
+00:03:54.680 --> 00:03:57.760
+There are unsatisfactory things at some points.
+
+82-p
+00:03:58.760 --> 00:04:02.040
+The first problem is decoding performance.
+
+83
+00:04:02.040 --> 00:04:04.840
+We need to decode multiple video tracks at the same time,
+
+84
+00:04:04.840 --> 00:04:07.520
+which is a great challenge for the performance
+
+85
+00:04:07.520 --> 00:04:09.160
+of video decoding.
+
+86
+00:04:09.160 --> 00:04:13.040
+Using WebAssembly to decode will consume a lot of CPU,
+
+87
+00:04:13.040 --> 00:04:15.320
+and its speed is not as fast as native.
+
+88
+00:04:15.320 --> 00:04:19.920
+At present, in order to support as many video tracks as
+
+89
+00:04:19.920 --> 00:04:25.240
+possible, we limit the video resolution to 480p.
+
+91-p
+00:04:25.240 --> 00:04:28.560
+With the introduction of WebCodecs, we may have the
+
+92
+00:04:28.560 --> 00:04:31.400
+opportunity to improve our video resolution.
+
+93
+00:04:31.400 --> 00:04:37.080
+To use WebCodecs in a thread, that is a worker, providing
+
+94
+00:04:37.080 --> 00:04:40.160
+synchronized WebCodecs API will be more friendly
+
+95
+00:04:40.160 --> 00:04:42.400
+for C++ code to integrate.
+
+slide-8
+00:04:42.400 --> 00:04:45.840
+Slide 8
+
+98
+00:04:45.840 --> 00:04:49.600
+Another one is better debugging experience.
+
+100-p
+00:04:49.600 --> 00:04:54.160
+When enabling the debug mode of DWARF,
+
+101
+00:04:54.160 --> 00:04:56.720
+the WASM file will become very large.
+
+102
+00:04:56.720 --> 00:04:58.840
+In our case, it is more than 1 GB,
+
+103
+00:04:58.840 --> 00:05:03.440
+which causes the browser to be very unstable.
+
+104
+00:05:03.440 --> 00:05:07.920
+The browser will crash easily after running for a while.
+
+105
+00:05:07.920 --> 00:05:08.720
+And it's slow.
+
+106
+00:05:08.720 --> 00:05:12.600
+Even when debugging in localhost, loading the DWARF
+
+107
+00:05:12.600 --> 00:05:15.040
+information will still take more than 10 seconds.
+
+108
+00:05:15.040 --> 00:05:19.760
+And the devtools often respond slowly and get stuck.
+
+110-p
+00:05:19.760 --> 00:05:24.480
+Secondly, in a multi-threaded application,
+
+111
+00:05:24.480 --> 00:05:27.720
+a meaningful thread name, that is the name of the worker,
+
+112
+00:05:27.720 --> 00:05:29.880
+is very useful for debugging.
+
+113
+00:05:29.880 --> 00:05:32.720
+The current Web Worker only supports
+
+114
+00:05:32.720 --> 00:05:35.320
+specifying its name when it is created.
+
+115
+00:05:35.320 --> 00:05:39.520
+We hope it can be renamed when using a Web Worker,
+
+116
+00:05:39.520 --> 00:05:42.080
+which is very helpful to find the desired thread.
+
+118-p
+00:05:42.080 --> 00:05:44.840
+Thirdly, we need to stop the world.
+
+119
+00:05:44.840 --> 00:05:48.840
+At present, devtools can only select a thread
+
+120
+00:05:48.840 --> 00:05:50.760
+and click the pause button.
+
+121
+00:05:50.760 --> 00:05:52.640
+It will pause the worker or main thread.
+
+122
+00:05:52.640 --> 00:05:55.200
+But when there are a lot of threads,
+
+123
+00:05:55.200 --> 00:05:58.240
+I have to click the pause button one by one.
+
+124
+00:05:58.240 --> 00:06:01.720
+Similarly, the resume button now
+
+125
+00:06:01.720 --> 00:06:03.760
+needs to be clicked one by one.
+
+126
+00:06:03.760 --> 00:06:08.160
+In this regard, I think we can refer to
+
+127
+00:06:08.160 --> 00:06:10.960
+the debugging habits of the popular IDEs.
+
+slide-9
+00:06:11.000 --> 00:06:13.960
+Slide 9
+
+130
+00:06:13.960 --> 00:06:17.840
+As shown in the figure, EMScripten provides a file system
+
+131
+00:06:17.840 --> 00:06:22.640
+that supports the direct use of native POSIX file APIs.
+
+132
+00:06:22.640 --> 00:06:27.480
+On the browser, it mainly includes MEMFS and IDBFS.
+
+134-p
+00:06:27.480 --> 00:06:31.080
+However, video files are often large.
+
+135
+00:06:31.080 --> 00:06:35.120
+When we use MEMFS to read large files,
+
+136
+00:06:35.120 --> 00:06:39.000
+the memory consumption will be large because it loads
+
+137
+00:06:39.000 --> 00:06:42.880
+the whole file into memory, which is very easy
+
+138
+00:06:42.880 --> 00:06:43.920
+to cause out-of-memory errors.
+
+139
+00:06:43.920 --> 00:06:47.400
+At the same time, multi-threaded access
+
+140
+00:06:47.400 --> 00:06:50.200
+will always proxy to the main thread,
+
+141
+00:06:50.200 --> 00:06:54.040
+which has an impact on the performance of the main thread.
+
+143-p
+00:06:54.040 --> 00:06:57.480
+Therefore, I think we need a file system
+
+144
+00:06:57.480 --> 00:07:00.160
+that supports better multi-threaded accessing,
+
+145
+00:07:00.160 --> 00:07:04.960
+less memory consuming and better persistence solutions.
+
+147-p
+00:07:04.960 --> 00:07:07.040
+OK. That's all for me.
+
+148
+00:07:07.040 --> 00:07:09.680
+Thank you very much.
+

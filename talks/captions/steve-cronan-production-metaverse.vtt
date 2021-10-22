@@ -1,0 +1,734 @@
+﻿WEBVTT
+
+1
+00:00:00.000 --> 00:00:00.833
+<v Steve>From 5th Kind, and welcome</v>
+
+2
+00:00:00.833 --> 00:00:03.000
+to the production metaverse.
+
+3
+00:00:03.000 --> 00:00:04.090
+Today, we're gonna walk through,
+
+4
+00:00:04.090 --> 00:00:06.000
+what is the production metaverse?
+
+5
+00:00:06.000 --> 00:00:08.930
+How is metadata used to orchestrate the pipeline
+
+6
+00:00:08.930 --> 00:00:10.720
+of a studio and a production?
+
+7
+00:00:10.720 --> 00:00:12.910
+What are some of the unique challenges?
+
+8
+00:00:12.910 --> 00:00:14.530
+And how is it used in a virtual production
+
+9
+00:00:14.530 --> 00:00:17.400
+across these studios?
+
+10-p
+00:00:17.400 --> 00:00:19.437
+So, just to start off with some of the foundation
+
+11
+00:00:19.437 --> 00:00:21.780
+of what a production process looks like,
+
+12
+00:00:21.780 --> 00:00:25.330
+it really starts with a script, the foundation of the story.
+
+13
+00:00:25.330 --> 00:00:27.080
+From there you build out research,
+
+14
+00:00:27.080 --> 00:00:29.100
+where you're pulling images from the web,
+
+15
+00:00:29.100 --> 00:00:30.935
+you're building unique pieces of content
+
+16
+00:00:30.935 --> 00:00:33.268
+with storyboards and concept art,
+
+17
+00:00:33.268 --> 00:00:35.850
+you're doing scouting and location photos
+
+18
+00:00:35.850 --> 00:00:37.150
+from around the world,
+
+19
+00:00:37.150 --> 00:00:40.370
+set design with architectural drawings,
+
+20
+00:00:40.370 --> 00:00:43.070
+casting with a whole range of other content.
+
+21-p
+00:00:43.070 --> 00:00:45.431
+Then as you go into shooting, you're gonna be capturing
+
+22
+00:00:45.431 --> 00:00:48.890
+all sorts of different resolutions at high frame rates,
+
+23
+00:00:48.890 --> 00:00:50.650
+and potentially multiple cameras
+
+24
+00:00:50.650 --> 00:00:53.670
+across multiple units in multiple locations.
+
+25
+00:00:53.670 --> 00:00:55.974
+So, it's not uncommon for a production to generate
+
+26
+00:00:55.974 --> 00:00:58.760
+hundreds of terabytes, if not petabytes,
+
+27
+00:00:58.760 --> 00:01:00.250
+in a number of months,
+
+28
+00:01:00.250 --> 00:01:03.001
+and require that all of that content be uploaded
+
+29
+00:01:03.001 --> 00:01:06.820
+into the cloud, distributed out to multiple vendors,
+
+30
+00:01:06.820 --> 00:01:09.690
+all working on that content in different ways
+
+31
+00:01:09.690 --> 00:01:11.100
+and at different phases,
+
+32
+00:01:11.100 --> 00:01:13.920
+and different needs for the production process.
+
+33-p
+00:01:13.920 --> 00:01:16.140
+Editorial will then cut that all together
+
+34
+00:01:16.140 --> 00:01:19.990
+and connect all those VFX vendors and all those VFX layers
+
+35
+00:01:19.990 --> 00:01:21.830
+and elements that come together,
+
+36
+00:01:21.830 --> 00:01:23.976
+and all the while feeding the marketing machine
+
+37
+00:01:23.976 --> 00:01:27.619
+and the licensing machine up into the studio.
+
+38-p
+00:01:27.619 --> 00:01:31.360
+So, as I said, the foundation really starts with the script.
+
+39
+00:01:31.360 --> 00:01:33.860
+And what's interesting is a script is a structured document,
+
+40
+00:01:33.860 --> 00:01:36.687
+you have scenes on the left, exterior, interior,
+
+41
+00:01:36.687 --> 00:01:41.560
+day/night labels, story locations, characters, et cetera,
+
+42
+00:01:41.560 --> 00:01:44.200
+all consistently structured in this document.
+
+43-p
+00:01:44.200 --> 00:01:46.610
+So, taking that foundation as we expand out
+
+44
+00:01:46.610 --> 00:01:48.820
+from the story location into, say,
+
+45
+00:01:48.820 --> 00:01:53.820
+the physical location of where is that set gonna be a shot,
+
+46
+00:01:54.078 --> 00:01:59.078
+or are they gonna create it in a particular stage?
+
+47
+00:01:59.270 --> 00:02:02.370
+You also have virtual elements with sequences and shots,
+
+48
+00:02:02.370 --> 00:02:06.160
+so how's the visual effects department going to break down
+
+49
+00:02:06.160 --> 00:02:08.980
+the information, and how does this all connect together
+
+50
+00:02:08.980 --> 00:02:11.103
+into this actual production metaverse?
+
+51-p
+00:02:12.500 --> 00:02:13.860
+Even going deeper into VFX,
+
+52
+00:02:13.860 --> 00:02:16.580
+if you take, say, a particular shot,
+
+53
+00:02:16.580 --> 00:02:20.080
+it's broken up into hundreds, if not thousands, of frames,
+
+54
+00:02:20.080 --> 00:02:23.130
+and there's layers to those frames,
+
+55
+00:02:23.130 --> 00:02:25.540
+maybe a foreground plate or a background plate.
+
+56
+00:02:25.540 --> 00:02:27.850
+That foreground plate could be made up of models
+
+57
+00:02:27.850 --> 00:02:29.660
+and rigs and textures,
+
+58
+00:02:29.660 --> 00:02:32.100
+and combined with footage to come together
+
+59
+00:02:32.100 --> 00:02:35.453
+just to create a couple of seconds of a beautiful image.
+
+60-p
+00:02:37.230 --> 00:02:38.510
+And as an example,
+
+61
+00:02:38.510 --> 00:02:41.020
+we could use maybe a foreground plate of a guy on a horse.
+
+62
+00:02:41.020 --> 00:02:44.229
+Whack in a background layer, some smoke and some people
+
+63
+00:02:44.229 --> 00:02:47.654
+and fire, I'll light it, color it,
+
+64
+00:02:47.654 --> 00:02:49.760
+and you get this beautiful image.
+
+65
+00:02:49.760 --> 00:02:52.360
+So if you can think of that happening thousands,
+
+66
+00:02:52.360 --> 00:02:55.168
+if not tens of thousands of times across all of these
+
+67
+00:02:55.168 --> 00:02:59.320
+millions of frames, thousands of shots and
+
+68
+00:02:59.320 --> 00:03:02.097
+distributed globally to create this one piece of content
+
+69
+00:03:02.097 --> 00:03:04.823
+and surrounding articles.
+
+70-p
+00:03:06.000 --> 00:03:08.680
+So what's important is you get a consistent framework of how
+
+71
+00:03:08.680 --> 00:03:10.820
+to structure that information from the file metadata,
+
+72
+00:03:10.820 --> 00:03:14.590
+to how the files are structured within assets,
+
+73
+00:03:14.590 --> 00:03:17.490
+the connective tissue of how a character is connected
+
+74
+00:03:17.490 --> 00:03:21.790
+to an actor, leveraging AI analysis for automation of that
+
+75
+00:03:21.790 --> 00:03:23.150
+as much as possible,
+
+76
+00:03:23.150 --> 00:03:26.250
+connecting a shot to a vendor through external databases
+
+77
+00:03:26.250 --> 00:03:30.563
+like File Maker, Ftrack or a shotgun database.
+
+78-p
+00:03:31.450 --> 00:03:33.770
+How you pull in the pillars from all different phases
+
+79
+00:03:33.770 --> 00:03:36.590
+of production from casting and pre-production
+
+80
+00:03:36.590 --> 00:03:41.590
+to camera on set, to the editorial of post and the archive,
+
+81
+00:03:41.680 --> 00:03:45.312
+all the way into the metaverse and into entities.
+
+82-p
+00:03:45.312 --> 00:03:48.600
+So we leverage all this data to orchestrate the pipeline
+
+83
+00:03:48.600 --> 00:03:52.162
+of status changes and triggering events for transcodes
+
+84
+00:03:52.162 --> 00:03:54.910
+and file transfers with different applications
+
+85
+00:03:54.910 --> 00:03:58.410
+in different events, all in the need of moving this data
+
+86
+00:03:58.410 --> 00:04:01.548
+as fast as possible to give creatives as much time
+
+87
+00:04:01.548 --> 00:04:04.870
+to make those decisions before they hit that deadline.
+
+88-p
+00:04:04.870 --> 00:04:06.670
+That's one interesting thing about production
+
+89
+00:04:06.670 --> 00:04:08.256
+is you've got a release date
+
+90
+00:04:08.256 --> 00:04:10.240
+and the goal is how can you create
+
+91
+00:04:10.240 --> 00:04:12.782
+the greatest film possible in that amount of time?
+
+92
+00:04:12.782 --> 00:04:17.218
+So functionally our role is to help facilitate
+
+93
+00:04:17.218 --> 00:04:20.370
+the orchestration, the speed of decisions,
+
+94
+00:04:20.370 --> 00:04:23.423
+and creative flow as much as possible.
+
+95-p
+00:04:24.700 --> 00:04:26.700
+And so some of the key challenges that we find through
+
+96
+00:04:26.700 --> 00:04:29.453
+browsers is things like dealing with big file sizes
+
+97
+00:04:29.453 --> 00:04:32.902
+and the need for UDP acceleration of large file
+
+98
+00:04:32.902 --> 00:04:35.687
+transfers distributed globally around the world.
+
+99
+00:04:35.687 --> 00:04:37.230
+When you've gotta be uploading, you know,
+
+100
+00:04:37.230 --> 00:04:40.130
+many terabytes overnight, and it's required to be delivered
+
+101
+00:04:40.130 --> 00:04:42.630
+in a location for that next, you know, artist
+
+102
+00:04:42.630 --> 00:04:45.400
+to work on it, you just really need the robustness
+
+103
+00:04:45.400 --> 00:04:48.261
+of commonly used tools like (?) and Asignet
+
+104
+00:04:48.261 --> 00:04:51.160
+but to be able to get native support in the browser
+
+105
+00:04:51.160 --> 00:04:51.993
+would be amazing.
+
+106-p
+00:04:51.993 --> 00:04:54.920
+Upload folders, uploading folders, of course,
+
+107
+00:04:54.920 --> 00:04:56.895
+many challenges there in a browser right now,
+
+108
+00:04:56.895 --> 00:05:00.993
+you know, structured files, like a model
+
+109
+00:05:00.993 --> 00:05:03.500
+that has a certain relationship to a rig
+
+110
+00:05:03.500 --> 00:05:06.380
+and a texture maintaining those structures,
+
+111
+00:05:06.380 --> 00:05:08.685
+commonly requires people to zip things up
+
+112
+00:05:08.685 --> 00:05:12.363
+and then have them decompress, you know, on upload.
+
+113-p
+00:05:13.210 --> 00:05:15.950
+Those robust transfers across a long haul, you know,
+
+114
+00:05:15.950 --> 00:05:17.950
+globally distributed teams where you're shooting
+
+115
+00:05:17.950 --> 00:05:20.190
+in New Zealand and your post house is in LA
+
+116
+00:05:20.190 --> 00:05:22.670
+and the effects house is in the UK, et cetera,
+
+117
+00:05:22.670 --> 00:05:26.028
+just being able to move data really fast is required,
+
+118
+00:05:26.028 --> 00:05:29.548
+especially on location, the idea of sort of drop zones
+
+119
+00:05:29.548 --> 00:05:32.860
+of how do you find that, a big pipe to get the data
+
+120
+00:05:32.860 --> 00:05:35.080
+to where you need as fast as possible.
+
+121-p
+00:05:35.080 --> 00:05:37.910
+And we also see a lot of duplication of files.
+
+122
+00:05:37.910 --> 00:05:39.360
+You know, if there was the possibility
+
+123
+00:05:39.360 --> 00:05:40.612
+of a client-side checksum
+
+124
+00:05:40.612 --> 00:05:43.940
+where you would get a computable, a fingerprint,
+
+125
+00:05:43.940 --> 00:05:45.859
+to realize you've already got that file in your system,
+
+126
+00:05:45.859 --> 00:05:48.650
+because we're moving so many files around
+
+127
+00:05:48.650 --> 00:05:49.635
+in different locations,
+
+128
+00:05:49.635 --> 00:05:53.783
+just to be able to exchange a common hash,
+
+129
+00:05:53.783 --> 00:05:56.618
+would just allow for a lot faster transfers
+
+130
+00:05:56.618 --> 00:05:59.123
+with electric packet data.
+
+131-p
+00:05:59.123 --> 00:06:02.500
+And editing, of course, the hybrid nature of being
+
+132
+00:06:02.500 --> 00:06:05.529
+on prim, on location, in a studio, in the home,
+
+133
+00:06:05.529 --> 00:06:08.830
+orchestrating that data, getting it to where it needs to be
+
+134
+00:06:08.830 --> 00:06:10.457
+in a reasonable amount of time.
+
+135
+00:06:10.457 --> 00:06:13.750
+You know, this is also driving the need to bring the desktop
+
+136
+00:06:13.750 --> 00:06:16.800
+to the data or the desktop in the cloud.
+
+137
+00:06:16.800 --> 00:06:20.990
+So accelerating the needs of common operating system
+
+138
+00:06:20.990 --> 00:06:23.610
+and common applications to run directly in the cloud
+
+139
+00:06:23.610 --> 00:06:25.340
+is accelerating.
+
+140
+00:06:25.340 --> 00:06:28.420
+And a lot of challenges dealing with rural media costs,
+
+141
+00:06:28.420 --> 00:06:30.554
+constantly requiring, you know, transcoding,
+
+142
+00:06:30.554 --> 00:06:35.353
+very difficult to protect with any form of watermarking.
+
+143-p
+00:06:35.353 --> 00:06:38.610
+Now with playback, we've seen a good evolution,
+
+144
+00:06:38.610 --> 00:06:40.885
+obviously on the browsers, as we've seen, you know,
+
+145
+00:06:40.885 --> 00:06:45.050
+many video technologies accelerate with fragmented MP4s
+
+146
+00:06:45.050 --> 00:06:48.374
+and low-latency streaming live is accelerating across
+
+147
+00:06:48.374 --> 00:06:51.750
+this industry right now, but the need for higher bit rates,
+
+148
+00:06:51.750 --> 00:06:54.802
+higher fidelity, you know, 5.1 audio, et cetera,
+
+149
+00:06:54.802 --> 00:06:57.640
+is definitely a higher requirement.
+
+150
+00:06:57.640 --> 00:07:00.200
+You know, visual and forensic watermarking have always been
+
+151
+00:07:00.200 --> 00:07:01.631
+the fundamentals of what we do.
+
+152-p
+00:07:01.631 --> 00:07:04.650
+We used to be able to have a, you know,
+
+153
+00:07:04.650 --> 00:07:07.040
+compiled container back in the days when flash
+
+154
+00:07:07.040 --> 00:07:12.040
+was semi-secure and allowed you to have a DRM
+
+155
+00:07:14.060 --> 00:07:16.626
+protected stream with the client side overlay
+
+156
+00:07:16.626 --> 00:07:20.030
+that allowed you to leverage things like CDNs
+
+157
+00:07:20.030 --> 00:07:22.880
+for, you know, optimize, you know, streaming.
+
+158
+00:07:22.880 --> 00:07:26.827
+As we have lost that and, you know, WebAssembly
+
+159
+00:07:26.827 --> 00:07:29.650
+has not really replaced it in its ability,
+
+160
+00:07:29.650 --> 00:07:32.368
+from a security perspective, to create a secure container.
+
+161
+00:07:32.368 --> 00:07:36.475
+It has required a lot of server-side watermarking to occur,
+
+162
+00:07:36.475 --> 00:07:38.530
+which then of course, you know,
+
+163
+00:07:38.530 --> 00:07:41.161
+creates more challenges with buffering.
+
+164-p
+00:07:41.161 --> 00:07:45.228
+And VR 360, you know, just being able to play that back
+
+165
+00:07:45.228 --> 00:07:48.794
+with DRM, being able to maintain security as we move
+
+166
+00:07:48.794 --> 00:07:53.600
+into more of these virtual worlds is gonna be critical.
+
+167-p
+00:07:53.600 --> 00:07:56.041
+And then just for distribution, just offline tracking
+
+168
+00:07:56.041 --> 00:07:57.928
+tends to come up a lot, the security,
+
+169
+00:07:57.928 --> 00:08:01.580
+when things go offline, how can we keep, you know,
+
+170
+00:08:01.580 --> 00:08:05.080
+some protection within the operating system or handoff
+
+171
+00:08:05.080 --> 00:08:06.548
+between the browser and the operating system,
+
+172
+00:08:06.548 --> 00:08:08.595
+being able to download folders
+
+173
+00:08:08.595 --> 00:08:10.780
+so that you can maintain those structures,
+
+174
+00:08:10.780 --> 00:08:13.140
+as we talked about the challenges on upload,
+
+175
+00:08:13.140 --> 00:08:15.556
+and then just, you know, leveraging audio and AI analysis
+
+176
+00:08:15.556 --> 00:08:17.806
+at scale, I think is going in the right direction
+
+177
+00:08:17.806 --> 00:08:20.870
+and we'll be leveraging a lot more of that going forward.
+
+178-p
+00:08:20.870 --> 00:08:22.714
+So I hope you found that useful, as you know,
+
+179
+00:08:22.714 --> 00:08:27.010
+some of the pipelines and tools used in the orchestration
+
+180
+00:08:27.010 --> 00:08:29.210
+of a studio and some of the challenges we run into
+
+181
+00:08:29.210 --> 00:08:31.099
+and yeah, hopefully we can all work together
+
+182
+00:08:31.099 --> 00:08:31.932
+to make it great.
+
+183
+00:08:31.932 --> 00:08:33.670
+Have a good day.
+

@@ -1,0 +1,694 @@
+﻿WEBVTT
+
+1
+00:00:01.240 --> 00:00:02.720
+<v ->Hello everyone.</v>
+
+2
+00:00:02.720 --> 00:00:04.030
+My name is Kevin Streeter,
+
+3
+00:00:04.030 --> 00:00:06.380
+and I'm here to talk about some of the challenges that exist
+
+4
+00:00:06.380 --> 00:00:10.120
+to bringing desktop class creative applications to the web.
+
+5
+00:00:10.120 --> 00:00:12.490
+In this talk, we'll begin with a broad summary
+
+6
+00:00:12.490 --> 00:00:14.930
+of the many technical areas we need to work through
+
+7
+00:00:14.930 --> 00:00:17.610
+to create powerful creative tools.
+
+8
+00:00:17.610 --> 00:00:21.150
+Then we will dive into a few selected topics to get a better
+
+9
+00:00:21.150 --> 00:00:24.250
+feel for the kind of capabilities we need from the web
+
+10
+00:00:24.250 --> 00:00:26.110
+to make it all possible.
+
+11
+00:00:26.110 --> 00:00:27.153
+Let's get started.
+
+slide-2
+00:00:29.250 --> 00:00:30.223
+Slide one.
+
+13
+00:00:31.090 --> 00:00:33.560
+Creators are accustomed to having the full power
+
+14
+00:00:33.560 --> 00:00:36.600
+of desktop class hardware at their fingertips.
+
+15
+00:00:36.600 --> 00:00:39.180
+How can we build applications that have the same level
+
+16
+00:00:39.180 --> 00:00:41.623
+of performance and expressivity,
+
+17
+00:00:42.900 --> 00:00:46.653
+but also having all the benefits of a web based experience?
+
+18-p
+00:00:47.640 --> 00:00:50.320
+Here are some of the ways that applications take advantage
+
+19
+00:00:50.320 --> 00:00:52.863
+of traditional desktop platforms.
+
+20-p
+00:00:53.800 --> 00:00:57.670
+These applications have full access to 64-bit CPUs
+
+21
+00:00:57.670 --> 00:01:02.050
+and performance or instruction sets such as AVX.
+
+22-p
+00:01:02.050 --> 00:01:04.513
+They have access to large amounts of memory.
+
+23-p
+00:01:05.610 --> 00:01:07.800
+They have full access to disk hardware
+
+24
+00:01:07.800 --> 00:01:09.720
+and the local file system.
+
+25-p
+00:01:09.720 --> 00:01:13.223
+They use low level APIs for performance and efficiency.
+
+26-p
+00:01:14.840 --> 00:01:17.810
+They have end to end support for color management
+
+27
+00:01:17.810 --> 00:01:21.180
+and color spaces that allow for wide color gamuts
+
+28
+00:01:21.180 --> 00:01:23.023
+and high dynamic range.
+
+29-p
+00:01:24.340 --> 00:01:26.740
+Desktop software has access to input hardware,
+
+30
+00:01:26.740 --> 00:01:29.863
+such as styluses, pens, and other devices.
+
+31-p
+00:01:30.710 --> 00:01:33.760
+They have access to modern media decoding and encoding,
+
+32
+00:01:33.760 --> 00:01:35.943
+particularly video encoding and decoding.
+
+33-p
+00:01:37.100 --> 00:01:39.960
+They have access to modern GPU pipelines
+
+34
+00:01:39.960 --> 00:01:42.843
+that support both graphics and compute.
+
+35-p
+00:01:43.750 --> 00:01:46.470
+And finally, they have access to the kind of quality
+
+36
+00:01:46.470 --> 00:01:49.030
+of experience capabilities such as clipboards,
+
+37
+00:01:49.030 --> 00:01:52.250
+accessibilities and other things that really
+
+38
+00:01:52.250 --> 00:01:56.163
+make a tool work for the creative professional.
+
+slide-3
+00:01:58.840 --> 00:01:59.673
+Slide two.
+
+40
+00:02:00.510 --> 00:02:02.880
+The first area that we're gonna dive deeper into
+
+41
+00:02:02.880 --> 00:02:04.180
+is the use of WebAssembly.
+
+42-p
+00:02:06.040 --> 00:02:08.670
+Creative media tools tend to use a mix
+
+43
+00:02:08.670 --> 00:02:11.763
+of new and existing media processing code.
+
+44
+00:02:13.040 --> 00:02:16.563
+The existing code is typically written in C++.
+
+45
+00:02:18.390 --> 00:02:21.780
+This code tends to be a mix of sort of compute
+
+46
+00:02:21.780 --> 00:02:24.663
+intensive and memory intensive operations.
+
+47
+00:02:25.840 --> 00:02:28.570
+Importantly, not all of this code can simply
+
+48
+00:02:28.570 --> 00:02:31.250
+be ported to a GPU.
+
+49-p
+00:02:31.250 --> 00:02:33.540
+Sometimes that's because we haven't really found
+
+50
+00:02:33.540 --> 00:02:37.260
+a good GPU-based solution for the operation,
+
+51
+00:02:37.260 --> 00:02:39.970
+but frequently it's also because we have working code
+
+52
+00:02:39.970 --> 00:02:42.120
+and we'd really like to continue to use it.
+
+53-p
+00:02:43.140 --> 00:02:46.320
+These code bases have been heavily optimized over time,
+
+54
+00:02:46.320 --> 00:02:49.110
+and they've been optimized in a couple of different ways.
+
+55
+00:02:49.110 --> 00:02:50.600
+They've been optimized to take advantage
+
+56
+00:02:50.600 --> 00:02:53.250
+of 64-bit processing,
+
+57
+00:02:53.250 --> 00:02:55.730
+and they've also been optimized to take advantage
+
+58
+00:02:55.730 --> 00:02:59.310
+of SIMD instruction sets that are present
+
+59
+00:02:59.310 --> 00:03:02.253
+on most desktop class hardware.
+
+60-p
+00:03:04.400 --> 00:03:06.900
+If we want to do these types of things on the web,
+
+61
+00:03:06.900 --> 00:03:09.370
+we've got a few challenges to that.
+
+62
+00:03:09.370 --> 00:03:12.060
+One is that in browser support
+
+63
+00:03:12.060 --> 00:03:14.433
+for WebAssembly today is all 32 bit.
+
+64
+00:03:17.173 --> 00:03:19.050
+That not only limits the processing capabilities,
+
+65
+00:03:19.050 --> 00:03:21.610
+but it also limits the total amount of memory
+
+66
+00:03:21.610 --> 00:03:22.923
+that we have access to.
+
+67-p
+00:03:24.940 --> 00:03:28.990
+SIMD is not currently supported in most browsers.
+
+68
+00:03:28.990 --> 00:03:32.233
+There are some proposals around SIMD operations,
+
+69
+00:03:33.546 --> 00:03:36.450
+and there are support for that in some browsers,
+
+70
+00:03:36.450 --> 00:03:38.240
+but it's still very early
+
+71
+00:03:38.240 --> 00:03:40.823
+in terms of availability of that capability.
+
+72-p
+00:03:42.410 --> 00:03:44.990
+One important aspect of this
+
+73
+00:03:44.990 --> 00:03:48.270
+is that the SIMD proposals that are currently
+
+74
+00:03:48.270 --> 00:03:51.140
+being investigated really do emphasize
+
+75
+00:03:51.140 --> 00:03:54.090
+portability over performance.
+
+76
+00:03:54.090 --> 00:03:57.880
+And what this means is that we no longer really have access
+
+77
+00:03:57.880 --> 00:04:01.170
+to the lowest level of instruction sets,
+
+78
+00:04:01.170 --> 00:04:04.913
+and that does have an impact on overall performance.
+
+slide-4
+00:04:06.670 --> 00:04:07.880
+Slide three.
+
+80
+00:04:07.880 --> 00:04:11.480
+The next important area I'd like to discuss is color.
+
+81-p
+00:04:11.480 --> 00:04:14.200
+Color management, wide color gamut,
+
+82
+00:04:14.200 --> 00:04:15.810
+and high dynamic range capabilities
+
+83
+00:04:15.810 --> 00:04:18.680
+are critical for pro media production.
+
+84
+00:04:18.680 --> 00:04:21.170
+This is true regardless of the type of media,
+
+85
+00:04:21.170 --> 00:04:23.363
+whether it's video photography or print.
+
+86-p
+00:04:24.730 --> 00:04:26.930
+Consumer devices such as phones and tablets
+
+87
+00:04:26.930 --> 00:04:28.960
+increasingly support wide color gamut
+
+88
+00:04:28.960 --> 00:04:31.830
+and high dynamic range, making the ability
+
+89
+00:04:31.830 --> 00:04:33.190
+to deliver correct color
+
+90
+00:04:33.190 --> 00:04:35.303
+to these devices even more important.
+
+91-p
+00:04:37.220 --> 00:04:38.770
+It's critical to keep in mind
+
+92
+00:04:38.770 --> 00:04:40.640
+that color is an end-to-end problem
+
+93
+00:04:40.640 --> 00:04:41.660
+and that we have to solve for that
+
+94
+00:04:41.660 --> 00:04:44.020
+across all aspects of the system.
+
+95
+00:04:44.020 --> 00:04:48.433
+That includes formats, pixel processing, and rendering.
+
+96-p
+00:04:50.570 --> 00:04:53.270
+Now, today, standards such as CSS 4
+
+97
+00:04:53.270 --> 00:04:54.430
+are helping make it possible
+
+98
+00:04:54.430 --> 00:04:57.640
+to support extended color spaces,
+
+99
+00:04:57.640 --> 00:05:00.623
+but this isn't supported broadly in all browsers today.
+
+100-p
+00:05:01.920 --> 00:05:04.910
+Also these color management capabilities are not supported
+
+101
+00:05:04.910 --> 00:05:07.170
+by all web modules.
+
+102
+00:05:07.170 --> 00:05:09.250
+For example, today there isn't really a way
+
+103
+00:05:09.250 --> 00:05:12.200
+to ensure that WebGL is going to display
+
+104
+00:05:12.200 --> 00:05:14.543
+wide color gamut content correctly.
+
+105-p
+00:05:16.890 --> 00:05:18.920
+Last, it's really important to note that different
+
+106
+00:05:18.920 --> 00:05:21.623
+industries have their own standards around color.
+
+107
+00:05:22.470 --> 00:05:24.350
+What that means is that the web platform
+
+108
+00:05:24.350 --> 00:05:27.460
+needs to be inclusive if we want to support
+
+109
+00:05:27.460 --> 00:05:31.313
+the creation of tools that target these industries.
+
+slide-5
+00:05:35.650 --> 00:05:36.653
+Slide four.
+
+111
+00:05:37.500 --> 00:05:41.353
+Next let's talk about disks and file systems.
+
+112-p
+00:05:42.200 --> 00:05:46.260
+Desktop creative tools use the local disk heavily and rely
+
+113
+00:05:46.260 --> 00:05:48.403
+on access to the local file system.
+
+114
+00:05:49.620 --> 00:05:52.900
+These tools use disks for variety of reasons.
+
+115
+00:05:52.900 --> 00:05:56.220
+They use them to store documents and projects.
+
+116
+00:05:56.220 --> 00:05:58.950
+They use them for importing and exporting content
+
+117
+00:05:58.950 --> 00:06:01.540
+in and out of the application,
+
+118
+00:06:01.540 --> 00:06:04.233
+and they use them for scratch space and for caching.
+
+119-p
+00:06:07.080 --> 00:06:11.630
+These tools have been optimized for disk I/O very carefully,
+
+120
+00:06:11.630 --> 00:06:14.490
+and they try to minimize both the total number of I/O
+
+121
+00:06:14.490 --> 00:06:17.783
+operations and the total amount of data transferred.
+
+122-p
+00:06:19.620 --> 00:06:21.700
+Today's browser-based file access
+
+123
+00:06:21.700 --> 00:06:25.343
+doesn't really give write access to the local file system.
+
+124
+00:06:26.920 --> 00:06:30.540
+And the APIs are fairly high level, meaning it's hard to
+
+125
+00:06:30.540 --> 00:06:32.763
+ensure that the I/O is optimal.
+
+126-p
+00:06:34.750 --> 00:06:38.470
+Current proposals such as Origin Private File System
+
+127
+00:06:38.470 --> 00:06:41.380
+are promising, but need to allow for efficient
+
+128
+00:06:41.380 --> 00:06:44.023
+import and export with a host file system.
+
+129-p
+00:06:45.960 --> 00:06:48.850
+In the end, many low level capabilities
+
+130
+00:06:48.850 --> 00:06:51.513
+don't really have an analog in the web platform.
+
+131
+00:06:52.570 --> 00:06:56.490
+For example, there's no support for sparse files
+
+132
+00:06:56.490 --> 00:06:58.393
+or zero copy file I/O.
+
+slide-6
+00:07:01.780 --> 00:07:03.540
+Slide five.
+
+134
+00:07:03.540 --> 00:07:05.690
+The last topic I'd like to dive deeper on
+
+135
+00:07:05.690 --> 00:07:08.753
+is hardware encoding and decoding of media.
+
+136-p
+00:07:10.240 --> 00:07:13.940
+Pro media production tools often use more specialized
+
+137
+00:07:13.940 --> 00:07:17.890
+media formats than in a typical consumer application.
+
+138
+00:07:17.890 --> 00:07:22.440
+For example, a photography tool will use formats
+
+139
+00:07:22.440 --> 00:07:25.660
+like TIFF, JPEG 2000 in a variety
+
+140
+00:07:25.660 --> 00:07:28.490
+of different raw image formats.
+
+141
+00:07:28.490 --> 00:07:31.470
+Similarly, video tools will use things
+
+142
+00:07:31.470 --> 00:07:34.433
+like REDCODE, ARRIRAW, or ProRes.
+
+143-p
+00:07:36.220 --> 00:07:39.680
+Now for imaging applications,
+
+144
+00:07:39.680 --> 00:07:41.560
+we can get away with using WebAssembly
+
+145
+00:07:41.560 --> 00:07:43.650
+to do encoding and decoding,
+
+146
+00:07:43.650 --> 00:07:47.020
+especially if we've tackled some of the performance issues
+
+147
+00:07:47.020 --> 00:07:49.033
+that we spoke about earlier in the talk.
+
+148
+00:07:50.150 --> 00:07:52.540
+But video is much harder since maintaining
+
+149
+00:07:52.540 --> 00:07:55.430
+good frame rates during playback, scrubbing,
+
+150
+00:07:55.430 --> 00:07:58.963
+and other aspects of authoring are really, really important.
+
+151-p
+00:08:01.390 --> 00:08:05.200
+Now today, the ability to get hardware accelerated video
+
+152
+00:08:05.200 --> 00:08:07.600
+is present in the web through the video element,
+
+153
+00:08:08.460 --> 00:08:11.260
+and soon we'll have access through an API
+
+154
+00:08:11.260 --> 00:08:12.593
+such as WebCodecs.
+
+155
+00:08:13.830 --> 00:08:16.670
+But a problem with these APIs is that they only work
+
+156
+00:08:16.670 --> 00:08:19.780
+with mainstream consumer-oriented formats
+
+157
+00:08:19.780 --> 00:08:22.643
+like AVC and VP8 and VP9.
+
+158-p
+00:08:24.170 --> 00:08:27.020
+Now, unfortunately there is an unavoidable challenge
+
+159
+00:08:27.020 --> 00:08:29.210
+with media codecs, is that many of them
+
+160
+00:08:29.210 --> 00:08:32.270
+are encumbered by intellectual property issues,
+
+161
+00:08:32.270 --> 00:08:34.960
+making it much harder to ensure they are available
+
+162
+00:08:34.960 --> 00:08:38.023
+on all devices all the time.
+
+163-p
+00:08:39.500 --> 00:08:43.660
+So what we may need here is some way to access plugable
+
+164
+00:08:43.660 --> 00:08:47.090
+or modular hardware acceleration capabilities,
+
+165
+00:08:47.090 --> 00:08:50.880
+so when this capability is present on a device,
+
+166
+00:08:50.880 --> 00:08:53.373
+the application can get access to it.
+
+slide-7
+00:08:56.650 --> 00:08:58.270
+Last slide.
+
+168
+00:08:58.270 --> 00:09:00.290
+I hope you enjoyed this talk.
+
+169
+00:09:00.290 --> 00:09:02.390
+I'd like to give a quick thank you to all the folks
+
+170
+00:09:02.390 --> 00:09:04.920
+at Adobe that helped me prepare this material.
+
+171
+00:09:04.920 --> 00:09:07.040
+And in particular, I'd like to thank
+
+172
+00:09:07.040 --> 00:09:09.580
+Sean Voisen for his insights.
+
+slide-8
+00:09:09.580 --> 00:09:10.863
+See you at the workshop.
+

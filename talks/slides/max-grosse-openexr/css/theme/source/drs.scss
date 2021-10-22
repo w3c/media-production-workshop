@@ -1,0 +1,94 @@
+/**
+ * Solarized Dark theme for reveal.js.
+ * Author: Achim Staebler
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+// Include theme-specific fonts
+@import url(./fonts/league-gothic/league-gothic.css);
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+
+/**
+ * Solarized colors by Ethan Schoonover
+ */
+html * {
+  font-family: Sans-serif;
+	color-profile: sRGB;
+	rendering-intent: auto;
+}
+
+// Override theme settings (see ../template/settings.scss)
+$mainColor: white;
+$headingColor: white;
+$headingTextShadow: none;
+$backgroundColor: rgb(73, 58, 153);
+$linkColor: white;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: white;
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#222);
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 2em;
+}
+
+.footer .logo {
+    position: absolute;
+    left: 2%;
+    top: 20%;
+    height: 40%;
+    opacity: 0.6;
+}
+
+.footer .wds {
+    position: absolute;
+    opacity: 0.6;
+    right: 40%;
+    top: 10%;
+    width: 15%;
+  }
+
+.footer .copyright {
+  position: absolute;
+  opacity: 1.0;
+  right: 6%;
+  top: 3%;
+  width: 5%;
+  text-align: right;
+}
+
+.footer .copy2 {
+  position: absolute;
+  opacity: 0.3;
+  font-size: 0.4em;
+  right: 6%;
+  top: 60%;
+}
+
+.two-column {
+  display: flex;
+}
+
+.col {
+  flex: 1;
+}
+
+.smaller {
+  font-size: 0.8em;
+}
+

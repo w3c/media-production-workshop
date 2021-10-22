@@ -1,0 +1,570 @@
+﻿WEBVTT
+
+1
+00:00:00.400 --> 00:00:02.520
+<v ->Hello there, my name is Sacha Guddoy.</v>
+
+2
+00:00:02.520 --> 00:00:05.330
+I'm the Lead Front-end Engineer at Grabyo.
+
+3
+00:00:05.330 --> 00:00:07.949
+Today, I'm going to be talking about accuracy
+
+4
+00:00:07.949 --> 00:00:10.950
+and synchronization in HTML media elements, our use cases,
+
+5
+00:00:10.950 --> 00:00:13.920
+and some of the challenges that we've faced.
+
+slide-2
+00:00:13.920 --> 00:00:16.510
+Firstly, let me tell you a bit about Grabyo.
+
+7-p
+00:00:16.510 --> 00:00:18.800
+Grabyo is a SaaS platform
+
+8
+00:00:18.800 --> 00:00:20.830
+for broadcast media production.
+
+9
+00:00:20.830 --> 00:00:23.280
+It's aimed at commercial broadcasters.
+
+10-p
+00:00:23.280 --> 00:00:25.710
+We use web and cloud-based technologies to bring
+
+11
+00:00:25.710 --> 00:00:29.593
+remote distributed capabilities to broadcast workflows.
+
+12-p
+00:00:31.200 --> 00:00:33.830
+Some of our offerings include live video production,
+
+13
+00:00:33.830 --> 00:00:35.253
+clipping from live streams,
+
+14
+00:00:36.440 --> 00:00:37.840
+non-linear editing and publishing creative media
+
+15
+00:00:37.840 --> 00:00:39.900
+to various end points, for example,
+
+16
+00:00:39.900 --> 00:00:42.580
+social media or livestream.
+
+slide-3
+00:00:42.580 --> 00:00:44.360
+Firstly, I'm going to talk about accuracy
+
+18
+00:00:44.360 --> 00:00:46.830
+in HTML media APIs.
+
+19-p
+00:00:46.830 --> 00:00:50.030
+A common technique in media production workflows
+
+20
+00:00:50.030 --> 00:00:53.880
+is to create a lower resolution, low bit rate draft version
+
+21
+00:00:53.880 --> 00:00:55.050
+of your media.
+
+slide-4
+00:00:55.050 --> 00:00:56.700
+And when you're working on that media,
+
+23
+00:00:56.700 --> 00:00:57.930
+when you're making edits and such,
+
+24
+00:00:57.930 --> 00:00:59.600
+that's what you'll be looking at.
+
+25-p
+00:00:59.600 --> 00:01:01.880
+Then when you've finished making your edits,
+
+26
+00:01:01.880 --> 00:01:06.880
+you will export it to some more powerful machine,
+
+27
+00:01:07.211 --> 00:01:09.450
+or maybe your own machine,
+
+28
+00:01:09.450 --> 00:01:12.000
+will use a lot of resources to go and render
+
+29
+00:01:12.000 --> 00:01:14.060
+the final high quality version
+
+30
+00:01:14.060 --> 00:01:15.610
+from the original source media.
+
+31-p
+00:01:16.460 --> 00:01:20.210
+A common pattern that we use is for users
+
+32
+00:01:20.210 --> 00:01:22.510
+to select their in and out points in a video
+
+33
+00:01:22.510 --> 00:01:23.950
+in the web browser,
+
+34
+00:01:23.950 --> 00:01:26.210
+and then we'll send that off to another service
+
+35
+00:01:26.210 --> 00:01:27.140
+which could be in the cloud,
+
+36
+00:01:27.140 --> 00:01:30.130
+and then we'll use that to process the final version
+
+37
+00:01:30.130 --> 00:01:32.750
+of the media from the high quality source media.
+
+slide-5
+00:01:32.750 --> 00:01:35.660
+One of the issues that we faced with this kind of workflow
+
+39
+00:01:35.660 --> 00:01:39.460
+is that timestamps that you get from media elements
+
+40
+00:01:39.460 --> 00:01:42.010
+in the web are just not accurate enough.
+
+41
+00:01:42.010 --> 00:01:45.720
+They won't necessarily represent the same frame of the video
+
+42
+00:01:45.720 --> 00:01:49.663
+when another application loads up that same timestamp.
+
+43-p
+00:01:50.820 --> 00:01:55.280
+So what that means is that when you've exported your video,
+
+44
+00:01:55.280 --> 00:01:58.712
+you play it back and the start and the end
+
+45
+00:01:58.712 --> 00:02:00.970
+can be one frame off, which is not very good.
+
+46-p
+00:02:00.970 --> 00:02:02.860
+In professional workflows, it's really important
+
+47
+00:02:02.860 --> 00:02:04.230
+to be frame accurate.
+
+48
+00:02:04.230 --> 00:02:07.381
+And it can be very noticeable in a lot of situations.
+
+49-p
+00:02:07.381 --> 00:02:11.770
+The most common way of getting the time that the user
+
+50
+00:02:11.770 --> 00:02:15.850
+is at, in the video, is using the currentTime property
+
+51
+00:02:15.850 --> 00:02:18.023
+of the HTMLVideoElement interface.
+
+52-p
+00:02:19.100 --> 00:02:22.220
+The problem with this is that it's not very precise.
+
+53
+00:02:22.220 --> 00:02:23.320
+It's measured in seconds
+
+54
+00:02:23.320 --> 00:02:25.300
+and it only gives you two decimals of precision.
+
+55
+00:02:25.300 --> 00:02:28.870
+So you can only be accurate to 100th of a second.
+
+56-p
+00:02:28.870 --> 00:02:30.400
+In a 60 FPS video,
+
+57
+00:02:30.400 --> 00:02:34.120
+a single frame only lasts for about 16 milliseconds.
+
+58
+00:02:34.120 --> 00:02:36.210
+So your timestamp,
+
+59
+00:02:36.210 --> 00:02:38.580
+which is only accurate to a hundredth of a second,
+
+60
+00:02:38.580 --> 00:02:40.930
+isn't going to be accurate enough to convey
+
+61
+00:02:40.930 --> 00:02:42.730
+that exact frame.
+
+62-p
+00:02:42.730 --> 00:02:45.950
+Different video rendering tools might have
+
+63
+00:02:45.950 --> 00:02:49.920
+different interpretations of exactly what that time is.
+
+slide-6
+00:02:49.920 --> 00:02:52.570
+The next point is about synchronization with the DOM.
+
+65-p
+00:02:53.570 --> 00:02:56.360
+Another common use case for us is to manipulate and monitor
+
+66
+00:02:56.360 --> 00:02:58.820
+media in real time using DOM interfaces,
+
+67
+00:02:58.820 --> 00:03:01.430
+for example, controlling state of the playback,
+
+68
+00:03:01.430 --> 00:03:03.950
+controlling playback position,
+
+69
+00:03:03.950 --> 00:03:06.760
+monitoring the audio levels,
+
+70
+00:03:06.760 --> 00:03:11.563
+analyzing or manipulating video or audio,
+
+71
+00:03:12.510 --> 00:03:14.210
+displaying overlays,
+
+72
+00:03:14.210 --> 00:03:16.860
+and synchronizing different pieces of media together.
+
+slide-7
+00:03:18.400 --> 00:03:20.690
+In these scenarios, it's really important for the DOM
+
+74
+00:03:20.690 --> 00:03:22.540
+to reflect the current state of media
+
+75
+00:03:22.540 --> 00:03:23.920
+as accurately as possible.
+
+76-p
+00:03:23.920 --> 00:03:28.920
+Typically, these elements in the DOM would be updated
+
+77
+00:03:29.750 --> 00:03:31.400
+based on the media.
+
+78-p
+00:03:31.400 --> 00:03:32.517
+There's two ways that you can do that.
+
+79
+00:03:32.517 --> 00:03:34.170
+You can either use event listeners
+
+80
+00:03:34.170 --> 00:03:36.393
+or you can use requestAnimationFrame.
+
+81
+00:03:38.020 --> 00:03:40.770
+Already there is an inherent level of de-synchronization
+
+82
+00:03:40.770 --> 00:03:44.420
+because the DOM and the media element are not running
+
+83
+00:03:44.420 --> 00:03:45.253
+in the same thread.
+
+84
+00:03:45.253 --> 00:03:47.863
+The media element is playing in its own thread,
+
+85
+00:03:49.440 --> 00:03:52.743
+but the updates to the DOM, they rely on the main UI thread,
+
+86
+00:03:53.650 --> 00:03:55.270
+which means that any user interaction
+
+87
+00:03:55.270 --> 00:03:58.140
+or anything else running in that DOM thread can easily block
+
+88
+00:03:58.140 --> 00:04:02.120
+your updates, which means that your DOM representation
+
+89
+00:04:02.120 --> 00:04:03.940
+of what's happening in the media could potentially
+
+90
+00:04:03.940 --> 00:04:04.983
+be lagging behind.
+
+91-p
+00:04:06.570 --> 00:04:08.920
+Furthermore, this can just be expensive.
+
+92
+00:04:08.920 --> 00:04:11.800
+If you are updating your DOM 60 times per second,
+
+93
+00:04:11.800 --> 00:04:14.750
+because your audio level, for example,
+
+94
+00:04:14.750 --> 00:04:16.670
+is changing 60 times a second,
+
+95
+00:04:16.670 --> 00:04:18.960
+then that is taxing on the UI thread
+
+96
+00:04:18.960 --> 00:04:21.430
+and degrades the user experience.
+
+slide-8
+00:04:21.430 --> 00:04:25.270
+The next point is on codecs.
+
+98-p
+00:04:25.270 --> 00:04:29.770
+All major browsers ship with a range of video codecs.
+
+99
+00:04:29.770 --> 00:04:32.180
+Expansion of codec support and lower level access
+
+100
+00:04:32.180 --> 00:04:35.810
+to the decoding pipeline could enable new features.
+
+101-p
+00:04:35.810 --> 00:04:38.300
+For example, you could use intra-frame coding
+
+102
+00:04:38.300 --> 00:04:40.320
+to improve seeking performance.
+
+103
+00:04:40.320 --> 00:04:44.460
+You could extract thumbnails faster than real time.
+
+104
+00:04:44.460 --> 00:04:46.981
+You could decode and store specific time ranges
+
+105
+00:04:46.981 --> 00:04:50.210
+for fast referencing, for example,
+
+106
+00:04:50.210 --> 00:04:51.913
+in a nonlinear editing scenario.
+
+107-p
+00:04:52.920 --> 00:04:55.760
+WebCodecs is the elephant in the room here
+
+108
+00:04:55.760 --> 00:04:57.940
+that can help solve a lot of the issues by giving us
+
+109
+00:04:57.940 --> 00:05:00.373
+lower level access to that decoding pipeline,
+
+110
+00:05:01.242 --> 00:05:03.530
+which is something I'm very excited about.
+
+111
+00:05:03.530 --> 00:05:06.140
+Obviously the browser support at the moment,
+
+112
+00:05:06.140 --> 00:05:10.490
+what's this, October 2021, is not the greatest.
+
+slide-9
+00:05:10.490 --> 00:05:13.570
+The next part I want to talk about is multi-threading.
+
+114-p
+00:05:13.570 --> 00:05:16.040
+So it's often necessary to perform media operations
+
+115
+00:05:16.040 --> 00:05:18.423
+on the same thread as the UI handlers,
+
+116
+00:05:19.791 --> 00:05:24.630
+so for example, rendering a video onto a canvas.
+
+117
+00:05:24.630 --> 00:05:26.320
+This is not particularly desirable,
+
+118
+00:05:26.320 --> 00:05:29.430
+because these tasks can be really resource intensive
+
+119
+00:05:29.430 --> 00:05:32.030
+and run very frequently, blocking the UI thread,
+
+120
+00:05:32.030 --> 00:05:34.800
+degrading performance and the user experience.
+
+121-p
+00:05:34.800 --> 00:05:37.340
+If you're painting a video to a canvas,
+
+122
+00:05:37.340 --> 00:05:39.050
+that's probably going to be running
+
+123
+00:05:39.050 --> 00:05:40.700
+on every requestAnimationFrame.
+
+124-p
+00:05:41.555 --> 00:05:43.700
+We'll see the conventional solutions
+
+125
+00:05:43.700 --> 00:05:46.630
+to this last problem is to use multi-threading,
+
+126
+00:05:46.630 --> 00:05:47.820
+i.e., web workers
+
+127
+00:05:47.820 --> 00:05:50.493
+and you do your intensive thread in that web worker.
+
+128
+00:05:51.690 --> 00:05:55.530
+So there is an off-screen canvas interface,
+
+129
+00:05:55.530 --> 00:05:59.130
+and that would allow WebGL to render to a canvas
+
+130
+00:05:59.130 --> 00:06:01.460
+within the scope of a worker.
+
+131-p
+00:06:01.460 --> 00:06:04.560
+But there isn't an equivalent API for video.
+
+132
+00:06:04.560 --> 00:06:06.350
+Video cannot be used in the worker.
+
+133
+00:06:06.350 --> 00:06:07.450
+It cannot be accessed.
+
+134-p
+00:06:08.350 --> 00:06:12.190
+This is problematic because then your video to canvas
+
+135
+00:06:12.190 --> 00:06:14.430
+rendering pipeline has to be in the DOM thread.
+
+136
+00:06:14.430 --> 00:06:17.660
+It can't live in a worker by itself.
+
+slide-10
+00:06:17.660 --> 00:06:19.740
+So that's all I have for you on this topic.
+
+138
+00:06:19.740 --> 00:06:22.680
+I hope that was enlightening in terms of some
+
+139
+00:06:22.680 --> 00:06:25.630
+of the use cases and issues that we were facing.
+
+140
+00:06:25.630 --> 00:06:27.670
+And I'm looking forward to hearing
+
+141
+00:06:27.670 --> 00:06:29.543
+your questions and feedback.
+
+142
+00:06:29.543 --> 00:06:31.880
+Thanks very much. Take care.
+

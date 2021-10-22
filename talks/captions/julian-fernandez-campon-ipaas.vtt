@@ -1,0 +1,926 @@
+﻿WEBVTT
+
+slide-1
+00:00:00.070 --> 00:00:00.960
+<v ->Hi everybody.</v>
+
+2
+00:00:00.960 --> 00:00:02.700
+My name is Julian Fernandez-Campon,
+
+3
+00:00:02.700 --> 00:00:04.920
+I am chief technology officer at Tedial.
+
+4
+00:00:04.920 --> 00:00:07.660
+And today I'm going to show you a different approach to
+
+5
+00:00:07.660 --> 00:00:10.160
+maximize the media production under web.
+
+6
+00:00:10.160 --> 00:00:12.520
+The use of the no-code iPaaS for media.
+
+slide-3
+00:00:12.520 --> 00:00:15.013
+The current workflows paradigm has two main problems.
+
+8-p
+00:00:15.013 --> 00:00:17.450
+The first one is that each system
+
+9
+00:00:17.450 --> 00:00:20.390
+which is integrated in the platform, or two systems that
+
+10
+00:00:20.390 --> 00:00:24.310
+needs to be integrated, need to know the API of each other.
+
+11
+00:00:24.310 --> 00:00:28.640
+This has the problem that it is difficult to evolve.
+
+12
+00:00:28.640 --> 00:00:30.004
+It is difficult to maintain.
+
+13
+00:00:30.004 --> 00:00:33.360
+And if we make a change in one of the APIs of one system,
+
+14
+00:00:33.360 --> 00:00:35.540
+it will be affecting to all the other system which are
+
+15
+00:00:35.540 --> 00:00:36.700
+integrated with it.
+
+16-p
+00:00:36.700 --> 00:00:40.600
+The second one is that we need to be adding none less
+
+17
+00:00:40.600 --> 00:00:43.450
+specific business steps to the workflows.
+
+18
+00:00:43.450 --> 00:00:46.930
+For example, moving one media to another location
+
+19
+00:00:46.930 --> 00:00:49.650
+or doing transformation to the information
+
+20
+00:00:49.650 --> 00:00:51.310
+which is coming from one system.
+
+21
+00:00:51.310 --> 00:00:53.850
+And again, this makes the solution
+
+22
+00:00:53.850 --> 00:00:56.664
+and the workflows difficult to evolve and maintain.
+
+slide-4
+00:00:58.410 --> 00:01:01.370
+The solution for this is to have a centralized platform
+
+25
+00:01:01.370 --> 00:01:04.210
+where all the applications are registered and there is a
+
+26
+00:01:04.210 --> 00:01:07.660
+single end point to be accessing to all of them.
+
+27-p
+00:01:07.660 --> 00:01:09.280
+This concept is not new.
+
+28
+00:01:09.280 --> 00:01:11.710
+It's been around for many years in the IT world.
+
+29
+00:01:11.710 --> 00:01:13.170
+And here we can see, for example,
+
+30
+00:01:13.170 --> 00:01:16.480
+the Gartner 2021 Magic Quadrant in September,
+
+31
+00:01:16.480 --> 00:01:20.220
+where we can see key players like Boomi, MuleSoft.
+
+32
+00:01:20.220 --> 00:01:22.830
+And that many of you might be aware of.
+
+33
+00:01:22.830 --> 00:01:26.510
+But this kind of approach has two main limitations.
+
+34-p
+00:01:26.510 --> 00:01:28.650
+The first one is that it is,
+
+35
+00:01:28.650 --> 00:01:31.208
+it doesn't has a media management capabilities.
+
+36
+00:01:31.208 --> 00:01:35.640
+It is mainly focused on the control and the integrating
+
+37
+00:01:35.640 --> 00:01:39.520
+systems without any kind of media management.
+
+38
+00:01:39.520 --> 00:01:43.730
+And the second one is that it is not a world we can say,
+
+39
+00:01:43.730 --> 00:01:47.838
+it is not a world of the multi-site or even multi-cloud.
+
+slide-5
+00:01:49.780 --> 00:01:52.730
+If we translate the concept of the iPaaS
+
+42
+00:01:52.730 --> 00:01:55.000
+to create a no-code iPaaS for media,
+
+43
+00:01:55.000 --> 00:01:58.210
+what we will achieve is that all the workflows that we have
+
+44
+00:01:58.210 --> 00:02:00.460
+that have like, in this one, many
+
+45
+00:02:00.460 --> 00:02:03.340
+specific activities or many specific operations,
+
+46
+00:02:03.340 --> 00:02:05.510
+which are not part of the business,
+
+47
+00:02:05.510 --> 00:02:07.650
+we will get rid of all of them.
+
+48
+00:02:07.650 --> 00:02:10.570
+And we will have any workflow, which is really simple.
+
+49
+00:02:10.570 --> 00:02:12.070
+It is oriented to the business.
+
+50-p
+00:02:12.070 --> 00:02:13.370
+Like in this case, for example,
+
+51
+00:02:13.370 --> 00:02:16.280
+we have a simple workflow where we have the ingest edit,
+
+52
+00:02:16.280 --> 00:02:19.320
+AutoQC, validate and the final delivery.
+
+53-p
+00:02:19.320 --> 00:02:21.580
+It has several advantages. So first of all,
+
+54
+00:02:21.580 --> 00:02:24.335
+is that if it is simple, it is easy to read.
+
+55
+00:02:24.335 --> 00:02:27.050
+The second one is that it is focused on the business.
+
+56
+00:02:27.050 --> 00:02:31.170
+So we don't need experts or IT people to be reading
+
+57
+00:02:31.170 --> 00:02:33.340
+the workflow and evolving the workflow.
+
+58
+00:02:33.340 --> 00:02:35.423
+And also it's easy to design.
+
+slide-6
+00:02:37.250 --> 00:02:40.090
+All of these is really good, but to achieve this,
+
+60
+00:02:40.090 --> 00:02:41.860
+the no-code iPaaS for media,
+
+61
+00:02:41.860 --> 00:02:44.380
+we need to standardize different things.
+
+62-p
+00:02:44.380 --> 00:02:47.530
+The first one is the data model that we can go for the
+
+63
+00:02:47.530 --> 00:02:51.390
+editorial for the EVO core and for the everything which is
+
+64
+00:02:51.390 --> 00:02:55.790
+related for the cameras to the SMPTE ST 2065.
+
+65-p
+00:02:55.790 --> 00:02:59.610
+Secondly, we need to standardize the API so that
+
+66
+00:02:59.610 --> 00:03:01.990
+all the systems which are in the platform are speaking
+
+67
+00:03:01.990 --> 00:03:04.420
+the same language and they are presenting the same methods.
+
+68-p
+00:03:04.420 --> 00:03:06.920
+And finally, we need to standardize in some way that
+
+69
+00:03:06.920 --> 00:03:08.760
+web browsers, so that we can have
+
+70
+00:03:08.760 --> 00:03:13.440
+media management capabilities or media management features
+
+71
+00:03:13.440 --> 00:03:16.430
+where the media, the audio subtitles
+
+72
+00:03:16.430 --> 00:03:20.730
+and the broadcast media can be played
+
+73
+00:03:20.730 --> 00:03:23.417
+and can be presented in a single way.
+
+slide-7
+00:03:25.210 --> 00:03:26.870
+What is the value proposition of
+
+76
+00:03:26.870 --> 00:03:28.950
+the no-code iPaaS for media?
+
+77-p
+00:03:28.950 --> 00:03:30.070
+First of all, is that
+
+78
+00:03:30.070 --> 00:03:32.850
+the applications are integrated with the platform.
+
+79
+00:03:32.850 --> 00:03:35.211
+So we can say that we have a one to many similar
+
+80
+00:03:35.211 --> 00:03:38.650
+integrations and the meaning of this is
+
+81
+00:03:38.650 --> 00:03:40.780
+that every system
+
+82
+00:03:40.780 --> 00:03:43.620
+which is doing the same thing will be sent the same method.
+
+83-p
+00:03:43.620 --> 00:03:45.510
+For example, if we have a transcoder,
+
+84
+00:03:45.510 --> 00:03:49.370
+the method will be "transcode", and if we have one AI tool,
+
+85
+00:03:49.370 --> 00:03:51.680
+it will be "analyze" and so on.
+
+86
+00:03:51.680 --> 00:03:54.020
+In this case, we won't have a vendor lock-in
+
+87
+00:03:54.020 --> 00:03:55.660
+because if we want to exchange
+
+88
+00:03:55.660 --> 00:03:59.030
+one transcoder for another or one AI tool for another,
+
+89
+00:03:59.030 --> 00:04:02.036
+it will be really simple and easy to do.
+
+90-p
+00:04:02.036 --> 00:04:05.460
+Legacy MAMs can also be integrated as another system
+
+91
+00:04:05.460 --> 00:04:07.830
+because the key concept here is
+
+92
+00:04:07.830 --> 00:04:09.940
+that the solution is not demand that
+
+93
+00:04:09.940 --> 00:04:12.230
+has orchestration capabilities.
+
+94
+00:04:12.230 --> 00:04:15.370
+The solution is one integration platform that can be
+
+95
+00:04:15.370 --> 00:04:16.900
+integrated one MAM,
+
+96
+00:04:16.900 --> 00:04:19.270
+but also can be integrated another legacy MAM,
+
+97
+00:04:19.270 --> 00:04:21.760
+which is in operation and the customers,
+
+98
+00:04:21.760 --> 00:04:25.010
+they don't want to change at this point.
+
+99-p
+00:04:25.010 --> 00:04:28.300
+And finally, it will be easy to implement all the workflows because it
+
+100
+00:04:28.300 --> 00:04:31.200
+will be using a no-code approach so that all the people,
+
+101
+00:04:31.200 --> 00:04:34.500
+without a deep technical knowledge can be creating the
+
+102
+00:04:34.500 --> 00:04:36.473
+workflows, understanding the workflows
+
+103
+00:04:36.473 --> 00:04:39.420
+and dragging and dropping the different boxes,
+
+104
+00:04:39.420 --> 00:04:40.737
+which are part of it.
+
+slide-8
+00:04:42.420 --> 00:04:45.390
+What are the three pillars of the no-code iPaaS for media?
+
+107-p
+00:04:45.390 --> 00:04:47.820
+The first one is a common workspace where all the
+
+108
+00:04:47.820 --> 00:04:51.460
+applications will be accessing to get the media.
+
+109
+00:04:51.460 --> 00:04:53.170
+And this is aligned with the 2030
+
+110
+00:04:53.170 --> 00:04:57.040
+MovieLabs Vision that the media has to stay in their
+
+111
+00:04:57.040 --> 00:04:57.930
+original location,
+
+112
+00:04:57.930 --> 00:05:00.160
+not to be moved between different applications,
+
+113
+00:05:00.160 --> 00:05:02.670
+because that will be really inefficient.
+
+114-p
+00:05:02.670 --> 00:05:05.240
+The second one is to have a common workspace.
+
+115
+00:05:05.240 --> 00:05:07.070
+This is what we have discussed before,
+
+116
+00:05:07.070 --> 00:05:10.570
+that all the applications that are doing the same function
+
+117
+00:05:10.570 --> 00:05:12.880
+need to be presenting the same method.
+
+118
+00:05:12.880 --> 00:05:14.270
+This is what they said before,
+
+119
+00:05:14.270 --> 00:05:17.720
+about the one to many integrations.
+
+120-p
+00:05:17.720 --> 00:05:21.070
+And finally, all the obligations needs to be speaking the same language.
+
+121
+00:05:21.070 --> 00:05:22.610
+It means that the data model,
+
+122
+00:05:22.610 --> 00:05:27.380
+which is used for each of the application needs to be
+
+123
+00:05:27.380 --> 00:05:31.480
+translated into the no-code iPaaS for media data model and
+
+124
+00:05:31.480 --> 00:05:34.790
+each plugging or each application is responsible of
+
+125
+00:05:34.790 --> 00:05:38.310
+reading the iPaaS data model
+
+126
+00:05:38.310 --> 00:05:41.010
+and grinding into the iPaaS data model.
+
+127
+00:05:41.010 --> 00:05:42.880
+So that if there is another task,
+
+128
+00:05:42.880 --> 00:05:46.354
+which depends on the output of a previous task,
+
+129
+00:05:46.354 --> 00:05:50.310
+it doesn't have to understand the specific data model of
+
+130
+00:05:50.310 --> 00:05:52.000
+the previous system.
+
+130-p
+00:05:52.000 --> 00:05:54.930
+A typical example is
+
+131
+00:05:54.930 --> 00:05:58.500
+one AI system, which is providing some annotations
+
+132
+00:05:58.500 --> 00:06:00.340
+about the media, and the next system
+
+133
+00:06:00.340 --> 00:06:03.250
+which is using data annotation to take some decision,
+
+134
+00:06:03.250 --> 00:06:06.740
+to be validating the content or to do any automatic action.
+
+135
+00:06:06.740 --> 00:06:10.530
+It doesn't need to know what is the specific data model of
+
+136
+00:06:10.530 --> 00:06:12.114
+the previous AI system.
+
+slide-9
+00:06:14.330 --> 00:06:15.280
+Here in this diagram,
+
+139
+00:06:15.280 --> 00:06:19.199
+we can see three components of the no-code iPaaS for media,
+
+140
+00:06:19.199 --> 00:06:21.380
+the first one, and really key,
+
+141
+00:06:21.380 --> 00:06:24.300
+And this is a real enabler of the no-code iPaaS for
+
+142
+00:06:24.300 --> 00:06:26.490
+media is the media extraction layer.
+
+143
+00:06:26.490 --> 00:06:30.070
+It will provide the multi-site capabilities
+
+144
+00:06:30.070 --> 00:06:32.800
+and the access to the multiple technologies of the storage.
+
+145
+00:06:32.800 --> 00:06:34.290
+In our case,
+
+146
+00:06:34.290 --> 00:06:37.700
+we have a aSTORM which is a storage management system.
+
+147
+00:06:37.700 --> 00:06:39.940
+Then we need to have a MAM, which is optional
+
+148
+00:06:39.940 --> 00:06:43.220
+as I mentioned before, in this case, we have Evo,
+
+149
+00:06:43.220 --> 00:06:45.860
+which also comes from Tedial.
+
+150-p
+00:06:45.860 --> 00:06:48.950
+And finally, we need to have one intelligent BPM,
+
+151
+00:06:48.950 --> 00:06:53.333
+which is going one level up to the traditional BPMs to allow
+
+152
+00:06:53.333 --> 00:06:58.333
+these local no-code paradigm and be able to define and
+
+153
+00:06:58.470 --> 00:07:01.940
+implement the work flows really easy. And in the bottom,
+
+154
+00:07:01.940 --> 00:07:05.370
+we need to have all the business intelligence, maintenance,
+
+155
+00:07:05.370 --> 00:07:06.750
+user management and everything
+
+156
+00:07:06.750 --> 00:07:10.980
+which is needed to be modifying and to be monitoring the
+
+157
+00:07:10.980 --> 00:07:11.846
+platform.
+
+slide-10
+00:07:13.270 --> 00:07:15.280
+Here, We can see all the other elements,
+
+160
+00:07:15.280 --> 00:07:16.790
+which are integrated within the platform,
+
+161
+00:07:16.790 --> 00:07:19.720
+which are managing the same way
+
+162
+00:07:19.720 --> 00:07:20.865
+as the other components.
+
+slide-11
+00:07:22.730 --> 00:07:26.060
+And here, if we focus in the data model standardization,
+
+165
+00:07:26.060 --> 00:07:29.370
+we can see that the EBU core is a good option to be a
+
+166
+00:07:29.370 --> 00:07:33.080
+standardized in the data model, as it has several objects,
+
+167
+00:07:33.080 --> 00:07:33.913
+which are, for example,
+
+168
+00:07:33.913 --> 00:07:37.837
+the editorial metadata, publishing entities,
+
+169
+00:07:37.837 --> 00:07:39.580
+planning, distribution,
+
+170
+00:07:39.580 --> 00:07:42.330
+which is really useful for this kind of workflows,
+
+171
+00:07:42.330 --> 00:07:45.040
+where do we need to be keeping the information.
+
+172-p
+00:07:45.040 --> 00:07:45.980
+The good thing,
+
+173
+00:07:45.980 --> 00:07:49.720
+or a good practice is that if we go to a microservices
+
+174
+00:07:49.720 --> 00:07:54.020
+approach, each microservice is updating a piece
+
+175
+00:07:54.020 --> 00:07:56.410
+of the data model, which is oriented to the business.
+
+slide-12
+00:07:56.410 --> 00:07:59.120
+If we think about the data model standardization
+
+177
+00:07:59.120 --> 00:08:03.062
+which is needed for all the cameras, acquisition,
+
+178
+00:08:03.062 --> 00:08:06.000
+production, ACES is a good candidate
+
+179
+00:08:06.000 --> 00:08:07.560
+better than the EBU core.
+
+180
+00:08:07.560 --> 00:08:11.770
+Why? Because many vendors are now supporting ACES.
+
+181
+00:08:11.770 --> 00:08:13.560
+There are workflows which are working,
+
+182
+00:08:13.560 --> 00:08:17.780
+and which are very well-defined based on ACES.
+
+183
+00:08:17.780 --> 00:08:21.460
+And also the data model is really well organized in
+
+184
+00:08:21.460 --> 00:08:24.960
+camera objects, lenses, recorders and many other things.
+
+185-p
+00:08:24.960 --> 00:08:29.910
+So keeping this information in the SMPTE ST 2065
+
+186
+00:08:29.910 --> 00:08:33.137
+is also a good option for the no-code iPaaS for media.
+
+slide-13
+00:08:34.890 --> 00:08:37.760
+If we go now to the API standardization,
+
+189
+00:08:37.760 --> 00:08:39.130
+this is what we mentioned before,
+
+190
+00:08:39.130 --> 00:08:40.820
+about the one to many. Here,
+
+191
+00:08:40.820 --> 00:08:43.620
+we will see what are the benefits that each system will be
+
+192
+00:08:43.620 --> 00:08:46.320
+presenting the same methods if they do the same thing.
+
+193
+00:08:46.320 --> 00:08:50.160
+And also these systems can be organized in different groups.
+
+194-p
+00:08:50.160 --> 00:08:53.010
+For example, here, we can see that we have storage engines,
+
+195
+00:08:53.010 --> 00:08:56.850
+media processing engines on other storage engines in the
+
+196
+00:08:56.850 --> 00:08:59.210
+other end for the, for the distribution.
+
+197-p
+00:08:59.210 --> 00:09:01.870
+This is also really good in order to implement in the
+
+198
+00:09:01.870 --> 00:09:03.980
+workflows, to have everything organized
+
+199
+00:09:03.980 --> 00:09:06.170
+and be able to swap one component from
+
+200
+00:09:06.170 --> 00:09:08.001
+the another, that we will see later.
+
+slide-14
+00:09:09.900 --> 00:09:10.733
+Here,
+
+203
+00:09:10.733 --> 00:09:14.520
+if we think about the different use cases that we have,
+
+204
+00:09:14.520 --> 00:09:16.830
+the first one can be the simple delivery in the cloud,
+
+205
+00:09:16.830 --> 00:09:19.490
+where we get the content from one S3 bucket,
+
+206
+00:09:19.490 --> 00:09:21.660
+we analyze the content, we transcode it
+
+207
+00:09:21.660 --> 00:09:24.010
+and finally we deliver it to another S3 bucket.
+
+208
+00:09:24.010 --> 00:09:27.350
+And as you see here, this is a very simple linear workflow,
+
+209
+00:09:27.350 --> 00:09:30.484
+and we are not adding any non-business specific logic.
+
+slide-15
+00:09:33.120 --> 00:09:36.710
+Another use case is the localization where we receive a
+
+212
+00:09:36.710 --> 00:09:39.830
+content in the cloud, one audio track subtitle,
+
+213
+00:09:39.830 --> 00:09:42.610
+or both, it is ingested.
+
+214
+00:09:42.610 --> 00:09:44.460
+It is seen using a web browser,
+
+215
+00:09:44.460 --> 00:09:47.970
+which is supporting the playing of the video and audio,
+
+216
+00:09:47.970 --> 00:09:50.720
+and also with the synchronization of the audio tracks,
+
+217
+00:09:50.720 --> 00:09:54.520
+subtitles and everything. And finally, if it is okay,
+
+218
+00:09:54.520 --> 00:09:56.680
+if it is correct, it will be delivered to another,
+
+219
+00:09:56.680 --> 00:09:57.753
+another destination.
+
+slide-16
+00:09:59.400 --> 00:10:02.140
+And here we can see one of the key features of the no-code
+
+221
+00:10:02.140 --> 00:10:05.120
+iPaaS for media, which is a swappable component.
+
+222
+00:10:05.120 --> 00:10:08.360
+Remember the workflow that we had for the media distribution
+
+223
+00:10:08.360 --> 00:10:11.510
+in the cloud, where we have the content, we analyze it,
+
+224
+00:10:11.510 --> 00:10:14.800
+we transcode it and we deliver it to another destination.
+
+225-p
+00:10:14.800 --> 00:10:15.680
+If for some reason,
+
+226
+00:10:15.680 --> 00:10:18.250
+we need to duplicate the workflow because we are receiving
+
+227
+00:10:18.250 --> 00:10:21.730
+UHD content and the transcoder we are using is not efficient,
+
+228
+00:10:21.730 --> 00:10:24.770
+or we want to improve the quality of the transcoder,
+
+229
+00:10:24.770 --> 00:10:27.010
+or we want to change that transcoder for another one,
+
+230
+00:10:27.010 --> 00:10:29.500
+which is more cost effective,
+
+231
+00:10:29.500 --> 00:10:33.640
+the change is as simple as replacing one box for another,
+
+232
+00:10:33.640 --> 00:10:36.780
+because, remember, all the applications
+
+233
+00:10:36.780 --> 00:10:38.040
+which are in that platform,
+
+234
+00:10:38.040 --> 00:10:40.670
+following the philosophy of the one to many,
+
+235
+00:10:40.670 --> 00:10:43.000
+they share the same method.
+
+236-p
+00:10:43.000 --> 00:10:46.210
+So the workflow will be unchanged because the only thing
+
+237
+00:10:46.210 --> 00:10:49.400
+that we will be doing is to be using the transcoding method
+
+238
+00:10:49.400 --> 00:10:53.228
+of the new application in this case, AWS Elemental.
+
+slide-17
+00:10:54.640 --> 00:10:55.560
+That's all for now.
+
+241
+00:10:55.560 --> 00:10:58.683
+Thank you for watching. I hope you have enjoyed it, bye.
+
