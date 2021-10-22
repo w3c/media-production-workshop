@@ -5,6 +5,8 @@
     <title>Browser Hosted Video Editing - James Pearce - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:title" content="Browser Hosted Video Editing by James Pearce (Grass Valley)">
@@ -13,7 +15,7 @@
   </head>
   <body>
     <form id=form><!-- form to request a page in kiosk mode --></form>
-    <header class="header">
+    <header id="header" class="header">
       <div id="banner">
         <div>
           <p>
@@ -47,39 +49,33 @@
         </ul>
       </nav>
     </header>
-    <aside class="box" id="sponsoring">
-      <h2 class="footnote">
-        Sponsor
-      </h2>
-      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
-    </aside>
-    <main id="main" class="main">
+    <main id="main" class="main talk">
       <section id="intro">
-        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
-
         <h2>Browser Hosted Video Editing</h2>
 
-        <p>
+        <p class="talkinfo">
           Presenter: <strong>James Pearce (Grass Valley)</strong><br>
           Duration: <strong>10 minutes</strong><br>
           Slides: <a href="null"><strong>download</strong></a>
         </p>
 
         <p class="buttons">
+          <!-- previousStart -->
           <button form="form" type="submit" class="picto im-angle-left" formaction="kevin-streeter-creative-expression.html">
             Previous: Bringing Desktop-Class Creative Expression to the Web
           </button>
+          <!-- previousEnd -->
           <a href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
           <button form="form" type="submit" formaction="junyue-cao-non-linear-video-editor.html">
             Next: A Non-linear Video Editor built with WebAssembly<span class="picto im-angle-right"></span>
           </button>
+          <!-- nextEnd -->
         </p>
       </section>
 
       <section id="talk">
-        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
-
-        <h3>Slides &amp; video</h3>
+        <h3 style="display:none">Slides &amp; video</h3>
 
         <details>
           <summary>Keyboard shortcuts in the video player</summary>
@@ -96,23 +92,6 @@
           </li></ul>
         </details>
 
-        <p id="buttonbar">
-          <span>
-            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
-            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
-          </span>
-          <span>
-            <button title="First slide" class="picto im-previous"></button>
-            <button title="Previous slide" class="picto im-arrow-left"></button>
-            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
-            <button title="Last slide" class="picto im-next"></button>
-          </span>
-          <span>
-            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Bringing%20Desktop-Class%20Creative%20Expression%20to%20the%20Web" formaction="kevin-streeter-creative-expression.html"></button>
-            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
-            <button form="form" class="picto im-angle-right" type="submit" title="Next: A%20Non-linear%20Video%20Editor%20built%20with%20WebAssembly" formaction="junyue-cao-non-linear-video-editor.html"></button>
-          </span>
-        </p>
         <div id="player">
           <script type="application/ld+json">
             {
@@ -169,20 +148,20 @@
       </section>
 
       <section id="extrabuttons">
-        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
         <p class="buttons">
+          <!-- previousStart -->
           <button form="form" id="prevtalk" type="submit" formaction="kevin-streeter-creative-expression.html" class="picto im-angle-left">Previous: Bringing Desktop-Class Creative Expression to the Web</button>
+          <!-- previousEnd -->
           <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
           <button form="form" id="nexttalk" type="submit" formaction="junyue-cao-non-linear-video-editor.html">Next: A Non-linear Video Editor built with WebAssembly<span class="picto im-angle-right"></span></button>
+          <!-- nextEnd -->
         </p>
       </section>
-      <p role="navigation" id="back-to-top">
-        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
-      </p>
 
       <section id="sponsors">
         <h2>
-          Sponsor
+          Workshop sponsor
         </h2>
         <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
         <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
@@ -212,7 +191,7 @@
   {
     "language": "en",
     "label": "English",
-    "src": "slides/james-pearce-browser-hosted-video-editing.vtt",
+    "src": "captions/james-pearce-browser-hosted-video-editing.vtt",
     "mode": "hidden",
     "cues": [],
     "activeCues": [
@@ -225,7 +204,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>
