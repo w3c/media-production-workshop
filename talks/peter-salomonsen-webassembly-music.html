@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebAssembly Music - latency/stability across platforms  - Peter Salomonsen - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="WebAssembly Music - latency/stability across platforms  by Peter Salomonsen">
+    <meta property="og:description" content="WebAssembly is great for audio plugins, AudioWorklet deliver real time experience for music production. Still latency, stability and audioworklet resource priority is essential to give a usable experience. I'll demonstrate how it should work on my M1 macbook Air (in chrome) with demos from the WebAssembly music project.">
+    <meta property="og:image" content="thumbnails/peter-salomonsen-webassembly-music.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>WebAssembly Music - latency/stability across platforms </h2>
+
+        <p>
+          Presenter: <strong>Peter Salomonsen</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="null"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="soeren-balko-clipchamp-webcodecs.html">
+            Previous: Improving Clipchamp's in-browser video editing pipeline with WebCodecs
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="ulf-hammarqvist-audio-latency.html">
+            Next: Audio latency in browser-based DAWs<span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Improving%20Clipchamp's%20in-browser%20video%20editing%20pipeline%20with%20WebCodecs" formaction="soeren-balko-clipchamp-webcodecs.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: Audio%20latency%20in%20browser-based%20DAWs" formaction="ulf-hammarqvist-audio-latency.html"></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "WebAssembly Music - latency/stability across platforms ",
+              "description": "WebAssembly is great for audio plugins, AudioWorklet deliver real time experience for music production. Still latency, stability and audioworklet resource priority is essential to give a usable experience. I'll demonstrate how it should work on my M1 macbook Air (in chrome) with demos from the WebAssembly music project.",
+              "thumbnailUrl": "thumbnails/peter-salomonsen-webassembly-music.jpg",
+              "duration": "PT6M58S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="WebAssembly%20Music%20-%20latency%2Fstability%20across%20platforms%20" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <div>
+  <p>Hello, I'm Peter. And I'm experimenting with creating music in the web browser.</p>
+  <p>And what I want to show you here is a web application for creating music in the web browser. This video here is also being recorded in that same application. It's a camera view here on the bottom right. And on the left side, here it is code for generating the music.</p>
+  <p>This is actually a live coding studio, where you have the notes to be played here in comments, and you have the durations and the velocities. And on the right side here is a language called assembly script, which compiles to WebAssembly.</p>
+  <p>And what I have here is the instruments. There are actually no recorded instruments here. It's just generated in real time and you have all the math and all the code here for generating the sound.</p>
+  <p>When I actually (playing note on keyboard) play here on my MIDI keyboard. (playing keyboard) The code here on the right side is running and calculating all the samples for the instruments in real time. (playing the keyboard)</p>
+  <p>I have a string (string instrument notes playing) which you can actually see the code for down here. I'm not going to go into the code right now. That has to be another session. (playing the keyboard)</p>
+  <p>You can create lots of interesting instruments here. (flute instrument notes playing) That's the flute and also have a drum here. (drum beat playing)</p>
+  <p>And actually I have this leading beat that is recorded here so I can start playing it. (musical beat playing)</p>
+  <p>Why not record something while I'm at it? (playing bass notes over musical beat)</p>
+  <p>And what you just saw there was that after I recorded, it actually inserted the code here on the left side here. You got all the notes I played and they did the durations and the velocities.</p>
+  <p>This is a full environment for creating music. You have recording and creating the instruments you got all you need here actually for creating a complete piece of music.</p>
+  <p>But the very important thing for making this a pleasant experience to work with for a musician and a keyboard player (playing the keyboard) is that you actually get instant response from the MIDI keyboard when you play. And it's just a matter of milliseconds. If it takes like 10 milliseconds, then it's too much.</p>
+  <p>On this Mac that I have here, that's no problem. It just works as it should. It's just a low end MacBook air. It's not problem at all, but it's a challenge across systems. This latency.</p>
+  <p>For example, if you go to a windows computer, you generally get good performance, but you get this lag of 10 milliseconds, which is really too much to have a good playing experience. It's okay for listening, but maybe also for gameplay. But actually when you are using this as a musician you need that instant response.</p>
+  <p>And also you see that, for example, a laptop running on battery. Also, this is with Windows. It's not problem with the Mac. Then you actually hear that the sound is degraded. There are clicks, there are... sometimes it just stops and it's not the experience it should be. These are things that really has to be improved in order to make this, because the possibilities are very exciting here. Just, this is a very simple application, but you could create full replacements for what we have in desktop apps today for creating music.</p>
+  <p>I really think there are some interesting possibilities there when you expand that area onto the web.</p>
+  <p>And also across browsers, for example, in Firefox, you don't have the MIDI support. It's a very good AudioWorklet implementation. Audioworklet is the technology that can bin this WebAssembly code to the Web Audio API. And makes it possible to have this low latency, this instant response when you play. This works very good on Firefox, but you don't have a MIDI connectivity. You have to find other solutions for connecting a MIDI keyboard to Firefox.</p>
+  <p>And this is also important in order to get this fully usable experience is that you have this working across browsers.</p>
+  <p>But other than that, I think this is very interesting technology. I've created quite a bit of music with it so far. I use it for all my music now, and I think it's great. I really hope that we will see this stable and performant and you get this low latency across all browsers or platforms.</p>
+  <p>That's the point I really want to make today. And I hope can get some attention in the future. Thank you for watching.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="soeren-balko-clipchamp-webcodecs.html" class="picto im-angle-left">Previous: Improving Clipchamp's in-browser video editing pipeline with WebCodecs</button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="ulf-hammarqvist-audio-latency.html">Next: Audio latency in browser-based DAWs<span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/peter-salomonsen-webassembly-music.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

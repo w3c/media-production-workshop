@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>The EyeDropper API - Patrick Brosset - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="The EyeDropper API by Patrick Brosset (Microsoft)">
+    <meta property="og:description" content="On the web today, creative applications can't implement tools that allows users to select colors from any pixels on their screens. Microsoft is proposing (and has implemented in Chromium) a new API that enables authors to use a browser-supplied eyedropper. This talk describes the problem that this API solves, shows a little demo of the feature in action, and describes the API.">
+    <meta property="og:image" content="thumbnails/patrick-brosset-eyedropper-api.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>The EyeDropper API</h2>
+
+        <p>
+          Presenter: <strong>Patrick Brosset (Microsoft)</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="null"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="qiang-fu-video-transcoding.html">
+            Previous: Video Transcoding in Browser using WebAssembly/WebCodecs
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="kevin-streeter-creative-expression.html">
+            Next: Bringing Desktop-Class Creative Expression to the Web<span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Video%20Transcoding%20in%20Browser%20using%20WebAssembly%2FWebCodecs" formaction="qiang-fu-video-transcoding.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: Bringing%20Desktop-Class%20Creative%20Expression%20to%20the%20Web" formaction="kevin-streeter-creative-expression.html"></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "The EyeDropper API",
+              "description": "On the web today, creative applications can't implement tools that allows users to select colors from any pixels on their screens. Microsoft is proposing (and has implemented in Chromium) a new API that enables authors to use a browser-supplied eyedropper. This talk describes the problem that this API solves, shows a little demo of the feature in action, and describes the API.",
+              "thumbnailUrl": "thumbnails/patrick-brosset-eyedropper-api.jpg",
+              "duration": "PT6M34S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="The%20EyeDropper%20API" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <div>
+  <p>Hey everyone. My name is Patrick, I'm a program manager at Microsoft and I'll be speaking to you today about the EyeDropper API.</p>
+  <p>Sampling colors creative application, is something that's very useful. For example, when you use something like PowerPoint and you want to change the color of the outline of an object, you're able to use an EyeDropper tool to go and grab the color from a different object so that you don't have to, like remember what color it was, or maybe remember the code by heart.</p>
+  <p>Developer tools in browsers also have that available. If you want to change a color property in the styles panel of dev tools, usually there's an EyeDropper icon that allows you to go and just click part of the webpage so that you can grab that color right away and not have to remember the hex code, for example.</p>
+  <p>Photoshop or Photoshop light applications typically allow you to grab colors from the artwork as well directly.</p>
+  <p>Unfortunately, on the web, you cannot do this. So if you're developing a creative application with web technologies today, you cannot do this.</p>
+  <p>There's a way you can do this on Chromium browsers. If you use an input type color element in Chromium browsers, once you click on that element, you'll have a dropdown and it will contain an EyeDropper icon that allows you to do this.</p>
+  <p>But this is non-standard and it doesn't work the same in Firefox, for example, which has the typical or default color picker palette shown here.</p>
+  <p>Also the input type color is hard to style with CSS, and it's an extra HTML element that you might not want to add to your markup. It's better if you can drive that feature directly from JavaScript.</p>
+  <p>So that's why we created this EyeDropper API. It's a new API. It's specified right now as a WICG draft spec. It's gone through W3C TAG review and it's been implemented by engineers at Microsoft Edge in the Chromium open source project so that it's available to any Chromium-based browsers at the moment. This was also done in close collaboration with Google Chrome folks.</p>
+  <p>So let's see what the feature looks like. I'm going to go through a couple demos here. I have one of a kind of a silly game where you're supposed to find the color at the bottom that matches the little colored square at the top, using the EyeDropper. And you can either succeed by finding the right color or fail. And also if you go above the 10 seconds limit, you'll just go back to the normal cursor and you fail the round.</p>
+  <p>Here is another demo, which is a sort of a swapping color application where you can load an image in the canvas and then you can click on the first button to sample that color from the image. Let's say this color here, and then click on the second button to go and replace that color with another one that you sample from anywhere.</p>
+  <p>And then that third demo is a kind of a random Mondrian art generator, where you can change the color of the blocks to anything else that you want by clicking on that.</p>
+  <p>Now let's take a look at what the code looks like for those demos. And I'm going to use the code from the game demo because that's the one that uses the most features of the API.</p>
+  <p>At the heart of the EyeDropper API is the EyeDropper class. If you want to use the EyeDropper, instantiate the class then you get an object that you can call the open method on.</p>
+  <p>If you call the open method, right away the EyeDropper opens up and the user can select a color from the entire screen. The method returns a promise, which will either reject or resolve. It will reject when the user escapes from the EyeDropper mode, by pressing the escape button on the keyboard, for example. And it will resolve when the user clicks on a pixel in the screen and it will resolve to the value of the pixel color. There's also a way to abort the EyeDropper mode.</p>
+  <p>If at any time your application changes state in such a way that the EyeDropper should stop, you can send an abort signal to the EyeDropper, passing it to the open method as an option parameter. And then that will escape the EyeDropper mode.</p>
+  <p>And that's really all there is to the API. It's a very simple API at the moment. It only does one thing, but it does it very well.</p>
+  <p>Now there are concerns related to security and privacy here. If a random website is able to collect the colors of any pixels on my screen, that could be a problem. If they start tracking the coordinates of my mouse together with that, they could start revealing information that I'm not supposed to be exchanging on the web.</p>
+  <p>But the API addresses those concerns in the following ways. First of all, you cannot use the open method outside of a user action. There needs to be a user intent. So in response to the user click, for example, then you can use the open method. Also once the open method has been called, the browser is supposed to be showing the EyeDropper mode in a very, very obvious way, which is why you can see the big magnifying glass appearing. So that's very obvious to the user that something's going on, that's not the normal cursor that typically appears.</p>
+  <p>Third, the API cannot collect the colors from any pixel as the user is moving the mouse. There has to be a user intent again, which is typically click on a pixel and that's when you can get the color, otherwise you can't.</p>
+  <p>And finally, the user is in control of the whole experience and they can still escape out of the EyeDropper mode by using the escape key on the keyboard.</p>
+  <p>So that's it for the API. We would love your feedback about it, specifically, do you think that the API should be extended further? Are there other capabilities that you have in mind for something like this? For example, multiple cursor selection or getting the screen coded next or anything like that?</p>
+  <p>So I will leave you with the links to the spec, the demos, and where to leave feedback about this API. And thank you for your time and have a good day.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="qiang-fu-video-transcoding.html" class="picto im-angle-left">Previous: Video Transcoding in Browser using WebAssembly/WebCodecs</button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="kevin-streeter-creative-expression.html">Next: Bringing Desktop-Class Creative Expression to the Web<span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/patrick-brosset-eyedropper-api.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

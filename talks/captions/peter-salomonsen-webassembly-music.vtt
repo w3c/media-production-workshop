@@ -30,7 +30,7 @@ in that same application.
 
 8
 00:00:21.610 --> 00:00:26.150
-So it's a camera view here on the bottom right.
+It's a camera view here on the bottom right.
 
 9
 00:00:26.150 --> 00:00:28.550
@@ -46,7 +46,7 @@ for generating the music.
 
 12-p
 00:00:32.620 --> 00:00:35.620
-So this is actually a live coding studio,
+This is actually a live coding studio,
 
 13
 00:00:35.620 --> 00:00:38.130
@@ -78,7 +78,7 @@ And what I have here is the instruments.
 
 20
 00:00:54.640 --> 00:00:57.960
-So there are actually no recorded instruments here.
+There are actually no recorded instruments here.
 
 21
 00:00:57.960 --> 00:01:02.540
@@ -90,7 +90,7 @@ and all the code here for generating the sound.
 
 23-p
 00:01:05.990 --> 00:01:07.830
-So when I actually
+When I actually
 
 24
 00:01:09.384 --> 00:01:10.560
@@ -190,7 +190,7 @@ on the left side here.
 
 48
 00:02:57.870 --> 00:03:00.445
-So you got all the notes I played
+You got all the notes I played
 
 49
 00:03:00.445 --> 00:03:04.600
@@ -198,7 +198,7 @@ and they did the durations and the velocities.
 
 50-p
 00:03:04.600 --> 00:03:09.600
-So this is a full environment for creating music.
+This is a full environment for creating music.
 
 51
 00:03:09.960 --> 00:03:13.340
@@ -322,7 +322,7 @@ it should be.
 
 81
 00:04:49.570 --> 00:04:53.808
-So, these are things that really has to be improved
+These are things that really has to be improved
 
 82
 00:04:53.808 --> 00:04:57.738
@@ -366,7 +366,7 @@ you don't have the MIDI support.
 
 92
 00:05:30.695 --> 00:05:34.313
-So it's a very good AudioWorklet implementation.
+It's a very good AudioWorklet implementation.
 
 93
 00:05:34.313 --> 00:05:37.230
@@ -386,7 +386,7 @@ this instant response when you play.
 
 97
 00:05:48.760 --> 00:05:50.830
-So this works very good on Firefox,
+This works very good on Firefox,
 
 98
 00:05:50.830 --> 00:05:52.900
@@ -394,7 +394,7 @@ but you don't have a MIDI connectivity.
 
 99
 00:05:52.900 --> 00:05:56.220
-So you have to find other solutions for connecting
+You have to find other solutions for connecting
 
 100
 00:05:56.220 --> 00:05:57.933

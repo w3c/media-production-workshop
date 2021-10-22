@@ -22,11 +22,11 @@ Today,
 
 6
 00:00:08.220 --> 00:00:11.530
-I like to talk about a recent API called the WebCodecs API.
+I'd like to talk about a recent API called the WebCodecs API.
 
 7
 00:00:11.530 --> 00:00:13.740
-And in particular about memory access patterns,
+And in particular about memory access patterns
 
 8
 00:00:13.740 --> 00:00:16.670
@@ -78,11 +78,11 @@ profile as a native app.
 
 20-p
 00:00:41.350 --> 00:00:42.650
-Before starting.
+Before starting,
 
 21
 00:00:42.650 --> 00:00:44.430
-I like to say that any simple scenario,
+I'd like to say that any simple scenario,
 
 22
 00:00:44.430 --> 00:00:47.000
@@ -358,11 +358,11 @@ explicit.
 
 slide-6
 00:03:43.490 --> 00:03:46.750
-But sometimes it's really necessary to perform copies/
+But sometimes it's really necessary to perform copies.
 
 91
 00:03:46.750 --> 00:03:48.640
-Here are three scenario
+Here are three scenarios
 
 92
 00:03:48.640 --> 00:03:49.940
@@ -706,7 +706,7 @@ while WebCodecs can and will be improved when it comes
 
 177
 00:07:04.590 --> 00:07:05.800
-to memory access.
+to memory access,
 
 178
 00:07:05.800 --> 00:07:08.530
@@ -714,7 +714,7 @@ it's already extremely powerful and common use cases
 
 179
 00:07:08.530 --> 00:07:10.150
-are already quite fast,
+are already quite fast.
 
 180
 00:07:10.150 --> 00:07:11.100

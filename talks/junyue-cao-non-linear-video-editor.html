@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A Non-linear Video Editor built with WebAssembly - Junyue Cao - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="A Non-linear Video Editor built with WebAssembly by Junyue Cao (ByteDance)">
+    <meta property="og:description" content="WebAssembly makes it possible for us to migrate our C++ video editing engine to the web, but the development experience is not perfect. I want to talk about some possible improvements.">
+    <meta property="og:image" content="thumbnails/junyue-cao-non-linear-video-editor.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>A Non-linear Video Editor built with WebAssembly</h2>
+
+        <p>
+          Presenter: <strong>Junyue Cao (ByteDance)</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="slides/junyue-cao-non-linear-video-editor.pdf"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="james-pearce-browser-hosted-video-editing.html">
+            Previous: Browser Hosted Video Editing
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="sacha-guddoy-media-element-accuracy.html">
+            Next: Media Element accuracy and synchronization with the DOM<span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Browser%20Hosted%20Video%20Editing" formaction="james-pearce-browser-hosted-video-editing.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: Media%20Element%20accuracy%20and%20synchronization%20with%20the%20DOM" formaction="sacha-guddoy-media-element-accuracy.html"></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "A Non-linear Video Editor built with WebAssembly",
+              "description": "WebAssembly makes it possible for us to migrate our C++ video editing engine to the web, but the development experience is not perfect. I want to talk about some possible improvements.",
+              "thumbnailUrl": "thumbnails/junyue-cao-non-linear-video-editor.jpg",
+              "duration": "PT7M10S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="A%20Non-linear%20Video%20Editor%20built%20with%20WebAssembly" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#1">Slide 1 of 9</i-slide>
+<div>
+  <p>Hi, my name is Junyue. I'm a software engineer who works for multi-media team at Bytedance. Today I will talk about our web based non-linear video editor written in C++ and built with WebAssembly and EMScripten.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#2">Slide 2 of 9</i-slide>
+<div>
+  <p>This is the agenda of my talk. First I will introduce what the video editor is. Secondly I will briefly introduce how it works. And lastly I will talk about some needs for our development.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#3">Slide 3 of 9</i-slide>
+<div>
+  <p>Video editing is very important for every video content creator. It is one of the last steps of video creation. It turns your media clips into a complete story. There are many video editing software including desktop applications, mobile applications or maybe some cloud based software.</p>
+  <p>What we are buiding is a web based multi-track video editor. Users can use a web browser to add video clips, audio clips, subtitles, transitions and special effects. By taking advantage of web technology and cloud based storage, users can open the projects with any computer at any time and continue to work.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#4">Slide 4 of 9</i-slide>
+<div>
+  <p>At first our core engine code was written for native platforms in C++. It is a multi-threaded engine which runs on Android, iOS, Windows and MacOS. With the improvement of the browser's support for WebAssembly, we now have the opportunity to migrate the engine to the web.</p>
+  <p>We use WebGL and other technologies for real-time video rendering. In fact, WebAssembly is not a very new technology anymore, so I won't talk about every detail of WebAssembly and EMScripten here.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#5">Slide 5 of 9</i-slide>
+<div>
+  <p>This diagram shows a simplest structure of the application. We provide JS APIs to the web page to control the engine. The JS APIs call to C++ engine compiled with EMScripten. And the C++ engine calls the browser feature APIs provided by EMScripten to use all the features. Such as WebGL for video and special effect rendering, WebAudio for audio playback, Web Workers for multi-threaded runtime and IndexedDB for file system persistence.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#6">Slide 6 of 9</i-slide>
+<div>
+  <p>This is a diagram to illustrate the simplest process to show what browser features are used in the processing route.</p>
+  <p>First, the video part. For each video track, we first use WebAssembly to decode the video frame. After we get the decoded video, we convert it into texture, and then blend the textures of multiple video tracks and display it on canvas through WebGL.</p>
+  <p>For the audio part, we also use WebAssembly to decode, and then send the decoded data to WebAudio API for playback.</p>
+  <p>Of course, for any kind of video player, audio and video synchronization is indispensable. Here is just the simplest processing route. I have omitted many steps. The actual situation is much more complex than that shown in the figure.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#7">Slide 7 of 9</i-slide>
+<div>
+  <p>So far, we've basically made the whole application work, but that doesn't mean it's perfect. There are unsatisfactory things at some points.</p>
+  <p>The first problem is decoding performance. We need to decode multiple video tracks at the same time, which is a great challenge for the performance of video decoding. Using WebAssembly to decode will consume a lot of CPU, and its speed is not as fast as native. At present, in order to support as many video tracks as possible, we limit the video resolution to 480p.</p>
+  <p>With the introduction of WebCodecs, we may have the opportunity to improve our video resolution. To use WebCodecs in a thread, that is a worker, providing synchronized WebCodecs API will be more friendly for C++ code to integrate.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#8">Slide 8 of 9</i-slide>
+<div>
+  <p>Another one is better debugging experience.</p>
+  <p>When enabling the debug mode of DWARF, the WASM file will become very large. In our case, it is more than 1 GB, which causes the browser to be very unstable. The browser will crash easily after running for a while. And it's slow. Even when debugging in localhost, loading the DWARF information will still take more than 10 seconds. And the devtools often respond slowly and get stuck.</p>
+  <p>Secondly, in a multi-threaded application, a meaningful thread name, that is the name of the worker, is very useful for debugging. The current Web Worker only supports specifying its name when it is created. We hope it can be renamed when using a Web Worker, which is very helpful to find the desired thread.</p>
+  <p>Thirdly, we need to stop the world. At present, devtools can only select a thread and click the pause button. It will pause the worker or main thread. But when there are a lot of threads, I have to click the pause button one by one. Similarly, the resume button now needs to be clicked one by one. In this regard, I think we can refer to the debugging habits of the popular IDEs.</p>
+</div>
+
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#9">Slide 9 of 9</i-slide>
+<div>
+  <p>As shown in the figure, EMScripten provides a file system that supports the direct use of native POSIX file APIs. On the browser, it mainly includes MEMFS and IDBFS.</p>
+  <p>However, video files are often large. When we use MEMFS to read large files, the memory consumption will be large because it loads the whole file into memory, which is very easy to cause out-of-memory errors. At the same time, multi-threaded access will always proxy to the main thread, which has an impact on the performance of the main thread.</p>
+  <p>Therefore, I think we need a file system that supports better multi-threaded accessing, less memory consuming and better persistence solutions.</p>
+  <p>OK. That's all for me. Thank you very much.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="james-pearce-browser-hosted-video-editing.html" class="picto im-angle-left">Previous: Browser Hosted Video Editing</button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="sacha-guddoy-media-element-accuracy.html">Next: Media Element accuracy and synchronization with the DOM<span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/junyue-cao-non-linear-video-editor.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

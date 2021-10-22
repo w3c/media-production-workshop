@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>It's time to WHIP WebRTC into shape - Sergio Garcia Murillo - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="It's time to WHIP WebRTC into shape by Sergio Garcia Murillo (Cosmo Software)">
+    <meta property="og:description" content="For many in broadcast and streaming, WebRTC is not “complete”, as it lacks a standard signaling protocol to make it work like RTMP or RTSP.
+
+WHIP, the WebRTC HTTP Ingest Protocol, was developed to solve the biggest pain point with adopting WebRTC as a serious, professional, robust contribution protocol: Media Ingest. WHIP enables WebRTC to retain its technical advantages over older protocols like RTMP when it comes to resiliency over bad network conditions, adaptability, end-to-end encryption, and new codec support (hello AV1 SVC). It also removes the barrier WebRTC had with a lack of standard signaling protocol that has made it hard to support as a software solution, and difficult for hardware encoders to implement WebRTC.
+
+Developers love WebRTC because it is an IETF & W3C standard that makes it easy to write client applications with native broadcast and playback support on billions of devices worldwide. And the WISH working group at the IETF is currently reviewing WHIP with a milestone to publish it as a standard by December 2021.
+
+Implementing the open source WHIP library in your software or hardware encoder is all you need to support the entire WebRTC stack on the sender side.
+
+It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, as it was meant to be, natively on every device.
+">
+    <meta property="og:image" content="thumbnails/sergio-garcia-murillo-whip.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>It's time to WHIP WebRTC into shape</h2>
+
+        <p>
+          Presenter: <strong>Sergio Garcia Murillo (Cosmo Software)</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="slides/sergio-garcia-murillo-whip.pdf"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="hongchan-choi-building-audio-apps.html">
+            Previous: Thoughts and considerations on building audio apps on the web
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="qiang-fu-video-transcoding.html">
+            Next: Video Transcoding in Browser using WebAssembly/WebCodecs<span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Thoughts%20and%20considerations%20on%20building%20audio%20apps%20on%20the%20web" formaction="hongchan-choi-building-audio-apps.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: Video%20Transcoding%20in%20Browser%20using%20WebAssembly%2FWebCodecs" formaction="qiang-fu-video-transcoding.html"></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "It's time to WHIP WebRTC into shape",
+              "description": "For many in broadcast and streaming, WebRTC is not “complete”, as it lacks a standard signaling protocol to make it work like RTMP or RTSP.\n\nWHIP, the WebRTC HTTP Ingest Protocol, was developed to solve the biggest pain point with adopting WebRTC as a serious, professional, robust contribution protocol: Media Ingest. WHIP enables WebRTC to retain its technical advantages over older protocols like RTMP when it comes to resiliency over bad network conditions, adaptability, end-to-end encryption, and new codec support (hello AV1 SVC). It also removes the barrier WebRTC had with a lack of standard signaling protocol that has made it hard to support as a software solution, and difficult for hardware encoders to implement WebRTC.\n\nDevelopers love WebRTC because it is an IETF & W3C standard that makes it easy to write client applications with native broadcast and playback support on billions of devices worldwide. And the WISH working group at the IETF is currently reviewing WHIP with a milestone to publish it as a standard by December 2021.\n\nImplementing the open source WHIP library in your software or hardware encoder is all you need to support the entire WebRTC stack on the sender side.\n\nIt’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, as it was meant to be, natively on every device.\n",
+              "thumbnailUrl": "thumbnails/sergio-garcia-murillo-whip.jpg",
+              "duration": "PT7M11S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="It's%20time%20to%20WHIP%20WebRTC%20into%20shape" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/sergio-garcia-murillo-whip.pdf#1">Slide 1 of 17</i-slide>
+<div>
+  <p>Being not an end-to-end but a peer-to-peer technology and multi conferencing is the main use-case, the perception of the broadcasting industry around WebRTC has never been very good.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#2">Slide 2 of 17</i-slide>
+<div>
+  <p>And it has never been seen as a viable solution for streaming media because it doesn't scale. It is weak on quality at best and it is hard to use.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#3">Slide 3 of 17</i-slide>
+<div>
+  <p>The industry is really dominated by video-on-demand models like Netflix, the Hulu, or even Disney with does not require real-time.</p>
+  <p>However, the pandemic has really changed all of this and it has accelerated the adoption of real-time media workflows that have finally bridged the gap between web and broadcast.</p>
+  <p>real-time media has enabled a need for interactivity that requires near zero latency. with new use cases that big professional-grade workflows possible in consumer grade devices.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#4">Slide 4 of 17</i-slide>
+<div>
+  <p>WebRTC is the perfect technology for delivering these real-time media.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#5">Slide 5 of 17</i-slide>
+<div>
+  <p>It did what it was designed for in the beginning.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#6">Slide 6 of 17</i-slide>
+<div>
+  <p>And despite some misconceptions, it is possible to deliver a high quality media with broadcast quality at a web scale with additional properties like end-to-end encryption or simulcast streaming support.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#7">Slide 7 of 17</i-slide>
+<div>
+  <p>However, the lack of a standard signaling protocol has made it impossible for WebRTC to use a wide range of tools available and use on a daily basis by the streaming world. For example, OBS, FFmpeg, or vMix.</p>
+  <p>Not to mention that the lack of hardware encoders and physical input sources that are available here and integrated into many professional media workflows.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#8">Slide 8 of 17</i-slide>
+<div>
+  <p>In the broadcasting industry, RTMP is still ubiquitous for live streaming and for media ingest, into hundreds or so media platforms.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#9">Slide 9 of 17</i-slide>
+<div>
+  <p>WebRTC offers a lot of technical advantages when doing live media ingest like with network resiliency without increasing the end to end delay, by using SVC codec or simulcast where they reuse the server (?) required, with per-codec choices like VP9 or AV1, an end to end content as video for content, but over the delivering network.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#10">Slide 10 of 17</i-slide>
+<div>
+  <p>When we tried to use WebRTC for media ingest, we realized that while WebRTC is the best media transport protocol for real time streaming, the lack of a standard protocol has made that each WebRTC streaming service requires implementing a custom ad-hoc protocol, making it a no-go for hardware encoders and broadcasting tools to adopt it.</p>
+  <p>Other media transports could be used for ingest, but using WebRTC for both ingest and delivery allow to work natively in browsers avoids protocol translation which adds delays and implementation complexity. Avoiding the transcoding by setting common codecs and use WebRTC features into it.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#11">Slide 11 of 17</i-slide>
+<div>
+  <p>So the solution is simple, we just need a reference signal protocol. The requirements for this new protocol would be that it might be simpler to implement. And easy to use at the current RTMP URI, support this specific ingest use-case which is a subset of the WebRTC possible use cases because we only need support for unidirectional flows. And we don't need support for re-negotiations.</p>
+  <p>We need to be fully compliant with WebRTC and RTCWeb specs but we have to lower their requirements and the complexity to reimplement it so it can be adopted by both hardware encoders and brodcasting tools.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#12">Slide 12 of 17</i-slide>
+<div>
+  <p>One thing that was clear to us is there was that this new protocol should reuse the current Web technologies as much as possible. So we did use HTTP post for exchanging the SDP offer offer and answer. And the connection state is controlled by the WebRTC ICE states. The authentication is supported by as most of the SDP rest nowadays does by the Authorization HTTP header. The standardization of this protocol is being done at the IETF.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#13">Slide 13 of 17</i-slide>
+<div>
+  <p>And there are already some platforms that are implemented like Millicast or media server like Janus that support it, and we have some client implementation based on your GStreamer and of course in JavaScript.</p>
+  <p>The goal is to gain traction so we can get the hardware encoders to implement it and be able to use it in the same tools that are available for RTMP.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#14">Slide 14 of 17</i-slide>
+<div>
+  <p>But this is all that is needed for using WebRTC in a professional media flow? Unfortunately not. And it is not mainly due to the lack of specifications, but mostly because the implementation of many of the features required is lagging behind in most of the browsers, and even with (?) API available to enable them, most of the time, they are in experimental status or hidden behind flags, undocumented or difficult to discover.</p>
+  <p>For example, some of the issues that we have found with audio if that WebRTC... we can support multichannel audio with Multiopus. Multiopus is not official standard and it's only supported by Chrome. And it is hidden, that requests SDP mangling in order to support it.</p>
+  <p>NetEQ, that is a jitter buffer implementation in all WebRTC browser has issues with music. And for example, Lorenzo has made a great presentation on the topic, referencing all the issues that he has found when trying to use WebRTC for music. So I will encourage everyone to watch it.</p>
+  <p>Or for example, the integration between WebRTC and Web Audio has implementation issues on chrome that either adds echo, when you play audio with audio captured by WebRTC and it has been acknowledged by Google itself.</p>
+  <p>Or for example, there is a lack of integration between WebRTC and WebVTT making live subtitles impossible.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#15">Slide 15 of 17</i-slide>
+<div>
+  <p>Also on the video side. For example, SVC extension APIs only working in Chrome and it's an  experimental feature, although this is likely going to change in the following weeks.</p>
+  <p>AV1 is only supported by Chrome and not enabled in it. Even if they share almost the same codebase. The almost the same code base beeping enter file,</p>
+  <p>VP9 profile which supports 10 bits is only supported by Chrome and only on the receiving side. And it is experimental in Safari.</p>
+  <p>The playoutdelayhint is an optional extension and it is only supported in chrome.</p>
+  <p>Eh, also another sample is that abs-capture-time that is a header extension that could be used for synchronizing a video with standard metadata is only supporting in Chrome but it is a thing hidden and requires SDP mangling to enable it.</p>
+  <p>And at last, as an example of how professional-grade features are not always sought to be used with the WebRTC, video alpha is not supported, never meant to be supported in WebRTC but it is under consideration for being implemented in WebCodecs.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#16">Slide 16 of 17</i-slide>
+<div>
+  <p>So as a conclusion, WebRTC today is (?). And I will say, even, it is the best option for delivering professional broadcast quality media with minimal latency, but there is a still a lot of work to do in order to be able to WHIP WebRTC into shape.</p>
+</div>
+
+<i-slide src="slides/sergio-garcia-murillo-whip.pdf#17">Slide 17 of 17</i-slide>
+<div>
+  <p>But the good news is that we are on it.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="hongchan-choi-building-audio-apps.html" class="picto im-angle-left">Previous: Thoughts and considerations on building audio apps on the web</button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="qiang-fu-video-transcoding.html">Next: Video Transcoding in Browser using WebAssembly/WebCodecs<span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/sergio-garcia-murillo-whip.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

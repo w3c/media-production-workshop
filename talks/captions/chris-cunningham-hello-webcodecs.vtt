@@ -38,7 +38,7 @@ and I do encourage everybody to check that one out.
 
 10-p
 00:00:27.420 --> 00:00:28.760
-So you're probably already familiar
+You're probably already familiar
 
 11
 00:00:28.760 --> 00:00:30.249
@@ -70,7 +70,7 @@ in a unified manner directly to JavaScript.
 
 slide-2
 00:00:50.990 --> 00:00:54.008
-So let's look at a typical decoder flow.
+Let's look at a typical decoder flow.
 
 19-p
 00:00:54.008 --> 00:00:58.573
@@ -110,7 +110,7 @@ good way to kind of get familiar with
 
 28
 00:01:17.467 --> 00:01:19.608
-the API. So let's do that Now.
+the API. Let's do that now.
 
 slide-3
 00:01:19.608 --> 00:01:23.683
@@ -186,7 +186,7 @@ Right.
 
 47
 00:02:13.050 --> 00:02:15.203
-So let me show you where we are now.
+Let me show you where we are now.
 
 48
 00:02:16.233 --> 00:02:17.383
@@ -210,7 +210,7 @@ the demuxing of the MP4 file.
 
 53
 00:02:31.479 --> 00:02:32.443
-So that's why I'm pulling it here.
+That's why I'm pulling it here.
 
 54-p
 00:02:33.993 --> 00:02:35.380
@@ -234,7 +234,7 @@ but none of it really uses WebCodecs.
 
 59
 00:02:46.840 --> 00:02:48.180
-So I'm just gonna skip over it,
+I'm just gonna skip over it,
 
 60
 00:02:48.180 --> 00:02:49.884
@@ -298,7 +298,7 @@ we're gonna call frame.close().
 
 75-p
 00:03:39.720 --> 00:03:41.310
-So a few things to talk about here.
+A few things to talk about here.
 
 76
 00:03:41.310 --> 00:03:44.279
@@ -358,7 +358,7 @@ typically pooled resources inside the browser.
 
 90
 00:04:22.360 --> 00:04:25.050
-So you want to call close on these objects as soon as you're
+You want to call close on these objects as soon as you're
 
 91
 00:04:25.050 --> 00:04:27.882
@@ -374,7 +374,7 @@ actually owns those pool resources.
 
 94
 00:04:32.210 --> 00:04:34.420
-So returning them to the decoder prevents
+Returning them to the decoder prevents
 
 95
 00:04:34.420 --> 00:04:35.720
@@ -386,7 +386,7 @@ Okay.
 
 97
 00:04:37.533 --> 00:04:40.727
-So we've got our paint frame. Let's make a decoder.
+We've got our paint frame. Let's make a decoder.
 
 98-p
 00:04:45.870 --> 00:04:48.030
@@ -446,7 +446,7 @@ Any of these APIs is the familiar codec string.
 
 112
 00:05:23.100 --> 00:05:24.510
-So for H264,
+For H264,
 
 113
 00:05:24.510 --> 00:05:29.113
@@ -502,7 +502,7 @@ codec string and the codec registry in the WebCodecs spec.
 
 126
 00:06:13.000 --> 00:06:16.550
-So there we have the codec string for each codec and whether
+There we have the codec string for each codec and whether
 
 127
 00:06:16.550 --> 00:06:19.560
@@ -546,11 +546,11 @@ platform, by browser.
 
 137
 00:06:45.210 --> 00:06:48.230
-So it's important to first check before we try to use it.
+It's important to first check before we try to use it.
 
 138-p
 00:06:48.230 --> 00:06:49.780
-So we're going to call
+We're going to call
 
 139
 00:06:49.780 --> 00:06:52.871
@@ -578,7 +578,7 @@ This is a demo.
 
 145
 00:07:08.620 --> 00:07:13.620
-So I'm just going to say: assert that it is a supported.
+I'm just going to say: assert that it is a supported.
 
 146-p
 00:07:15.610 --> 00:07:18.773
@@ -590,7 +590,7 @@ And now it's just time to start feeding the decoder with
 
 148
 00:07:27.674 --> 00:07:32.674
-chunks to decode. So we're going to say Demuxer,
+chunks to decode. We're going to say Demuxer,
 
 149
 00:07:35.657 --> 00:07:38.593
@@ -610,7 +610,7 @@ A few things to point out.
 
 153
 00:07:51.800 --> 00:07:55.010
-There was no waiting here. So when we called configure,
+There was no waiting here. When we called configure,
 
 154
 00:07:55.010 --> 00:07:56.900
@@ -638,7 +638,7 @@ under the hood.
 
 160
 00:08:08.090 --> 00:08:12.290
-So a decode that follows the configure is presumed to use
+A decode that follows the configure is presumed to use
 
 161
 00:08:12.290 --> 00:08:15.567
@@ -666,7 +666,7 @@ Let's see if I have any typos.
 
 167-p
 00:08:27.240 --> 00:08:30.735
-All right. So there you have it, Big Buck Bunny,
+All right. There you have it, Big Buck Bunny,
 
 168
 00:08:30.735 --> 00:08:33.010
@@ -674,7 +674,7 @@ decoding and rendering.
 
 slide-4
 00:08:33.010 --> 00:08:35.510
-So we didn't talk at all about audio,
+We didn't talk at all about audio,
 
 170
 00:08:35.510 --> 00:08:36.460
@@ -730,7 +730,7 @@ All right, let's talk a little bit about audio decoding.
 
 183-p
 00:09:14.240 --> 00:09:16.050
-So here is the audio decoder interface.
+Here is the audio decoder interface.
 
 184
 00:09:16.050 --> 00:09:17.970
@@ -774,7 +774,7 @@ which are present in both interfaces are flush and reset.
 
 194-p
 00:09:46.470 --> 00:09:49.220
-So flush is going to force the codec to flush the pipeline
+Flush is going to force the codec to flush the pipeline
 
 195
 00:09:49.220 --> 00:09:50.590
@@ -810,7 +810,7 @@ The other one that we didn't talk about is reset.
 
 203
 00:10:06.830 --> 00:10:09.070
-So reset is going to completely reset the codec.
+Reset is going to completely reset the codec.
 
 204
 00:10:09.070 --> 00:10:12.504
@@ -826,7 +826,7 @@ just everything.
 
 207
 00:10:17.960 --> 00:10:21.280
-So you would use this if you would do like a seek. And so,
+You would use this if you would do like a seek. And so,
 
 208
 00:10:21.280 --> 00:10:24.020
@@ -842,7 +842,7 @@ start there instead.
 
 slide-6
 00:10:28.930 --> 00:10:30.810
-Okay. So that was decoding.
+Okay. That was decoding.
 
 212
 00:10:30.810 --> 00:10:32.380
@@ -854,7 +854,7 @@ The flow is pretty much the same, but in reverse.
 
 214
 00:10:35.340 --> 00:10:40.270
-So frames go in, they get encoded, they produce chunks.
+Frames go in, they get encoded, they produce chunks.
 
 215-p
 00:10:40.270 --> 00:10:42.870
@@ -882,7 +882,7 @@ pattern.
 
 slide-7
 00:10:53.290 --> 00:10:54.123
-So at this point,
+At this point,
 
 222
 00:10:54.123 --> 00:10:56.130

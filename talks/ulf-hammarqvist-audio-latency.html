@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Audio latency in browser-based DAWs - Ulf Hammarqvist - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="Audio latency in browser-based DAWs by Ulf Hammarqvist (Soundtrap/Spotify)">
+    <meta property="og:description" content="Soundtrap implements a collaborative Digital Audio Workstation (DAW) in the browser and makes heavy  use of WebAudio and other web APIs. We highlight two needs for audio/midi recording use case:
+
+  Low latency for 'monitoring'. Ex, feeding the input through effects or playing a software instrument.
+  Accurate latency information to perform 'latency compensation' when recording multiple 'tracks'.
+">
+    <meta property="og:image" content="thumbnails/ulf-hammarqvist-audio-latency.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>Audio latency in browser-based DAWs</h2>
+
+        <p>
+          Presenter: <strong>Ulf Hammarqvist (Soundtrap/Spotify)</strong><br>
+          Duration: <strong>10 minutes</strong><br>
+          Slides: <a href="slides/ulf-hammarqvist-audio-latency.pdf"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="peter-salomonsen-webassembly-music.html">
+            Previous: WebAssembly Music - latency/stability across platforms 
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="max-grosse-openexr.html">
+            Next: Reviewing Production OpenEXR files on the Web for ML<span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: WebAssembly%20Music%20-%20latency%2Fstability%20across%20platforms%20" formaction="peter-salomonsen-webassembly-music.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: Reviewing%20Production%20OpenEXR%20files%20on%20the%20Web%20for%20ML" formaction="max-grosse-openexr.html"></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "Audio latency in browser-based DAWs",
+              "description": "Soundtrap implements a collaborative Digital Audio Workstation (DAW) in the browser and makes heavy  use of WebAudio and other web APIs. We highlight two needs for audio/midi recording use case:\n\n  Low latency for 'monitoring'. Ex, feeding the input through effects or playing a software instrument.\n  Accurate latency information to perform 'latency compensation' when recording multiple 'tracks'.\n",
+              "thumbnailUrl": "thumbnails/ulf-hammarqvist-audio-latency.jpg",
+              "duration": "PT9M49S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="Audio%20latency%20in%20browser-based%20DAWs" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#1">Slide 1 of 12</i-slide>
+<div>
+  <p>Greetings from Sweden. This is Ulf over at Soundtrap from Spotify and I'm going to give a talk around some audio latency aspects of the web standards and the browser states.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#2">Slide 2 of 12</i-slide>
+<div>
+  <p>So let's go to the slide number two directly and just watch a small clip showcasing using Soundtrap.</p>
+  <p>(gentle music)</p>
+  <p>(enthusiastic music)</p>
+  <p>Okay. So, what you saw and heard was me messing about with the product itself, playing some notes, and playback of a project.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#3">Slide 3 of 12</i-slide>
+<div>
+  <p>What is Soundtrap then?</p>
+  <p>Well, Soundtrap is an online collaborative DAW and DAW is, as you may know, a Digital Audio Workstation.</p>
+  <p>And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar, automation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web media, media recorder, media stream and so on and so forth</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4">Slide 4 of 12</i-slide>
+<div>
+  <p>But as I mentioned that we focusing here today on aspects of audio latency, and it is essential to many of our use cases of Soundtrap.</p>
+  <p>Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from mic, process stuff in web audio and play back through your speaker as it go.</p>
+  <p>A good example of that is a guitarist that uses the DAW as a substitute really for the hardware, as pedals and amplifiers.</p>
+  <p>And they play along with what they hear. I mean, it matters what the output, resulting output is, like, how hard should I string to get this kind of tone in my repo, whatever.</p>
+  <p>And another example is the key that is playing using the DAW as a software instrument essentially. And if there's a substantial lag from pressing a key to hearing it the note you get for an orphan. Additionally you play alone every already existing track or set of tracks.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#5">Slide 5 of 12</i-slide>
+<div>
+  <p>Well, what is this current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. And then it's, in some cases it's not sufficient to delay low, we think, and we'd like to get this much lowered to be able to compete with the native offerings. Really.</p>
+  <p>I mean, 10ms is a good target, that really is decent.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#6">Slide 6 of 12</i-slide>
+<div>
+  <p>The second problem that we have in our use case that is maybe not immediately clear obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
+  <p>In order to show that you need two things really, you need to know what is the round-trip latency. You need to know that actually, actual latency. And you need to know when the data arrived towards your storage or stream, or what have you. To be able to when you play them back later, the data that ou aggregated, the relative alignment of what you heard and what you produced should be retained.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#7">Slide 7 of 12</i-slide>
+<div>
+  <p>And what do we mean by roundtrip latency? Well, that is several things combined. It's the input latency, it's the processing latency and it's the output latency. And that's not very surprising, I guess. But we'll get back to why it gets complicated.</p>
+  <p>Then what if we have the wrong information or really no information, we can't do a good job, we would have misaligned playback, and obviously we do something, but that involves educated guesswork and that's not ideal. We'd like to explicitly know what the latencies are that are involved here.</p>
+  <p>I mean, if not doing anything, the user would have to manually align, which is far from ideal.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#8">Slide 8 of 12</i-slide>
+<div>
+  <p>The point is that both the input and output paths have many pieces or steps involved. And these things look differently on different audio stacks and/or operating systems and what have you.</p>
+  <p>The latencies introduced by these steps are also vastly different, and not all of them, allow knowing this, so naturally strive for picking technical solutions data that allow this. To allow knowing this, sorry, I should say.</p>
+  <p>It's not just the path towards the browser or from the browser thought may have hidden latencies. It could also be within the browser itself if you're not careful. And here we try to illustrate this with, well, bear with us. We pretend that the media stream track setting latency property is a good indication of the input path latency. Might not be, but we can return to that.</p>
+  <p>Anyway, so we operate in the Web Audio world. So that means that we take that number from the setting, and then we can see it probably isn't the same once you sort of stepped into the Web Audio world, because there's a node there as well, which may or may not do any additional buffering and that additional buffering or latency is not exposed anywhere.</p>
+  <p>But it ought to be, otherwise we don't have good accurate numbers.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#9">Slide 9 of 12</i-slide>
+<div>
+  <p>For completeness, I'll just talk a little bit about the output and the processing steps.</p>
+  <p>And it has a certain quantum size or block size, or which is separate quantum sum. That latency also needs to be known and tracked somewhere.</p>
+  <p>And likewise for the input, the output latencies also need to be exposed somehow somewhere.</p>
+  <p>If you take a closer look at the Web Audio context property outputLatency, it does seem to indicate that is the block size as well as the output path combined, but it's not immediately clear.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#10">Slide 10 of 12</i-slide>
+<div>
+  <p>The other aspect to get compensation done correctly is knowing accurately when your data arrived. As I mentioned earlier. It can be done in various ways, but not really. There's no brilliant way to do it.</p>
+  <p>Traditionally. We've been using the media recorder and it's nice in many ways, because that allows you to sort of encode the file and things like that.</p>
+  <p>But there's no, as far as we can see spec-wise or guarantees that when you start it, it's going to start immediately. And even if it were you're still going to be like a quantum material of your sample, but then it started, you get the idea.</p>
+  <p>And I mean, a second option could be like, you do something custom based on the worklet. You know everything then, but then you have to do everything as well. And even if using something like WebCodecs, it seems that you still have to packetize into like a container from it, which is, I mean, it can be done, but it's not ideal.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#11">Slide 11 of 12</i-slide>
+<div>
+  <p>To conclude the stock, first off the input and output latency are maybe spec-ed. It's not clear that they are the full parts that we intend to hear.</p>
+  <p>And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
+  <p>And then, there seems to be an opportunity to spice up the media stream recorder, to get accurate timing information by some callback or something.</p>
+  <p>Finally, the WebCodecs API is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
+  <p>And finally, of course, we just want to encourage all the implementers to get the input and output latencies low obviously, and pick drivers that allows exposing the information because we need it to do a good job.</p>
+</div>
+
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#12">Slide 12 of 12</i-slide>
+<div>
+  <p>Thank you. That's all for us. And see you at the discussions.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="peter-salomonsen-webassembly-music.html" class="picto im-angle-left">Previous: WebAssembly Music - latency/stability across platforms </button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="max-grosse-openexr.html">Next: Reviewing Production OpenEXR files on the Web for ML<span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/ulf-hammarqvist-audio-latency.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

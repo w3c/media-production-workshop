@@ -62,7 +62,7 @@ in media production settings and apps.
 
 16
 00:00:39.040 --> 00:00:41.313
-So don't let this talk scare you off.
+Don't let this talk scare you off.
 
 slide-2
 00:00:42.950 --> 00:00:44.180
@@ -82,7 +82,7 @@ or quality unless the user asks for it".
 
 21-p
 00:00:51.630 --> 00:00:53.460
-So for encoding defaults,
+For encoding defaults,
 
 22
 00:00:53.460 --> 00:00:56.490
@@ -98,7 +98,7 @@ We don't constrain bit rate unless requested.
 
 25
 00:01:01.500 --> 00:01:03.553
-So it's VBR by default.
+It's VBR by default.
 
 26
 00:01:04.760 --> 00:01:08.000
@@ -150,7 +150,7 @@ to decode what is now being output.
 
 38-p
 00:01:35.650 --> 00:01:37.980
-So I mention this because it's useful
+I mention this because it's useful
 
 39
 00:01:37.980 --> 00:01:41.010
@@ -182,7 +182,7 @@ At the top, we've got the required parameters.
 
 46
 00:01:56.350 --> 00:01:58.873
-So we have codec, which is a codec string,
+We have codec, which is a codec string,
 
 47
 00:01:59.720 --> 00:02:02.610
@@ -234,7 +234,7 @@ and this is the number of pixels to encode.
 
 59
 00:02:38.170 --> 00:02:40.610
-So for video frames, this corresponds
+For video frames, this corresponds
 
 60
 00:02:40.610 --> 00:02:43.170
@@ -294,7 +294,7 @@ Okay, so moving on, we are now into optional parameters.
 
 74
 00:03:20.690 --> 00:03:22.770
-So there's displayWisth and displayHeight.
+There's displayWidth and displayHeight.
 
 75
 00:03:22.770 --> 00:03:24.270
@@ -330,7 +330,7 @@ when finally rendered.
 
 83
 00:03:38.690 --> 00:03:42.683
-So we actually stretch the rendered video just slightly.
+We actually stretch the rendered video just slightly.
 
 84-p
 00:03:44.030 --> 00:03:45.390
@@ -338,7 +338,7 @@ Then we have bit rate.
 
 85
 00:03:45.390 --> 00:03:49.270
-So the default is implementer-defined.
+The default is implementer-defined.
 
 86
 00:03:49.270 --> 00:03:51.610
@@ -358,7 +358,7 @@ That's probably not what you want.
 
 90
 00:03:57.060 --> 00:03:58.360
-So if you're using this production,
+If you're using this production,
 
 91
 00:03:58.360 --> 00:04:00.800
@@ -374,7 +374,7 @@ which is frame rate.
 
 94
 00:04:05.080 --> 00:04:06.930
-So the value here can be rough,
+The value here can be rough,
 
 95
 00:04:06.930 --> 00:04:09.900
@@ -406,7 +406,7 @@ to refine this.
 
 102
 00:04:24.963 --> 00:04:27.610
-So the minute that you said 30 fps,
+The minute that you said 30 fps,
 
 103
 00:04:27.610 --> 00:04:29.740
@@ -454,11 +454,11 @@ Next thing I'm gonna say is bitrateMode.
 
 114
 00:04:54.160 --> 00:04:55.690
-So this is second from the bottom.
+This is second from the bottom.
 
 115
 00:04:55.690 --> 00:04:57.813
-So this is variable by default,
+This is variable by default,
 
 116
 00:04:59.040 --> 00:05:01.490
@@ -550,7 +550,7 @@ and in Chrome, we treat it as a requirement.
 
 138-p
 00:05:50.920 --> 00:05:52.167
-So if you say prefer hardware
+If you say prefer hardware
 
 139
 00:05:52.167 --> 00:05:53.920
@@ -626,7 +626,7 @@ Or maybe you have a WASM fallback that you prefer.
 
 157
 00:06:32.950 --> 00:06:37.240
-So you wanna use our hardware encoding,
+You wanna use our hardware encoding,
 
 158
 00:06:37.240 --> 00:06:38.730
@@ -662,7 +662,7 @@ if hardware wasn't available.
 
 166-p
 00:06:54.190 --> 00:06:57.460
-So actually a small caveat on that.
+Actually a small caveat on that.
 
 167
 00:06:57.460 --> 00:07:01.070
@@ -670,7 +670,7 @@ It will find hardware above a certain resolution cut-off.
 
 168
 00:07:01.070 --> 00:07:03.200
-So below a certain resolution point,
+Below a certain resolution point,
 
 169
 00:07:03.200 --> 00:07:07.800
@@ -694,7 +694,7 @@ All right, scalabilityMode.
 
 174
 00:07:16.700 --> 00:07:18.720
-So this is a string that identifies patterns
+This is a string that identifies patterns
 
 175
 00:07:18.720 --> 00:07:20.443
@@ -730,7 +730,7 @@ And then finally latencyMode.
 
 183
 00:07:39.060 --> 00:07:44.060
-So this is, by default, "quality",
+This is, by default, "quality",
 
 184
 00:07:44.310 --> 00:07:47.570
@@ -742,7 +742,7 @@ where the other option is, what is it?
 
 186
 00:07:49.350 --> 00:07:52.383
-So most folks in this group probably want quality,
+Most folks in this group probably want quality,
 
 187
 00:07:53.370 --> 00:07:54.840
@@ -774,7 +774,7 @@ We'll actually use frame rate as kind of a deadline.
 
 194
 00:08:13.910 --> 00:08:18.060
-So if we can't encode a frame in realtime mode
+If we can't encode a frame in realtime mode
 
 195
 00:08:19.547 --> 00:08:22.880
@@ -806,7 +806,7 @@ We like to prioritize things by impact.
 
 202
 00:08:41.270 --> 00:08:45.550
-So if you can tell us why you need it,
+If you can tell us why you need it,
 
 203
 00:08:45.550 --> 00:08:47.500

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Reviewing Production OpenEXR files on the Web for ML - Max Grosse - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="Reviewing Production OpenEXR files on the Web for ML by Max Grosse (Disney Research)">
+    <meta property="og:description" content="In the DisneyResarch|Studios (DRS) machine learning pipeline DRS frequently works with production assets in the OpenEXR format. Monitoring the training, inspecting results, and eventually judging the quality of these new approaches require tracking and comparing those assets. DRS decided for an approach where a server provides high dynamic range results as EXR files and compiled OpenEXR using emscripten to allow in-browser decoding and viewing. Using WebGL, simple adjustments and a visualization of per pixel error metrics can be performed by the client on the fly. In this talk, DRS will present the problem, the chosen solution, challenges that DRS has encountered, and demonstrate JERI.io, the web-based EXR viewer, which DRS has released as open source.">
+    <meta property="og:image" content="thumbnails/max-grosse-openexr.jpg">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="intro">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#talk"><span>Skip</span> ⬇</a></p>
+
+        <h2>Reviewing Production OpenEXR files on the Web for ML</h2>
+
+        <p>
+          Presenter: <strong>Max Grosse (Disney Research)</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="slides/max-grosse-openexr/"><strong>download</strong></a>
+        </p>
+
+        <p class="buttons">
+          <button form="form" type="submit" class="picto im-angle-left" formaction="ulf-hammarqvist-audio-latency.html">
+            Previous: Audio latency in browser-based DAWs
+          </button>
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" type="submit" formaction="">
+            Next: <span class="picto im-angle-right"></span>
+          </button>
+        </p>
+      </section>
+
+      <section id="talk">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#comments-questions"><span>Skip</span> ⬇</a></p>
+
+        <h3>Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <p id="buttonbar">
+          <span>
+            <label for="sync" class="button"><input id="sync" name="sync" type="checkbox" form="form"> Kiosk mode</label>
+            <a href="../talk-help.html" title="Help" class="button picto im-question"></a>
+          </span>
+          <span>
+            <button title="First slide" class="picto im-previous"></button>
+            <button title="Previous slide" class="picto im-arrow-left"></button>
+            <button title="Play" class="picto im-play"></button><button title="Next slide" class="picto im-arrow-right"></button>
+            <button title="Last slide" class="picto im-next"></button>
+          </span>
+          <span>
+            <button form="form" class="picto im-angle-left" type="submit" title="Previous: Audio%20latency%20in%20browser-based%20DAWs" formaction="ulf-hammarqvist-audio-latency.html"></button>
+            <a class="picto im-data button" title="All talks" href="../talks.html"></a>
+            <button form="form" class="picto im-angle-right" type="submit" title="Next: " formaction=""></button>
+          </span>
+        </p>
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "Reviewing Production OpenEXR files on the Web for ML",
+              "description": "In the DisneyResarch|Studios (DRS) machine learning pipeline DRS frequently works with production assets in the OpenEXR format. Monitoring the training, inspecting results, and eventually judging the quality of these new approaches require tracking and comparing those assets. DRS decided for an approach where a server provides high dynamic range results as EXR files and compiled OpenEXR using emscripten to allow in-browser decoding and viewing. Using WebGL, simple adjustments and a visualization of per pixel error metrics can be performed by the client on the fly. In this talk, DRS will present the problem, the chosen solution, challenges that DRS has encountered, and demonstrate JERI.io, the web-based EXR viewer, which DRS has released as open source.",
+              "thumbnailUrl": "thumbnails/max-grosse-openexr.jpg",
+              "duration": "PT7M20S",
+              "embedUrl": "todo",
+            }
+          </script>
+
+          <iframe id="video" title="Reviewing%20Production%20OpenEXR%20files%20on%20the%20Web%20for%20ML" src="todo"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/max-grosse-openexr/#1">Slide 1 of 11</i-slide>
+<div>
+  <p>Welcome to my presentation on Reviewing production OpenEXR files on the web for Machine Learning. I'm Max Grosse, Principal Software Engineer at DisneyResearch|Studios.</p>
+  <p>I will show you a little bit of our machine learning pipeline we employ here, and how dealing with feature film production assets provides a unique challenge in this, and how we address it using modern web technology.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#2">Slide 2 of 11</i-slide>
+<div>
+  <p>As we are part of the Studio segment of the Walt Disney Company, we naturally deal with production assets.</p>
+  <p>When it comes to images, this typically means we deal with higher resolution, 1080p at least, up to 4k and even more. Additionally, the imagery is typically of high dynamic range, stored in the OpenEXR file format as 16-bit or 32-bit floating points.</p>
+  <p>For many applications, we also need to inspect other aspects of images apart from the final composed color data. These can be feature buffers from rendering, such as depth, normals, or alpha masks and provided as separate inputs so you can quickly determine for each final color pixel the depth or normal that goes along with it.</p>
+  <p>To inspect the training data that gets fed into our deep neural networks, to view error maps on the validation, and generally being able to judge the visual quality of our results - or enable artists to properly judge these - we require a little bit more than a cut-out thumbnail of a jpeg image within, for example, Tensorboard.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#3">Slide 3 of 11</i-slide>
+<div>
+  <p>An example is our work on Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings that my colleagues published in 2017 at ACM SIGGRAPH.</p>
+  <p>This introduces a deep learning approach for denoising Monte-Carlo rendered images that produces high-quality results suitable for production.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#4">Slide 4 of 11</i-slide>
+<div>
+  <p>This is when work on JERI started, the JavaScript Extended-Range image viewer.</p>
+  <p>The idea is that we can have a remote, or local, HTTP server that serves not only the OpenEXR images we are interested in directly, but also an HTML5-based viewer such that these OpenEXR images can be directly inspected within a modern browser.</p>
+  <p>In particular, this allows conveniently reviewing result images stored on our compute cluster without the need to explicitly copy or mount it locally.</p>
+  <p>This also guarantees that the client receives the original images, without any additional compression, providing full control over the very exact pixel values that will be displayed. It functions like a very configurable <img> tag with a lot of additional features to dig deep into extended-range images.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#5">Slide 5 of 11</i-slide>
+<div>
+  <p>For this, we have compiled the OpenEXR library to WebAssembly using EMScripten.</p>
+  <p>The EMScripten toolchain still lacks a bit in terms of quality of life, so this was a bit of a tedious process to get right, however once built, it can be potentially used in a variety of applications.</p>
+  <p>Decoding speed was not our primary concern, so we did not perform any extensive benchmarks on how fast it can decode EXR images compared to a native solution. Typically, even on local network, we will already have a small delay for downloading the EXR, so decoding speed did not show to be an issue to our users so far.</p>
+  <p>In particular with some local caching, switching the loaded images usually is instantaneous anyways.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#6">Slide 6 of 11</i-slide>
+<div>
+  <p>Given the extended range nature of the input imagery, we need a way to control things like gamma and exposure - also in case we want to drill into details at particular dark or bright regions.</p>
+  <p>Deep learning is commonly driven by a loss function, which in our case is often a combination of image difference metrics. Visualizing this error is of great importance in helping develop the desired model.</p>
+  <p>For all these visualization aspects, we have opted to facilitate WebGL. This was a very natural choice and provides a very efficient and convenient way to change the way things get displayed without too much code and without modifying the original pixel values directly.</p>
+  <p>In particular, this offloads all the pixel operations to the GPU, keeping the user experience smooth and avoiding manipulating large arrays of pixels directly in a single JavaScript thread.</p>
+  <p>The basic viewer application then was written in mostly TypeScript with React.js, optionally handling the UI aspects and helping integrating the viewer into other React.js projects.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#7">Slide 7 of 11</i-slide>
+<div>
+  <p>The viewer itself is configured by providing a JSON file that describes which EXR images to load, the remote paths to find them, which images to group, the images that should be used to generate error maps (i.e. image differences).</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#8">Slide 8 of 11</i-slide>
+<div>
+  <p>Here's a quick demonstration of JERI in action.</p>
+  <p>The examples are right from the jeri website and only intended to illustrate the idea, note that these are not production assets and the results are far worse than our production results and serve only as illustration.</p>
+  <p>In this example, we have a noise input that we might have gotten from our renderer.</p>
+  <p>We can now toggle to Improved" to inspect the results from a simple denoiser.</p>
+  <p>We can now zoom in and pan around to really compare even on a pixel level.</p>
+  <p>Ultimately, we are interested in how we compare to a ground truth, or reference, which is also available here and we can simply toggle to that as well.</p>
+  <p>As you see for example there's quite some detail lost in the ice cubes.</p>
+  <p>Even better though is to have an error map between the output and the reference computed on the fly, as you can see here.</p>
+  <p>Here we can also adjust the exposure, so we can better visualize parts we could otherwise not see in that detail.</p>
+  <p>Of course the exposure adjustment work for color images just the same.</p>
+  <p>We can repeat that for a different set of images, if we want to see how it performed on different input.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#9">Slide 9 of 11</i-slide>
+<div>
+  <p>We have integrated it into our ML monitoring system that is running on our cluster.</p>
+  <p>Here you can see a more typical use case where you can see the recorded training runs on the left, and a lot of different sets of images and metrics displayed in the main plane, allowing to quickly drill down and monitor your progress and results.</p>
+  <p>For example we can look at different validation images, different channel sets and at different points in time during the training. At any time we could also fire up a Tensorboard to look at other recorded metrics or write a report on our results, so a web-based solution like JERI really fits in nicely.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#10">Slide 10 of 11</i-slide>
+<div>
+  <p>We have released JERI as Open Source Software, you can try it out yourself and integrate it into your own solutions, see jeri.io for details.</p>
+</div>
+
+<i-slide src="slides/max-grosse-openexr/#11">Slide 11 of 11</i-slide>
+<div>
+  <p>That's all from my side. Thanks you for your attention.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="skip"><a title="Next section" aria-label="Next section" href="#sponsors"><span>Skip</span> ⬇</a></p>
+        <p class="buttons">
+          <button form="form" id="prevtalk" type="submit" formaction="ulf-hammarqvist-audio-latency.html" class="picto im-angle-left">Previous: Audio latency in browser-based DAWs</button>
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <button form="form" id="nexttalk" type="submit" formaction="">Next: <span class="picto im-angle-right"></span></button>
+        </p>
+      </section>
+      <p role="navigation" id="back-to-top">
+        <a href="#banner"><abbr title="Back to Top">↑</abbr></a>
+      </p>
+
+      <section id="sponsors">
+        <h2>
+          Sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "slides/max-grosse-openexr.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <!-- <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script> -->
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 
 1
 00:00:00.760 --> 00:00:05.713
-<v James Pearce>So, this is our web-based editor,</v>
+<v James Pearce>This is our web-based editor,</v>
 
 2
 00:00:06.620 --> 00:00:10.530
@@ -82,7 +82,7 @@ or just drag it into the timeline.
 
 21-p
 00:01:00.400 --> 00:01:04.460
-So, this editor, it's pretty much fully featured,
+This editor, it's pretty much fully featured,
 
 22
 00:01:04.460 --> 00:01:06.970
@@ -102,7 +102,7 @@ We can have transitions between those segments.
 
 26
 00:01:16.260 --> 00:01:21.260
-So, you know, I could add a blur to a particular segment,
+You know, I could add a blur to a particular segment,
 
 27
 00:01:22.060 --> 00:01:25.270
@@ -150,7 +150,7 @@ And again, controls to adjust what that transition does.
 
 38-p
 00:01:56.730 --> 00:02:01.380
-So, you know, that's in terms of some of the
+That's in terms of some of the
 
 39
 00:02:01.380 --> 00:02:03.480
@@ -219,7 +219,7 @@ And that works in reverse, as well.
 
 55
 00:02:41.962 --> 00:02:45.462
-So I can review a section of the material,
+I can review a section of the material,
 
 56
 00:02:46.970 --> 00:02:49.600
@@ -243,7 +243,7 @@ You know, where I am in the audio.
 
 61
 00:02:59.690 --> 00:03:01.630
-So if I'm looking for a particular point
+If I'm looking for a particular point
 
 62
 00:03:01.630 --> 00:03:05.310
@@ -259,7 +259,7 @@ I can hear that by just frame-stepping through.
 
 65-p
 00:03:11.690 --> 00:03:14.920
-So this is just a demonstration of, you know,
+This is just a demonstration of, you know,
 
 66
 00:03:14.920 --> 00:03:17.140
@@ -271,7 +271,7 @@ from the media playback, both audio and video.
 
 68-p
 00:03:22.870 --> 00:03:24.770
-So, to talk about the technologies
+To talk about the technologies
 
 69
 00:03:24.770 --> 00:03:26.230
@@ -335,7 +335,7 @@ swap out the WebAssembly decoders with the WebCodec ones.
 
 84
 00:04:19.010 --> 00:04:22.797
-So we get the same kind of, you know,
+We get the same kind of, you know,
 
 85
 00:04:22.797 --> 00:04:24.750
@@ -359,7 +359,7 @@ we see improvements in.
 
 90-p
 00:04:38.530 --> 00:04:39.930
-So, that's been really good.
+That's been really good.
 
 91
 00:04:41.220 --> 00:04:43.950
@@ -367,7 +367,7 @@ I mentioned previously, Web Workers, as well.
 
 92
 00:04:43.950 --> 00:04:47.530
-So, for the most part, we're trying to perform
+For the most part, we're trying to perform
 
 93
 00:04:47.530 --> 00:04:51.693
@@ -439,7 +439,7 @@ as the audio can't be decoded in time.
 
 110-p
 00:05:41.090 --> 00:05:45.900
-So Web Audio is one of the areas
+Web Audio is one of the areas
 
 111
 00:05:45.900 --> 00:05:48.420
@@ -527,7 +527,7 @@ that we're rendering to the screen, here.
 
 132-p
 00:06:55.720 --> 00:06:58.803
-So, I think that covers the main
+I think that covers the main
 
 133
 00:06:59.740 --> 00:07:02.090
@@ -535,7 +535,7 @@ primary APIs that we're using.
 
 134
 00:07:02.090 --> 00:07:05.618
-So, to summarize, we're using WebCodecs,
+To summarize, we're using WebCodecs,
 
 135
 00:07:05.618 --> 00:07:07.948
@@ -583,7 +583,7 @@ that tie the whole thing together.
 
 146-p
 00:07:41.180 --> 00:07:42.830
-So, I think that pretty much covers
+I think that pretty much covers
 
 147
 00:07:42.830 --> 00:07:44.270
@@ -619,7 +619,7 @@ and manage their lifetimes?
 
 155
 00:07:58.474 --> 00:08:01.210
-So, you get frames coming out of the codec,
+You get frames coming out of the codec,
 
 156
 00:08:01.210 --> 00:08:02.949
@@ -651,7 +651,7 @@ what we want to buffer, and how long we want to buffer for.
 
 163
 00:08:19.960 --> 00:08:22.700
-So, if the user's playing forwards at 1x,
+If the user's playing forwards at 1x,
 
 164
 00:08:22.700 --> 00:08:27.343
@@ -763,7 +763,7 @@ in the browser and what is reasonable.
 
 191
 00:09:34.450 --> 00:09:36.790
-So, if I was to just seek to another position
+If I was to just seek to another position
 
 192
 00:09:36.790 --> 00:09:40.500

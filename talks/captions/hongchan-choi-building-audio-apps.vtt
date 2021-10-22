@@ -38,7 +38,7 @@ and the co-chair of W3C Audio Working Group.
 
 slide-3
 00:00:25.600 --> 00:00:28.150
-So here's my question to you,
+Here's my question to you,
 
 11
 00:00:28.150 --> 00:00:30.170
@@ -222,7 +222,7 @@ like typing and scoping and et cetera.
 
 56
 00:02:30.230 --> 00:02:33.350
-So when you are building a larger scale real world product,
+When you are building a larger scale real world product,
 
 57
 00:02:33.350 --> 00:02:35.500
@@ -294,7 +294,7 @@ but they are still associated together.
 
 slide-9
 00:03:20.242 --> 00:03:22.100
-So what do you do?
+What do you do?
 
 75
 00:03:22.100 --> 00:03:24.890
@@ -662,7 +662,7 @@ we don't lose much of API usability.
 
 166-p
 00:07:52.520 --> 00:07:56.770
-So protecting user privacy was considered a hassle
+Protecting user privacy was considered a hassle
 
 167
 00:07:56.770 --> 00:08:01.150
@@ -690,7 +690,7 @@ in other operating system like MacOS or Windows.
 
 slide-15
 00:08:22.640 --> 00:08:26.020
-So now let's talk a little bit about latency.
+Now let's talk a little bit about latency.
 
 174
 00:08:26.020 --> 00:08:28.660
@@ -762,7 +762,7 @@ some obvious platform specific optimizations.
 
 191-p
 00:09:11.660 --> 00:09:13.610
-So when seasoned audio developers
+When seasoned audio developers
 
 192
 00:09:13.610 --> 00:09:18.280
@@ -830,7 +830,7 @@ that only benefits web audio.
 
 slide-17
 00:10:04.740 --> 00:10:07.990
-So what's the reality today?
+What's the reality today?
 
 209-p
 00:10:07.990 --> 00:10:10.500
@@ -878,7 +878,7 @@ That can't be good for latency.
 
 slide-18
 00:10:41.710 --> 00:10:44.170
-So what can we do about it?
+What can we do about it?
 
 221
 00:10:44.170 --> 00:10:46.080

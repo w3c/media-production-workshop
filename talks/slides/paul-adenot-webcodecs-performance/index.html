@@ -2,7 +2,6 @@
 <html>
 <head>
 <link rel=stylesheet href="zilla-slab.css">
-<link rel="katex/katex.min.css">
 <title>
   Memory access patterns in Web Codecs
 </title>
@@ -233,16 +232,8 @@ dd {
 </textarea>
 <script src="remark-latest.min.js">
 </script>
-<script src="katex/katex.min.js">
-</script>
 <script>
 var slideshow = remark.create();
-setTimeout(function() {
-  for (i of document.querySelectorAll(".math")) {
-    var tex = i.getAttribute("tex");
-    katex.render(tex, i, { throwOnError: true });
-  }
-}, 1000);
 </script>
 </body>
 <style>
@@ -257,8 +248,5 @@ setTimeout(function() {
     font-size: 25px;
 }
 
-.katex-html {
-  display: none;
-}
 </style>
 </html>
