@@ -1138,10 +1138,22 @@ div.talks .speaker span {
   }
 }
 
+#slides button {
+  background: hsla(204,0%,86%,1.0);
+  border: 1px outset hsla(204,0%,86%,1.0);
+  color: inherit;
+  font-weight: normal !important;
+  min-height: 2.5em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 5px;
+}
+
 .buttons > * {
-  background: #103852;
-  color: white;
-  font-weight: 700;
+  background: hsla(204,0%,86%,1.0);
+  border: 1px outset hsla(204,0%,86%,1.0);
+  color: inherit;
+  font-weight: normal !important;
   min-height: 2.5em;
   display: flex;
   align-items: center;
@@ -1149,11 +1161,6 @@ div.talks .speaker span {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
-
-/*.buttons > *:hover {
-  background: #111;
-  color: #fff;
-}*/
 
 .buttons > *, .badges > * {
   width: auto;
@@ -1165,10 +1172,11 @@ div.talks .speaker span {
   text-decoration: none;
 }
 
+#slides button:hover,
 .buttons button:hover,
-.buttons a:hover {
-  filter: brightness(120%);
-  color: white;
+.buttons a:hover,
+body:not(.sync) #buttonbar .button:hover {
+  filter: brightness(105%);
 }
 
 .talk #intro h2 {
@@ -1185,9 +1193,51 @@ div.talks .speaker span {
 }
 
 i-slide {
-  width: 100%;
+  width: 40.889em;
+  max-width: 100%;
   border-radius: 5px;
   outline: thin solid #444;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 5px;
+}
+
+#slides > div {
+  width: 40.889em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body:not(.sync) #buttonbar {
+  width: 40.889em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sync #buttonbar button {
+  font-size: inherit;
+  margin: inherit;
+}
+
+body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
+.buttons .button, .buttons button {
+  text-decoration: none;
+  cursor: default;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: center;
+  border-radius: 0.25em;
+  background: hsla(204,0%,86%,1.0) padding-box;
+  color: inherit;
+  border: 1px outset hsla(204,0%,86%,1.0);
 }
 
 #buttonbar label:before, #buttonbar label:after {
@@ -1204,4 +1254,25 @@ i-slide {
 
 .button > input {
   vertical-align: initial;
+}
+
+.sync.noslides #slidenr {
+  display: none;
+}
+
+.sync.noslides #video {
+  position: initial;
+  margin-top: 6em;
+  margin-bottom: 1em;
+  display: block;
+}
+
+.sync.noslides #caption {
+  position: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sync.noslides #buttonbar span:nth-child(2) {
+  display: none;
 }

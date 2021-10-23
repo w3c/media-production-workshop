@@ -5,12 +5,12 @@
     <title>Bringing Desktop-Class Creative Expression to the Web - Kevin Streeter - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="Bringing Desktop-Class Creative Expression to the Web by Kevin Streeter (Adobe)">
-    <meta property="og:description" content="Creative tools have long been able to push the boundaries of performance on desktop PCs by taking full advantage of hardware capabilities, often by interfacing directly with hardware. This talk describes many of the challenges that exist with building tools based on the web platform that are just as capable as existing desktop tools. We will also cover some of the current and proposed APIs that will help overcome these challenges.">
+    <meta property="og:title" content="Bringing%20Desktop-Class%20Creative%20Expression%20to%20the%20Web by Kevin%20Streeter%20(Adobe)">
+    <meta property="og:description" content="Creative%20tools%20have%20long%20been%20able%20to%20push%20the%20boundaries%20of%20performance%20on%20desktop%20PCs%20by%20taking%20full%20advantage%20of%20hardware%20capabilities%2C%20often%20by%20interfacing%20directly%20with%20hardware.%20This%20talk%20describes%20many%20of%20the%20challenges%20that%20exist%20with%20building%20tools%20based%20on%20the%20web%20platform%20that%20are%20just%20as%20capable%20as%20existing%20desktop%20tools.%20We%20will%20also%20cover%20some%20of%20the%20current%20and%20proposed%20APIs%20that%20will%20help%20overcome%20these%20challenges.">
     <meta property="og:image" content="thumbnails/kevin-streeter-creative-expression.jpg">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Kevin Streeter (Adobe)</strong><br>
           Duration: <strong>9 minutes</strong><br>
-          Slides: <a href="slides/kevin-streeter-creative-expression.pdf"><strong>download</strong></a>
+          Slides: <a href="slides/kevin-streeter-creative-expression.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -101,21 +101,21 @@
               "description": "Creative tools have long been able to push the boundaries of performance on desktop PCs by taking full advantage of hardware capabilities, often by interfacing directly with hardware. This talk describes many of the challenges that exist with building tools based on the web platform that are just as capable as existing desktop tools. We will also cover some of the current and proposed APIs that will help overcome these challenges.",
               "thumbnailUrl": "thumbnails/kevin-streeter-creative-expression.jpg",
               "duration": "PT9M14S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="Bringing%20Desktop-Class%20Creative%20Expression%20to%20the%20Web" src="todo"
+          <iframe id="video" title="Bringing%20Desktop-Class%20Creative%20Expression%20to%20the%20Web" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/kevin-streeter-creative-expression.pdf#1">Slide 1 of 8</i-slide>
+            <i-slide src="slides/kevin-streeter-creative-expression.pdf#1" class="slide">Slide 1 of 8</i-slide>
 <div>
   <p>Hello everyone. My name is Kevin Streeter, and I'm here to talk about some of the challenges that exist to bringing desktop class creative applications to the web. In this talk, we'll begin with a broad summary of the many technical areas we need to work through to create powerful creative tools. Then we will dive into a few selected topics to get a better feel for the kind of capabilities we need from the web to make it all possible. Let's get started.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#2">Slide 2 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#2" class="slide">Slide 2 of 8</i-slide>
 <div>
   <p> Creators are accustomed to having the full power of desktop class hardware at their fingertips. How can we build applications that have the same level of performance and expressivity, but also having all the benefits of a web based experience?</p>
   <p>Here are some of the ways that applications take advantage of traditional desktop platforms.</p>
@@ -130,7 +130,7 @@
   <p>And finally, they have access to the kind of quality of experience capabilities such as clipboards, accessibilities and other things that really make a tool work for the creative professional.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#3">Slide 3 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#3" class="slide">Slide 3 of 8</i-slide>
 <div>
   <p> The first area that we're gonna dive deeper into is the use of WebAssembly.</p>
   <p>Creative media tools tend to use a mix of new and existing media processing code. The existing code is typically written in C++. This code tends to be a mix of sort of compute intensive and memory intensive operations. Importantly, not all of this code can simply be ported to a GPU.</p>
@@ -141,7 +141,7 @@
   <p>One important aspect of this is that the SIMD proposals that are currently being investigated really do emphasize portability over performance. And what this means is that we no longer really have access to the lowest level of instruction sets, and that does have an impact on overall performance.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#4">Slide 4 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#4" class="slide">Slide 4 of 8</i-slide>
 <div>
   <p> The next important area I'd like to discuss is color.</p>
   <p>Color management, wide color gamut, and high dynamic range capabilities are critical for pro media production. This is true regardless of the type of media, whether it's video photography or print.</p>
@@ -152,7 +152,7 @@
   <p>Last, it's really important to note that different industries have their own standards around color. What that means is that the web platform needs to be inclusive if we want to support the creation of tools that target these industries.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#5">Slide 5 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#5" class="slide">Slide 5 of 8</i-slide>
 <div>
   <p> Next let's talk about disks and file systems.</p>
   <p>Desktop creative tools use the local disk heavily and rely on access to the local file system. These tools use disks for variety of reasons. They use them to store documents and projects. They use them for importing and exporting content in and out of the application, and they use them for scratch space and for caching.</p>
@@ -162,7 +162,7 @@
   <p>In the end, many low level capabilities don't really have an analog in the web platform. For example, there's no support for sparse files or zero copy file I/O.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#6">Slide 6 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#6" class="slide">Slide 6 of 8</i-slide>
 <div>
   <p> The last topic I'd like to dive deeper on is hardware encoding and decoding of media.</p>
   <p>Pro media production tools often use more specialized media formats than in a typical consumer application. For example, a photography tool will use formats like TIFF, JPEG 2000 in a variety of different raw image formats. Similarly, video tools will use things like REDCODE, ARRIRAW, or ProRes.</p>
@@ -172,12 +172,12 @@
   <p>So what we may need here is some way to access plugable or modular hardware acceleration capabilities, so when this capability is present on a device, the application can get access to it.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#7">Slide 7 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#7" class="slide">Slide 7 of 8</i-slide>
 <div>
   <p>Last slide. I hope you enjoyed this talk. I'd like to give a quick thank you to all the folks at Adobe that helped me prepare this material. And in particular, I'd like to thank Sean Voisen for his insights.</p>
 </div>
 
-<i-slide src="slides/kevin-streeter-creative-expression.pdf#8">Slide 8 of 8</i-slide>
+<i-slide src="slides/kevin-streeter-creative-expression.pdf#8" class="slide">Slide 8 of 8</i-slide>
 <div>
   <p>See you at the workshop.</p>
 </div>
@@ -244,7 +244,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

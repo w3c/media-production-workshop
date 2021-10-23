@@ -5,12 +5,12 @@
     <title>{{title}} - {{author}} - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="{{title}} by {{affiliatedAuthor}}">
-    <meta property="og:description" content="{{abstract}}">
+    <meta property="og:title" content="{{{title}}} by {{{affiliatedAuthor}}}">
+    <meta property="og:description" content="{{{abstract}}}">
     <meta property="og:image" content="{{thumbnail}}">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>{{affiliatedAuthor}}</strong><br>
           Duration: <strong>{{roughDuration}}</strong><br>
-          Slides: <a href="{{slides}}"><strong>download</strong></a>
+          Slides: {{slidesLink}}
         </p>
 
         <p class="buttons">
@@ -101,11 +101,11 @@
               "description": {{{{abstract}}}},
               "thumbnailUrl": "{{thumbnail}}",
               "duration": "{{duration}}",
-              "embedUrl": "{{videoUrl}}",
+              "embedUrl": "{{embedUrl}}",
             }
           </script>
 
-          <iframe id="video" title="{{{title}}}" src="{{videoUrl}}"
+          <iframe id="video" title="{{{title}}}" src="{{embedUrl}}"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
@@ -159,7 +159,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

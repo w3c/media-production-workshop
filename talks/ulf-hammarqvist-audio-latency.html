@@ -5,16 +5,12 @@
     <title>Audio latency in browser-based DAWs - Ulf Hammarqvist - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="Audio latency in browser-based DAWs by Ulf Hammarqvist (Soundtrap/Spotify)">
-    <meta property="og:description" content="Soundtrap implements a collaborative Digital Audio Workstation (DAW) in the browser and makes heavy  use of WebAudio and other web APIs. We highlight two needs for audio/midi recording use case:
-
-  Low latency for 'monitoring'. Ex, feeding the input through effects or playing a software instrument.
-  Accurate latency information to perform 'latency compensation' when recording multiple 'tracks'.
-">
+    <meta property="og:title" content="Audio%20latency%20in%20browser-based%20DAWs by Ulf%20Hammarqvist%20(Soundtrap%2FSpotify)">
+    <meta property="og:description" content="Soundtrap%20implements%20a%20collaborative%20Digital%20Audio%20Workstation%20(DAW)%20in%20the%20browser%20and%20makes%20heavy%20%20use%20of%20WebAudio%20and%20other%20web%20APIs.%20We%20highlight%20two%20needs%20for%20audio%2Fmidi%20recording%20use%20case%3A%0A%0A%20%20Low%20latency%20for%20'monitoring'.%20Ex%2C%20feeding%20the%20input%20through%20effects%20or%20playing%20a%20software%20instrument.%0A%20%20Accurate%20latency%20information%20to%20perform%20'latency%20compensation'%20when%20recording%20multiple%20'tracks'.%0A">
     <meta property="og:image" content="thumbnails/ulf-hammarqvist-audio-latency.jpg">
   </head>
   <body>
@@ -60,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Ulf Hammarqvist (Soundtrap/Spotify)</strong><br>
           Duration: <strong>10 minutes</strong><br>
-          Slides: <a href="slides/ulf-hammarqvist-audio-latency.pdf"><strong>download</strong></a>
+          Slides: <a href="slides/ulf-hammarqvist-audio-latency.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -105,21 +101,21 @@
               "description": "Soundtrap implements a collaborative Digital Audio Workstation (DAW) in the browser and makes heavy  use of WebAudio and other web APIs. We highlight two needs for audio/midi recording use case:\n\n  Low latency for 'monitoring'. Ex, feeding the input through effects or playing a software instrument.\n  Accurate latency information to perform 'latency compensation' when recording multiple 'tracks'.\n",
               "thumbnailUrl": "thumbnails/ulf-hammarqvist-audio-latency.jpg",
               "duration": "PT9M49S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="Audio%20latency%20in%20browser-based%20DAWs" src="todo"
+          <iframe id="video" title="Audio%20latency%20in%20browser-based%20DAWs" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#1">Slide 1 of 12</i-slide>
+            <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#1" class="slide">Slide 1 of 12</i-slide>
 <div>
   <p>Greetings from Sweden. This is Ulf over at Soundtrap from Spotify and I'm going to give a talk around some audio latency aspects of the web standards and the browser states.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#2">Slide 2 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#2" class="slide">Slide 2 of 12</i-slide>
 <div>
   <p>So let's go to the slide number two directly and just watch a small clip showcasing using Soundtrap.</p>
   <p>(gentle music)</p>
@@ -127,14 +123,14 @@
   <p>Okay. So, what you saw and heard was me messing about with the product itself, playing some notes, and playback of a project.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#3">Slide 3 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#3" class="slide">Slide 3 of 12</i-slide>
 <div>
   <p>What is Soundtrap then?</p>
   <p>Well, Soundtrap is an online collaborative DAW and DAW is, as you may know, a Digital Audio Workstation.</p>
   <p>And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar, automation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web media, media recorder, media stream and so on and so forth</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4">Slide 4 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
   <p>But as I mentioned that we focusing here today on aspects of audio latency, and it is essential to many of our use cases of Soundtrap.</p>
   <p>Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from mic, process stuff in web audio and play back through your speaker as it go.</p>
@@ -143,26 +139,26 @@
   <p>And another example is the key that is playing using the DAW as a software instrument essentially. And if there's a substantial lag from pressing a key to hearing it the note you get for an orphan. Additionally you play alone every already existing track or set of tracks.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#5">Slide 5 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
   <p>Well, what is this current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. And then it's, in some cases it's not sufficient to delay low, we think, and we'd like to get this much lowered to be able to compete with the native offerings. Really.</p>
   <p>I mean, 10ms is a good target, that really is decent.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#6">Slide 6 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
   <p>The second problem that we have in our use case that is maybe not immediately clear obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
   <p>In order to show that you need two things really, you need to know what is the round-trip latency. You need to know that actually, actual latency. And you need to know when the data arrived towards your storage or stream, or what have you. To be able to when you play them back later, the data that ou aggregated, the relative alignment of what you heard and what you produced should be retained.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#7">Slide 7 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#7" class="slide">Slide 7 of 12</i-slide>
 <div>
   <p>And what do we mean by roundtrip latency? Well, that is several things combined. It's the input latency, it's the processing latency and it's the output latency. And that's not very surprising, I guess. But we'll get back to why it gets complicated.</p>
   <p>Then what if we have the wrong information or really no information, we can't do a good job, we would have misaligned playback, and obviously we do something, but that involves educated guesswork and that's not ideal. We'd like to explicitly know what the latencies are that are involved here.</p>
   <p>I mean, if not doing anything, the user would have to manually align, which is far from ideal.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#8">Slide 8 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
   <p>The point is that both the input and output paths have many pieces or steps involved. And these things look differently on different audio stacks and/or operating systems and what have you.</p>
   <p>The latencies introduced by these steps are also vastly different, and not all of them, allow knowing this, so naturally strive for picking technical solutions data that allow this. To allow knowing this, sorry, I should say.</p>
@@ -171,7 +167,7 @@
   <p>But it ought to be, otherwise we don't have good accurate numbers.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#9">Slide 9 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#9" class="slide">Slide 9 of 12</i-slide>
 <div>
   <p>For completeness, I'll just talk a little bit about the output and the processing steps.</p>
   <p>And it has a certain quantum size or block size, or which is separate quantum sum. That latency also needs to be known and tracked somewhere.</p>
@@ -179,7 +175,7 @@
   <p>If you take a closer look at the Web Audio context property outputLatency, it does seem to indicate that is the block size as well as the output path combined, but it's not immediately clear.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#10">Slide 10 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#10" class="slide">Slide 10 of 12</i-slide>
 <div>
   <p>The other aspect to get compensation done correctly is knowing accurately when your data arrived. As I mentioned earlier. It can be done in various ways, but not really. There's no brilliant way to do it.</p>
   <p>Traditionally. We've been using the media recorder and it's nice in many ways, because that allows you to sort of encode the file and things like that.</p>
@@ -187,7 +183,7 @@
   <p>And I mean, a second option could be like, you do something custom based on the worklet. You know everything then, but then you have to do everything as well. And even if using something like WebCodecs, it seems that you still have to packetize into like a container from it, which is, I mean, it can be done, but it's not ideal.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#11">Slide 11 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
   <p>To conclude the stock, first off the input and output latency are maybe spec-ed. It's not clear that they are the full parts that we intend to hear.</p>
   <p>And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
@@ -196,7 +192,7 @@
   <p>And finally, of course, we just want to encourage all the implementers to get the input and output latencies low obviously, and pick drivers that allows exposing the information because we need it to do a good job.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#12">Slide 12 of 12</i-slide>
+<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#12" class="slide">Slide 12 of 12</i-slide>
 <div>
   <p>Thank you. That's all for us. And see you at the discussions.</p>
 </div>
@@ -263,7 +259,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

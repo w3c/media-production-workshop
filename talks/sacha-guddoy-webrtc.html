@@ -5,12 +5,12 @@
     <title>WebRTC in live media production - Sacha Guddoy - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="WebRTC in live media production by Sacha Guddoy (Grabyo)">
-    <meta property="og:description" content="This talk focuses on the use of WebRTC in professional live broadcast workflows. In a live production environment, users need to rely on their tools being accurate and performant. Furthermore, greater flexibility in the WebRTC API would allow novel workflows and optimisation.">
+    <meta property="og:title" content="WebRTC%20in%20live%20media%20production by Sacha%20Guddoy%20(Grabyo)">
+    <meta property="og:description" content="This%20talk%20focuses%20on%20the%20use%20of%20WebRTC%20in%20professional%20live%20broadcast%20workflows.%20In%20a%20live%20production%20environment%2C%20users%20need%20to%20rely%20on%20their%20tools%20being%20accurate%20and%20performant.%20Furthermore%2C%20greater%20flexibility%20in%20the%20WebRTC%20API%20would%20allow%20novel%20workflows%20and%20optimisation.">
     <meta property="og:image" content="thumbnails/sacha-guddoy-webrtc.jpg">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Sacha Guddoy (Grabyo)</strong><br>
           Duration: <strong>6 minutes</strong><br>
-          Slides: <a href="slides/sacha-guddoy-webrtc.pdf"><strong>download</strong></a>
+          Slides: <a href="slides/sacha-guddoy-webrtc.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -101,34 +101,34 @@
               "description": "This talk focuses on the use of WebRTC in professional live broadcast workflows. In a live production environment, users need to rely on their tools being accurate and performant. Furthermore, greater flexibility in the WebRTC API would allow novel workflows and optimisation.",
               "thumbnailUrl": "thumbnails/sacha-guddoy-webrtc.jpg",
               "duration": "PT5M57S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="WebRTC%20in%20live%20media%20production" src="todo"
+          <iframe id="video" title="WebRTC%20in%20live%20media%20production" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/sacha-guddoy-webrtc.pdf#1">Slide 1 of 8</i-slide>
+            <i-slide src="slides/sacha-guddoy-webrtc.pdf#1" class="slide">Slide 1 of 8</i-slide>
 <div>
   <p>Hello, there. My name is Sacha Guddoy and I'm the lead Front End Engineer at Grabyo.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#2">Slide 2 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#2" class="slide">Slide 2 of 8</i-slide>
 <div>
   <p>Grabyo is a SaaS platform which delivers tools for live broadcast production to commercial broadcasters.</p>
   <p>Some of the offerings include live broadcast production, video editing, clipping from live streams, and publishing to various endpoints.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#3">Slide 3 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#3" class="slide">Slide 3 of 8</i-slide>
 <div>
   <p>At Grabyo, we use WebRTC in our live production offering.</p>
   <p>The way that this works is the user will see, in their web browser, they'll have multiple live streams coming in and they will be able to monitor these live streams and choose which ones are being output to their broadcast endpoint.</p>
   <p>We also have multiple sidecar applications and multi-window workflows. For example, popping out a player.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#4">Slide 4 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#4" class="slide">Slide 4 of 8</i-slide>
 <div>
   <p>One of the challenges that we face is the synchronization of streams.</p>
   <p>What we'd like to do is to have multiple live feeds from different cameras coming in and to be able to switch between them. But if our live feeds aren't perfectly in sync with each other, if those two cameras aren't perfectly in sync, it's going to be very noticeable when you switch between them that there's some delay between them and it's jarring for the viewer.</p>
@@ -136,13 +136,13 @@
   <p>So, for example, if you are cutting between different cameras, you want those camera feeds to be showing exactly at the same time. If you're doing multi-party chat, you don't want latency.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#5">Slide 5 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#5" class="slide">Slide 5 of 8</i-slide>
 <div>
   <p>The synchronization aspect is pretty difficult. Network conditions can be unpredictable and you don't really have a way of correcting for that or to reconcile with synchronization of streams on the client side.</p>
   <p>If there were embedded time stamps on the streams, then you potentially could do that. Using something lower level, such as web transport, may allow you to do that and may even be a more performant technology for this use case than WebRTC anyway.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#6">Slide 6 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#6" class="slide">Slide 6 of 8</i-slide>
 <div>
   <p>One pattern that we've been using recently is splitting workflows into different browser contexts. Being able to create a pop out window which allows you to monitor a specific video in one window and be able to monitor everything else in another window.</p>
   <p>Or to be able to edit your audio in one window and monitor your videos in another window. In that last scenario, you're going to be having two instances in your browser of that same WebRTC connection. If I wanted to have the video of my live stream in one window because that's my video control suite and I want to have the same live stream in another window because that's my audio control suite, then I have to have two WebRTC connections. That's twice the performance overhead, twice the bandwidth, et cetera.</p>
@@ -150,7 +150,7 @@
   <p>And these kinds of workflows are really powerful for professional desktop applications. If you are a video editor using some kind of NLW, you probably want as much screen space as you want for your timeline, your monitors, your asset bins, et cetera. Being able to kind of split different parts of our interfaces out into different windows so the user can position them as they see fit is really, really helpful.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#7">Slide 7 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#7" class="slide">Slide 7 of 8</i-slide>
 <div>
   <p>What are the advantages of doing this?</p>
   <p>There's obviously less resource consumption because you only have that one connection.</p>
@@ -159,7 +159,7 @@
   <p>For example, synchronize an overlay in the DOM. Or a notification in the DOM.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#8">Slide 8 of 8</i-slide>
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#8" class="slide">Slide 8 of 8</i-slide>
 <div>
   <p>Capability to encode and decode data from the web RTC connection would also be really useful.</p>
   <p>Right now, the API surface of the WebRTC connection is pretty minimal and it doesn't expose much useful information to us. Being able to put our own code in that pipeline would allow us to do all this interesting stuff.</p>
@@ -232,7 +232,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

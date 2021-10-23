@@ -5,12 +5,12 @@
     <title>Thoughts and considerations on building audio apps on the web - Hongchan Choi - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="Thoughts and considerations on building audio apps on the web by Hongchan Choi (Google)">
-    <meta property="og:description" content=""What are the things that you need to think about if you were to build an audio app on the web today?" In this presentation, we discuss how to take advantage of Web Audio API by understanding its architecture and the performance charactereistics. Also it is followed by the introduction of a set of tools named "Web Audio perf toolkit", which allows you to debug, profile, and measure your application from several different angles. We also briefly touches critical problem areas such as privacy and input/output latency.">
+    <meta property="og:title" content="Thoughts%20and%20considerations%20on%20building%20audio%20apps%20on%20the%20web by Hongchan%20Choi%20(Google)">
+    <meta property="og:description" content="%22What%20are%20the%20things%20that%20you%20need%20to%20think%20about%20if%20you%20were%20to%20build%20an%20audio%20app%20on%20the%20web%20today%3F%22%20In%20this%20presentation%2C%20we%20discuss%20how%20to%20take%20advantage%20of%20Web%20Audio%20API%20by%20understanding%20its%20architecture%20and%20the%20performance%20charactereistics.%20Also%20it%20is%20followed%20by%20the%20introduction%20of%20a%20set%20of%20tools%20named%20%22Web%20Audio%20perf%20toolkit%22%2C%20which%20allows%20you%20to%20debug%2C%20profile%2C%20and%20measure%20your%20application%20from%20several%20different%20angles.%20We%20also%20briefly%20touches%20critical%20problem%20areas%20such%20as%20privacy%20and%20input%2Foutput%20latency.">
     <meta property="og:image" content="thumbnails/hongchan-choi-building-audio-apps.jpg">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Hongchan Choi (Google)</strong><br>
           Duration: <strong>12 minutes</strong><br>
-          Slides: <a href="slides/hongchan-choi-building-audio-apps.pdf"><strong>download</strong></a>
+          Slides: <a href="slides/hongchan-choi-building-audio-apps.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -101,68 +101,68 @@
               "description": "\"What are the things that you need to think about if you were to build an audio app on the web today?\" In this presentation, we discuss how to take advantage of Web Audio API by understanding its architecture and the performance charactereistics. Also it is followed by the introduction of a set of tools named \"Web Audio perf toolkit\", which allows you to debug, profile, and measure your application from several different angles. We also briefly touches critical problem areas such as privacy and input/output latency.",
               "thumbnailUrl": "thumbnails/hongchan-choi-building-audio-apps.jpg",
               "duration": "PT12M10S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="Thoughts%20and%20considerations%20on%20building%20audio%20apps%20on%20the%20web" src="todo"
+          <iframe id="video" title="Thoughts%20and%20considerations%20on%20building%20audio%20apps%20on%20the%20web" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/hongchan-choi-building-audio-apps.pdf#1">Slide 1 of 20</i-slide>
+            <i-slide src="slides/hongchan-choi-building-audio-apps.pdf#1" class="slide">Slide 1 of 20</i-slide>
 <div>
   <p>Hello, my name is Hongchan and today I'm going to talk about some thoughts and considerations in building audio apps on the web. The goal of this presentation is to lay out some discussion topics on web-based media production.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#2">Slide 2 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#2" class="slide">Slide 2 of 20</i-slide>
 <div>
   <p>Just to briefly introduce myself, I'm the tech lead of the Chrome Web Audio team and the co-chair of W3C Audio Working Group.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#3">Slide 3 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#3" class="slide">Slide 3 of 20</i-slide>
 <div>
   <p>Here's my question to you, what are the things that you need to think about if you were to build a web audio app today?</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#4">Slide 4 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#4" class="slide">Slide 4 of 20</i-slide>
 <div>
   <p>Obviously, the first thing you need to take a look at is Web Audio API, but I'm not going to talk about how to use it here today.</p>
   <p>It has been around for more than a decade and we have plenty of code examples and tutorials out there. Instead, I would like to discuss its architecture and performance characteristics.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#5">Slide 5 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#5" class="slide">Slide 5 of 20</i-slide>
 <div>
   <p>Two notes, first Web Audio API is a graph-based audio programming environment. There are a handful of audio nodes you can interconnect to create a graph.</p>
   <p>Secondly, the graph renderer is run by a dedicated high priority thread which is usually a real-time thread.</p>
   <p>This design was inevitable because the Web Audio API is a part of the web platform.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#6">Slide 6 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#6" class="slide">Slide 6 of 20</i-slide>
 <div>
   <p>The processing audio streams directly on the application's main thread causes a poor user experience in general. This is why the web audio node leaps on the main thread and the actual audio processing, I call them internals, happens on a dedicated isolated thread.</p>
   <p>For better or worse, Web Audio API hides the low-level audio implementation away from the developer. It means that you don't have to write on oscillator or a filter or a compressor from scratch, it is provided by the implementation, but it also means that things can get complicated quickly when you want to touch the bare metal such as implementing your own filter that manipulates audio samples.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#7">Slide 7 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#7" class="slide">Slide 7 of 20</i-slide>
 <div>
   <p>For that sort of use case, Web Audio API has Audio Worklet. With this object, you can write your own audio processing modules with JavaScript and WebAssembly.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#8">Slide 8 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#8" class="slide">Slide 8 of 20</i-slide>
 <div>
   <p>Another interesting aspect is that Web Audio API is a JavaScript API. As you already know, JavaScript is a garbage collected language with some controversial quirks like typing and scoping and et cetera. When you are building a larger scale real world product, you will encounter problems related to the garbage collection and performance.</p>
   <p>It's something you cannot control and it varies across browsers, but you have to be mindful.</p>
   <p>Technically, garbage collection should not impact Web Audio API's renderer because it runs on a different thread, but that's not always the case. Even though your code is flawless, not creating any garbages, libraries that you're using might be wasteful, it might be inducing garbage collection. Creating too many objects at once will eventually put pressure on the audio renderer because audio nodes are garbage collected objects, even though internals are not, but they are still associated together.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#9">Slide 9 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#9" class="slide">Slide 9 of 20</i-slide>
 <div>
   <p>What do you do? You inspect and profile the performance. It gives you insights on when it happened and how it happened.</p>
   <p>In Chrome, you can use the Web Audio perf toolkit and that's my first offer today.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#10">Slide 10 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#10" class="slide">Slide 10 of 20</i-slide>
 <div>
   <p>First, the Web Audio DevTools panel. This is a very simple tool that allows you to monitor the health of the audio system and its rendering capacity.</p>
   <p>If you're experiencing audio glitches, it's most likely either of two cases.</p>
@@ -171,7 +171,7 @@
   <p>The DevTools panel provides the metrics for both.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#11">Slide 11 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#11" class="slide">Slide 11 of 20</i-slide>
 <div>
   <p>Secondly, we have the audio graph visualizer extension. This is the most recent addition to our toolkit. This is not shipped with Chrome, so you will have to install it from the Chrome Web Store, which is just one time process.</p>
   <p>This tool is useful in at least two cases. First, a larger scale web audio application typically constructs and destroys a lot of audio nodes. It's really hard to spot a wrong connection between them by reading the source code.</p>
@@ -180,7 +180,7 @@
   <p>Also, there might be an orphaned node that is created, but not connected to anything, which is surprisingly common as well.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#12">Slide 12 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#12" class="slide">Slide 12 of 20</i-slide>
 <div>
   <p>Lastly, you can use a Chrome's Tracing tool. This is a bit more involved compared to the previous options, but it is comprehensive and it's full of insights.</p>
   <p>You can use this by going to chrome://tracing. I suggest reading the article that I wrote to explain how to use it for a audio application. You can just Google Profiling web audio apps."</p>
@@ -188,12 +188,12 @@
   <p>Secondly, this is incredibly useful when you communicate with Chromium engineers. It is very likely that we don't have the exact same setup with you, so some reproduction of the issue might be impossible. So, when fixing bugs, exchanging a trace file with us really helps the communication.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#13">Slide 13 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#13" class="slide">Slide 13 of 20</i-slide>
 <div>
   <p>Okay, let's shift gears and talk about other issues like device latency and user privacy.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#14">Slide 14 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#14" class="slide">Slide 14 of 20</i-slide>
 <div>
   <p>As you're building a client side application, like an instrument or an audio recorder, editor, or a DAW, soon you will realize that the lack of access to audio device is a big gap between the web and the native platform.</p>
   <p>It means that device related settings, such as number of channels, sample rate, and buffer size are not readily available for your application.</p>
@@ -206,7 +206,7 @@
   <p>These days, you will find similar protection mechanisms like a system-wide permission UI for microphone access in other operating system like MacOS or Windows.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#15">Slide 15 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#15" class="slide">Slide 15 of 20</i-slide>
 <div>
   <p>Now let's talk a little bit about latency. I'm well aware that this is a thorny issue when it comes to web platform and at least for Chrome Web Audio, we are not particularly doing well in audio latency department.</p>
   <p>For audio production apps, the latency is important at least for two reasons. First, the minimum latency possible matters when you're recording or monitoring, but also accurate latency reporting from the platform is critical for compensating audio after the fact.</p>
@@ -216,7 +216,7 @@
   <p>RTC and media usually focus on the resilience, which means more buffering, but web audio cares more about the low-latency and interactivity, which means less buffering. This conflict makes it hard to apply the aggressive optimization that only benefits web audio.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#17">Slide 17 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#16" class="slide">Slide 16 of 20</i-slide>
 <div>
   <p>What's the reality today?</p>
   <p>For web audio, you have to usually get your media for microphone input and the output simply goes to the system default audio device.</p>
@@ -224,24 +224,24 @@
   <p>Here, streaming usually means there are some buffering going on somewhere down there. That can't be good for latency.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#18">Slide 18 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#17" class="slide">Slide 17 of 20</i-slide>
 <div>
   <p>What can we do about it? The Audio Working Group is currently working to create a new API that allows you to select the audio output device for a audio context. Theoretically, this will guarantee the code path that minimizes the output latency.</p>
   <p>Also, one can dream about creating new API for input device selection as well. I'm curious how many people would want that. Please let me know what you think.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#19">Slide 19 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#18" class="slide">Slide 18 of 20</i-slide>
 <div>
   <p>That's all I have for today and here's the conclusion.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#20">Slide 20 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#19" class="slide">Slide 19 of 20</i-slide>
 <div>
   <p>We talked about the design and the architecture of Web Audio API and also I introduced the Web Audio perf ToolKit from Chrome, and also we discussed the problems in device access and latency.</p>
   <p>By all means, this is just a conversation starter, not a comprehensive guideline.</p>
 </div>
 
-<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#21">Slide 21 of 20</i-slide>
+<i-slide src="slides/hongchan-choi-building-audio-apps.pdf#20" class="slide">Slide 20 of 20</i-slide>
 <div>
   <p>With that, I would like to invite you to a survey, so we, browser implementers, can understand your needs better. Here's a link.</p>
   <p>Lastly, my chrome tech lead hat on, building a healthy ecosystem for web audio is my job and I'm open to have a chat with anyone who is interested in partnership with my team.</p>
@@ -310,7 +310,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

@@ -5,12 +5,12 @@
     <title>A Non-linear Video Editor built with WebAssembly - Junyue Cao - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="A Non-linear Video Editor built with WebAssembly by Junyue Cao (ByteDance)">
-    <meta property="og:description" content="WebAssembly makes it possible for us to migrate our C++ video editing engine to the web, but the development experience is not perfect. I want to talk about some possible improvements.">
+    <meta property="og:title" content="A%20Non-linear%20Video%20Editor%20built%20with%20WebAssembly by Junyue%20Cao%20(ByteDance)">
+    <meta property="og:description" content="WebAssembly%20makes%20it%20possible%20for%20us%20to%20migrate%20our%20C%2B%2B%20video%20editing%20engine%20to%20the%20web%2C%20but%20the%20development%20experience%20is%20not%20perfect.%20I%20want%20to%20talk%20about%20some%20possible%20improvements.">
     <meta property="og:image" content="thumbnails/junyue-cao-non-linear-video-editor.jpg">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Junyue Cao (ByteDance)</strong><br>
           Duration: <strong>7 minutes</strong><br>
-          Slides: <a href="slides/junyue-cao-non-linear-video-editor.pdf"><strong>download</strong></a>
+          Slides: <a href="slides/junyue-cao-non-linear-video-editor.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -101,43 +101,43 @@
               "description": "WebAssembly makes it possible for us to migrate our C++ video editing engine to the web, but the development experience is not perfect. I want to talk about some possible improvements.",
               "thumbnailUrl": "thumbnails/junyue-cao-non-linear-video-editor.jpg",
               "duration": "PT7M10S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="A%20Non-linear%20Video%20Editor%20built%20with%20WebAssembly" src="todo"
+          <iframe id="video" title="A%20Non-linear%20Video%20Editor%20built%20with%20WebAssembly" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#1">Slide 1 of 9</i-slide>
+            <i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#1" class="slide">Slide 1 of 9</i-slide>
 <div>
   <p>Hi, my name is Junyue. I'm a software engineer who works for multi-media team at Bytedance. Today I will talk about our web based non-linear video editor written in C++ and built with WebAssembly and EMScripten.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#2">Slide 2 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#2" class="slide">Slide 2 of 9</i-slide>
 <div>
   <p>This is the agenda of my talk. First I will introduce what the video editor is. Secondly I will briefly introduce how it works. And lastly I will talk about some needs for our development.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#3">Slide 3 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#3" class="slide">Slide 3 of 9</i-slide>
 <div>
   <p>Video editing is very important for every video content creator. It is one of the last steps of video creation. It turns your media clips into a complete story. There are many video editing software including desktop applications, mobile applications or maybe some cloud based software.</p>
   <p>What we are buiding is a web based multi-track video editor. Users can use a web browser to add video clips, audio clips, subtitles, transitions and special effects. By taking advantage of web technology and cloud based storage, users can open the projects with any computer at any time and continue to work.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#4">Slide 4 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#4" class="slide">Slide 4 of 9</i-slide>
 <div>
   <p>At first our core engine code was written for native platforms in C++. It is a multi-threaded engine which runs on Android, iOS, Windows and MacOS. With the improvement of the browser's support for WebAssembly, we now have the opportunity to migrate the engine to the web.</p>
   <p>We use WebGL and other technologies for real-time video rendering. In fact, WebAssembly is not a very new technology anymore, so I won't talk about every detail of WebAssembly and EMScripten here.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#5">Slide 5 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#5" class="slide">Slide 5 of 9</i-slide>
 <div>
   <p>This diagram shows a simplest structure of the application. We provide JS APIs to the web page to control the engine. The JS APIs call to C++ engine compiled with EMScripten. And the C++ engine calls the browser feature APIs provided by EMScripten to use all the features. Such as WebGL for video and special effect rendering, WebAudio for audio playback, Web Workers for multi-threaded runtime and IndexedDB for file system persistence.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#6">Slide 6 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#6" class="slide">Slide 6 of 9</i-slide>
 <div>
   <p>This is a diagram to illustrate the simplest process to show what browser features are used in the processing route.</p>
   <p>First, the video part. For each video track, we first use WebAssembly to decode the video frame. After we get the decoded video, we convert it into texture, and then blend the textures of multiple video tracks and display it on canvas through WebGL.</p>
@@ -145,14 +145,14 @@
   <p>Of course, for any kind of video player, audio and video synchronization is indispensable. Here is just the simplest processing route. I have omitted many steps. The actual situation is much more complex than that shown in the figure.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#7">Slide 7 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#7" class="slide">Slide 7 of 9</i-slide>
 <div>
   <p>So far, we've basically made the whole application work, but that doesn't mean it's perfect. There are unsatisfactory things at some points.</p>
   <p>The first problem is decoding performance. We need to decode multiple video tracks at the same time, which is a great challenge for the performance of video decoding. Using WebAssembly to decode will consume a lot of CPU, and its speed is not as fast as native. At present, in order to support as many video tracks as possible, we limit the video resolution to 480p.</p>
   <p>With the introduction of WebCodecs, we may have the opportunity to improve our video resolution. To use WebCodecs in a thread, that is a worker, providing synchronized WebCodecs API will be more friendly for C++ code to integrate.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#8">Slide 8 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#8" class="slide">Slide 8 of 9</i-slide>
 <div>
   <p>Another one is better debugging experience.</p>
   <p>When enabling the debug mode of DWARF, the WASM file will become very large. In our case, it is more than 1 GB, which causes the browser to be very unstable. The browser will crash easily after running for a while. And it's slow. Even when debugging in localhost, loading the DWARF information will still take more than 10 seconds. And the devtools often respond slowly and get stuck.</p>
@@ -160,7 +160,7 @@
   <p>Thirdly, we need to stop the world. At present, devtools can only select a thread and click the pause button. It will pause the worker or main thread. But when there are a lot of threads, I have to click the pause button one by one. Similarly, the resume button now needs to be clicked one by one. In this regard, I think we can refer to the debugging habits of the popular IDEs.</p>
 </div>
 
-<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#9">Slide 9 of 9</i-slide>
+<i-slide src="slides/junyue-cao-non-linear-video-editor.pdf#9" class="slide">Slide 9 of 9</i-slide>
 <div>
   <p>As shown in the figure, EMScripten provides a file system that supports the direct use of native POSIX file APIs. On the browser, it mainly includes MEMFS and IDBFS.</p>
   <p>However, video files are often large. When we use MEMFS to read large files, the memory consumption will be large because it loads the whole file into memory, which is very easy to cause out-of-memory errors. At the same time, multi-threaded access will always proxy to the main thread, which has an impact on the performance of the main thread.</p>
@@ -230,7 +230,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>

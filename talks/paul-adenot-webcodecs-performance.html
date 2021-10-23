@@ -5,12 +5,12 @@
     <title>Memory access patterns in Web Codecs - Paul Adenot - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://www.w3.org/2021/10/TPAC/talk-ui.css">
+    <link rel="stylesheet" href="../talk-ui.css">
     <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
     <meta name="twitter:site" content="@w3c">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="og:title" content="Memory access patterns in Web Codecs by Paul Adenot (Mozilla)">
-    <meta property="og:description" content="This talk discusses memory access patterns when WebCodecs is used in conjunction with other APIs, what WebCodecs does today to minimize memory access overhead, and envisioned solutions for further improvement in the near- and longer-term future so that WebCodecs' performance profile can match that in a native application.">
+    <meta property="og:title" content="Memory%20access%20patterns%20in%20Web%20Codecs by Paul%20Adenot%20(Mozilla)">
+    <meta property="og:description" content="This%20talk%20discusses%20memory%20access%20patterns%20when%20WebCodecs%20is%20used%20in%20conjunction%20with%20other%20APIs%2C%20what%20WebCodecs%20does%20today%20to%20minimize%20memory%20access%20overhead%2C%20and%20envisioned%20solutions%20for%20further%20improvement%20in%20the%20near-%20and%20longer-term%20future%20so%20that%20WebCodecs'%20performance%20profile%20can%20match%20that%20in%20a%20native%20application.">
     <meta property="og:image" content="thumbnails/paul-adenot-webcodecs-performance.jpg">
   </head>
   <body>
@@ -56,7 +56,7 @@
         <p class="talkinfo">
           Presenter: <strong>Paul Adenot (Mozilla)</strong><br>
           Duration: <strong>7 minutes</strong><br>
-          Slides: <a href="slides/paul-adenot-webcodecs-performance/"><strong>download</strong></a>
+          Slides: <a href="slides/paul-adenot-webcodecs-performance/"><strong>HTML</strong></a> | <a href="slides/paul-adenot-webcodecs-performance.pdf"><strong>PDF</strong></a>
         </p>
 
         <p class="buttons">
@@ -101,34 +101,34 @@
               "description": "This talk discusses memory access patterns when WebCodecs is used in conjunction with other APIs, what WebCodecs does today to minimize memory access overhead, and envisioned solutions for further improvement in the near- and longer-term future so that WebCodecs' performance profile can match that in a native application.",
               "thumbnailUrl": "thumbnails/paul-adenot-webcodecs-performance.jpg",
               "duration": "PT7M16S",
-              "embedUrl": "todo",
+              "embedUrl": "https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb",
             }
           </script>
 
-          <iframe id="video" title="Memory%20access%20patterns%20in%20Web%20Codecs" src="todo"
+          <iframe id="video" title="Memory%20access%20patterns%20in%20Web%20Codecs" src="https://iframe.videodelivery.net/05c4a741f5c01ff2b135022077867fdb"
             allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/paul-adenot-webcodecs-performance/#1">Slide 1 of 12</i-slide>
+            <i-slide src="slides/paul-adenot-webcodecs-performance.pdf#1" class="slide">Slide 1 of 12</i-slide>
 <div>
   <p>Hi, my name is Paul Adenot. I work at Mozilla on anything related to audio and video in Firefox.</p>
   <p>Today, I'd like to talk about a recent API called the WebCodecs API. And in particular about memory access patterns when using this API in conjunction with other APIs on the web platform. We'll talk about some raw performance numbers when accessing video frames, what WebCodecs does today to minimize memory, access overhead and some problems that the API has today, where a solution exists, but hasn't been implemented. And more importantly about a couple of harder problems that we'll tackle in the future, so that using WebCodecs will have the same performance profile as a native app.</p>
   <p>Before starting, I'd like to say that any simple scenario, such as decoding and rendering video and audio are fairly optimized today, and we'll be talking about advanced use cases, such as big native apps compiled to WebAssembly that want to leverage WebCodecs to speed up their encoding and decoding operations or other programs that are making a rather intensive use WebCodecs and want to minimize any inefficiencies.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#2">Slide 2 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#2" class="slide">Slide 2 of 12</i-slide>
 <div>
   <p>But first let me repeat an old quote often heard in the free software multimedia development circles: memcpy is murder". Behind this tongue-in-cheek sentence lies in important fact: to maximize performance, the minimum of memory copies need to happen. And the working set of nap needs to be as small as possible to ideally git into CPU caches. Fetching memory into caches is slow, caches are small, so no duplications should happen.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#3">Slide 3 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#3" class="slide">Slide 3 of 12</i-slide>
 <div>
   <p>But first let's consider the size of the problem.</p>
   <p>A video frame in YUV420, full HD, standard dynamic range is around 4MB. A video frame in YUV420, 4K, standard dynamic range is around 16MB. A video frame in P010, full HD, high dynamic range, (either 10 or 12 bits) is around 32MB.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#4">Slide 4 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
   <p>Here are some performance numbers that I've gathered, writing a small C++ program on my extremely high-end Linux workstation, of copying a single frame of this size. A video frame in YUV420, full HD, standard dynamic range, takes about 1.5ms to copy when the cache is hot, which means the source is already in the cache. And 4.5ms if not. The source needs to be fetched from memory. Two frames easily fit in the cache of this CPU.</p>
   <p>A video frame in YUV 420, 4K, standard dynamic range, takes 6.6ms and 17ms when in CPU cache. This only works because the CPU I'm running on has lots of cache, and a single frame still fits.</p>
@@ -136,12 +136,12 @@
   <p>Considering the budget for a single frame at 30Hz is 33ms and 16.6ms at 60Hz, we can quickly see that the numbers here are uncomfortable, and minimizing memory copies are going to be of importance. I'll repeat that standard scenarios in WebCodecs such as playback don't make copies. I'm talking about advanced use cases here, such as processing.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#5">Slide 5 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
   <p>Additionally, GPU to CPU copies (read back) and CPU to GPU copies (texture uploads) are also quite expensive. It's best to carefully consider when and how they need to be done, and to try to minimize transfers, if possible. WebCodecs has been carefully designed to allow to easily leave VideoFrames on the GPU and makes all copies explicit.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#6">Slide 6 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
   <p>But sometimes it's really necessary to perform copies. Here are three scenarios when this is unavoidable.</p>
   <p>Custom processing of video frames that are on the GPU using regular JavaScript or WASM code in which case we need to read back.</p>
@@ -149,7 +149,7 @@
   <p>For example, playing audio data with an AudioWorklet will require copying into the AudioWorklet output buffer.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#7">Slide 7 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#7" class="slide">Slide 7 of 12</i-slide>
 <div>
   <p>As said, WebCodecs has been designed with copy minimization in mind. The memory is not visible directly to script, and authors need to call a function called copyTo" to get an ArrayBuffer that can be directly manipulated. This copyTo" method can also take care of conversion in certain cases. when calling clone on a VideoFrame or AudioData object, the underlying resources are referenced for a second time, instead of copied, so a single frame can be used in different context efficiently. Doing a deep copy is still possible.</p>
   <p>Now, let's see a number of copies that exist today in WebCodecs</p>
@@ -158,22 +158,22 @@
   <p>Finally, the API for now does a lot of allocations and deallocation, trashing CPU caches unnecessarily.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#8">Slide 8 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
   <p>Here are two simple design proposal to fix the two last points in this list.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#9">Slide 9 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#9" class="slide">Slide 9 of 12</i-slide>
 <div>
   <p>First, a method called detach" could return an ArrayBuffer and close the video frame in one call, skipping a copy when possible, for example, when it hasn't been cloned, that's fairly common. Similarly, we can add this method on AudioData.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#10">Slide 10 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#10" class="slide">Slide 10 of 12</i-slide>
 <div>
   <p>Next, we can limit the native allocation and deallocation pressure by taking a buffer in the decode method, in which the decoded data is going to be written to, and getting back the input buffer to reuse, in the output callback. This will matter a lot for audio where it's a lot easier for buffer to fit in CPU caches, but their numbers are a lot bigger.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#11">Slide 11 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
   <p>Now let's talk, about some of the harder problems faced on the web platform today.</p>
   <p>First, the necessity to copy from into the WASM heap becomes problematic when the data to copy is big enough, such as video frames. Decoding into the WASM heap would be a welcomed feature, but this needs some work.</p>
@@ -181,7 +181,7 @@
   <p>An effort has been started to try to document the problems about copies on the platform at the WICG, and I encourage interested parties to voice their opinions and contribute their experience to the discussion, reports from the field are always welcomed and very important to inform future developments.</p>
 </div>
 
-<i-slide src="slides/paul-adenot-webcodecs-performance/#12">Slide 12 of 12</i-slide>
+<i-slide src="slides/paul-adenot-webcodecs-performance.pdf#12" class="slide">Slide 12 of 12</i-slide>
 <div>
   <p>In conclusion, while WebCodecs can and will be improved when it comes to memory access, it's already extremely powerful and common use cases are already quite fast. Making it perfect is definitely possible and will probably happen in the future. Thanks.</p>
 </div>
@@ -248,7 +248,7 @@
     </script>
     <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
     <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
-    <script src="https://www.w3.org/2019/09/TPAC-template/talk-sync.js"></script>
+    <script src="../talk-sync.js"></script>
     <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
   </body>
 </html>
