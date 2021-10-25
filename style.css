@@ -1046,6 +1046,11 @@ div.talks .button {
   text-decoration: none;
 }
 
+div.talks .button:not([href]) {
+  background: rgb(240,240,240);
+  color: rgb(100,100,100);
+}
+
 div.talks h4 {
   color: #005a9c;
   font-size: 1em;
