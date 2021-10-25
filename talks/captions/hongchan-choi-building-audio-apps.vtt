@@ -1,994 +1,994 @@
-﻿WEBVTT
+WEBVTT
 
 1
-00:00:02.090 --> 00:00:03.530
+00:07.490 --> 00:08.930
 <v ->Hello, my name is Hongchan</v>
 
 2
-00:00:03.530 --> 00:00:05.890
+00:08.930 --> 00:11.290
 and today I'm going to talk about some thoughts
 
 3
-00:00:05.890 --> 00:00:09.392
+00:11.290 --> 00:14.792
 and considerations in building audio apps on the web.
 
 4
-00:00:09.392 --> 00:00:11.220
+00:14.792 --> 00:16.620
 The goal of this presentation
 
 5
-00:00:11.220 --> 00:00:13.110
+00:16.620 --> 00:18.510
 is to lay out some discussion topics
 
 6
-00:00:13.110 --> 00:00:15.223
+00:18.510 --> 00:20.623
 on web-based media production.
 
 slide-2
-00:00:17.280 --> 00:00:19.010
+00:22.680 --> 00:24.410
 Just to briefly introduce myself,
 
 8
-00:00:19.010 --> 00:00:21.110
+00:24.410 --> 00:26.510
 I'm the tech lead of the Chrome Web Audio team
 
 9
-00:00:21.110 --> 00:00:24.033
+00:26.510 --> 00:29.433
 and the co-chair of W3C Audio Working Group.
 
 slide-3
-00:00:25.600 --> 00:00:28.150
+00:31.000 --> 00:33.550
 Here's my question to you,
 
 11
-00:00:28.150 --> 00:00:30.170
+00:33.550 --> 00:35.570
 what are the things that you need to think about
 
 12
-00:00:30.170 --> 00:00:33.063
+00:35.570 --> 00:38.463
 if you were to build a web audio app today?
 
 slide-4
-00:00:34.900 --> 00:00:37.450
+00:40.300 --> 00:42.850
 Obviously, the first thing you need to take a look at
 
 14
-00:00:37.450 --> 00:00:39.400
+00:42.850 --> 00:44.800
 is Web Audio API,
 
 15
-00:00:39.400 --> 00:00:43.030
+00:44.800 --> 00:48.430
 but I'm not going to talk about how to use it here today.
 
 16-p
-00:00:43.030 --> 00:00:45.130
+00:48.430 --> 00:50.530
 It has been around for more than a decade
 
 17
-00:00:45.130 --> 00:00:48.483
+00:50.530 --> 00:53.883
 and we have plenty of code examples and tutorials out there.
 
 18
-00:00:49.390 --> 00:00:52.210
+00:54.790 --> 00:57.610
 Instead, I would like to discuss its architecture
 
 19
-00:00:52.210 --> 00:00:54.043
+00:57.610 --> 00:59.443
 and performance characteristics.
 
 slide-5
-00:00:56.200 --> 00:00:59.050
+01:01.600 --> 01:04.450
 Two notes, first Web Audio API
 
 21
-00:00:59.050 --> 00:01:02.370
+01:04.450 --> 01:07.770
 is a graph-based audio programming environment.
 
 22
-00:01:02.370 --> 00:01:04.140
+01:07.770 --> 01:09.540
 There are a handful of audio nodes
 
 23
-00:01:04.140 --> 00:01:06.743
+01:09.540 --> 01:12.143
 you can interconnect to create a graph.
 
 24-p
-00:01:08.570 --> 00:01:10.020
+01:13.970 --> 01:15.420
 Secondly, the graph renderer
 
 25
-00:01:10.020 --> 00:01:12.970
+01:15.420 --> 01:18.370
 is run by a dedicated high priority thread
 
 26
-00:01:12.970 --> 00:01:15.673
+01:18.370 --> 01:21.730
 which is usually a real-time thread.
 
 27-p
-00:01:17.270 --> 00:01:20.400
+01:22.670 --> 01:25.800
 This design was inevitable because the Web Audio API
 
 28
-00:01:20.400 --> 00:01:22.760
+01:25.800 --> 01:28.160
 is a part of the web platform.
 
 slide-6
-00:01:22.760 --> 00:01:24.383
+01:28.160 --> 01:29.783
 The processing audio streams directly
 
 30
-00:01:24.383 --> 00:01:26.600
+01:29.783 --> 01:32.000
 on the application's main thread
 
 31
-00:01:26.600 --> 00:01:29.248
+01:32.000 --> 01:34.648
 causes a poor user experience in general.
 
 32
-00:01:29.248 --> 00:01:32.960
+01:34.648 --> 01:38.360
 This is why the web audio node leaps on the main thread
 
 33
-00:01:32.960 --> 00:01:36.470
+01:38.360 --> 01:41.870
 and the actual audio processing, I call them internals,
 
 34
-00:01:36.470 --> 00:01:39.353
+01:41.870 --> 01:44.753
 happens on a dedicated isolated thread.
 
 35-p
-00:01:40.630 --> 00:01:42.840
+01:46.300 --> 01:48.240
 For better or worse, Web Audio API
 
 36
-00:01:42.840 --> 00:01:45.130
+01:48.240 --> 01:50.530
 hides the low-level audio implementation
 
 37
-00:01:45.130 --> 00:01:46.630
+01:50.530 --> 01:52.300
 away from the developer.
 
 38
-00:01:46.630 --> 00:01:49.280
+01:52.300 --> 01:54.680
 It means that you don't have to write on oscillator
 
 39
-00:01:49.280 --> 00:01:52.100
+01:54.680 --> 01:57.500
 or a filter or a compressor from scratch,
 
 40
-00:01:52.100 --> 00:01:54.233
+01:57.500 --> 01:59.633
 it is provided by the implementation,
 
 41
-00:01:55.910 --> 00:01:59.190
+02:01.310 --> 02:04.590
 but it also means that things can get complicated quickly
 
 42
-00:01:59.190 --> 00:02:01.090
+02:04.590 --> 02:06.490
 when you want to touch the bare metal
 
 43
-00:02:01.090 --> 00:02:03.160
+02:06.490 --> 02:08.560
 such as implementing your own filter
 
 44
-00:02:03.160 --> 00:02:05.550
+02:08.560 --> 02:10.950
 that manipulates audio samples.
 
 slide-7
-00:02:05.550 --> 00:02:07.170
+02:10.950 --> 02:12.570
 For that sort of use case,
 
 46
-00:02:07.170 --> 00:02:09.840
+02:12.570 --> 02:15.240
 Web Audio API has Audio Worklet.
 
 47
-00:02:09.840 --> 00:02:10.810
+02:15.240 --> 02:16.210
 With this object,
 
 48
-00:02:10.810 --> 00:02:13.140
+02:16.210 --> 02:18.540
 you can write your own audio processing modules
 
 49
-00:02:13.140 --> 00:02:15.223
+02:18.540 --> 02:20.623
 with JavaScript and WebAssembly.
 
 slide-8
-00:02:17.407 --> 00:02:20.510
+02:22.807 --> 02:25.910
 Another interesting aspect is that Web Audio API
 
 51
-00:02:20.510 --> 00:02:22.140
+02:25.910 --> 02:27.540
 is a JavaScript API.
 
 52
-00:02:22.140 --> 00:02:23.100
+02:27.540 --> 02:28.500
 As you already know,
 
 53
-00:02:23.100 --> 00:02:25.600
+02:28.500 --> 02:31.000
 JavaScript is a garbage collected language
 
 54
-00:02:25.600 --> 00:02:27.460
+02:31.000 --> 02:32.860
 with some controversial quirks
 
 55
-00:02:27.460 --> 00:02:30.230
+02:32.860 --> 02:35.630
 like typing and scoping and et cetera.
 
 56
-00:02:30.230 --> 00:02:33.350
+02:35.630 --> 02:38.750
 When you are building a larger scale real world product,
 
 57
-00:02:33.350 --> 00:02:35.500
+02:38.750 --> 02:40.900
 you will encounter problems related
 
 58
-00:02:35.500 --> 00:02:38.250
+02:40.900 --> 02:43.650
 to the garbage collection and performance.
 
 59-p
-00:02:38.250 --> 00:02:40.370
+02:43.650 --> 02:45.770
 It's something you cannot control
 
 60
-00:02:40.370 --> 00:02:44.683
+02:45.770 --> 02:50.830
 and it varies across browsers, but you have to be mindful.
 
 61-p
-00:02:46.180 --> 00:02:47.830
+02:51.580 --> 02:53.230
 Technically, garbage collection
 
 62
-00:02:47.830 --> 00:02:51.080
+02:53.230 --> 02:56.480
 should not impact Web Audio API's renderer
 
 63
-00:02:51.080 --> 00:02:53.950
+02:56.480 --> 02:59.350
 because it runs on a different thread,
 
 64
-00:02:53.950 --> 00:02:56.500
+02:59.350 --> 03:01.900
 but that's not always the case.
 
 65
-00:02:56.500 --> 00:02:58.230
+03:01.900 --> 03:03.630
 Even though your code is flawless,
 
 66
-00:02:58.230 --> 00:03:00.110
+03:03.630 --> 03:05.510
 not creating any garbages,
 
 67
-00:03:00.110 --> 00:03:02.243
+03:05.510 --> 03:07.643
 libraries that you're using might be wasteful,
 
 68
-00:03:02.243 --> 00:03:04.603
+03:07.643 --> 03:10.300
 it might be inducing garbage collection.
 
 69
-00:03:05.720 --> 00:03:07.460
+03:11.120 --> 03:12.860
 Creating too many objects at once
 
 70
-00:03:07.460 --> 00:03:10.650
+03:12.860 --> 03:16.500
 will eventually put pressure on the audio renderer
 
 71
-00:03:10.650 --> 00:03:14.610
+03:16.500 --> 03:20.100
 because audio nodes are garbage collected objects,
 
 72
-00:03:14.610 --> 00:03:16.080
+03:20.100 --> 03:21.480
 even though internals are not,
 
 73
-00:03:16.080 --> 00:03:18.143
+03:21.480 --> 03:23.543
 but they are still associated together.
 
 slide-9
-00:03:20.242 --> 00:03:22.100
+03:25.642 --> 03:27.500
 What do you do?
 
 75
-00:03:22.100 --> 00:03:24.890
+03:27.500 --> 03:30.290
 You inspect and profile the performance.
 
 76
-00:03:24.890 --> 00:03:26.934
+03:30.290 --> 03:32.334
 It gives you insights on when it happened
 
 77
-00:03:26.934 --> 00:03:29.130
+03:32.334 --> 03:34.530
 and how it happened.
 
 78-p
-00:03:29.130 --> 00:03:31.399
+03:34.530 --> 03:36.799
 In Chrome, you can use the Web Audio perf toolkit
 
 79
-00:03:31.399 --> 00:03:33.783
+03:36.799 --> 03:39.183
 and that's my first offer today.
 
 slide-10
-00:03:35.050 --> 00:03:38.420
+03:40.450 --> 03:43.820
 First, the Web Audio DevTools panel.
 
 81
-00:03:38.420 --> 00:03:40.410
+03:43.820 --> 03:45.810
 This is a very simple tool that allows you
 
 82
-00:03:40.410 --> 00:03:42.426
+03:45.810 --> 03:47.826
 to monitor the health of the audio system
 
 83
-00:03:42.426 --> 00:03:44.363
+03:47.826 --> 03:49.763
 and its rendering capacity.
 
 84-p
-00:03:46.020 --> 00:03:48.140
+03:51.420 --> 03:53.540
 If you're experiencing audio glitches,
 
 85
-00:03:48.140 --> 00:03:51.330
+03:53.540 --> 03:56.730
 it's most likely either of two cases.
 
 86-p
-00:03:51.330 --> 00:03:54.600
+03:56.730 --> 04:00.000
 A: the callback timing is irregular,
 
 87
-00:03:54.600 --> 00:03:56.106
+04:00.000 --> 04:01.506
 this can happen when the renderer runs
 
 88
-00:03:56.106 --> 00:03:58.880
+04:01.506 --> 04:04.280
 on a lower priority thread
 
 89-p
-00:03:58.880 --> 00:04:01.240
+04:04.280 --> 04:06.640
 And B: the audio processing load
 
 90
-00:04:01.240 --> 00:04:03.400
+04:06.640 --> 04:08.800
 goes beyond the CPU capacity.
 
 91
-00:04:03.400 --> 00:04:05.520
+04:08.800 --> 04:10.920
 This can happen for so many reasons,
 
 92
-00:04:05.520 --> 00:04:08.410
+04:10.920 --> 04:13.810
 but in the end, you're trying to do too much
 
 93
-00:04:08.410 --> 00:04:10.563
+04:13.810 --> 04:15.963
 and the callback misses its deadline.
 
 94-p
-00:04:11.480 --> 00:04:14.313
+04:16.880 --> 04:19.713
 The DevTools panel provides the metrics for both.
 
 slide-11
-00:04:17.210 --> 00:04:20.890
+04:22.610 --> 04:26.290
 Secondly, we have the audio graph visualizer extension.
 
 96
-00:04:20.890 --> 00:04:24.720
+04:26.290 --> 04:30.120
 This is the most recent addition to our toolkit.
 
 97
-00:04:24.720 --> 00:04:26.210
+04:30.120 --> 04:31.610
 This is not shipped with Chrome,
 
 98
-00:04:26.210 --> 00:04:29.040
+04:31.610 --> 04:34.440
 so you will have to install it from the Chrome Web Store,
 
 99
-00:04:29.040 --> 00:04:31.450
+04:34.440 --> 04:36.850
 which is just one time process.
 
 100-p
-00:04:31.450 --> 00:04:35.480
+04:36.850 --> 04:40.880
 This tool is useful in at least two cases.
 
 101
-00:04:35.480 --> 00:04:38.230
+04:40.880 --> 04:43.630
 First, a larger scale web audio application
 
 102
-00:04:38.230 --> 00:04:42.240
+04:43.630 --> 04:47.640
 typically constructs and destroys a lot of audio nodes.
 
 103
-00:04:42.240 --> 00:04:44.970
+04:47.640 --> 04:50.370
 It's really hard to spot a wrong connection between them
 
 104
-00:04:44.970 --> 00:04:46.523
+04:50.370 --> 04:51.923
 by reading the source code.
 
 105-p
-00:04:47.500 --> 00:04:49.680
+04:52.900 --> 04:55.800
 The visualization is immensely better
 
 106
-00:04:49.680 --> 00:04:51.373
+04:55.800 --> 04:56.773
 in pinpointing a mistake.
 
 107-p
-00:04:52.700 --> 00:04:55.170
+04:58.100 --> 05:00.570
 Secondly, it allows you to understand
 
 108
-00:04:55.170 --> 00:04:57.370
+05:00.570 --> 05:02.770
 the level of a redundancy of your graph.
 
 109
-00:04:57.370 --> 00:05:00.360
+05:02.770 --> 05:05.760
 You might be creating too many gain nodes for no reason.
 
 110
-00:05:00.360 --> 00:05:03.260
+05:05.760 --> 05:08.660
 It is very common technique using several gain nodes
 
 111
-00:05:03.260 --> 00:05:04.653
+05:08.660 --> 05:10.530
 to wrap a subgraph.
 
 112-p
-00:05:06.210 --> 00:05:09.360
+05:11.610 --> 05:14.760
 Also, there might be an orphaned node that is created,
 
 113
-00:05:09.360 --> 00:05:11.180
+05:14.760 --> 05:16.580
 but not connected to anything,
 
 114
-00:05:11.180 --> 00:05:13.733
+05:16.580 --> 05:19.133
 which is surprisingly common as well.
 
 slide-12
-00:05:17.190 --> 00:05:20.500
+05:22.590 --> 05:25.900
 Lastly, you can use a Chrome's Tracing tool.
 
 116
-00:05:20.500 --> 00:05:21.870
+05:25.900 --> 05:27.270
 This is a bit more involved
 
 117
-00:05:21.870 --> 00:05:23.690
+05:27.270 --> 05:29.900
 compared to the previous options,
 
 118
-00:05:23.690 --> 00:05:27.293
+05:29.900 --> 05:32.693
 but it is comprehensive and it's full of insights.
 
 119-p
-00:05:28.800 --> 00:05:33.430
+05:34.200 --> 05:38.830
 You can use this by going to chrome://tracing.
 
 120
-00:05:33.430 --> 00:05:35.560
+05:38.830 --> 05:40.960
 I suggest reading the article that I wrote
 
 121
-00:05:35.560 --> 00:05:38.250
+05:40.960 --> 05:43.650
 to explain how to use it for a audio application.
 
 122
-00:05:38.250 --> 00:05:41.007
+05:43.650 --> 05:46.407
 You can just Google "Profiling web audio apps."
 
 123-p
-00:05:42.680 --> 00:05:45.760
+05:48.800 --> 05:51.160
 This tool is also important for two reasons.
 
 124
-00:05:45.760 --> 00:05:49.360
+05:51.160 --> 05:54.760
 First, this shows exactly when things went down
 
 125
-00:05:49.360 --> 00:05:50.593
+05:54.760 --> 05:55.993
 and how they happened.
 
 126
-00:05:51.430 --> 00:05:54.640
+05:56.830 --> 06:00.400
 You will be able to see when an audio stream glitches
 
 127
-00:05:54.640 --> 00:05:59.393
+06:00.400 --> 06:04.793
 like buffer underruns, and make an informed guess about why.
 
 128-p
-00:06:00.650 --> 00:06:03.470
+06:06.500 --> 06:08.870
 Secondly, this is incredibly useful
 
 129
-00:06:03.470 --> 00:06:06.160
+06:08.870 --> 06:11.560
 when you communicate with Chromium engineers.
 
 130
-00:06:06.160 --> 00:06:07.081
+06:11.560 --> 06:12.481
 It is very likely
 
 131
-00:06:07.081 --> 00:06:09.900
+06:12.481 --> 06:15.300
 that we don't have the exact same setup with you,
 
 132
-00:06:09.900 --> 00:06:13.660
+06:15.300 --> 06:19.600
 so some reproduction of the issue might be impossible.
 
 133
-00:06:13.660 --> 00:06:17.270
+06:19.600 --> 06:22.670
 So, when fixing bugs, exchanging a trace file
 
 134
-00:06:17.270 --> 00:06:19.293
+06:22.670 --> 06:24.693
 with us really helps the communication.
 
 slide-13
-00:06:21.690 --> 00:06:23.980
+06:27.900 --> 06:29.380
 Okay, let's shift gears
 
 136
-00:06:23.980 --> 00:06:25.940
+06:29.380 --> 06:31.340
 and talk about other issues
 
 137
-00:06:25.940 --> 00:06:28.603
+06:31.340 --> 06:34.300
 like device latency and user privacy.
 
 slide-14
-00:06:29.510 --> 00:06:31.740
+06:34.910 --> 06:37.140
 As you're building a client side application,
 
 139
-00:06:31.740 --> 00:06:34.200
+06:37.140 --> 06:39.600
 like an instrument or an audio recorder,
 
 140
-00:06:34.200 --> 00:06:37.610
+06:39.600 --> 06:43.100
 editor, or a DAW, soon you will realize
 
 141
-00:06:37.610 --> 00:06:39.970
+06:43.100 --> 06:45.370
 that the lack of access to audio device
 
 142
-00:06:39.970 --> 00:06:43.783
+06:45.370 --> 06:49.183
 is a big gap between the web and the native platform.
 
 143-p
-00:06:44.810 --> 00:06:46.780
+06:50.210 --> 06:52.180
 It means that device related settings,
 
 144
-00:06:46.780 --> 00:06:50.190
+06:52.180 --> 06:55.590
 such as number of channels, sample rate, and buffer size
 
 145
-00:06:50.190 --> 00:06:52.763
+06:55.590 --> 06:58.163
 are not readily available for your application.
 
 146-p
-00:06:53.750 --> 00:06:57.247
+06:59.150 --> 07:02.647
 We, browser implementers, actually are aware of that
 
 147
-00:06:57.247 --> 00:07:00.040
+07:02.647 --> 07:05.440
 that this is a huge pain point for developers,
 
 148
-00:07:00.040 --> 00:07:01.913
+07:05.440 --> 07:07.313
 but it is not without a reason.
 
 149-p
-00:07:05.050 --> 00:07:07.610
+07:10.450 --> 07:13.100
 This device related information can be exploited
 
 150
-00:07:07.610 --> 00:07:11.993
+07:13.100 --> 07:17.393
 by advertisers or attackers to infer the user's identity.
 
 151
-00:07:12.880 --> 00:07:14.640
+07:18.280 --> 07:20.400
 This technique is called fingerprinting
 
 152
-00:07:14.640 --> 00:07:16.010
+07:20.400 --> 07:21.410
 and it is one of the reason
 
 153
-00:07:16.010 --> 00:07:18.763
+07:21.410 --> 07:24.163
 that we cannot have nice things on the web.
 
 154-p
-00:07:20.140 --> 00:07:21.130
+07:25.540 --> 07:26.530
 There are of course,
 
 155
-00:07:21.130 --> 00:07:23.580
+07:26.530 --> 07:28.980
 countermeasures to this type of exploitation,
 
 156
-00:07:23.580 --> 00:07:26.123
+07:28.980 --> 07:31.523
 a constraint-based API pattern for example.
 
 157
-00:07:27.110 --> 00:07:29.010
+07:32.510 --> 07:34.410
 The app can make an inquiry
 
 158
-00:07:29.010 --> 00:07:30.910
+07:34.410 --> 07:36.310
 and the platform will accept or reject it
 
 159
-00:07:30.910 --> 00:07:33.530
+07:36.310 --> 07:38.930
 depending on the current client's capability.
 
 160-p
-00:07:33.530 --> 00:07:36.093
+07:38.930 --> 07:41.493
 It's like asking, "Hey, my app needs four channels
 
 161
-00:07:36.093 --> 00:07:39.600
+07:41.493 --> 07:45.000
 at 48k and lowest possible latency."
 
 162
-00:07:39.600 --> 00:07:41.803
+07:45.000 --> 07:47.203
 And the platform will say yes or no.
 
 163-p
-00:07:42.920 --> 00:07:44.805
+07:48.320 --> 07:50.205
 That way, it is much harder to sneak in
 
 164
-00:07:44.805 --> 00:07:48.380
+07:50.205 --> 07:53.780
 with a drive-by fingerprinting and at the same time,
 
 165
-00:07:48.380 --> 00:07:50.533
+07:53.780 --> 07:55.933
 we don't lose much of API usability.
 
 166-p
-00:07:52.520 --> 00:07:56.770
+07:57.920 --> 08:02.170
 Protecting user privacy was considered a hassle
 
 167
-00:07:56.770 --> 00:08:01.150
+08:02.170 --> 08:06.550
 and it was definitely a limiting factor of a web platform,
 
 168
-00:08:01.150 --> 00:08:04.190
+08:06.550 --> 08:09.590
 but I believe so-called privacy over API design
 
 169
-00:08:04.190 --> 00:08:08.003
+08:09.590 --> 08:13.403
 is gradually becoming a norm, even on the native platforms.
 
 170-p
-00:08:09.540 --> 00:08:12.124
+08:14.940 --> 08:17.524
 These days, you will find similar protection mechanisms
 
 171
-00:08:12.124 --> 00:08:15.730
+08:17.524 --> 08:21.130
 like a system-wide permission UI for microphone access
 
 172
-00:08:15.730 --> 00:08:18.923
+08:21.130 --> 08:24.323
 in other operating system like MacOS or Windows.
 
 slide-15
-00:08:22.640 --> 00:08:26.020
+08:28.400 --> 08:31.420
 Now let's talk a little bit about latency.
 
 174
-00:08:26.020 --> 00:08:28.660
+08:31.420 --> 08:34.600
 I'm well aware that this is a thorny issue
 
 175
-00:08:28.660 --> 00:08:30.080
+08:34.600 --> 08:35.480
 when it comes to web platform
 
 176
-00:08:30.080 --> 00:08:32.520
+08:35.480 --> 08:37.920
 and at least for Chrome Web Audio,
 
 177
-00:08:32.520 --> 00:08:34.330
+08:37.920 --> 08:39.730
 we are not particularly doing well
 
 178
-00:08:34.330 --> 00:08:36.273
+08:39.730 --> 08:41.673
 in audio latency department.
 
 179-p
-00:08:37.190 --> 00:08:38.740
+08:42.590 --> 08:44.140
 For audio production apps,
 
 180
-00:08:38.740 --> 00:08:42.720
+08:44.140 --> 08:48.120
 the latency is important at least for two reasons.
 
 181
-00:08:42.720 --> 00:08:45.600
+08:48.120 --> 08:51.000
 First, the minimum latency possible matters
 
 182
-00:08:45.600 --> 00:08:48.070
+08:51.000 --> 08:53.470
 when you're recording or monitoring,
 
 183
-00:08:48.070 --> 00:08:51.190
+08:53.470 --> 08:56.590
 but also accurate latency reporting from the platform
 
 184
-00:08:51.190 --> 00:08:55.073
+08:56.590 --> 09:00.473
 is critical for compensating audio after the fact.
 
 185-p
-00:08:57.060 --> 00:08:59.780
+09:02.460 --> 09:05.180
 But it's a tricky problem for browsers.
 
 186
-00:08:59.780 --> 00:09:02.740
+09:05.180 --> 09:08.140
 The browser needs to support a variety of configurations
 
 187
-00:09:02.740 --> 00:09:05.120
+09:08.140 --> 09:10.520
 on many different platforms.
 
 188
-00:09:05.120 --> 00:09:07.330
+09:10.520 --> 09:12.730
 It means that we are spreading thin
 
 189
-00:09:07.330 --> 00:09:08.163
+09:12.730 --> 09:13.563
 and might be missing
 
 190
-00:09:08.163 --> 00:09:10.503
+09:13.563 --> 09:15.903
 some obvious platform specific optimizations.
 
 191-p
-00:09:11.660 --> 00:09:13.610
+09:17.600 --> 09:19.100
 When seasoned audio developers
 
 192
-00:09:13.610 --> 00:09:18.280
+09:19.100 --> 09:23.680
 jump in Chrome's audio infrastructure, point out some problems,
 
 193
-00:09:18.280 --> 00:09:20.520
+09:23.680 --> 09:25.920
 we are always grateful for that
 
 194
-00:09:20.520 --> 00:09:23.253
+09:25.920 --> 09:28.653
 and that happened actually several times in the past.
 
 195-p
-00:09:25.670 --> 00:09:30.070
+09:31.700 --> 09:35.470
 Also, web audio is not the only audio API on the platform.
 
 196
-00:09:30.070 --> 00:09:32.740
+09:35.470 --> 09:38.140
 We're about to see a media element.
 
 197
-00:09:32.740 --> 00:09:35.910
+09:38.140 --> 09:41.310
 In Chrome, they all also share the same audio infrastructure
 
 198
-00:09:35.910 --> 00:09:36.913
+09:41.310 --> 09:42.313
 with web audio.
 
 199
-00:09:38.120 --> 00:09:40.420
+09:43.520 --> 09:45.820
 This makes it hard to bring a big change
 
 200
-00:09:40.420 --> 00:09:43.423
+09:45.820 --> 09:48.823
 that only benefits web audio and not others.
 
 201-p
-00:09:44.820 --> 00:09:47.990
+09:50.220 --> 09:53.390
 RTC and media usually focus on the resilience,
 
 202
-00:09:47.990 --> 00:09:50.350
+09:53.390 --> 09:55.750
 which means more buffering,
 
 203
-00:09:50.350 --> 00:09:52.950
+09:55.750 --> 09:58.350
 but web audio cares more about the low-latency
 
 204
-00:09:52.950 --> 00:09:56.700
+09:58.350 --> 10:02.100
 and interactivity, which means less buffering.
 
 205
-00:09:56.700 --> 00:09:58.550
+10:02.100 --> 10:03.950
 This conflict makes it hard
 
 206
-00:09:58.550 --> 00:10:00.880
+10:03.950 --> 10:06.280
 to apply the aggressive optimization
 
 207
-00:10:00.880 --> 00:10:02.623
+10:06.280 --> 10:08.230
 that only benefits web audio.
 
 slide-16
-00:10:04.740 --> 00:10:07.990
+10:10.140 --> 10:13.390
 What's the reality today?
 
 209-p
-00:10:07.990 --> 00:10:10.500
+10:13.390 --> 10:15.900
 For web audio, you have to usually get your media
 
 210
-00:10:10.500 --> 00:10:13.533
+10:15.900 --> 10:18.933
 for microphone input and the output simply goes
 
 211
-00:10:13.533 --> 00:10:16.500
+10:18.933 --> 10:21.900
 to the system default audio device.
 
 212-p
-00:10:16.500 --> 00:10:19.840
+10:21.900 --> 10:25.240
 But what if you want to use an audio device
 
 213
-00:10:19.840 --> 00:10:21.513
+10:25.240 --> 10:26.913
 other than a default one?
 
 214
-00:10:22.470 --> 00:10:25.810
+10:27.870 --> 10:31.210
 The only known solution is to use the audio element.
 
 215
-00:10:25.810 --> 00:10:29.220
+10:31.210 --> 10:34.620
 By streaming the web audio output to an audio element
 
 216
-00:10:29.220 --> 00:10:30.553
+10:34.620 --> 10:35.953
 with the selected device.
 
 217-p
-00:10:31.630 --> 00:10:34.150
+10:37.300 --> 10:39.550
 Here, streaming usually means
 
 218
-00:10:34.150 --> 00:10:37.970
+10:39.550 --> 10:43.370
 there are some buffering going on somewhere down there.
 
 219
-00:10:37.970 --> 00:10:39.520
+10:43.370 --> 10:44.920
 That can't be good for latency.
 
 slide-17
-00:10:41.710 --> 00:10:44.170
+10:47.110 --> 10:49.570
 What can we do about it?
 
 221
-00:10:44.170 --> 00:10:46.080
+10:49.570 --> 10:51.480
 The Audio Working Group is currently working
 
 222
-00:10:46.080 --> 00:10:48.270
+10:51.480 --> 10:53.670
 to create a new API that allows you
 
 223
-00:10:48.270 --> 00:10:51.683
+10:53.670 --> 10:57.830
 to select the audio output device for a audio context.
 
 224
-00:10:53.370 --> 00:10:55.780
+10:58.770 --> 11:01.180
 Theoretically, this will guarantee the code path
 
 225
-00:10:55.780 --> 00:10:57.683
+11:01.180 --> 11:03.830
 that minimizes the output latency.
 
 226-p
-00:10:59.260 --> 00:11:02.402
+11:04.660 --> 11:07.802
 Also, one can dream about creating new API
 
 227
-00:11:02.402 --> 00:11:05.110
+11:07.802 --> 11:10.510
 for input device selection as well.
 
 228
-00:11:05.110 --> 00:11:07.840
+11:10.510 --> 11:13.240
 I'm curious how many people would want that.
 
 229
-00:11:07.840 --> 00:11:09.540
+11:13.240 --> 11:14.940
 Please let me know what you think.
 
 slide-18
-00:11:11.320 --> 00:11:14.020
+11:16.720 --> 11:19.420
 That's all I have for today and here's the conclusion.
 
 slide-19
-00:11:14.950 --> 00:11:16.570
+11:20.350 --> 11:21.970
 We talked about the design
 
 232
-00:11:16.570 --> 00:11:19.380
+11:21.970 --> 11:24.780
 and the architecture of Web Audio API
 
 233
-00:11:19.380 --> 00:11:21.935
+11:24.780 --> 11:27.335
 and also I introduced the Web Audio perf ToolKit
 
 234
-00:11:21.935 --> 00:11:25.970
+11:27.335 --> 11:31.370
 from Chrome, and also we discussed the problems
 
 235
-00:11:25.970 --> 00:11:28.083
+11:31.370 --> 11:33.483
 in device access and latency.
 
 236-p
-00:11:29.140 --> 00:11:32.262
+11:34.540 --> 11:37.662
 By all means, this is just a conversation starter,
 
 237
-00:11:32.262 --> 00:11:35.400
+11:37.662 --> 11:40.800
 not a comprehensive guideline.
 
 slide-20
-00:11:35.400 --> 00:11:39.010
+11:40.800 --> 11:44.410
 With that, I would like to invite you to a survey,
 
 239
-00:11:39.010 --> 00:11:40.900
+11:44.410 --> 11:46.300
 so we, browser implementers,
 
 240
-00:11:40.900 --> 00:11:42.970
+11:46.300 --> 11:48.370
 can understand your needs better.
 
 241
-00:11:42.970 --> 00:11:43.863
+11:48.370 --> 11:49.263
 Here's a link.
 
 242-p
-00:11:45.590 --> 00:11:47.348
+11:50.990 --> 11:52.748
 Lastly, my chrome tech lead
 
 243
-00:11:47.348 --> 00:11:50.034
+11:52.748 --> 11:55.434
 hat on, building a healthy ecosystem
 
 244
-00:11:50.034 --> 00:11:53.540
+11:55.434 --> 11:58.940
 for web audio is my job and I'm open to have a chat
 
 245
-00:11:53.540 --> 00:11:57.793
+11:58.940 --> 12:03.193
 with anyone who is interested in partnership with my team.
 
 246-p
-00:11:58.820 --> 00:12:02.770
+12:04.220 --> 12:08.170
 Please feel free to email me or DM me on Twitter.
 
 247
-00:12:02.770 --> 00:12:03.740
+12:08.170 --> 12:09.140
 Thank you for watching.
 
 248
-00:12:03.740 --> 00:12:05.133
+12:09.140 --> 12:10.533
 Be safe and stay healthy.
 

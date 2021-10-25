@@ -1,526 +1,526 @@
-﻿WEBVTT
+WEBVTT
 
 1
-00:00:00.240 --> 00:00:01.240
+00:07.400 --> 00:08.400
 <v ->Hello, there.</v>
 
 2
-00:00:01.240 --> 00:00:02.350
+00:08.400 --> 00:09.150
 My name is Sacha Guddoy
 
 3
-00:00:02.350 --> 00:00:05.300
+00:09.150 --> 00:12.100
 and I'm the lead Front End Engineer at Grabyo.
 
 slide-2
-00:00:05.300 --> 00:00:08.370
+00:12.100 --> 00:15.170
 Grabyo is a SaaS platform which delivers tools
 
 5
-00:00:08.370 --> 00:00:12.480
+00:15.170 --> 00:19.280
 for live broadcast production to commercial broadcasters.
 
 6-p
-00:00:12.480 --> 00:00:15.670
+00:19.280 --> 00:22.470
 Some of the offerings include live broadcast production,
 
 7
-00:00:15.670 --> 00:00:18.650
+00:22.470 --> 00:25.450
 video editing, clipping from live streams,
 
 8
-00:00:18.650 --> 00:00:21.403
+00:25.450 --> 00:28.203
 and publishing to various endpoints.
 
 slide-3
-00:00:23.690 --> 00:00:27.263
+00:30.490 --> 00:34.630
 At Grabyo, we use WebRTC in our live production offering.
 
 10-p
-00:00:28.210 --> 00:00:31.110
+00:35.100 --> 00:37.910
 The way that this works is the user will see,
 
 11
-00:00:31.110 --> 00:00:32.080
+00:37.910 --> 00:38.880
 in their web browser,
 
 12
-00:00:32.080 --> 00:00:34.850
+00:38.880 --> 00:41.650
 they'll have multiple live streams coming in
 
 13
-00:00:34.850 --> 00:00:38.010
+00:41.650 --> 00:44.810
 and they will be able to monitor these live streams
 
 14
-00:00:38.010 --> 00:00:41.176
+00:44.810 --> 00:47.976
 and choose which ones are being output
 
 15
-00:00:41.176 --> 00:00:43.563
+00:47.976 --> 00:50.363
 to their broadcast endpoint.
 
 16-p
-00:00:45.350 --> 00:00:47.950
+00:52.150 --> 00:54.750
 We also have multiple sidecar applications
 
 17
-00:00:47.950 --> 00:00:49.440
+00:54.750 --> 00:56.240
 and multi-window workflows.
 
 18
-00:00:49.440 --> 00:00:51.920
+00:56.240 --> 00:58.720
 For example, popping out a player.
 
 slide-4
-00:00:51.920 --> 00:00:53.640
+00:58.720 --> 01:00.440
 One of the challenges that we face is
 
 20
-00:00:53.640 --> 00:00:55.510
+01:00.440 --> 01:02.310
 the synchronization of streams.
 
 21-p
-00:00:55.510 --> 00:00:59.820
+01:02.310 --> 01:06.620
 What we'd like to do is to have multiple live feeds
 
 22
-00:00:59.820 --> 00:01:01.200
+01:06.620 --> 01:08.000
 from different cameras coming in
 
 23
-00:01:01.200 --> 00:01:03.370
+01:08.000 --> 01:10.170
 and to be able to switch between them.
 
 24
-00:01:03.370 --> 00:01:05.760
+01:10.170 --> 01:12.560
 But if our live feeds aren't perfectly in sync
 
 25
-00:01:05.760 --> 00:01:06.593
+01:12.560 --> 01:13.393
 with each other,
 
 26
-00:01:06.593 --> 00:01:08.380
+01:13.393 --> 01:15.180
 if those two cameras aren't perfectly in sync,
 
 27
-00:01:08.380 --> 00:01:10.080
+01:15.180 --> 01:16.880
 it's going to be very noticeable when
 
 28
-00:01:10.080 --> 00:01:11.750
+01:16.880 --> 01:18.550
 you switch between them that there's some delay
 
 29
-00:01:11.750 --> 00:01:14.930
+01:18.550 --> 01:21.730
 between them and it's jarring for the viewer.
 
 30-p
-00:01:14.930 --> 00:01:18.160
+01:21.730 --> 01:24.960
 When you have multiple WebRTC streams on your page,
 
 31
-00:01:18.160 --> 00:01:20.340
+01:24.960 --> 01:27.140
 keeping those all in sync is not necessarily
 
 32
-00:01:20.340 --> 00:01:23.010
+01:27.140 --> 01:29.810
 the most straightforward thing.
 
 33
-00:01:23.010 --> 00:01:27.033
+01:29.810 --> 01:33.833
 The browser will do its best, but they aren't tied together.
 
 34-p
-00:01:28.690 --> 00:01:29.523
+01:35.490 --> 01:36.323
 So, for example,
 
 35
-00:01:29.523 --> 00:01:33.460
+01:36.323 --> 01:40.260
 if you are cutting between different cameras,
 
 36
-00:01:33.460 --> 00:01:37.050
+01:40.260 --> 01:43.850
 you want those camera feeds to be showing exactly
 
 37
-00:01:37.050 --> 00:01:38.610
+01:43.850 --> 01:45.410
 at the same time.
 
 38
-00:01:38.610 --> 00:01:42.130
+01:45.410 --> 01:48.930
 If you're doing multi-party chat, you don't want latency.
 
 slide-5
-00:01:42.130 --> 00:01:44.800
+01:48.930 --> 01:51.600
 The synchronization aspect is pretty difficult.
 
 40
-00:01:44.800 --> 00:01:46.900
+01:51.600 --> 01:53.700
 Network conditions can be unpredictable
 
 41
-00:01:48.480 --> 00:01:51.200
+01:55.280 --> 01:58.000
 and you don't really have a way of correcting for that
 
 42
-00:01:51.200 --> 00:01:53.950
+01:58.000 --> 02:00.750
 or to reconcile with synchronization of streams
 
 43
-00:01:53.950 --> 00:01:54.900
+02:00.750 --> 02:01.700
 on the client side.
 
 44-p
-00:01:55.960 --> 00:01:58.620
+02:02.760 --> 02:05.420
 If there were embedded time stamps on the streams,
 
 45
-00:01:58.620 --> 00:02:01.170
+02:05.420 --> 02:07.970
 then you potentially could do that.
 
 46
-00:02:01.170 --> 00:02:04.070
+02:07.970 --> 02:10.870
 Using something lower level, such as web transport,
 
 47
-00:02:04.070 --> 00:02:05.340
+02:10.870 --> 02:12.140
 may allow you to do that
 
 48
-00:02:05.340 --> 00:02:09.190
+02:12.140 --> 02:15.990
 and may even be a more performant technology
 
 49
-00:02:09.190 --> 00:02:11.463
+02:15.990 --> 02:18.263
 for this use case than WebRTC anyway.
 
 slide-6
-00:02:12.820 --> 00:02:15.600
+02:19.620 --> 02:22.400
 One pattern that we've been using recently is
 
 51
-00:02:15.600 --> 00:02:19.100
+02:22.400 --> 02:25.900
 splitting workflows into different browser contexts.
 
 52
-00:02:19.100 --> 00:02:22.420
+02:25.900 --> 02:29.220
 Being able to create a pop out window
 
 53
-00:02:22.420 --> 00:02:24.350
+02:29.220 --> 02:31.150
 which allows you to monitor
 
 54
-00:02:24.350 --> 00:02:28.050
+02:31.150 --> 02:34.850
 a specific video in one window
 
 55
-00:02:28.050 --> 00:02:31.570
+02:34.850 --> 02:38.370
 and be able to monitor everything else in another window.
 
 56-p
-00:02:31.570 --> 00:02:33.950
+02:38.370 --> 02:40.750
 Or to be able to edit your audio in one window
 
 57
-00:02:33.950 --> 00:02:36.050
+02:40.750 --> 02:42.850
 and monitor your videos in another window.
 
 58
-00:02:36.950 --> 00:02:40.230
+02:43.750 --> 02:47.300
 In that last scenario, you're going to be having
 
 59
-00:02:40.230 --> 00:02:42.700
+02:47.300 --> 02:49.500
 two instances in your browser
 
 60
-00:02:42.700 --> 00:02:44.460
+02:49.500 --> 02:51.260
 of that same WebRTC connection.
 
 61
-00:02:44.460 --> 00:02:47.580
+02:51.260 --> 02:54.380
 If I wanted to have the video of my live stream
 
 62
-00:02:47.580 --> 00:02:51.200
+02:54.380 --> 02:58.000
 in one window because that's my video control suite
 
 63
-00:02:51.200 --> 00:02:54.910
+02:58.000 --> 03:01.710
 and I want to have the same live stream in another window
 
 64
-00:02:54.910 --> 00:02:57.060
+03:01.710 --> 03:03.860
 because that's my audio control suite,
 
 65
-00:02:57.060 --> 00:02:59.220
+03:03.860 --> 03:06.200
 then I have to have two WebRTC connections.
 
 66
-00:02:59.220 --> 00:03:01.140
+03:06.200 --> 03:07.940
 That's twice the performance overhead,
 
 67
-00:03:01.140 --> 00:03:02.893
+03:07.940 --> 03:09.693
 twice the bandwidth, et cetera.
 
 68-p
-00:03:04.070 --> 00:03:07.080
+03:10.870 --> 03:13.880
 We think about the way that Shared WebWorkers work,
 
 69
-00:03:07.080 --> 00:03:09.320
+03:13.880 --> 03:16.120
 the shared workflow space,
 
 70
-00:03:09.320 --> 00:03:13.690
+03:16.120 --> 03:20.490
 that allows multiple contexts to share whatever
 
 71
-00:03:13.690 --> 00:03:15.860
+03:20.490 --> 03:22.660
 is happening in that work area.
 
 72
-00:03:15.860 --> 00:03:18.770
+03:22.660 --> 03:25.570
 If we could do the exact same thing with WebRTC,
 
 73
-00:03:18.770 --> 00:03:21.620
+03:25.570 --> 03:28.420
 that would significantly reduce our performance overhead.
 
 74-p
-00:03:23.540 --> 00:03:25.490
+03:30.340 --> 03:32.290
 And these kinds of workflows are really powerful
 
 75
-00:03:25.490 --> 00:03:28.560
+03:32.290 --> 03:35.360
 for professional desktop applications.
 
 76
-00:03:28.560 --> 00:03:31.250
+03:35.360 --> 03:38.500
 If you are a video editor using some kind of NLW,
 
 77
-00:03:31.250 --> 00:03:33.080
+03:38.500 --> 03:39.880
 you probably want as much screen space as you want
 
 78
-00:03:33.080 --> 00:03:34.960
+03:39.880 --> 03:41.760
 for your timeline, your monitors,
 
 79
-00:03:34.960 --> 00:03:37.240
+03:41.760 --> 03:44.400
 your asset bins, et cetera.
 
 80
-00:03:37.240 --> 00:03:40.180
+03:44.400 --> 03:46.980
 Being able to kind of split different parts
 
 81
-00:03:40.180 --> 00:03:42.300
+03:46.980 --> 03:49.100
 of our interfaces out into different windows
 
 82
-00:03:42.300 --> 00:03:44.240
+03:49.100 --> 03:51.400
 so the user can position them as they see fit
 
 83
-00:03:44.240 --> 00:03:45.540
+03:51.400 --> 03:52.340
 is really, really helpful.
 
 slide-7
-00:03:46.400 --> 00:03:49.150
+03:53.200 --> 03:55.950
 What are the advantages of doing this?
 
 85-p
-00:03:49.150 --> 00:03:51.010
+03:55.950 --> 03:57.810
 There's obviously less resource consumption
 
 86
-00:03:51.010 --> 00:03:53.463
+03:57.810 --> 04:00.263
 because you only have that one connection.
 
 87-p
-00:03:54.960 --> 00:03:58.070
+04:01.760 --> 04:04.870
 There's inherent synchronization between the contexts
 
 88
-00:03:58.070 --> 00:04:01.703
+04:04.870 --> 04:08.503
 because the data is coming from that same connection.
 
 89
-00:04:03.020 --> 00:04:06.100
+04:09.820 --> 04:12.900
 Now this is probably possible using shared workers
 
 90
-00:04:06.100 --> 00:04:07.273
+04:12.900 --> 04:14.730
 and web transport.
 
 91
-00:04:08.120 --> 00:04:11.033
+04:14.920 --> 04:17.833
 But browser support for that is not particularly great.
 
 92-p
-00:04:12.040 --> 00:04:14.523
+04:18.840 --> 04:21.323
 Accuracy is also important in this technology.
 
 93
-00:04:15.840 --> 00:04:18.780
+04:22.640 --> 04:25.580
 More accurate time stamps might help us
 
 94
-00:04:18.780 --> 00:04:20.650
+04:25.580 --> 04:27.450
 synchronize those streams together.
 
 95
-00:04:20.650 --> 00:04:24.420
+04:27.450 --> 04:31.220
 And also it helps synchronize other things.
 
 96-p
-00:04:24.420 --> 00:04:28.040
+04:31.220 --> 04:34.840
 For example, synchronize an overlay in the DOM.
 
 97
-00:04:28.040 --> 00:04:29.573
+04:34.840 --> 04:36.373
 Or a notification in the DOM.
 
 slide-8
-00:04:30.480 --> 00:04:32.930
+04:37.280 --> 04:39.730
 Capability to encode and decode data
 
 99
-00:04:32.930 --> 00:04:36.060
+04:39.730 --> 04:42.860
 from the web RTC connection would also be really useful.
 
 100-p
-00:04:36.060 --> 00:04:37.660
+04:42.860 --> 04:44.460
 Right now, the API surface of
 
 101
-00:04:37.660 --> 00:04:41.220
+04:44.460 --> 04:48.200
 the WebRTC connection is pretty minimal
 
 102
-00:04:41.220 --> 00:04:44.793
+04:48.200 --> 04:51.593
 and it doesn't expose much useful information to us.
 
 103
-00:04:46.090 --> 00:04:50.417
+04:52.890 --> 04:57.217
 Being able to put our own code in that pipeline
 
 104
-00:04:50.417 --> 00:04:53.220
+04:57.217 --> 05:00.200
 would allow us to do all this interesting stuff.
 
 105-p
-00:04:53.220 --> 00:04:56.660
+05:00.200 --> 05:03.460
 Say, for example, presenting a particular frame
 
 106
-00:04:56.660 --> 00:04:58.010
+05:03.460 --> 05:04.810
 when we want to present it.
 
 107
-00:04:58.010 --> 00:05:00.840
+05:04.810 --> 05:07.640
 Say, for example, synchronizing audio and video
 
 108
-00:05:00.840 --> 00:05:03.040
+05:07.640 --> 05:09.840
 from different browser windows.
 
 109-p
-00:05:03.040 --> 00:05:06.680
+05:09.840 --> 05:13.480
 We could know exactly which frame is being presented
 
 110
-00:05:06.680 --> 00:05:08.490
+05:13.480 --> 05:15.290
 before they even get rendered to the DOM,
 
 111
-00:05:08.490 --> 00:05:10.980
+05:15.290 --> 05:17.780
 so we can prepare our DOM elements
 
 112
-00:05:10.980 --> 00:05:13.080
+05:17.780 --> 05:19.880
 which would synchronize to that.
 
 113
-00:05:13.080 --> 00:05:14.670
+05:19.880 --> 05:21.470
 We could potentially send over
 
 114
-00:05:14.670 --> 00:05:16.970
+05:21.470 --> 05:23.770
 proprietary error correction data
 
 115
-00:05:16.970 --> 00:05:19.550
+05:23.770 --> 05:26.350
 to smooth over any link failures
 
 116
-00:05:19.550 --> 00:05:21.673
+05:26.350 --> 05:28.473
 with picture quality as a priority.
 
 117-p
-00:05:22.970 --> 00:05:24.270
+05:29.770 --> 05:31.700
 And going back the other way,
 
 118
-00:05:24.270 --> 00:05:26.000
+05:31.700 --> 05:32.800
 you could do stuff like funny hats.
 
 119
-00:05:26.000 --> 00:05:27.010
+05:32.800 --> 05:33.810
 You could do chroma keying.
 
 120
-00:05:27.010 --> 00:05:29.060
+05:33.810 --> 05:35.860
 You could do machine learning analysis
 
 121
-00:05:29.060 --> 00:05:30.610
+05:35.860 --> 05:37.410
 and do stuff like background blur
 
 122
-00:05:30.610 --> 00:05:33.440
+05:37.410 --> 05:40.240
 or embedding meta data.
 
 123-p
-00:05:33.440 --> 00:05:35.810
+05:40.240 --> 05:42.610
 A lot of this can be solved using
 
 124
-00:05:35.810 --> 00:05:39.283
+05:42.610 --> 05:46.830
 the MediaStreamTrack Insertable Streams feature.
 
 125
-00:05:40.400 --> 00:05:42.300
+05:47.200 --> 05:49.100
 That is still in a draft specification
 
 126
-00:05:43.150 --> 00:05:46.593
+05:49.950 --> 05:53.393
 and I'd really love to see more browser support for that.
 
 127-p
-00:05:49.010 --> 00:05:49.843
+05:55.810 --> 05:56.643
 Thank you for watching.
 
 128
-00:05:49.843 --> 00:05:51.670
+05:56.643 --> 05:58.470
 I hope you enjoyed hearing about our use cases
 
 129
-00:05:51.670 --> 00:05:53.140
+05:58.470 --> 05:59.940
 and I'm looking forward to hearing
 
 130
-00:05:53.140 --> 00:05:55.440
+05:59.940 --> 06:02.240
 any questions and feedback.
 
 131
-00:05:55.440 --> 00:05:56.273
+06:02.240 --> 06:03.730
 Thanks, bye.
 

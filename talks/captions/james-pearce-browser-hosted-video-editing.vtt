@@ -1,799 +1,799 @@
-﻿WEBVTT
+WEBVTT
 
 1
-00:00:00.760 --> 00:00:05.713
+00:06.160 --> 00:11.113
 <v James Pearce>This is our web-based editor,</v>
 
 2
-00:00:06.620 --> 00:00:10.530
+00:12.200 --> 00:15.930
 and for those that aren't familiar with editing,
 
 3
-00:00:10.530 --> 00:00:13.630
+00:15.930 --> 00:19.300
 this follows the fairly standard approach
 
 4
-00:00:13.630 --> 00:00:17.285
+00:19.300 --> 00:22.685
 that editing applications have, which is, you know,
 
 5
-00:00:17.285 --> 00:00:20.160
+00:22.685 --> 00:25.560
 a normal three window layout.
 
 6
-00:00:20.160 --> 00:00:22.190
+00:25.560 --> 00:27.590
 At the top left, we have a source viewer,
 
 7
-00:00:22.190 --> 00:00:25.950
+00:27.590 --> 00:31.350
 which is used to load in source clips, and cut them up,
 
 8
-00:00:25.950 --> 00:00:27.453
+00:31.350 --> 00:32.853
 and add them to the timeline.
 
 9
-00:00:28.380 --> 00:00:30.480
+00:33.780 --> 00:35.880
 At the bottom. We have a timeline view,
 
 10
-00:00:30.480 --> 00:00:33.130
+00:35.880 --> 00:38.530
 which just shows us our various tracks,
 
 11
-00:00:33.130 --> 00:00:35.130
+00:38.530 --> 00:40.530
 and segments in those tracks,
 
 12
-00:00:35.130 --> 00:00:38.520
+00:40.530 --> 00:43.920
 and in the top right, we have a sequence player,
 
 13
-00:00:38.520 --> 00:00:40.690
+00:43.920 --> 00:46.900
 which lets me scrub through,
 
 14
-00:00:40.690 --> 00:00:44.570
+00:46.900 --> 00:49.970
 and play through the edit that I'm building,
 
 15
-00:00:44.570 --> 00:00:48.350
+00:49.970 --> 00:53.750
 that timeline that I'm building in the view below.
 
 16
-00:00:48.350 --> 00:00:49.950
+00:53.750 --> 00:55.350
 On the left, the far left,
 
 17
-00:00:49.950 --> 00:00:53.760
+00:55.350 --> 00:59.160
 we have just a view of all our assets in the system,
 
 18
-00:00:53.760 --> 00:00:56.080
+00:59.160 --> 01:01.480
 so that lets us find a source,
 
 19
-00:00:56.080 --> 00:00:57.900
+01:01.480 --> 01:03.300
 and load it into the source viewer,
 
 20
-00:00:57.900 --> 00:01:00.400
+01:03.300 --> 01:05.800
 or just drag it into the timeline.
 
 21-p
-00:01:00.400 --> 00:01:04.460
+01:05.800 --> 01:09.860
 This editor, it's pretty much fully featured,
 
 22
-00:01:04.460 --> 00:01:06.970
+01:09.860 --> 01:12.370
 in the sense that we've gonna have arbitrary numbers
 
 23
-00:01:06.970 --> 00:01:10.090
+01:12.370 --> 01:15.490
 of tracks, arbitrary numbers of segments.
 
 24
-00:01:10.090 --> 00:01:13.590
+01:15.490 --> 01:18.990
 We can have effects on those segments.
 
 25
-00:01:13.590 --> 00:01:16.260
+01:18.990 --> 01:21.660
 We can have transitions between those segments.
 
 26
-00:01:16.260 --> 00:01:21.260
+01:21.660 --> 01:26.660
 You know, I could add a blur to a particular segment,
 
 27
-00:01:22.060 --> 00:01:25.270
+01:27.460 --> 01:30.670
 and that will give me a blurred view of that,
 
 28
-00:01:25.270 --> 00:01:27.320
+01:30.670 --> 01:32.720
 and I've got some controls that I can use
 
 29
-00:01:27.320 --> 00:01:29.363
+01:32.720 --> 01:34.763
 to tweak how blurry that is.
 
 30-p
-00:01:30.550 --> 00:01:33.160
+01:35.950 --> 01:38.560
 We have a whole bunch of effects that we've implemented,
 
 31
-00:01:33.160 --> 00:01:35.520
+01:38.560 --> 01:40.920
 but, obviously, that list will grow
 
 32
-00:01:35.520 --> 00:01:39.490
+01:40.920 --> 01:44.890
 as we build on user requirements.
 
 33-p
-00:01:39.490 --> 00:01:41.200
+01:44.890 --> 01:46.600
 In terms of transitions, as well,
 
 34
-00:01:41.200 --> 00:01:44.810
+01:46.600 --> 01:50.210
 we have a variety, based on, you know, feedback from users,
 
 35
-00:01:44.810 --> 00:01:49.210
+01:50.210 --> 01:54.610
 so I could add a simple circle wipe,
 
 36
-00:01:49.210 --> 00:01:50.373
+01:54.610 --> 01:55.773
 if I play through that.
 
 37
-00:01:51.650 --> 00:01:56.650
+01:57.500 --> 02:02.500
 And again, controls to adjust what that transition does.
 
 38-p
-00:01:56.730 --> 00:02:01.380
+02:02.130 --> 02:06.780
 That's in terms of some of the
 
 39
-00:02:01.380 --> 00:02:03.480
+02:06.780 --> 02:08.880
 richer stuff that I can add to the timeline,
 
 40
-00:02:03.480 --> 00:02:05.053
+02:08.880 --> 02:10.453
 that's a brief summary.
 
 41-p
-00:02:06.440 --> 00:02:07.860
+02:11.840 --> 02:13.260
 In terms of playback as well,
 
 42
-00:02:07.860 --> 00:02:10.730
+02:13.260 --> 02:16.130
 we have, obviously, pretty high performance scrubbing here,
 
 43
-00:02:10.730 --> 00:02:15.140
+02:16.130 --> 02:20.540
 so I can scrub around on the timeline and see, you know,
 
 44
-00:02:15.140 --> 00:02:18.030
+02:20.540 --> 02:23.430
 the cuts, and the transitions, and all the effects
 
 45
-00:02:18.030 --> 00:02:20.860
+02:23.430 --> 02:26.260
 being rendered into that sequence viewer.
 
 46
-00:02:20.860 --> 00:02:23.900
+02:26.260 --> 02:29.300
 I can play through, I can play through at different speeds,
 
 47
-00:02:23.900 --> 00:02:26.027
+02:29.300 --> 02:31.427
 so I can...
 (video audio distorts)
 
 48
-00:02:26.027 --> 00:02:27.804
+02:31.427 --> 02:33.204
 Playing at one and a half times there,
 
 49
-00:02:27.804 --> 00:02:28.969
+02:33.204 --> 02:34.369
 and we're getting audio, as well.
 
 50
-00:02:28.969 --> 00:02:30.513
+02:34.369 --> 02:35.913
 (video audio speeds up)
 
 51
-00:02:30.513 --> 00:02:33.060
+02:35.913 --> 02:38.460
 As I play faster and faster, at some point,
 
 52
-00:02:33.060 --> 00:02:35.693
+02:38.460 --> 02:41.930
 the audio stops, because it becomes unusable.
 
 53
-00:02:36.620 --> 00:02:38.171
+02:42.200 --> 02:43.571
 And that works in reverse, as well.
 
 54
-00:02:38.171 --> 00:02:41.962
+02:43.571 --> 02:47.362
 (video audio plays in reverse)
 
 55
-00:02:41.962 --> 00:02:45.462
+02:47.362 --> 02:50.862
 I can review a section of the material,
 
 56
-00:02:46.970 --> 00:02:49.600
+02:52.370 --> 02:55.000
 just by going backwards and forwards.
 
 57-p
-00:02:49.600 --> 00:02:52.280
+02:55.000 --> 02:57.680
 I can move through by frame, as well.
 
 58
-00:02:52.280 --> 00:02:56.747
+02:57.680 --> 03:02.147
 And if you can hear, you get chirps, to tell me...
 
 59
-00:02:56.747 --> 00:02:58.440
+03:02.147 --> 03:03.840
 (video audio plays back in chirps)
 
 60
-00:02:58.440 --> 00:02:59.690
+03:03.840 --> 03:05.900
 You know, where I am in the audio.
 
 61
-00:02:59.690 --> 00:03:01.630
+03:05.900 --> 03:07.300
 If I'm looking for a particular point
 
 62
-00:03:01.630 --> 00:03:05.310
+03:07.300 --> 03:10.710
 in the presenter's speech,
 
 63
-00:03:05.310 --> 00:03:07.449
+03:10.710 --> 03:12.849
 I'm looking for final "p", or a final "s",
 
 64
-00:03:07.449 --> 00:03:11.690
+03:12.849 --> 03:17.900
 I can hear that by just frame-stepping through.
 
 65-p
-00:03:11.690 --> 00:03:14.920
+03:17.900 --> 03:20.320
 This is just a demonstration of, you know,
 
 66
-00:03:14.920 --> 00:03:17.140
+03:20.320 --> 03:22.540
 quite good performance we're getting,
 
 67
-00:03:17.140 --> 00:03:21.763
+03:22.540 --> 03:27.163
 from the media playback, both audio and video.
 
 68-p
-00:03:22.870 --> 00:03:24.770
+03:28.270 --> 03:30.170
 To talk about the technologies
 
 69
-00:03:24.770 --> 00:03:26.230
+03:30.170 --> 03:31.630
 that are underpinning that,
 
 70
-00:03:26.230 --> 00:03:28.633
+03:31.630 --> 03:34.330
 and the APIs we're using,
 
 71
-00:03:30.130 --> 00:03:35.130
+03:35.530 --> 03:40.530
 I guess, the primary one that is probably of most interest
 
 72
-00:03:35.250 --> 00:03:39.910
+03:40.650 --> 03:45.310
 to this meeting, is WebCodecs,
 
 73
-00:03:39.910 --> 00:03:44.477
+03:45.310 --> 03:49.877
 and we're using WebCodecs to decode both H264 and AAC.
 
 74-p
-00:03:45.540 --> 00:03:49.800
+03:50.940 --> 03:55.200
 Previous to WebCodecs, we were using WebAssembly,
 
 75
-00:03:49.800 --> 00:03:52.770
+03:55.200 --> 03:58.170
 so we built our own decoders,
 
 76
-00:03:52.770 --> 00:03:54.480
+03:58.170 --> 03:59.880
 we compiled those with WebAssembly,
 
 77
-00:03:54.480 --> 00:03:57.900
+03:59.880 --> 04:03.300
 and we were using those in a Web Worker
 
 78
-00:03:57.900 --> 00:04:01.080
+04:03.300 --> 04:06.480
 to decode the material, buffer that,
 
 79
-00:04:01.080 --> 00:04:03.170
+04:06.480 --> 04:08.570
 and then have that available for this
 
 80
-00:04:03.170 --> 00:04:07.283
+04:08.570 --> 04:12.683
 rapid, random access that we need in the player.
 
 81-p
-00:04:08.720 --> 00:04:12.230
+04:14.120 --> 04:17.630
 Because of the way we built our playback engine,
 
 82
-00:04:12.230 --> 00:04:13.860
+04:17.630 --> 04:19.260
 we were able to, pretty quickly,
 
 83
-00:04:13.860 --> 00:04:18.860
+04:19.260 --> 04:24.260
 swap out the WebAssembly decoders with the WebCodec ones.
 
 84
-00:04:19.010 --> 00:04:22.797
+04:24.410 --> 04:28.197
 We get the same kind of, you know,
 
 85
-00:04:22.797 --> 00:04:24.750
+04:28.197 --> 04:30.150
 the code hasn't changed very much,
 
 86
-00:04:24.750 --> 00:04:27.580
+04:30.150 --> 04:32.980
 but their performance has improved significantly,
 
 87
-00:04:27.580 --> 00:04:32.580
+04:32.980 --> 04:37.980
 and also, power consumption, and sort of associated,
 
 88
-00:04:34.060 --> 00:04:37.100
+04:39.460 --> 04:42.500
 elements of performance that, you know,
 
 89
-00:04:37.100 --> 00:04:38.530
+04:42.500 --> 04:43.930
 we see improvements in.
 
 90-p
-00:04:38.530 --> 00:04:39.930
+04:43.930 --> 04:45.330
 That's been really good.
 
 91
-00:04:41.220 --> 00:04:43.950
+04:46.620 --> 04:49.350
 I mentioned previously, Web Workers, as well.
 
 92
-00:04:43.950 --> 00:04:47.530
+04:49.350 --> 04:52.930
 For the most part, we're trying to perform
 
 93
-00:04:47.530 --> 00:04:51.693
+04:52.930 --> 04:57.930
 our entire decode and render pipeline in a Worker.
 
 94-p
-00:04:53.360 --> 00:04:55.210
+04:58.760 --> 05:00.610
 And for the most part, we can do that,
 
 95
-00:04:55.210 --> 00:04:57.780
+05:00.610 --> 05:03.180
 where off-screen canvases are available,
 
 96
-00:04:57.780 --> 00:05:00.450
+05:03.180 --> 05:05.850
 we can do the entire end-to-end video decode
 
 97
-00:05:00.450 --> 00:05:03.620
+05:05.850 --> 05:09.200
 and video rendering in a Worker.
 
 98-p
-00:05:03.620 --> 00:05:05.670
+05:09.200 --> 05:11.700
 Audio is a little bit more problematic,
 
 99
-00:05:05.670 --> 00:05:08.820
+05:11.700 --> 05:14.220
 because the Web Audio API,
 
 100
-00:05:08.820 --> 00:05:12.630
+05:14.220 --> 05:18.300
 most of that API is tied to the main UI thread,
 
 101
-00:05:12.630 --> 00:05:15.200
+05:18.300 --> 05:20.600
 which has caused us some problems, historically.
 
 102
-00:05:15.200 --> 00:05:17.050
+05:20.600 --> 05:22.450
 We've had to jump through a few hoops
 
 103
-00:05:17.050 --> 00:05:19.420
+05:22.450 --> 05:24.820
 to try and buffer as much as possible,
 
 104
-00:05:19.420 --> 00:05:22.410
+05:24.820 --> 05:27.810
 so that playback isn't effected by, you know,
 
 105
-00:05:22.410 --> 00:05:25.870
+05:27.810 --> 05:31.270
 if I start scrolling through the list over here,
 
 106
-00:05:25.870 --> 00:05:30.870
+05:31.270 --> 05:36.270
 and cause a significant load on the UI thread.
 
 107
-00:05:31.420 --> 00:05:34.800
+05:36.820 --> 05:40.200
 We want to avoid having kind of
 
 108
-00:05:34.800 --> 00:05:37.590
+05:40.200 --> 05:42.990
 pauses in the video, or pauses in the playback,
 
 109
-00:05:37.590 --> 00:05:41.090
+05:42.990 --> 05:46.490
 as the audio can't be decoded in time.
 
 110-p
-00:05:41.090 --> 00:05:45.900
+05:46.490 --> 05:51.300
 Web Audio is one of the areas
 
 111
-00:05:45.900 --> 00:05:48.420
+05:51.300 --> 05:53.820
 that have caused us problems.
 
 112
-00:05:48.420 --> 00:05:51.020
+05:53.820 --> 05:56.420
 We've got a solution that works for us,
 
 113
-00:05:51.020 --> 00:05:52.140
+05:56.420 --> 05:57.540
 but I think, in the future,
 
 114
-00:05:52.140 --> 00:05:54.590
+05:57.540 --> 05:59.990
 we'd like to see a solution that, perhaps,
 
 115
-00:05:54.590 --> 00:05:58.710
+05:59.990 --> 06:04.110
 pushes the Web Audio API on to a background Worker,
 
 116
-00:05:58.710 --> 00:05:59.563
+06:04.110 --> 06:04.963
 if possible.
 
 117-p
-00:06:00.460 --> 00:06:04.697
+06:05.860 --> 06:10.970
 We're also using WebGL for the
 
 118
-00:06:04.697 --> 00:06:09.270
+06:10.970 --> 06:14.670
 compositing, for the transitions, for the effects,
 
 119
-00:06:09.270 --> 00:06:12.390
+06:14.670 --> 06:17.790
 anything that really involves that
 
 120
-00:06:12.390 --> 00:06:14.877
+06:17.790 --> 06:20.277
 rendering the video to the screen.
 
 121
-00:06:14.877 --> 00:06:16.930
+06:20.277 --> 06:22.330
 And the nice thing about WebGL, as well,
 
 122
-00:06:16.930 --> 00:06:19.054
+06:22.330 --> 06:24.454
 because it's a standard,
 
 123
-00:06:19.054 --> 00:06:23.840
+06:24.454 --> 06:29.240
 the shader language is standard, we can share
 
 124
-00:06:23.840 --> 00:06:26.933
+06:29.240 --> 06:32.333
 that shader code with our render engine.
 
 125-p
-00:06:28.010 --> 00:06:31.280
+06:33.410 --> 06:36.680
 And that means that
 
 126
-00:06:31.280 --> 00:06:35.930
+06:36.680 --> 06:41.330
 when the final timeline gets rendered out to
 
 127
-00:06:35.930 --> 00:06:39.640
+06:41.330 --> 06:45.400
 a high res form, the render engine is able to use
 
 128
-00:06:39.640 --> 00:06:42.470
+06:45.400 --> 06:47.870
 those same shaders to generate the same result
 
 129
-00:06:42.470 --> 00:06:45.160
+06:47.870 --> 06:50.560
 that we're seeing in this, you know,
 
 130
-00:06:45.160 --> 00:06:49.863
+06:50.560 --> 06:55.263
 in this low quality, this proxy, browse-quality media,
 
 131
-00:06:51.150 --> 00:06:53.883
+06:56.550 --> 06:59.283
 that we're rendering to the screen, here.
 
 132-p
-00:06:55.720 --> 00:06:58.803
+07:01.120 --> 07:04.203
 I think that covers the main
 
 133
-00:06:59.740 --> 00:07:02.090
+07:05.140 --> 07:07.490
 primary APIs that we're using.
 
 134
-00:07:02.090 --> 00:07:05.618
+07:07.490 --> 07:11.180
 To summarize, we're using WebCodecs,
 
 135
-00:07:05.618 --> 00:07:07.948
+07:11.180 --> 07:13.348
 we fall back to WebAssembly, still,
 
 136
-00:07:07.948 --> 00:07:10.050
+07:13.348 --> 07:15.450
 where WebCodecs aren't available,
 
 137
-00:07:10.050 --> 00:07:11.700
+07:15.450 --> 07:17.100
 and we're still using WebAssembly
 
 138
-00:07:11.700 --> 00:07:16.033
+07:17.100 --> 07:21.433
 to perform parsing of the MP4 files that we need to,
 
 139
-00:07:18.850 --> 00:07:21.675
+07:24.250 --> 07:27.750
 to kind of de-multiplex
 
 140
-00:07:21.675 --> 00:07:24.364
+07:27.750 --> 07:29.764
 the elementary streams.
 
 141-p
-00:07:24.364 --> 00:07:27.060
+07:29.764 --> 07:32.460
 We're using Web Audio APIs,
 
 142
-00:07:27.060 --> 00:07:29.590
+07:32.460 --> 07:34.990
 that's the one that we'd like to see move
 
 143
-00:07:29.590 --> 00:07:34.280
+07:34.990 --> 07:39.680
 to the Web Workers, and we're using WebGL,
 
 144
-00:07:34.280 --> 00:07:38.470
+07:39.680 --> 07:43.870
 and then various other long-standing APIs
 
 145
-00:07:38.470 --> 00:07:40.170
+07:43.870 --> 07:45.570
 that tie the whole thing together.
 
 146-p
-00:07:41.180 --> 00:07:42.830
+07:46.580 --> 07:48.230
 I think that pretty much covers
 
 147
-00:07:42.830 --> 00:07:44.270
+07:48.230 --> 07:49.670
 what I wanted to talk about.
 
 148
-00:07:44.270 --> 00:07:46.290
+07:49.670 --> 07:51.690
 I don't know, James, if you had any questions,
 
 149
-00:07:46.290 --> 00:07:49.690
+07:51.690 --> 07:55.900
 or you wanted me to go back and cover anything else
 
 150
-00:07:49.690 --> 00:07:51.180
+07:55.900 --> 07:56.580
 in more detail?
 
 151-p
-00:07:51.180 --> 00:07:52.013
+07:56.580 --> 07:57.413
 <v James Cain>Yes, thanks, James.</v>
 
 152
-00:07:52.013 --> 00:07:53.630
+07:57.413 --> 07:59.300
 One thing I'm interested in,
 
 153
-00:07:53.630 --> 00:07:55.960
+07:59.300 --> 08:01.360
 is how you manage memory buffers,
 
 154
-00:07:55.960 --> 00:07:58.474
+08:01.360 --> 08:03.874
 and manage their lifetimes?
 
 155
-00:07:58.474 --> 00:08:01.210
+08:03.874 --> 08:06.610
 You get frames coming out of the codec,
 
 156
-00:08:01.210 --> 00:08:02.949
+08:06.610 --> 08:08.349
 what happens with them?
 
 157-p
-00:08:02.949 --> 00:08:04.530
+08:08.349 --> 08:09.930
 <v James Pearce>The buffers we keep</v>
 
 158
-00:08:04.530 --> 00:08:06.920
+08:09.930 --> 08:12.320
 tend to be centered around the current position,
 
 159
-00:08:06.920 --> 00:08:11.230
+08:12.320 --> 08:16.630
 so we have a cursor, as you can see, here, on the screen.
 
 160
-00:08:11.230 --> 00:08:15.370
+08:16.630 --> 08:20.770
 What we try and do is predict, given the, you know,
 
 161
-00:08:15.370 --> 00:08:17.250
+08:20.770 --> 08:22.650
 what the user is doing,
 
 162
-00:08:17.250 --> 00:08:19.960
+08:22.650 --> 08:25.360
 what we want to buffer, and how long we want to buffer for.
 
 163
-00:08:19.960 --> 00:08:22.700
+08:25.360 --> 08:28.100
 If the user's playing forwards at 1x,
 
 164
-00:08:22.700 --> 00:08:27.343
+08:28.100 --> 08:32.743
 then we tend to kind of weight the buffering on the
 
 165
-00:08:28.560 --> 00:08:31.320
+08:33.960 --> 08:36.720
 forwards direction.
 
 166
-00:08:31.320 --> 00:08:33.100
+08:36.720 --> 08:38.500
 We'll primarily buffer frames,
 
 167
-00:08:33.100 --> 00:08:35.800
+08:38.500 --> 08:41.200
 ahead of the current cursor position,
 
 168
-00:08:35.800 --> 00:08:39.000
+08:41.200 --> 08:44.400
 and we'll more aggressively discard buffers
 
 169
-00:08:39.000 --> 00:08:40.940
+08:44.400 --> 08:46.340
 that have been played
 
 170
-00:08:40.940 --> 00:08:43.470
+08:46.340 --> 08:48.870
 and are behind the current cursor position.
 
 171-p
-00:08:43.470 --> 00:08:45.640
+08:48.870 --> 08:51.400
 If we're playing backwards, we'll flip that round,
 
 172
-00:08:45.640 --> 00:08:47.380
+08:51.400 --> 08:52.780
 so we're trying to buffer ahead,
 
 173
-00:08:47.380 --> 00:08:50.210
+08:52.780 --> 08:55.610
 but we're always buffering a few, you know,
 
 174
-00:08:50.210 --> 00:08:52.560
+08:55.610 --> 08:57.960
 at least a few frames, either side of that cursor,
 
 175
-00:08:52.560 --> 00:08:54.560
+08:57.960 --> 08:59.960
 and in some cases a second or two
 
 176
-00:08:54.560 --> 00:08:56.780
+08:59.960 --> 09:02.180
 around that cursor, because we don't know,
 
 177
-00:08:56.780 --> 00:08:59.780
+09:02.180 --> 09:05.180
 we can't predict that the user's not going to stop playing
 
 178
-00:08:59.780 --> 00:09:04.010
+09:05.180 --> 09:09.410
 and suddenly reverse, so we do need to be able to
 
 179
-00:09:04.010 --> 00:09:07.820
+09:09.410 --> 09:13.220
 change direction pretty quickly.
 
 180-p
-00:09:07.820 --> 00:09:09.930
+09:13.220 --> 09:15.330
 And that gives us the ability to do this,
 
 181
-00:09:09.930 --> 00:09:12.240
+09:15.330 --> 09:17.640
 where we're, you know, jogging up and down,
 
 182
-00:09:12.240 --> 00:09:13.623
+09:17.640 --> 09:19.230
 and playing backwards and forwards.
 
 183
-00:09:13.623 --> 00:09:14.776
+09:19.230 --> 09:20.176
 (video audio distorts)
 
 184
-00:09:14.776 --> 00:09:16.480
+09:20.176 --> 09:21.880
 You know, if I'm reviewing a frame,
 
 185
-00:09:16.480 --> 00:09:19.290
+09:21.880 --> 09:24.690
 I can skip backwards and forwards.
 
 186-p
-00:09:19.290 --> 00:09:22.370
+09:24.690 --> 09:27.770
 We can do that, because we are maintaining a buffer
 
 187
-00:09:22.370 --> 00:09:25.420
+09:27.770 --> 09:30.820
 around that current cursor position.
 
 188
-00:09:25.420 --> 00:09:28.260
+09:30.820 --> 09:33.660
 We can't, obviously, buffer huge amounts,
 
 189
-00:09:28.260 --> 00:09:31.880
+09:33.660 --> 09:37.280
 we're constrained by what is both achievable
 
 190
-00:09:31.880 --> 00:09:34.450
+09:37.280 --> 09:39.850
 in the browser and what is reasonable.
 
 191
-00:09:34.450 --> 00:09:36.790
+09:39.850 --> 09:42.190
 If I was to just seek to another position
 
 192
-00:09:36.790 --> 00:09:40.500
+09:42.190 --> 09:45.900
 on the timeline, that invalidates everything we've buffered,
 
 193
-00:09:40.500 --> 00:09:42.790
+09:45.900 --> 09:48.190
 and we have to go and fetch again,
 
 194
-00:09:42.790 --> 00:09:46.300
+09:48.190 --> 09:51.700
 but we'll build up a new set of buffered frames again,
 
 195
-00:09:46.300 --> 00:09:48.623
+09:51.700 --> 09:54.230
 based on that cursor position.
 
 196-p
-00:09:49.730 --> 00:09:52.400
+09:55.130 --> 09:57.800
 Does that answer the question?
 
 197-p
-00:09:52.400 --> 00:09:54.070
+09:57.800 --> 09:59.470
 <v James Cain>Yes, I think it does,</v>
 
 198
-00:09:54.070 --> 00:09:56.340
+09:59.470 --> 10:01.740
 and I think we should stop there.
 
 199-p
-00:09:56.340 --> 00:09:57.233
+10:01.740 --> 10:02.633
 <v James Pearce>Okay.</v>
 

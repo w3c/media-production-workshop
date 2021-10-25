@@ -1,634 +1,634 @@
-﻿WEBVTT
+WEBVTT
 
 1
-00:00:00.000 --> 00:00:02.130
+00:07.200 --> 00:09.330
 <v ->Being not an end-to-end but</v>
 
 2
-00:00:02.130 --> 00:00:03.800
+00:09.330 --> 00:11.000
 a peer-to-peer technology and
 
 3
-00:00:03.800 --> 00:00:04.920
+00:11.000 --> 00:12.120
 multi conferencing is the
 
 4
-00:00:04.920 --> 00:00:05.870
+00:12.120 --> 00:13.700
 main use-case,
 
 5
-00:00:05.870 --> 00:00:07.670
+00:13.700 --> 00:14.870
 the perception of the broadcasting industry
 
 6
-00:00:07.670 --> 00:00:10.009
+00:14.870 --> 00:17.209
 around WebRTC has never been very good.
 
 slide-2
-00:00:10.009 --> 00:00:12.262
+00:17.209 --> 00:19.462
 And it has never been seen
 
 8
-00:00:12.262 --> 00:00:13.899
+00:19.462 --> 00:21.990
 as a viable
 
 9
-00:00:13.899 --> 00:00:16.033
+00:21.990 --> 00:23.233
 solution for streaming media because it doesn't scale.
 
 10
-00:00:16.033 --> 00:00:16.866
+00:23.233 --> 00:24.660
 It is weak on quality at best
 
 11
-00:00:16.866 --> 00:00:18.520
+00:24.660 --> 00:25.720
 and it is hard to use.
 
 slide-3
-00:00:18.520 --> 00:00:21.560
+00:25.720 --> 00:28.760
 The industry is really dominated by video-on-demand models
 
 13
-00:00:22.880 --> 00:00:24.555
+00:30.800 --> 00:31.755
 like Netflix, the Hulu,
 
 14
-00:00:24.555 --> 00:00:25.567
+00:31.755 --> 00:32.767
 or even Disney with does not require real-time.
 
 15-p
-00:00:26.650 --> 00:00:27.866
+00:33.850 --> 00:35.660
 However,
 
 16
-00:00:27.866 --> 00:00:29.360
+00:35.660 --> 00:36.560
 the pandemic has really changed all of this
 
 17
-00:00:29.360 --> 00:00:30.790
+00:36.560 --> 00:37.990
 and it has accelerated the adoption
 
 18
-00:00:30.790 --> 00:00:32.680
+00:37.990 --> 00:39.880
 of real-time media workflows
 
 19
-00:00:32.680 --> 00:00:35.130
+00:39.880 --> 00:42.330
 that have finally bridged the gap between web and broadcast.
 
 20-p
-00:00:36.173 --> 00:00:39.160
+00:43.373 --> 00:46.360
 real-time media has enabled a need for interactivity
 
 21
-00:00:39.160 --> 00:00:39.993
+00:46.360 --> 00:47.193
 that requires near zero latency.
 
 22
-00:00:41.440 --> 00:00:44.150
+00:48.640 --> 00:51.350
 with new use cases that big professional-grade workflows
 
 23
-00:00:44.150 --> 00:00:47.850
+00:51.350 --> 00:55.500
 possible in consumer grade devices.
 
 slide-4
-00:00:47.850 --> 00:00:49.970
+00:55.500 --> 00:57.170
 WebRTC is the perfect technology for delivering
 
 25
-00:00:49.970 --> 00:00:51.630
+00:57.170 --> 00:58.830
 these real-time media.
 
 slide-5
-00:00:51.630 --> 00:00:53.860
+00:58.830 --> 01:01.600
 It did what it was designed for in the beginning.
 
 slide-6
-00:00:53.860 --> 00:00:56.340
+01:01.600 --> 01:03.540
 And despite some misconceptions,
 
 28
-00:00:56.340 --> 00:00:58.740
+01:03.540 --> 01:05.940
 it is possible to deliver a high quality media
 
 29
-00:00:58.740 --> 00:01:01.310
+01:05.940 --> 01:08.510
 with broadcast quality at a web scale
 
 30
-00:01:01.310 --> 00:01:03.780
+01:08.510 --> 01:10.980
 with additional properties like end-to-end encryption or simulcast streaming support.
 
 slide-7
-00:01:05.720 --> 00:01:08.830
+01:12.920 --> 01:16.300
 However, the lack of a standard signaling protocol
 
 32
-00:01:08.830 --> 00:01:12.730
+01:16.300 --> 01:19.930
 has made it impossible for WebRTC to use a wide range of
 
 33
-00:01:12.730 --> 00:01:14.840
+01:19.930 --> 01:22.400
 tools available and use on a daily basis
 
 34
-00:01:14.840 --> 00:01:15.880
+01:22.400 --> 01:23.800
 by the streaming world.
 
 35
-00:01:15.880 --> 00:01:19.053
+01:23.800 --> 01:26.253
 For example, OBS, FFmpeg, or vMix.
 
 36-p
-00:01:20.014 --> 00:01:23.540
+01:27.214 --> 01:30.740
 Not to mention that the lack of hardware encoders and physical input sources
 
 37
-00:01:23.540 --> 00:01:25.140
+01:30.740 --> 01:32.340
 that are available here and integrated
 
 38
-00:01:25.140 --> 00:01:27.590
+01:32.340 --> 01:34.790
 into many professional media workflows.
 
 slide-8
-00:01:28.550 --> 00:01:30.360
+01:35.750 --> 01:37.560
 In the broadcasting industry, RTMP
 
 40
-00:01:30.360 --> 00:01:31.500
+01:37.560 --> 01:38.700
 is still ubiquitous for
 
 41
-00:01:31.500 --> 00:01:34.860
+01:38.700 --> 01:42.600
 live streaming and for media ingest, into hundreds or so media platforms.
 
 slide-9
-00:01:36.320 --> 00:01:38.650
+01:43.520 --> 01:45.850
 WebRTC offers a lot of technical advantages
 
 43
-00:01:38.650 --> 00:01:41.980
+01:45.850 --> 01:49.180
 when doing live media ingest like with network resiliency
 
 44
-00:01:41.980 --> 00:01:43.110
+01:49.180 --> 01:50.310
 without increasing
 
 45
-00:01:43.110 --> 00:01:46.143
+01:50.310 --> 01:53.343
 the end to end delay, by using SVC codec or
 
 46
-00:01:48.980 --> 00:01:51.770
+01:56.180 --> 01:58.970
 simulcast where they reuse the server (?) required, with per-codec choices like VP9 or AV1,
 
 47
-00:01:51.770 --> 00:01:54.459
+01:58.970 --> 02:01.659
 an end to end content as video for content,
 
 48
-00:01:54.459 --> 00:01:56.640
+02:01.659 --> 02:03.840
 but over the delivering network.
 
 slide-10
-00:01:56.640 --> 00:01:59.570
+02:03.840 --> 02:06.770
 When we tried to use WebRTC for media ingest,
 
 50
-00:01:59.570 --> 00:02:02.170
+02:06.770 --> 02:09.370
 we realized that while WebRTC is the best media transport
 
 51
-00:02:02.170 --> 00:02:04.980
+02:09.370 --> 02:12.180
 protocol for real time streaming, the lack of a
 
 52
-00:02:04.980 --> 00:02:07.500
+02:12.180 --> 02:14.700
 standard protocol has made that each WebRTC streaming
 
 53
-00:02:07.500 --> 00:02:11.350
+02:14.700 --> 02:18.550
 service requires implementing a custom ad-hoc protocol,
 
 54
-00:02:11.350 --> 00:02:12.710
+02:18.550 --> 02:19.910
 making it a no-go for hardware encoders and broadcasting tools to adopt it.
 
 55-p
-00:02:16.180 --> 00:02:18.150
+02:23.380 --> 02:25.350
 Other media transports could be used for ingest,
 
 56
-00:02:18.150 --> 00:02:21.790
+02:25.350 --> 02:28.990
 but using WebRTC for both ingest and delivery allow to
 
 57
-00:02:21.790 --> 00:02:25.270
+02:28.990 --> 02:32.470
 work natively in browsers avoids protocol translation which
 
 58
-00:02:25.270 --> 00:02:27.930
+02:32.470 --> 02:35.130
 adds delays and implementation complexity.
 
 59
-00:02:27.930 --> 00:02:30.910
+02:35.130 --> 02:38.110
 Avoiding the transcoding by setting
 
 60
-00:02:30.910 --> 00:02:35.420
+02:38.110 --> 02:42.620
 common codecs and use WebRTC features into it.
 
 slide-11
-00:02:35.420 --> 00:02:36.500
+02:42.620 --> 02:43.700
 So the solution is simple,
 
 62
-00:02:36.500 --> 00:02:39.140
+02:43.700 --> 02:46.340
 we just need a reference signal protocol.
 
 63
-00:02:39.140 --> 00:02:42.750
+02:46.340 --> 02:49.950
 The requirements for this new protocol would be that it might
 
 64
-00:02:42.750 --> 00:02:44.490
+02:49.950 --> 02:51.690
 be simpler to implement.
 
 65
-00:02:44.490 --> 00:02:48.980
+02:51.690 --> 02:56.180
 And easy to use at the current RTMP URI, support this
 
 66
-00:02:48.980 --> 00:02:51.280
+02:56.180 --> 02:58.480
 specific ingest use-case
 
 67
-00:02:51.280 --> 00:02:54.330
+02:58.480 --> 03:01.530
 which is a subset of the WebRTC
 
 68
-00:02:54.330 --> 00:02:56.370
+03:01.530 --> 03:03.570
 possible use cases because we
 
 69
-00:02:56.370 --> 00:02:58.960
+03:03.570 --> 03:06.160
 only need support for unidirectional flows.
 
 70
-00:02:58.960 --> 00:03:01.830
+03:06.160 --> 03:09.300
 And we don't need support for re-negotiations.
 
 71-p
-00:03:01.830 --> 00:03:05.340
+03:09.300 --> 03:12.540
 We need to be fully compliant with WebRTC and RTCWeb specs
 
 72
-00:03:05.340 --> 00:03:07.150
+03:12.540 --> 03:14.350
 but we have to lower
 
 73
-00:03:07.150 --> 00:03:10.210
+03:14.350 --> 03:17.410
 their requirements and the complexity
 
 74
-00:03:10.210 --> 00:03:12.840
+03:17.410 --> 03:20.400
 to reimplement it so it can be adopted by both
 
 75
-00:03:12.840 --> 00:03:15.193
+03:20.400 --> 03:22.393
 hardware encoders and brodcasting tools.
 
 slide-12
-00:03:16.260 --> 00:03:19.311
+03:23.460 --> 03:26.511
 One thing that was clear to us is there was that this new
 
 77
-00:03:19.311 --> 00:03:20.348
+03:26.511 --> 03:27.548
 protocol should reuse
 
 78
-00:03:20.348 --> 00:03:21.810
+03:27.548 --> 03:29.100
 the current Web technologies
 
 79
-00:03:21.810 --> 00:03:23.290
+03:29.100 --> 03:30.490
 as much as possible.
 
 80
-00:03:23.290 --> 00:03:28.290
+03:30.490 --> 03:35.490
 So we did use HTTP post for exchanging the SDP offer offer and answer.
 
 81
-00:03:28.300 --> 00:03:29.940
+03:35.500 --> 03:37.140
 And the connection state is controlled
 
 82
-00:03:29.940 --> 00:03:32.890
+03:37.140 --> 03:40.900
 by the WebRTC ICE states.
 
 84
-00:03:34.400 --> 00:03:37.380
+03:41.600 --> 03:44.580
 The authentication is supported by
 
 85
-00:03:37.380 --> 00:03:41.880
+03:44.580 --> 03:49.800
 as most of the SDP rest nowadays does by the
 
 86
-00:03:41.880 --> 00:03:43.363
+03:49.800 --> 03:50.563
 Authorization HTTP header.
 
 87
-00:03:44.780 --> 00:03:45.690
+03:51.980 --> 03:52.890
 The standardization of
 
 88
-00:03:45.690 --> 00:03:49.240
+03:52.890 --> 03:56.440
 this protocol is being done at the IETF.
 
 slide-13
-00:03:49.240 --> 00:03:51.450
+03:56.440 --> 03:58.650
 And there are already some platforms that are implemented
 
 90
-00:03:51.450 --> 00:03:55.140
+03:58.650 --> 04:02.340
 like Millicast or media server like Janus
 
 91
-00:03:55.140 --> 00:03:58.824
+04:02.340 --> 04:06.240
 that support it, and we have some client
 
 92
-00:03:58.824 --> 00:04:00.560
+04:06.240 --> 04:07.760
 implementation based on your GStreamer
 
 93
-00:04:00.560 --> 00:04:02.280
+04:07.760 --> 04:09.480
 and of course in JavaScript.
 
 94-p
-00:04:02.280 --> 00:04:05.010
+04:09.480 --> 04:12.210
 The goal is to gain traction so we can get the hardware encoders
 
 95
-00:04:05.010 --> 00:04:07.810
+04:12.210 --> 04:15.100
 to implement it and be able to use it in the same tools
 
 96
-00:04:07.810 --> 00:04:12.240
+04:15.100 --> 04:19.440
 that are available for RTMP.
 
 slide-14
-00:04:12.240 --> 00:04:14.647
+04:19.440 --> 04:21.847
 But this is all that is needed for using WebRTC in a
 
 98
-00:04:14.647 --> 00:04:18.130
+04:21.847 --> 04:25.330
 professional media flow? Unfortunately not.
 
 99
-00:04:18.130 --> 00:04:21.080
+04:25.330 --> 04:28.280
 And it is not mainly due to the lack of specifications,
 
 100
-00:04:22.260 --> 00:04:24.570
+04:29.460 --> 04:31.770
 but mostly because the implementation of many of the
 
 101
-00:04:24.570 --> 00:04:27.920
+04:31.770 --> 04:35.120
 features required is lagging behind in most of the browsers,
 
 102
-00:04:27.920 --> 00:04:29.377
+04:35.120 --> 04:36.577
 and even with (?) API
 
 103
-00:04:29.377 --> 00:04:34.080
+04:36.577 --> 04:41.280
 available to enable them, most of the time, they are in experimental status or hidden
 
 104
-00:04:34.080 --> 00:04:38.310
+04:41.280 --> 04:45.510
 behind flags, undocumented or difficult to discover.
 
 105-p
-00:04:38.310 --> 00:04:39.690
+04:45.510 --> 04:46.890
 For example, some of
 
 106
-00:04:39.690 --> 00:04:42.760
+04:46.890 --> 04:49.960
 the issues that we have found with audio
 
 107
-00:04:44.861 --> 00:04:45.694
+04:52.610 --> 04:52.894
 if that WebRTC...
 
 108
-00:04:47.550 --> 00:04:51.480
+04:54.750 --> 04:58.680
 we can support multichannel audio with Multiopus.
 
 109
-00:04:52.620 --> 00:04:54.190
+04:59.820 --> 05:01.390
 Multiopus is not official standard
 
 110
-00:04:54.190 --> 00:04:55.830
+05:01.390 --> 05:03.300
 and it's only supported by Chrome.
 
 111
-00:04:55.830 --> 00:04:57.060
+05:03.300 --> 05:04.260
 And it is hidden,
 
 112
-00:04:57.060 --> 00:05:02.060
+05:04.260 --> 05:09.260
 that requests SDP mangling in order to support it.
 
 113-p
-00:05:03.440 --> 00:05:07.830
+05:10.640 --> 05:15.300
 NetEQ, that is a jitter buffer implementation in all WebRTC browser
 
 114
-00:05:07.830 --> 00:05:09.550
+05:15.300 --> 05:16.750
 has issues with music. And for example,
 
 115
-00:05:09.550 --> 00:05:12.170
+05:16.750 --> 05:19.370
 Lorenzo has made a great presentation on the topic,
 
 116
-00:05:12.170 --> 00:05:13.003
+05:19.370 --> 05:20.203
 referencing
 
 117
-00:05:13.003 --> 00:05:17.180
+05:20.203 --> 05:24.380
 all the issues that he has found when trying to use WebRTC
 
 118
-00:05:17.180 --> 00:05:21.360
+05:24.380 --> 05:28.560
 for music. So I will encourage everyone to watch it.
 
 119-p
-00:05:21.360 --> 00:05:24.170
+05:28.560 --> 05:31.370
 Or for example, the integration between WebRTC and Web Audio
 
 120
-00:05:24.170 --> 00:05:28.440
+05:31.370 --> 05:35.640
 has implementation issues on chrome that either adds echo,
 
 121
-00:05:28.440 --> 00:05:31.040
+05:35.640 --> 05:38.240
 when you play audio with audio captured by WebRTC
 
 122
-00:05:33.337 --> 00:05:35.963
+05:40.537 --> 05:43.163
 and it has been acknowledged by Google itself.
 
 123-p
-00:05:36.870 --> 00:05:38.390
+05:44.700 --> 05:45.590
 Or for example,
 
 124
-00:05:38.390 --> 00:05:41.460
+05:45.590 --> 05:48.660
 there is a lack of integration between
 
 125
-00:05:41.460 --> 00:05:43.210
+05:48.660 --> 05:50.410
 WebRTC and WebVTT
 
 126
-00:05:43.210 --> 00:05:46.920
+05:50.410 --> 05:54.120
 making live subtitles impossible.
 
 slide-15
-00:05:46.920 --> 00:05:49.140
+05:54.120 --> 05:56.340
 Also on the video side.
 
 128
-00:05:49.140 --> 00:05:51.067
+05:56.340 --> 05:58.267
 For example, SVC extension APIs
 
 129
-00:05:51.067 --> 00:05:53.810
+05:58.267 --> 06:01.100
 only working in Chrome and it's an 
 
 130
-00:05:53.810 --> 00:05:54.643
+06:01.100 --> 06:01.843
 experimental feature,
 
 131
-00:05:54.643 --> 00:05:55.476
+06:01.843 --> 06:02.676
 although this is likely
 
 132
-00:05:55.476 --> 00:05:57.940
+06:02.676 --> 06:05.140
 going to change in the following weeks.
 
 133-p
-00:05:57.940 --> 00:06:00.700
+06:05.140 --> 06:07.900
 AV1 is only supported by Chrome and not enabled in it.
 
 134
-00:06:00.700 --> 00:06:01.770
+06:07.900 --> 06:08.970
 Even if they share almost the same codebase.
 
 135
-00:06:01.770 --> 00:06:04.780
+06:08.970 --> 06:11.980
 The almost the same code base beeping enter file,
 
 136-p
-00:06:04.780 --> 00:06:07.770
+06:11.980 --> 06:14.970
 VP9 profile which supports 10 bits is only supported by Chrome
 
 137
-00:06:07.770 --> 00:06:08.790
+06:14.970 --> 06:15.990
 and only on
 
 138
-00:06:08.790 --> 00:06:10.170
+06:15.990 --> 06:17.370
 the receiving side.
 
 139
-00:06:10.170 --> 00:06:12.513
+06:17.370 --> 06:19.713
 And it is experimental in Safari.
 
 140-p
-00:06:15.788 --> 00:06:16.621
+06:22.988 --> 06:23.821
 The playoutdelayhint is an optional extension
 
 141
-00:06:16.621 --> 00:06:18.117
+06:23.821 --> 06:25.317
 and it is only supported in chrome.
 
 142-p
-00:06:19.760 --> 00:06:20.593
+06:26.960 --> 06:27.793
 Eh,
 
 143
-00:06:20.593 --> 00:06:23.210
+06:27.793 --> 06:30.410
 also another sample is that abs-capture-time that
 
 144
-00:06:23.210 --> 00:06:27.170
+06:30.410 --> 06:34.370
 is a header extension that could be used for synchronizing a
 
 145
-00:06:27.170 --> 00:06:30.380
+06:34.370 --> 06:37.580
 video with standard metadata is only supporting in Chrome
 
 146
-00:06:30.380 --> 00:06:32.040
+06:37.580 --> 06:39.240
 but it is a thing hidden
 
 147
-00:06:32.040 --> 00:06:34.980
+06:39.240 --> 06:42.180
 and requires SDP mangling to enable it.
 
 148-p
-00:06:34.980 --> 00:06:38.650
+06:42.180 --> 06:45.850
 And at last, as an example of how professional-grade features
 
 150
-00:06:39.483 --> 00:06:43.397
+06:46.683 --> 06:50.597
 are not always sought to be used with the WebRTC,
 
 151
-00:06:43.397 --> 00:06:47.760
+06:50.597 --> 06:54.960
 video alpha is not supported, never meant to be supported in WebRTC
 
 152
-00:06:47.760 --> 00:06:50.740
+06:54.960 --> 06:57.940
 but it is under consideration for being implemented
 
 153
-00:06:50.740 --> 00:06:52.320
+06:57.940 --> 06:59.520
 in WebCodecs.
 
 slide-16
-00:06:52.320 --> 00:06:55.200
+06:59.520 --> 07:02.400
 So as a conclusion, WebRTC today is (?).
 
 155
-00:06:55.200 --> 00:06:56.570
+07:02.400 --> 07:03.770
 And I will say, even, it is
 
 156
-00:06:56.570 --> 00:06:59.220
+07:03.770 --> 07:06.420
 the best option for delivering professional broadcast
 
 157
-00:06:59.220 --> 00:07:02.130
+07:06.420 --> 07:09.330
 quality media with minimal latency,
 
 158
-00:07:02.130 --> 00:07:04.490
+07:09.330 --> 07:11.690
 but there is a still a lot of work to do in order to be able
 
 159
-00:07:04.490 --> 00:07:06.080
+07:11.690 --> 07:13.280
 to WHIP WebRTC into shape.
 
 slide-17
-00:07:06.080 --> 00:07:08.123
+07:13.280 --> 07:15.323
 But the good news is that we are on it.
 

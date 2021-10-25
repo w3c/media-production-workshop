@@ -1,918 +1,918 @@
-﻿WEBVTT
+WEBVTT
 
 1
-00:00:01.990 --> 00:00:03.490
+00:07.390 --> 00:08.890
 <v ->Hi, I'm Chris Cunningham.</v>
 
 2
-00:00:03.490 --> 00:00:06.150
+00:08.890 --> 00:11.550
 I am the tech lead for WebCodecs
 
 3
-00:00:06.150 --> 00:00:09.910
+00:11.550 --> 00:15.310
 effort in Chrome and a co-editor on the spec.
 
 4-p
-00:00:09.910 --> 00:00:11.749
+00:15.310 --> 00:17.149
 This talk is going to be a primer on the API.
 
 5
-00:00:11.749 --> 00:00:14.190
+00:17.149 --> 00:19.590
 If you have already seen the API and played
 
 6
-00:00:14.190 --> 00:00:16.770
+00:19.590 --> 00:22.170
 with it a little bit, or if you saw my talk
 
 7
-00:00:16.770 --> 00:00:19.720
+00:22.170 --> 00:25.120
 at IIT earlier this week, you can skip this one.
 
 8-p
-00:00:19.720 --> 00:00:24.720
+00:25.120 --> 00:30.120
 I am going to do a talk about video encoder configuration,
 
 9
-00:00:24.980 --> 00:00:27.420
+00:30.380 --> 00:32.820
 and I do encourage everybody to check that one out.
 
 10-p
-00:00:27.420 --> 00:00:28.760
+00:32.820 --> 00:34.160
 You're probably already familiar
 
 11
-00:00:28.760 --> 00:00:30.249
+00:34.160 --> 00:35.649
 with existing codecs APIs,
 
 12
-00:00:30.249 --> 00:00:32.910
+00:35.649 --> 00:38.310
 like ffmpeg, AV foundation, media codec,
 
 13
-00:00:32.910 --> 00:00:34.743
+00:38.310 --> 00:40.143
 and WebCodecs is similar to those.
 
 14-p
-00:00:35.760 --> 00:00:39.330
+00:41.160 --> 00:44.730
 Those libraries have been a dependency of the browser
 
 15
-00:00:39.330 --> 00:00:43.630
+00:44.730 --> 00:49.300
 for years in support of the video tag and WebRTC.
 
 16
-00:00:43.630 --> 00:00:47.220
+00:49.300 --> 00:52.620
 And with WebCodecs, we're exposing those and others
 
 17
-00:00:47.220 --> 00:00:49.853
+00:52.620 --> 00:55.253
 in a unified manner directly to JavaScript.
 
 slide-2
-00:00:50.990 --> 00:00:54.008
+00:56.390 --> 00:59.408
 Let's look at a typical decoder flow.
 
 19-p
-00:00:54.008 --> 00:00:58.573
+00:59.408 --> 01:03.973
 In this graphic the large blue square is WebCodecs,
 
 20
-00:00:59.500 --> 00:01:02.150
+01:04.900 --> 01:07.550
 and the diagram shows chunks of encoded video coming
 
 21
-00:01:02.150 --> 00:01:04.330
+01:07.550 --> 01:09.730
 from network or storage, heading into
 
 22
-00:01:04.330 --> 00:01:07.490
+01:09.730 --> 01:12.890
 the decoder, being decoded to these video frames,
 
 23
-00:01:07.490 --> 00:01:09.178
+01:12.890 --> 01:14.578
 and then coming out where they are rendered to
 
 24
-00:01:09.178 --> 00:01:11.393
+01:14.578 --> 01:16.793
 canvas or media stream track.
 
 25-p
-00:01:12.230 --> 00:01:14.670
+01:17.630 --> 01:20.700
 We can use all these pieces together without writing
 
 26
-00:01:14.670 --> 00:01:16.560
+01:20.700 --> 01:21.960
 a ton of code. And I think that's a
 
 27
-00:01:16.560 --> 00:01:17.467
+01:21.960 --> 01:22.867
 good way to kind of get familiar with
 
 28
-00:01:17.467 --> 00:01:19.608
+01:22.867 --> 01:25.800
 the API. Let's do that now.
 
 slide-3
-00:01:19.608 --> 00:01:23.683
+01:25.800 --> 01:29.830
 I am going to share my screen, bare with me.
 
 30
-00:01:26.160 --> 00:01:27.670
+01:31.560 --> 01:33.700
 Right.
 
 31
-00:01:27.670 --> 00:01:30.040
+01:33.700 --> 01:35.440
 All right, so before I start coding, I want
 
 32
-00:01:30.040 --> 00:01:33.880
+01:35.440 --> 01:39.280
 to show you what we're going to build.
 
 33-p
-00:01:33.880 --> 00:01:38.423
+01:39.280 --> 01:43.823
 Big buck bunny, of course, being demuxed from an MP4 file,
 
 34
-00:01:38.423 --> 00:01:41.820
+01:43.823 --> 01:47.220
 then decoded and rendered to canvas,
 
 35
-00:01:41.820 --> 00:01:43.633
+01:47.220 --> 01:49.330
 all using WebCodecs.
 
 36-p
-00:01:45.880 --> 00:01:49.460
+01:51.280 --> 01:54.860
 And I should point out that on the recording,
 
 37
-00:01:49.460 --> 00:01:51.605
+01:54.860 --> 01:57.500
 it was just being done with Google Hangouts.
 
 38
-00:01:51.605 --> 00:01:53.954
+01:57.500 --> 01:59.354
 You're probably seeing some stutter and some chop.
 
 39
-00:01:53.954 --> 00:01:58.954
+01:59.354 --> 02:04.354
 And that is just the nature of recording using Hangouts.
 
 40
-00:01:59.321 --> 00:02:01.980
+02:04.721 --> 02:07.380
 Locally, this is a smooth playback.
 
 41
-00:02:01.980 --> 00:02:03.900
+02:07.380 --> 02:09.300
 Every frame is rendered. It's not being dropped.
 
 42
-00:02:03.900 --> 00:02:05.410
+02:09.300 --> 02:10.810
 It's a little bit faster than
 
 43
-00:02:05.410 --> 00:02:07.270
+02:10.810 --> 02:12.670
 the native playback rate for this file.
 
 44
-00:02:07.270 --> 00:02:09.200
+02:12.670 --> 02:14.600
 And that's just because we're painting every frame as soon
 
 45
-00:02:09.200 --> 00:02:11.285
+02:14.600 --> 02:16.685
 as it comes out of the decoder.
 
 46-p
-00:02:11.285 --> 00:02:13.050
+02:16.685 --> 02:18.450
 Right.
 
 47
-00:02:13.050 --> 00:02:15.203
+02:18.450 --> 02:20.603
 Let me show you where we are now.
 
 48
-00:02:16.233 --> 00:02:17.383
+02:21.633 --> 02:22.783
 We have a blank canvas.
 
 49
-00:02:18.820 --> 00:02:20.070
+02:24.220 --> 02:25.470
 Let's pull open the code.
 
 50
-00:02:21.830 --> 00:02:25.350
+02:27.230 --> 02:30.750
 Alright. Like I said, we have a simple blank canvas
 
 51
-00:02:26.590 --> 00:02:29.320
+02:31.990 --> 02:34.720
 and then I'm using MP4Box.js to do
 
 52
-00:02:29.320 --> 00:02:31.479
+02:34.720 --> 02:36.879
 the demuxing of the MP4 file.
 
 53
-00:02:31.479 --> 00:02:32.443
+02:36.879 --> 02:37.843
 That's why I'm pulling it here.
 
 54-p
-00:02:33.993 --> 00:02:35.380
+02:39.393 --> 02:40.780
 And then we open up the script tag
 
 55
-00:02:35.380 --> 00:02:38.400
+02:40.780 --> 02:43.800
 and I bring in an MP4 demuxer module,
 
 56
-00:02:38.400 --> 00:02:42.460
+02:43.800 --> 02:47.860
 which is really just a wrapper around MP4Box.js.
 
 57
-00:02:42.460 --> 00:02:44.560
+02:47.860 --> 02:49.960
 And there's some interesting stuff in there,
 
 58
-00:02:44.560 --> 00:02:46.840
+02:49.960 --> 02:52.240
 but none of it really uses WebCodecs.
 
 59
-00:02:46.840 --> 00:02:48.180
+02:52.240 --> 02:53.580
 I'm just gonna skip over it,
 
 60
-00:02:48.180 --> 00:02:49.884
+02:53.580 --> 02:55.284
 and feel free to check it out and get up.
 
 61-p
-00:02:49.884 --> 00:02:54.270
+02:55.284 --> 02:59.670
 All you need to know here is that it opens up the file for
 
 62
-00:02:54.270 --> 00:02:57.400
+02:59.670 --> 03:02.800
 me and sort of populates the basic track info structure that
 
 63
-00:02:57.400 --> 00:02:59.120
+03:02.800 --> 03:04.520
 I need telling me about width and height,
 
 64
-00:02:59.120 --> 00:03:02.870
+03:04.520 --> 03:08.270
 and video, and it's Kodak details, etc.
 
 65-p
-00:03:02.870 --> 00:03:04.511
+03:08.270 --> 03:09.911
 All right, then I grabbed the canvas element,
 
 66
-00:03:04.511 --> 00:03:08.260
+03:09.911 --> 03:13.660
 set its dimensions according to what was found in the MP4.
 
 67
-00:03:08.260 --> 00:03:10.060
+03:13.660 --> 03:15.460
 And I grabbed the context because I'm going
 
 68
-00:03:10.060 --> 00:03:13.830
+03:15.460 --> 03:19.230
 to use that to paint video frames, shortly.
 
 69-p
-00:03:13.830 --> 00:03:16.333
+03:19.230 --> 03:21.733
 Let's make a paint frame function.
 
 70
-00:03:19.170 --> 00:03:22.210
+03:24.570 --> 03:27.610
 All right, we're going to call it context.drawImage
 
 71
-00:03:22.210 --> 00:03:26.311
+03:27.610 --> 03:31.711
 passing in frame at the origin
 
 72
-00:03:26.311 --> 00:03:31.311
+03:31.711 --> 03:36.711
 and using the canvas width and height (inaudible.)
 
 73-p
-00:03:34.240 --> 00:03:36.190
+03:39.640 --> 03:41.590
 Now that we're done rendering the frame,
 
 74
-00:03:36.190 --> 00:03:38.233
+03:41.590 --> 03:43.633
 we're gonna call frame.close().
 
 75-p
-00:03:39.720 --> 00:03:41.310
+03:45.120 --> 03:46.710
 A few things to talk about here.
 
 76
-00:03:41.310 --> 00:03:44.279
+03:46.710 --> 03:49.679
 One, we were able to call drawImage like this
 
 77
-00:03:44.279 --> 00:03:47.579
+03:49.679 --> 03:52.979
 because frame, video frame, is a canvas image source.
 
 78
-00:03:47.579 --> 00:03:48.722
+03:52.979 --> 03:54.122
 And that means you can use it here,
 
 79
-00:03:48.722 --> 00:03:51.210
+03:54.122 --> 03:56.610
 but also with a text image 2D, create image bitmap
 
 80
-00:03:51.210 --> 00:03:54.602
+03:56.610 --> 04:00.200
 anywhere that image source is accepted.
 
 81-p
-00:03:54.602 --> 00:03:57.351
+04:00.200 --> 04:02.751
 Also we call frame.close() right away because
 
 82
-00:03:57.351 --> 00:04:00.050
+04:02.751 --> 04:05.450
 we want to release the memory that
 
 83
-00:04:00.050 --> 00:04:03.070
+04:05.450 --> 04:08.470
 backs that frame back to the browser
 
 84
-00:04:03.070 --> 00:04:07.991
+04:08.470 --> 04:13.391
 for recycling and reuse. Video frame objects and
 
 85
-00:04:07.991 --> 00:04:11.060
+04:13.391 --> 04:16.460
 the audio analog, which is called audio data,
 
 86
-00:04:11.060 --> 00:04:13.372
+04:16.460 --> 04:18.772
 are just lightweight JavaScript objects.
 
 87
-00:04:13.372 --> 00:04:16.710
+04:18.772 --> 04:22.110
 But they hold references to heavier memory like,
 
 88
-00:04:16.710 --> 00:04:19.540
+04:22.110 --> 04:24.940
 you know, actual pixel data or GPU buffers,
 
 89
-00:04:19.540 --> 00:04:22.360
+04:24.940 --> 04:27.760
 typically pooled resources inside the browser.
 
 90
-00:04:22.360 --> 00:04:25.050
+04:27.760 --> 04:30.450
 You want to call close on these objects as soon as you're
 
 91
-00:04:25.050 --> 00:04:27.882
+04:30.450 --> 04:33.282
 done with them, so that the browser can reuse them,
 
 92
-00:04:27.882 --> 00:04:30.380
+04:33.282 --> 04:35.780
 especially in the case of decoding because the decoder
 
 93
-00:04:30.380 --> 00:04:32.210
+04:35.780 --> 04:37.610
 actually owns those pool resources.
 
 94
-00:04:32.210 --> 00:04:34.420
+04:37.610 --> 04:39.820
 Returning them to the decoder prevents
 
 95
-00:04:34.420 --> 00:04:35.720
+04:39.820 --> 04:41.120
 the decoder from stalling.
 
 96-p
-00:04:36.700 --> 00:04:37.533
+04:42.100 --> 04:42.933
 Okay.
 
 97
-00:04:37.533 --> 00:04:40.727
+04:42.933 --> 04:46.127
 We've got our paint frame. Let's make a decoder.
 
 98-p
-00:04:45.870 --> 00:04:48.030
+04:51.270 --> 04:53.430
 A constructor takes two callbacks.
 
 99
-00:04:48.030 --> 00:04:49.820
+04:53.430 --> 04:55.220
 The first is an output callback,
 
 100
-00:04:49.820 --> 00:04:52.460
+04:55.220 --> 04:57.860
 which we'll bring from above,
 
 101
-00:04:52.460 --> 00:04:54.530
+04:57.860 --> 04:59.930
 the second is an error callback
 
 102
-00:04:54.530 --> 00:04:58.710
+04:59.930 --> 05:04.110
 which you should use to do some kind of fallback handling,
 
 103
-00:04:58.710 --> 00:05:01.110
+05:04.110 --> 05:06.510
 show a message to the user. In our case,
 
 104
-00:05:01.110 --> 00:05:04.593
+05:06.510 --> 05:09.993
 this is just a demo, so, we'll just log it.
 
 105-p
-00:05:06.780 --> 00:05:07.613
+05:12.180 --> 05:13.130
 All right.
 
 106
-00:05:08.480 --> 00:05:09.633
+05:13.880 --> 05:15.330
 Now that we've got the decoder,
 
 107
-00:05:09.633 --> 00:05:11.233
+05:15.330 --> 05:16.633
 we need to make a configuration.
 
 108
-00:05:12.400 --> 00:05:15.920
+05:17.800 --> 05:21.320
 The required parameters here are going to be codec string,
 
 109
-00:05:15.920 --> 00:05:19.110
+05:21.320 --> 05:24.510
 which if you've used media source or video can play type
 
 110
-00:05:19.110 --> 00:05:20.050
+05:24.510 --> 05:25.450
 media capabilities.
 
 111
-00:05:20.050 --> 00:05:23.100
+05:25.450 --> 05:28.500
 Any of these APIs is the familiar codec string.
 
 112
-00:05:23.100 --> 00:05:24.510
+05:28.500 --> 05:29.910
 For H264,
 
 113
-00:05:24.510 --> 00:05:29.113
+05:29.910 --> 05:34.513
 this is a AVC1.1.profile bytes level bytes.
 
 114
-00:05:30.530 --> 00:05:33.550
+05:35.930 --> 05:38.950
 In our case, the demuxer has found those for us,
 
 115
-00:05:33.550 --> 00:05:36.113
+05:38.950 --> 05:41.513
 so we're just going to call trackInfo.codec.
 
 116-p
-00:05:37.791 --> 00:05:39.830
+05:43.191 --> 05:45.230
 But then we also need the description.
 
 117
-00:05:39.830 --> 00:05:41.510
+05:45.230 --> 05:46.910
 If you are familiar with FFmpeg,
 
 118
-00:05:41.510 --> 00:05:44.970
+05:46.910 --> 05:50.370
 this is the extra data. For those of you familiar with H264
 
 119
-00:05:47.265 --> 00:05:50.050
+05:52.665 --> 05:55.450
 and MP4 files, this is the AVCC header.
 
 120
-00:05:51.156 --> 00:05:53.770
+05:56.556 --> 05:59.170
 Generically, this is a
 
 121
-00:05:54.920 --> 00:05:55.810
+06:00.320 --> 06:01.210
 sequence of codec
 
 122
-00:05:55.810 --> 00:05:58.140
+06:01.210 --> 06:03.540
 specific bytes that is used to
 
 123
-00:05:58.140 --> 00:06:02.253
+06:03.540 --> 06:07.653
 prepare the decoder for the stream that's about to decode.
 
 124-p
-00:06:03.100 --> 00:06:07.340
+06:08.500 --> 06:12.740
 You can find more details about the description and the
 
 125
-00:06:07.340 --> 00:06:12.340
+06:12.740 --> 06:17.740
 codec string and the codec registry in the WebCodecs spec.
 
 126
-00:06:13.000 --> 00:06:16.550
+06:18.400 --> 06:21.950
 There we have the codec string for each codec and whether
 
 127
-00:06:16.550 --> 00:06:19.560
+06:21.950 --> 06:24.960
 the description is required and if it is required,
 
 128
-00:06:19.560 --> 00:06:22.670
+06:24.960 --> 06:28.700
 what its details are. In our case, like I said,
 
 129
-00:06:22.670 --> 00:06:23.830
+06:28.700 --> 06:29.230
 it comes from the AVCC header.
 
 130
-00:06:23.830 --> 00:06:27.310
+06:29.230 --> 06:32.710
 The demuxer has already found it for us.
 
 131
-00:06:27.310 --> 00:06:28.660
+06:32.710 --> 06:34.600
 I'll just plop it in there.
 
 132-p
-00:06:30.540 --> 00:06:32.540
+06:35.940 --> 06:37.940
 All right, before we can use the configuration,
 
 133
-00:06:32.540 --> 00:06:35.453
+06:37.940 --> 06:40.853
 we just check that the configuration is actually supported,
 
 134
-00:06:35.453 --> 00:06:40.453
+06:40.853 --> 06:45.853
 like any media API in the web support for a given codec.
 
 135
-00:06:40.670 --> 00:06:43.330
+06:46.700 --> 06:48.730
 And the details of this configuration is going to vary by
 
 136
-00:06:43.330 --> 00:06:45.210
+06:48.730 --> 06:50.610
 platform, by browser.
 
 137
-00:06:45.210 --> 00:06:48.230
+06:50.610 --> 06:53.630
 It's important to first check before we try to use it.
 
 138-p
-00:06:48.230 --> 00:06:49.780
+06:53.630 --> 06:55.180
 We're going to call
 
 139
-00:06:49.780 --> 00:06:52.871
+06:55.180 --> 06:58.271
 VideoDecoder.isConfigSupported passing in the config.
 
 140
-00:06:52.871 --> 00:06:55.883
+06:58.271 --> 07:01.283
 And then we're going to get the results of that.
 
 141-p
-00:06:59.170 --> 00:07:01.150
+07:04.570 --> 07:06.550
 Here's where you would check: is it supported?
 
 142
-00:07:01.150 --> 00:07:03.160
+07:06.550 --> 07:08.560
 And if not implement some sort of fallback plan,
 
 143
-00:07:03.160 --> 00:07:05.893
+07:08.560 --> 07:11.293
 maybe you use WASM. Maybe you choose a different codec.
 
 144
-00:07:07.620 --> 00:07:08.620
+07:13.200 --> 07:14.200
 This is a demo.
 
 145
-00:07:08.620 --> 00:07:13.620
+07:14.200 --> 07:19.200
 I'm just going to say: assert that it is a supported.
 
 146-p
-00:07:15.610 --> 00:07:18.773
+07:21.100 --> 07:24.173
 Okay, now that we know we can grab and configure the decoder.
 
 147-p
-00:07:24.350 --> 00:07:27.674
+07:29.750 --> 07:33.740
 And now it's just time to start feeding the decoder with
 
 148
-00:07:27.674 --> 00:07:32.674
+07:33.740 --> 07:38.740
 chunks to decode. We're going to say Demuxer,
 
 149
-00:07:35.657 --> 00:07:38.593
+07:41.570 --> 07:43.993
 give me the video streaming, happens to be track zero,
 
 150
-00:07:39.570 --> 00:07:43.700
+07:44.970 --> 07:49.100
 and then we're going to give a callback. For every chunk,
 
 151
-00:07:43.700 --> 00:07:48.080
+07:49.100 --> 07:53.480
 please call decoder.decode, passing up that chunk.
 
 152-p
-00:07:48.080 --> 00:07:51.800
+07:53.480 --> 07:57.200
 A few things to point out.
 
 153
-00:07:51.800 --> 00:07:55.010
+07:57.200 --> 08:00.410
 There was no waiting here. When we called configure,
 
 154
-00:07:55.010 --> 00:07:56.900
+08:00.410 --> 08:02.300
 we didn't wait for that to complete,
 
 155
-00:07:56.900 --> 00:07:59.460
+08:02.300 --> 08:04.860
 before we started calling decode. When we called decode,
 
 156
-00:07:59.460 --> 00:08:01.260
+08:04.860 --> 08:06.660
 We don't wait for the first decode to complete
 
 157
-00:08:01.260 --> 00:08:03.020
+08:06.660 --> 08:08.420
 before we call the second decode.
 
 158-p
-00:08:03.020 --> 00:08:06.880
+08:08.420 --> 08:12.280
 It's a fire and forget kind of an acute processing model
 
 159
-00:08:06.880 --> 00:08:08.090
+08:12.280 --> 08:13.490
 under the hood.
 
 160
-00:08:08.090 --> 00:08:12.290
+08:13.490 --> 08:17.690
 A decode that follows the configure is presumed to use
 
 161
-00:08:12.290 --> 00:08:15.567
+08:17.690 --> 08:20.967
 the configuration that followed it in the configure.
 
 162
-00:08:15.567 --> 00:08:17.020
+08:20.967 --> 08:22.420
 That preceded it in the configure.
 
 163
-00:08:17.020 --> 00:08:20.130
+08:22.420 --> 08:25.530
 And then you can queue up as much work
 
 164
-00:08:20.130 --> 00:08:20.963
+08:25.530 --> 08:26.363
 as you want.
 
 165-p
-00:08:21.820 --> 00:08:24.120
+08:27.220 --> 08:29.520
 Alright, that should do it.
 
 166
-00:08:24.120 --> 00:08:25.793
+08:29.520 --> 08:31.193
 Let's see if I have any typos.
 
 167-p
-00:08:27.240 --> 00:08:30.735
+08:32.640 --> 08:36.135
 All right. There you have it, Big Buck Bunny,
 
 168
-00:08:30.735 --> 00:08:33.010
+08:36.135 --> 08:38.410
 decoding and rendering.
 
 slide-4
-00:08:33.010 --> 00:08:35.510
+08:38.410 --> 08:40.910
 We didn't talk at all about audio,
 
 170
-00:08:35.510 --> 00:08:36.460
+08:40.910 --> 08:41.860
 but here in the slides,
 
 171
-00:08:36.460 --> 00:08:40.335
+08:41.860 --> 08:45.735
 I'm going to link to the same demo basically,
 
 172
-00:08:40.335 --> 00:08:45.335
+08:45.735 --> 08:50.735
 but with an audio playout that is synchronized to the video,
 
 173
-00:08:45.340 --> 00:08:49.039
+08:50.740 --> 08:54.439
 and then this will also be a link to the GitHub code to make
 
 174
-00:08:49.039 --> 00:08:51.140
+08:54.439 --> 08:56.540
 that work. The short of it is uses audio decoder,
 
 175
-00:08:51.140 --> 00:08:52.380
+08:56.540 --> 08:57.780
 but instead of a canvas,
 
 176
-00:08:52.380 --> 00:08:55.110
+08:57.780 --> 09:00.510
 you're going to use AudioWorklet to do the rendering.
 
 177
-00:08:55.110 --> 00:08:56.890
+09:00.510 --> 09:02.290
 Just one option that you have,
 
 178
-00:08:56.890 --> 00:08:58.940
+09:02.290 --> 09:04.340
 you could also use like audio buffer sourceNode.
 
 179
-00:08:58.940 --> 00:09:00.559
+09:04.340 --> 09:05.959
 If you're going to do, you know,
 
 180
-00:09:00.559 --> 00:09:03.190
+09:05.959 --> 09:08.590
 just kind of like smaller chunks of audio, or media stream
 
 181
-00:09:03.190 --> 00:09:07.153
+09:08.590 --> 09:12.553
 track, if you are doing kind of a real time scenario.
 
 slide-5
-00:09:08.431 --> 00:09:11.703
+09:13.831 --> 09:17.103
 All right, let's talk a little bit about audio decoding.
 
 183-p
-00:09:14.240 --> 00:09:16.050
+09:19.640 --> 09:21.450
 Here is the audio decoder interface.
 
 184
-00:09:16.050 --> 00:09:17.970
+09:21.450 --> 09:23.370
 I didn't even show the video decoder interface.
 
 185
-00:09:17.970 --> 00:09:19.598
+09:23.370 --> 09:24.998
 They're basically the same.
 
 186-p
-00:09:19.598 --> 00:09:23.990
+09:24.998 --> 09:29.390
 The things to point out are instead of outputting,
 
 187
-00:09:23.990 --> 00:09:25.100
+09:29.390 --> 09:30.500
 a video frame,
 
 188
-00:09:25.100 --> 00:09:28.180
+09:30.500 --> 09:33.580
 audio decoder is going to output an AudioData object,
 
 189
-00:09:28.180 --> 00:09:30.579
+09:33.580 --> 09:35.979
 which is conceptually just a buffer of PCM samples.
 
 190
-00:09:30.579 --> 00:09:34.670
+09:35.979 --> 09:40.700
 Otherwise it's the same five methods, same two attributes,
 
 191
-00:09:34.670 --> 00:09:39.670
+09:40.700 --> 09:45.700
 same constructor, you know, same semantics.
 
 192-p
-00:09:39.720 --> 00:09:41.950
+09:45.120 --> 09:47.350
 Two methods we didn't get to when we talked about video,
 
 193
-00:09:41.950 --> 00:09:46.470
+09:47.350 --> 09:51.870
 which are present in both interfaces are flush and reset.
 
 194-p
-00:09:46.470 --> 00:09:49.220
+09:51.870 --> 09:54.620
 Flush is going to force the codec to flush the pipeline
 
 195
-00:09:49.220 --> 00:09:50.590
+09:54.620 --> 09:55.990
 of all completed work.
 
 196
-00:09:50.590 --> 00:09:53.290
+09:55.990 --> 09:58.690
 As it's going to admit any outputs that might've been ready,
 
 197
-00:09:53.290 --> 00:09:56.110
+09:58.690 --> 10:01.510
 but haven't quite made it to the output callback.
 
 198
-00:09:56.110 --> 00:09:58.590
+10:01.510 --> 10:03.990
 You might use this in like an industry scenario where you
 
 199
-00:09:58.590 --> 00:10:00.930
+10:03.990 --> 10:06.330
 have fed the decoder with all the things you need to give it,
 
 200
-00:10:00.930 --> 00:10:01.893
+10:06.330 --> 10:07.293
 but you wanna make sure that you get
 
 201
-00:10:01.893 --> 00:10:04.370
+10:07.293 --> 10:09.770
 like the last frame out.
 
 202-p
-00:10:04.370 --> 00:10:06.830
+10:09.770 --> 10:12.230
 The other one that we didn't talk about is reset.
 
 203
-00:10:06.830 --> 00:10:09.070
+10:12.230 --> 10:14.470
 Reset is going to completely reset the codec.
 
 204
-00:10:09.070 --> 00:10:12.504
+10:14.470 --> 10:17.904
 It's going to drop all active work, all queued work.
 
 205
-00:10:12.504 --> 00:10:15.373
+10:17.904 --> 10:20.773
 It's going to drop the active configuration,
 
 206
-00:10:15.373 --> 00:10:17.960
+10:20.773 --> 10:23.360
 just everything.
 
 207
-00:10:17.960 --> 00:10:21.280
+10:23.360 --> 10:26.680
 You would use this if you would do like a seek. And so,
 
 208
-00:10:21.280 --> 00:10:24.020
+10:26.680 --> 10:29.420
 you know, the user said, you know, stop where you are.
 
 209
-00:10:24.020 --> 00:10:25.900
+10:29.420 --> 10:31.300
 I'm going to go to this other point in the timeline,
 
 210
-00:10:25.900 --> 00:10:27.113
+10:31.300 --> 10:32.513
 start there instead.
 
 slide-6
-00:10:28.930 --> 00:10:30.810
+10:34.330 --> 10:36.210
 Okay. That was decoding.
 
 212
-00:10:30.810 --> 00:10:32.380
+10:36.210 --> 10:37.780
 Let's talk a little bit about encoding.
 
 213-p
-00:10:32.380 --> 00:10:35.340
+10:37.780 --> 10:40.740
 The flow is pretty much the same, but in reverse.
 
 214
-00:10:35.340 --> 00:10:40.270
+10:40.740 --> 10:45.670
 Frames go in, they get encoded, they produce chunks.
 
 215-p
-00:10:40.270 --> 00:10:42.870
+10:45.670 --> 10:48.270
 The encoder interfaces are nearly identical to those from
 
 216
-00:10:42.870 --> 00:10:45.720
+10:48.270 --> 10:51.120
 decode. You swap decode for Incode,
 
 217
-00:10:45.720 --> 00:10:47.960
+10:51.120 --> 10:53.360
 but otherwise it's the same five methods you saw in the last
 
 218
-00:10:47.960 --> 00:10:48.910
+10:53.360 --> 10:54.310
 slide.
 
 219
-00:10:48.910 --> 00:10:51.210
+10:54.310 --> 10:56.610
 And then audio and coding also follows this exact same
 
 220
-00:10:51.210 --> 00:10:52.043
+10:56.610 --> 10:57.443
 pattern.
 
 slide-7
-00:10:53.290 --> 00:10:54.123
+10:58.690 --> 10:59.523
 At this point,
 
 222
-00:10:54.123 --> 00:10:56.130
+10:59.523 --> 11:01.530
 you've had a glance at all the core interfaces and the
 
 223
-00:10:56.130 --> 00:10:59.660
+11:01.530 --> 11:05.600
 relationships to each other. And, you know, that's,
 
 224
-00:10:59.660 --> 00:11:00.580
+11:05.600 --> 11:05.980
 that's kind of the gist. That's,
 
 225
-00:11:00.580 --> 00:11:02.453
+11:05.980 --> 11:07.853
 that's the primer on WebCodecs.
 
 226
-00:11:02.453 --> 00:11:03.560
+11:07.853 --> 11:08.960
 As a reminder,
 
 227
-00:11:03.560 --> 00:11:05.100
+11:08.960 --> 11:10.500
 I have another talk coming up for a
 
 228
-00:11:05.100 --> 00:11:07.940
+11:10.500 --> 11:13.340
 video coder configuration,
 
 229
-00:11:07.940 --> 00:11:09.040
+11:13.340 --> 11:14.440
 please check that out.
 
