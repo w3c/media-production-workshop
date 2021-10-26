@@ -1,0 +1,542 @@
+WEBVTT
+
+1
+00:06.580 --> 00:08.880
+<v ->So, you want to watch video on the web.</v>
+
+2
+00:08.880 --> 00:11.330
+There are a bunch of standard APIs and protocols
+
+3
+00:11.330 --> 00:14.490
+for getting moving images and sound into your browser.
+
+4
+00:14.490 --> 00:16.750
+Sure, some of them are super high latency,
+
+5
+00:16.750 --> 00:17.800
+and super high compression,
+
+6
+00:17.800 --> 00:19.510
+while others are super low compression
+
+7
+00:19.510 --> 00:21.380
+and super low latency.
+
+8
+00:21.380 --> 00:23.900
+But by and large, you can pick an operating point
+
+9
+00:23.900 --> 00:27.300
+and find enough tooling to get, er, 90 to 100 percent
+
+10
+00:27.300 --> 00:28.303
+of the job done for you.
+
+11-p
+00:29.220 --> 00:31.410
+Now, you decide to go the other way.
+
+12
+00:31.410 --> 00:33.550
+You want to ingest some video.
+
+13
+00:33.550 --> 00:36.500
+Again, there are a bunch of APIs and protocols
+
+14
+00:36.500 --> 00:37.710
+that will allow you to, well,
+
+15
+00:37.710 --> 00:40.360
+vary the compression ratios, and the latency,
+
+16
+00:40.360 --> 00:42.210
+and the quality, and the reliability,
+
+17
+00:42.210 --> 00:45.100
+and the speed, and the realtime-ness,
+
+18
+00:45.100 --> 00:47.680
+and a bunch of other things based on your needs,
+
+19
+00:47.680 --> 00:49.390
+to get an ingest working.
+
+20
+00:49.390 --> 00:52.180
+It's not quite as slick, but it works.
+
+21-p
+00:52.180 --> 00:54.770
+Now, you want to add some production metadata
+
+22
+00:54.770 --> 00:58.280
+to the ingest and get it into your cloud production system.
+
+23
+00:58.280 --> 01:02.300
+I normally class this sort of metadata as "exotic",
+
+24
+01:02.300 --> 01:04.410
+because there are, well, loads of different types,
+
+25
+01:04.410 --> 01:07.370
+and each type has typically got a tiny little usage,
+
+26
+01:07.370 --> 01:11.500
+and there are very few really good infrastructures
+
+27
+01:11.500 --> 01:14.400
+or frameworks for solving the general case.
+
+28
+01:14.400 --> 01:16.550
+I've seen mixes of Arduino and Raspberry Pi,
+
+29
+01:16.550 --> 01:20.400
+with RTP feeds over WiFi, with custom rate control,
+
+30
+01:20.400 --> 01:22.250
+and varying file types,
+
+31
+01:22.250 --> 01:24.900
+different ways of time... portrayal,
+
+32
+01:24.900 --> 01:27.310
+and different synchronizations, different error corrections,
+
+33
+01:27.310 --> 01:30.377
+and, meanwhile, the common problem remains the same.
+
+34-p
+01:30.377 --> 01:34.700
+"I'd like to get this metadata from that thing,
+
+35
+01:34.700 --> 01:37.440
+over a timeline, onto my video and audio,
+
+36
+01:37.440 --> 01:40.160
+while I'm shooting, and I want to be able to figure out
+
+37
+01:40.160 --> 01:42.130
+which metadata, from which device,
+
+38
+01:42.130 --> 01:45.110
+was associated with which take,
+
+39
+01:45.110 --> 01:47.730
+from which camera, during the shoot."
+
+40
+01:47.730 --> 01:49.100
+Simple, huh?
+
+41-p
+01:49.100 --> 01:51.000
+Well, none of this is really new.
+
+42
+01:51.000 --> 01:53.550
+We've been bundling these types of systems together
+
+43
+01:53.550 --> 01:56.380
+since the early days of cinema and television.
+
+44
+01:56.380 --> 01:58.930
+What's changed is that we now have the ability
+
+45
+01:58.930 --> 02:02.910
+to pull vast quantities of data into a common cloudy store,
+
+46
+02:02.910 --> 02:06.940
+and to play as much compute, and as much... stuff,
+
+47
+02:06.940 --> 02:10.200
+as you can afford in the Cloud.
+
+48
+02:10.200 --> 02:12.830
+The wonderful folks at Arri, Nablet, and TrackMen
+
+49
+02:12.830 --> 02:15.460
+helped put together some kit to explore the outline
+
+50
+02:15.460 --> 02:18.750
+of a generic solution, and we documented that piece of work
+
+51
+02:18.750 --> 02:22.800
+on the website mxf-live.io.
+
+52
+02:22.800 --> 02:23.830
+You can see that we captured some data
+
+53
+02:23.830 --> 02:26.700
+from the inside of the Arri camera,
+
+54
+02:26.700 --> 02:28.350
+as well as an external data feed of frog,
+
+55
+02:28.350 --> 02:31.210
+with the pan, the tilt, and the oar from the tripod head,
+
+56
+02:31.210 --> 02:34.140
+encapsulated it into a standard file format,
+
+57
+02:34.140 --> 02:36.160
+we stuck it across the WiFi,
+
+58
+02:36.160 --> 02:38.770
+and then serialized it onto the editor's timeline,
+
+59
+02:38.770 --> 02:41.340
+so that we could do post-production on the live feed,
+
+60
+02:41.340 --> 02:42.790
+with the captured metadata.
+
+61
+02:42.790 --> 02:44.670
+Great! Job done.
+
+62-p
+02:44.670 --> 02:45.503
+Not quite.
+
+63
+02:45.503 --> 02:47.270
+We figured out that there are really four
+
+64
+02:47.270 --> 02:51.340
+major sorts of metadata, split along two axes.
+
+65
+02:51.340 --> 02:53.210
+The first axis is pretty simple.
+
+66
+02:53.210 --> 02:55.220
+Is it binary, or is it text?
+
+67
+02:55.220 --> 02:56.870
+And this is important, 'cause that turns out
+
+68
+02:56.870 --> 02:59.290
+to be a good predictor of how you're gonna process
+
+69
+02:59.290 --> 03:01.320
+the metadata downstream.
+
+70
+03:01.320 --> 03:04.340
+The second axis is where the data is isochronous.
+
+71
+03:04.340 --> 03:06.820
+In other words, one sample for each clock tick,
+
+72
+03:06.820 --> 03:08.700
+every clock tick, or is it kinda lumpy,
+
+73
+03:08.700 --> 03:10.780
+with embedded timing?
+
+74-p
+03:10.780 --> 03:13.100
+Let's look an example of metadata
+
+75
+03:13.100 --> 03:15.224
+for each of those quadrants.
+
+76
+03:15.224 --> 03:17.170
+Isochronous binary is pretty common.
+
+77
+03:17.170 --> 03:19.100
+That's the sort of thing that you'd find
+
+78
+03:19.100 --> 03:20.390
+the position of the lens,
+
+79
+03:20.390 --> 03:22.980
+sampled every chirp of its piezoelectric motor,
+
+80
+03:22.980 --> 03:25.287
+or maybe, sampled every frame.
+
+81
+03:25.287 --> 03:28.000
+Isochronous text, this might be, oh,
+
+82
+03:28.000 --> 03:31.800
+all the Dolby Vision high dynamic range metadata property,
+
+83
+03:31.800 --> 03:34.740
+stored as an XML document for every frame of the video.
+
+84
+03:34.740 --> 03:38.500
+Blobs of binary data, this might be an event track,
+
+85
+03:38.500 --> 03:40.620
+signaling which smoke machine was turned on,
+
+86
+03:40.620 --> 03:42.850
+and at what time of day.
+
+87
+03:42.850 --> 03:45.900
+Blobs of text data, well, this is pretty common.
+
+88
+03:45.900 --> 03:48.140
+That's exactly what closed captioning and subtitles are,
+
+89
+03:48.140 --> 03:50.340
+where each phrase of text is as labeled,
+
+90
+03:50.340 --> 03:53.400
+with the timing information for that phrase.
+
+91-p
+03:53.400 --> 03:55.600
+Once you've got these four fundamental types,
+
+92
+03:55.600 --> 03:57.650
+you can then look at transport.
+
+93
+03:57.650 --> 03:59.950
+It helps to be able to store this timed data
+
+94
+03:59.950 --> 04:02.440
+as a serializable stream of packets,
+
+95
+04:02.440 --> 04:03.770
+and for that we chose MXF,
+
+96
+04:03.770 --> 04:05.670
+because of the available infrastructure,
+
+97
+04:05.670 --> 04:08.980
+and the ability to represent clocks as rational numbers,
+
+98
+04:08.980 --> 04:11.170
+so the precise timing can be maintained
+
+99
+04:11.170 --> 04:13.740
+without the risk of drift if the systems are left running
+
+100
+04:13.740 --> 04:15.100
+for long periods of time,
+
+101
+04:15.100 --> 04:16.710
+like weeks, and months, and years.
+
+102
+04:17.820 --> 04:20.330
+Those packets can then be mapped and layered
+
+103
+04:20.330 --> 04:22.800
+with different transports, like WebRTC,
+
+104
+04:22.800 --> 04:26.890
+to get them from where they are, to where they need to be.
+
+105-p
+04:26.890 --> 04:29.600
+And now, it starts to get interesting.
+
+106
+04:29.600 --> 04:32.150
+Whilst MXF is pretty handy for the hardware
+
+107
+04:32.150 --> 04:35.500
+and firmware layers, there are open source projects,
+
+108
+04:35.500 --> 04:38.640
+like OpenTimelineIO from Pixar, and the ASWS,
+
+109
+04:38.640 --> 04:40.680
+that are much more friendly for interacting
+
+110
+04:40.680 --> 04:44.730
+with that data in a generic, product-independent way.
+
+111
+04:44.730 --> 04:48.380
+Having said that, we know that transcoding video is lossy,
+
+112
+04:48.380 --> 04:51.700
+and transcoding metadata may actually destroy
+
+113
+04:51.700 --> 04:52.510
+its usefulness.
+
+114
+04:52.510 --> 04:55.590
+So, wherever possible, retaining the original,
+
+115
+04:55.590 --> 04:59.770
+possibly bulky, metadata in its original form, is vital,
+
+116
+04:59.770 --> 05:02.960
+and computing simplified proxies for that metadata
+
+117
+05:02.960 --> 05:05.660
+becomes important for visualization.
+
+118
+05:05.660 --> 05:08.110
+If you're going to do all of that in the general case,
+
+119
+05:08.110 --> 05:11.500
+then managing identifiers of the metadata type,
+
+120
+05:11.500 --> 05:13.650
+and how it's associated with other assets,
+
+121
+05:13.650 --> 05:15.710
+could become a complexity nightmare,
+
+122
+05:15.710 --> 05:18.100
+unless you design some sort of common framework
+
+123
+05:18.100 --> 05:21.350
+for associating elements, based on simple identifiers,
+
+124
+05:21.350 --> 05:22.823
+such as URIs.
+
+125-p
+05:23.770 --> 05:25.890
+And that's as far as we've got.
+
+126
+05:25.890 --> 05:28.210
+There's interest from studios, and vendors,
+
+127
+05:28.210 --> 05:29.160
+and a whole bunch of people,
+
+128
+05:29.160 --> 05:31.430
+and I hope to put more time into it, personally,
+
+129
+05:31.430 --> 05:34.440
+when I pass on my role as SMPTE Standards Vice President
+
+130
+05:34.440 --> 05:35.910
+to someone else in January,
+
+131
+05:35.910 --> 05:38.500
+and if it interests you, then I'd love to talk.
+
+132
+05:38.500 --> 05:41.910
+I'm sure there is something here that the brain trust of W3C
+
+133
+05:41.910 --> 05:44.860
+and SMPTE can genuinely create something that's useful
+
+134
+05:44.860 --> 05:48.187
+for the world of media, as well as for other verticals.
+
+135
+05:48.187 --> 05:49.200
+Thanks!
+

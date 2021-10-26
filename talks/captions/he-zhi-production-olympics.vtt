@@ -1,0 +1,346 @@
+WEBVTT
+
+1
+00:05.700 --> 00:06.700
+Hello
+
+2
+00:06.700 --> 00:06.710
+I am He Zhi
+
+3
+00:07.700 --> 00:12.700
+the web-based media production team leader from China Mobile Migu Company.
+
+4
+00:12.700 --> 00:22.700
+Today, I would like to share the application of Migu web editing technology in live and post production for sports broadcasting.
+
+5
+00:23.700 --> 00:26.700
+During the UEFA Euro2020
+
+6
+00:26.700 --> 00:28.700
+and the Tokyo2020
+
+7
+00:28.700 --> 00:35.700
+web-based technologies have been largely deployed for live and post production.
+
+8
+00:35.700 --> 00:40.700
+The application tools are mainly divided into three categories,
+
+9
+00:40.700 --> 00:43.700
+live broadcast and streaming,
+
+10
+00:43.700 --> 00:45.700
+post production and editing,
+
+11
+00:45.700 --> 00:47.700
+and AI enhanced production.
+
+12
+00:48.700 --> 00:54.700
+These tools are implemented based on HTML5 and ffmpeg technology.
+
+13
+00:55.700 --> 00:59.700
+The below tables list used protocols and technologies.
+
+14
+01:01.700 --> 01:07.700
+OK, let us look at the live broadcast editing tool. The favorite function is to strip and publish.
+
+15
+01:08.700 --> 01:12.700
+In order to produce and publish video within 30s,
+
+16
+01:13.700 --> 01:15.700
+we have made lots of improvements.
+
+17
+01:16.700 --> 01:22.700
+First, uniformly recode live stream as HLS with ffmpeg,
+
+18
+01:22.700 --> 01:26.700
+and slice each ts file within 2 seconds;
+
+19
+01:26.700 --> 01:35.700
+The second is to quickly compress 720p low bit stream for web browsing and editing;
+
+20
+01:36.700 --> 01:38.700
+Third, provide key frame pictures,
+
+21
+01:39.700 --> 01:46.700
+which are displayed by DOM on the operation track to facilitate interception and location;
+
+22
+01:46.700 --> 01:55.700
+Fourth, add video JS playback object to quickly browse the content after simulated strip removal;
+
+23
+01:56.700 --> 02:04.700
+Fifth, use background services for parallel processing to improve performance;
+
+24
+02:04.700 --> 02:06.700
+Sixth, CDN cache is used.
+
+25
+02:07.700 --> 02:11.700
+And there is still an ongoing issue, which is,
+
+26
+02:12.700 --> 02:16.700
+there are two video JS objects with two play windows,
+
+27
+02:16.700 --> 02:19.700
+both need to download m3u8 files.
+
+28
+02:20.700 --> 02:24.700
+We hope that they can share data to avoid repeated
+
+29
+02:24.700 --> 02:27.700
+downloading and save network bandwidth,
+
+30
+02:27.700 --> 02:35.700
+so that we can open more windows and preview the contents in different periods at the same time.
+
+31
+02:36.700 --> 02:38.700
+OK, let us turn to the post editing.
+
+32
+02:38.700 --> 02:43.700
+It could be regarded as an upgrade of live editing tool.
+
+33
+02:44.700 --> 02:47.700
+Here we no longer pursue timeliness, but professionalism.
+
+34
+02:48.700 --> 02:56.700
+We need control different types of content through complex multi-track object and display them by canvas.
+
+35
+02:57.700 --> 03:01.700
+The difficulty here lies in the processing performance and efficiency.
+
+36
+03:02.700 --> 03:03.700
+How to achieve?
+
+37
+03:04.700 --> 03:06.700
+Firstly, for the whole architecture,
+
+38
+03:06.700 --> 03:14.700
+it keeps the way of web simulating with final processing by media services to reduce the web load.
+
+39
+03:14.700 --> 03:23.700
+Secondly, we try to control the window resolution of the displayed content at 480 * 270.
+
+40
+03:24.700 --> 03:34.700
+This is because rendering special effect at high resolution by WebGL takes ordinary laptop 80% CPU;
+
+41
+03:35.700 --> 03:40.700
+Thirdly, in order to preview content without delay by mouse hover,
+
+42
+03:40.700 --> 03:45.700
+we recode content as HLS with ffmpeg during uploading;
+
+43
+03:46.700 --> 03:47.700
+Finally, there are some operation optimization points,
+
+44
+03:47.700 --> 04:01.700
+such as providing a small H5 editing window for users to preprocess and cut the required content when uploading.
+
+45
+04:01.700 --> 04:05.700
+We have tried to implement with Webcodecs,
+
+46
+04:05.700 --> 04:11.700
+which is very convenient, but it needs to be processed frame by frame.
+
+47
+04:12.700 --> 04:16.700
+I have to say, it is not very friendly to locate and clip content.
+
+48
+04:17.700 --> 04:21.700
+The easy way is webassembly + ffmpeg.
+
+49
+04:22.700 --> 04:27.700
+We expect that webcodecs could support more such kinds of functions.
+
+50
+04:29.700 --> 04:32.700
+OK, in order to meet the different needs of editing,
+
+51
+04:32.700 --> 04:36.700
+we have also developed a series of tool sets,
+
+52
+04:37.700 --> 04:40.700
+including image editing, cover production, subtitle production,
+
+53
+04:40.700 --> 04:49.700
+video template, horizontal to vertical screen, removing watermark tools and so on.
+
+54
+04:50.700 --> 04:53.700
+Due to the web framework and modular design,
+
+55
+04:53.700 --> 04:57.700
+it makes most of basic capabilities reusable,
+
+56
+04:57.700 --> 05:03.700
+and it could easily implement incremental functions.
+
+57
+05:03.700 --> 05:09.700
+On the whole, we choose W/S architecture of the light front and heavy back,
+
+58
+05:09.700 --> 05:12.700
+which is mainly due to three reasons:
+
+59
+05:14.700 --> 05:16.700
+first, there are the performance issue mentioned above;
+
+60
+05:17.700 --> 05:24.700
+second, for flexibility, light front can be easily integrated into commercial applications;
+
+61
+05:25.700 --> 05:27.700
+the third is for compatibility.
+
+62
+05:28.700 --> 05:33.700
+Background services can provide API for various terminals on cloud.
+
+63
+05:34.700 --> 05:43.700
+OK, we could achieve quickly business integration, strong reusability, and easy expansion.
+
+64
+05:43.700 --> 05:46.700
+in order to produce more content with low cost,
+
+65
+05:47.700 --> 05:51.700
+we add AI functions, such as automatically add label,
+
+66
+05:51.700 --> 05:56.700
+automatically add subtitles, automatically remove watermark,
+
+67
+05:56.700 --> 06:03.700
+automatically turn horizontal to vertical screen, automatically cut video, and so on.
+
+68
+06:04.700 --> 06:12.700
+finally, let's look back and see why we choose web editing technology for online operation and production platform.
+
+69
+06:13.700 --> 06:17.700
+Take a media company with 200 employees as example.
+
+70
+06:17.700 --> 06:21.700
+The first is the need of copyright. Through web editing,
+
+71
+06:21.700 --> 06:26.700
+we can minimize the risk of content copy, download and disclosure;
+
+72
+06:27.700 --> 06:35.700
+the second is the need of operation. Users could save a lot of time by online modification
+
+73
+06:35.700 --> 06:37.700
+and resubmission the content for operation;
+
+74
+06:37.700 --> 06:41.700
+the third is R &amp; D needs. As mentioned above, for better performance,
+
+75
+06:42.700 --> 06:50.700
+flexibility and compatibility; Fourth, for the cost. Compared with purchasing workstations,
+
+76
+06:50.700 --> 06:55.700
+web editing can save more than 80% of cost with shared cloud servers;
+
+77
+06:56.700 --> 07:03.700
+Fifth, the construction and maturity cycle is shorter, which can save 70% of time.
+
+78
+07:04.700 --> 07:12.700
+Online operation and production platform could be used to produce and operate large number of music,
+
+79
+07:12.700 --> 07:20.700
+videos, and movies and live broadcasts, and plays a core role in the content production system.
+
+80
+07:21.700 --> 07:23.700
+we are full of expectations,
+
+81
+07:24.700 --> 07:29.700
+We expect that webcodecs can provide more functions and API,
+
+82
+07:30.700 --> 07:33.700
+such as, support video JS object sharing data,
+
+83
+07:34.700 --> 07:42.700
+support location, cutting media, and support high-resolution special effect rendering with low CPU cost,
+
+84
+07:42.700 --> 07:49.700
+support RMVB \ AVI \ MKV and other common network video format,
+
+85
+07:49.700 --> 07:59.700
+And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8K video in the future
+
+86
+08:00.700 --> 08:01.700
+Thank you, thank you very much
+

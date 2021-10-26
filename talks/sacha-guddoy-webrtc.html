@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>WebRTC in live media production - Sacha Guddoy - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../talk-ui.css">
+    <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="player">
+    <meta property="og:title" content="WebRTC in live media production by Sacha Guddoy (Grabyo)">
+    <meta property="og:description" content="This talk focuses on the use of WebRTC in professional live broadcast workflows. In a live production environment, users need to rely on their tools being accurate and performant. Furthermore, greater flexibility in the WebRTC API would allow novel workflows and optimisation.">
+    <meta property="og:image" content="thumbnails/sacha-guddoy-webrtc.jpg">
+    <meta property="og:video" content="https://iframe.videodelivery.net/1ca874ca1591f70d99faf6aaf51cd982">
+    <meta property="twitter:player" content="https://iframe.videodelivery.net/1ca874ca1591f70d99faf6aaf51cd982?defaultTextTrack=en">
+    <meta property="twitter:player:width" content="360">
+    <meta property="twitter:player:height" content="202">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header id="header" class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="main talk">
+      <section id="intro">
+        <h2>WebRTC in live media production</h2>
+
+        <p class="talkinfo">
+          Presenter: <strong>Sacha Guddoy (Grabyo)</strong><br>
+          Duration: <strong>6 minutes</strong><br>
+          Slides: <a href="slides/sacha-guddoy-webrtc.pdf"><strong>PDF</strong></a>
+        </p>
+
+        <p class="buttons">
+          <!-- previousStart -->
+          <button form="form" type="submit" class="picto im-angle-left" formaction="sacha-guddoy-media-element-accuracy.html">
+            Previous: Media Element accuracy and synchronization with the DOM
+          </button>
+          <!-- previousEnd -->
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
+          <button form="form" type="submit" formaction="soeren-balko-clipchamp-webcodecs.html">
+            Next: Improving Clipchamp's in-browser video editing pipeline with WebCodecs<span class="picto im-angle-right"></span>
+          </button>
+          <!-- nextEnd -->
+        </p>
+      </section>
+
+      <section id="talk">
+        <h3 style="display:none">Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "WebRTC in live media production",
+              "description": "This talk focuses on the use of WebRTC in professional live broadcast workflows. In a live production environment, users need to rely on their tools being accurate and performant. Furthermore, greater flexibility in the WebRTC API would allow novel workflows and optimisation.",
+              "thumbnailUrl": "thumbnails/sacha-guddoy-webrtc.jpg",
+              "duration": "PT6M12S",
+              "embedUrl": "https://iframe.videodelivery.net/1ca874ca1591f70d99faf6aaf51cd982",
+            }
+          </script>
+
+          <iframe id="video" title="WebRTC in live media production" src="https://iframe.videodelivery.net/1ca874ca1591f70d99faf6aaf51cd982"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/sacha-guddoy-webrtc.pdf#1" class="slide">Slide 1 of 8</i-slide>
+<div>
+  <p>Hello, there. My name is Sacha Guddoy and I'm the lead Front End Engineer at Grabyo.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#2" class="slide">Slide 2 of 8</i-slide>
+<div>
+  <p>Grabyo is a SaaS platform which delivers tools for live broadcast production to commercial broadcasters.</p>
+  <p>Some of the offerings include live broadcast production, video editing, clipping from live streams, and publishing to various endpoints.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#3" class="slide">Slide 3 of 8</i-slide>
+<div>
+  <p>At Grabyo, we use WebRTC in our live production offering.</p>
+  <p>The way that this works is the user will see, in their web browser, they'll have multiple live streams coming in and they will be able to monitor these live streams and choose which ones are being output to their broadcast endpoint.</p>
+  <p>We also have multiple sidecar applications and multi-window workflows. For example, popping out a player.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#4" class="slide">Slide 4 of 8</i-slide>
+<div>
+  <p>One of the challenges that we face is the synchronization of streams.</p>
+  <p>What we'd like to do is to have multiple live feeds from different cameras coming in and to be able to switch between them. But if our live feeds aren't perfectly in sync with each other, if those two cameras aren't perfectly in sync, it's going to be very noticeable when you switch between them that there's some delay between them and it's jarring for the viewer.</p>
+  <p>When you have multiple WebRTC streams on your page, keeping those all in sync is not necessarily the most straightforward thing. The browser will do its best, but they aren't tied together.</p>
+  <p>So, for example, if you are cutting between different cameras, you want those camera feeds to be showing exactly at the same time. If you're doing multi-party chat, you don't want latency.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#5" class="slide">Slide 5 of 8</i-slide>
+<div>
+  <p>The synchronization aspect is pretty difficult. Network conditions can be unpredictable and you don't really have a way of correcting for that or to reconcile with synchronization of streams on the client side.</p>
+  <p>If there were embedded time stamps on the streams, then you potentially could do that. Using something lower level, such as web transport, may allow you to do that and may even be a more performant technology for this use case than WebRTC anyway.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#6" class="slide">Slide 6 of 8</i-slide>
+<div>
+  <p>One pattern that we've been using recently is splitting workflows into different browser contexts. Being able to create a pop out window which allows you to monitor a specific video in one window and be able to monitor everything else in another window.</p>
+  <p>Or to be able to edit your audio in one window and monitor your videos in another window. In that last scenario, you're going to be having two instances in your browser of that same WebRTC connection. If I wanted to have the video of my live stream in one window because that's my video control suite and I want to have the same live stream in another window because that's my audio control suite, then I have to have two WebRTC connections. That's twice the performance overhead, twice the bandwidth, et cetera.</p>
+  <p>We think about the way that Shared WebWorkers work, the shared workflow space, that allows multiple contexts to share whatever is happening in that work area. If we could do the exact same thing with WebRTC, that would significantly reduce our performance overhead.</p>
+  <p>And these kinds of workflows are really powerful for professional desktop applications. If you are a video editor using some kind of NLW, you probably want as much screen space as you want for your timeline, your monitors, your asset bins, et cetera. Being able to kind of split different parts of our interfaces out into different windows so the user can position them as they see fit is really, really helpful.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#7" class="slide">Slide 7 of 8</i-slide>
+<div>
+  <p>What are the advantages of doing this?</p>
+  <p>There's obviously less resource consumption because you only have that one connection.</p>
+  <p>There's inherent synchronization between the contexts because the data is coming from that same connection. Now this is probably possible using shared workers and web transport. But browser support for that is not particularly great.</p>
+  <p>Accuracy is also important in this technology. More accurate time stamps might help us synchronize those streams together. And also it helps synchronize other things.</p>
+  <p>For example, synchronize an overlay in the DOM. Or a notification in the DOM.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-webrtc.pdf#8" class="slide">Slide 8 of 8</i-slide>
+<div>
+  <p>Capability to encode and decode data from the web RTC connection would also be really useful.</p>
+  <p>Right now, the API surface of the WebRTC connection is pretty minimal and it doesn't expose much useful information to us. Being able to put our own code in that pipeline would allow us to do all this interesting stuff.</p>
+  <p>Say, for example, presenting a particular frame when we want to present it. Say, for example, synchronizing audio and video from different browser windows.</p>
+  <p>We could know exactly which frame is being presented before they even get rendered to the DOM, so we can prepare our DOM elements which would synchronize to that. We could potentially send over proprietary error correction data to smooth over any link failures with picture quality as a priority.</p>
+  <p>And going back the other way, you could do stuff like funny hats. You could do chroma keying. You could do machine learning analysis and do stuff like background blur or embedding meta data.</p>
+  <p>A lot of this can be solved using the MediaStreamTrack Insertable Streams feature. That is still in a draft specification and I'd really love to see more browser support for that.</p>
+  <p>Thank you for watching. I hope you enjoyed hearing about our use cases and I'm looking forward to hearing any questions and feedback. Thanks, bye.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="buttons">
+          <!-- previousStart -->
+          <button form="form" id="prevtalk" type="submit" formaction="sacha-guddoy-media-element-accuracy.html" class="picto im-angle-left">Previous: Media Element accuracy and synchronization with the DOM</button>
+          <!-- previousEnd -->
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
+          <button form="form" id="nexttalk" type="submit" formaction="soeren-balko-clipchamp-webcodecs.html">Next: Improving Clipchamp's in-browser video editing pipeline with WebCodecs<span class="picto im-angle-right"></span></button>
+          <!-- nextEnd -->
+        </p>
+      </section>
+
+      <section id="sponsors">
+        <h2>
+          Workshop sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "captions/sacha-guddoy-webrtc.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <script src="../talk-sync.js"></script>
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

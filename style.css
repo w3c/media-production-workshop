@@ -1,3 +1,8 @@
+/* Defaults for some new HTML5 elements for older browsers */
+header, nav, section, aside, main, footer, details {display: block}
+summary {display: list-item}
+header {font-weight: bold}
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -5,6 +10,7 @@
   margin: 0;
   padding: 0;
 }
+
 
 html,
 body {
@@ -131,6 +137,49 @@ a.ref {
   border: 1px solid #ccc;
   margin-top: 0;
 }
+
+
+/* Each section has a link to the next section, or to the top of the
+   page. The link is inside an element (usually <p>) with
+   class=skip.
+
+   Inside the banner (<header>), the link is nearly transparent unless
+   it has the focus, because that looks better. It remains visible for
+   a second after it lost the focus again.
+
+   The maximum width of a normal section is 52rem/20em minus a bit for
+   the scrollbar, hence we set the maximum width of the .skip to a
+   little less than 20em.
+
+   Skip-arrows have a color depending on the section background. Give
+   them a 1-pixel outline so they are visible in case they are on top
+   of an image.
+*/
+.skip {position: absolute; top: -3.6rem; right: 0; color: #c9242b; width: 100%;
+  z-index: 1;
+  max-width: 19.7em; text-align: right; font-size: 2em; margin: 0; height: 0}
+section:nth-of-type(2n+1) .skip {color: black;
+  text-shadow: -1px -1px 0 hsl(0,0%,98%), 1px 1px 0 hsl(0,0%,98%),
+    -1px 1px 0 hsl(0,0%,98%), 1px -1px 0 hsl(0,0%,98%)}
+section:nth-of-type(2n+2) .skip {color: white;
+  text-shadow: -1px -1px 0 #005a9c, 1px 1px 0 #005a9c,
+    -1px 1px 0 #005a9c, 1px -1px 0 #005a9c}
+footer .skip {color: black;
+  text-shadow: -1px -1px 0 #eee, 1px 1px 0 #eee,
+    -1px 1px 0 #eee, 1px -1px 0 #eee}
+@media (min-width: 46em) and (min-height: 46em), (min-width: 56em) {
+  .skip {top: -7.2rem}}
+header .skip {top: -1.2rem; z-index: 2}
+.skip a span {display: none} /* Suppress text meant for Lynx */
+.skip a {text-decoration: none}
+header .skip a {opacity: 0.1; transition: 1s 1s}
+header .skip a:hover, header .skip a:focus {opacity: 1; transition: 0.2s;
+  background: #ccc}
+@supports (transform: translate(50%, 0)) {
+  .skip {right: 50%; transform: translate(50%, 0)}
+}
+.skip {display: none}   /* No skip link on small screens */
+@media screen and (min-width: 33em) {.skip {display: block}}
 
 /* If you rather clip than squeeze the image, remove `height: 100%`. */
 .box {
@@ -609,6 +658,10 @@ details[open] summary {
   margin: 0 1rem 1.5rem;
 }
 
+#sponsors p {
+  margin-left: 1em;
+}
+
 .sponsors-section {
   margin-top: 1rem;
 }
@@ -902,10 +955,13 @@ input, textarea {
   font: .9em/1.1 Helvetica, Arial, Verdana, sans-serif;
 }
 
+input[type=checkbox] {
+  width: initial;
+}
+
 button {
   margin: 20px 0 0 0;
   width: 100%;
-  height: 1.5rem;
 }
 
 
@@ -919,7 +975,7 @@ div.talks > details {
 
 div.talks > details > summary > div {
   display: flex;
-  height: 120px;
+  height: 150px;
 }
 
 div.talks > details > summary > div > div {
@@ -942,13 +998,28 @@ div.talks > details > summary::-webkit-details-marker {
   display: none;
 }
 
+div.talks h4 {
+  cursor: pointer;
+}
+
 div.talks > details > summary > div:after {
   content: 'more ►';
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: -10px;
   cursor: pointer;
   color: gray;
+  display: none;
+}
+
+@media all and (min-width: 620px) {
+  div.talks > details > summary > div:after {
+    display: block;
+  }
+}
+
+div.talks > details > summary.nopicture > div:after {
+  right: 10px;
 }
 
 div.talks > details[open] > summary > div:after {
@@ -958,6 +1029,26 @@ div.talks > details[open] > summary > div:after {
 
 div.talks > details[open] > summary img {
   display: none;
+}
+
+div.talks .button {
+  padding: .5em;
+  margin-top: 1em;
+  background: #005a9c;
+  border: none;
+  font-size: 1.2rem;
+  color: white;
+  box-shadow: .2em .3em .4em #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8em;
+  text-decoration: none;
+}
+
+div.talks .button:not([href]) {
+  background: rgb(240,240,240);
+  color: rgb(100,100,100);
 }
 
 div.talks h4 {
@@ -1021,4 +1112,172 @@ div.talks .speaker span {
   width: 300px;
   margin-top: 0;
   height: inherit;
+}
+
+.picto::before {
+  font-family: iconmonstr-iconic-font;
+  font-size-adjust: 1.0;
+  line-height: 0.6;
+  font-style: normal;
+  margin-right: 0.33em;
+  vertical-align: middle;
+  text-indent: 0;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.buttons, .badges {
+  overflow: visible;
+  display: grid;
+  grid: "a b" / 1fr 1fr;
+  grid-gap: 2px;
+  gap: 2px;
+  align-items: stretch;
+  justify-items: stretch;
+}
+
+@media all and (min-width: 33em) {
+  .buttons, .badges {
+    grid: "a b c" / 1fr 1fr 1fr;
+  }
+}
+
+#slides button {
+  background: hsla(204,0%,86%,1.0);
+  border: 1px outset hsla(204,0%,86%,1.0);
+  color: inherit;
+  font-weight: normal !important;
+  min-height: 2.5em;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-top: 5px;
+}
+
+.buttons > * {
+  background: hsla(204,0%,86%,1.0);
+  border: 1px outset hsla(204,0%,86%,1.0);
+  color: inherit;
+  font-weight: normal !important;
+  min-height: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.buttons > *, .badges > * {
+  width: auto;
+  margin: 0;
+  float: none;
+}
+
+.buttons a {
+  text-decoration: none;
+}
+
+#slides button:hover,
+.buttons button:hover,
+.buttons a:hover,
+body:not(.sync) #buttonbar .button:hover {
+  filter: brightness(105%);
+}
+
+.talk #intro h2 {
+  font-size: 2em;
+}
+
+.talk summary {
+  display: list-item;
+}
+
+.talk details ul {
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+i-slide {
+  width: 40.889em;
+  max-width: 100%;
+  border-radius: 5px;
+  outline: thin solid #444;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border-radius: 5px;
+}
+
+#slides > div {
+  width: 40.889em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body:not(.sync) #buttonbar {
+  width: 40.889em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sync #buttonbar button {
+  font-size: inherit;
+  margin: inherit;
+}
+
+body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
+.buttons .button, .buttons button {
+  text-decoration: none;
+  cursor: default;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: center;
+  border-radius: 0.25em;
+  background: hsla(204,0%,86%,1.0) padding-box;
+  color: inherit;
+  border: 1px outset hsla(204,0%,86%,1.0);
+}
+
+#buttonbar label:before, #buttonbar label:after {
+  content: "";
+}
+
+#buttonbar [title="Help"] {
+  display: none;
+}
+
+#buttonbar label {
+  padding: 0.3em;
+}
+
+.button > input {
+  vertical-align: initial;
+}
+
+.sync.noslides #slidenr {
+  display: none;
+}
+
+.sync.noslides #video {
+  position: initial;
+  margin-top: 6em;
+  margin-bottom: 1em;
+  display: block;
+}
+
+.sync.noslides #caption {
+  position: initial;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sync.noslides #buttonbar span:nth-child(2) {
+  display: none;
 }

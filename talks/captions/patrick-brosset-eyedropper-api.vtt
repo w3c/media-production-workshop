@@ -1,0 +1,582 @@
+WEBVTT
+
+1
+00:06.500 --> 00:06.883
+<v ->Hey everyone.</v>
+
+2
+00:06.883 --> 00:07.770 line:15%
+My name is Patrick,
+
+3
+00:07.770 --> 00:09.360 line:15%
+I'm a program manager at Microsoft
+
+4
+00:09.360 --> 00:13.200 line:15%
+and I'll be speaking to you today about the EyeDropper API.
+
+5-p
+00:13.200 --> 00:15.710
+Sampling colors, you know, creative application,
+
+6
+00:15.710 --> 00:17.750
+is something that's very useful.
+
+7
+00:17.750 --> 00:20.300
+For example, when you use something like PowerPoint
+
+8
+00:20.300 --> 00:21.480
+and you want to change the color
+
+9
+00:21.480 --> 00:22.860
+of the outline of an object,
+
+10
+00:22.860 --> 00:24.810
+you're able to use an EyeDropper tool
+
+11
+00:24.810 --> 00:27.550
+to go and grab the color from a different object
+
+12
+00:27.550 --> 00:31.490
+so that you don't have to, like remember what color it was,
+
+13
+00:31.490 --> 00:34.800
+or maybe remember the code by heart.
+
+14-p
+00:34.800 --> 00:37.380
+Developer tools in browsers also have that available.
+
+15
+00:37.380 --> 00:39.188
+If you want to change a color property
+
+16
+00:39.188 --> 00:41.789
+in the styles panel of dev tools,
+
+17
+00:41.789 --> 00:44.300
+usually there's an EyeDropper icon
+
+18
+00:44.300 --> 00:46.180
+that allows you to go and just click,
+
+19
+00:46.180 --> 00:47.760
+you know, part of the webpage
+
+20
+00:47.760 --> 00:49.630
+so that you can grab that color right away
+
+21
+00:49.630 --> 00:51.120
+and not have to, you know,
+
+22
+00:51.120 --> 00:53.457
+remember the hex code, for example.
+
+23-p
+00:53.457 --> 00:57.850
+Photoshop or Photoshop light applications
+
+24
+00:57.850 --> 00:59.700
+typically allow you to grab colors
+
+25
+00:59.700 --> 01:02.700
+from the artwork as well directly.
+
+26-p
+01:02.700 --> 01:04.750
+Unfortunately, on the web, you cannot do this.
+
+27
+01:04.750 --> 01:07.199
+So if you're developing a creative application
+
+28
+01:07.199 --> 01:10.260
+with web technologies today, you cannot do this.
+
+29-p
+01:10.260 --> 01:13.300
+There's a way you can do this on Chromium browsers.
+
+30
+01:13.300 --> 01:15.878
+If you use an input type color element
+
+31
+01:15.878 --> 01:19.400
+in Chromium browsers, once you click on that element,
+
+32
+01:19.400 --> 01:21.350
+you'll have a dropdown and it will contain
+
+33
+01:21.350 --> 01:23.750
+an EyeDropper icon that allows you to do this.
+
+34-p
+01:23.750 --> 01:25.240
+But this is non-standard
+
+35
+01:26.130 --> 01:28.440
+and it doesn't work the same in Firefox,
+
+36
+01:28.440 --> 01:30.309
+for example, which has the typical
+
+37
+01:30.309 --> 01:35.309
+or default color picker palette shown here.
+
+38-p
+01:36.280 --> 01:41.160
+Also the input type color is hard to style with CSS,
+
+39
+01:41.160 --> 01:43.900
+and it's an extra HTML element
+
+40
+01:43.900 --> 01:46.290
+that you might not want to add to your markup.
+
+41
+01:46.290 --> 01:48.230
+It's better if you can drive that feature
+
+42
+01:48.230 --> 01:50.700
+directly from JavaScript.
+
+43-p
+01:50.700 --> 01:53.310
+So that's why we created this EyeDropper API.
+
+44
+01:53.310 --> 01:54.363
+It's a new API.
+
+45
+01:54.363 --> 01:59.363
+It's specified right now as a WICG draft spec.
+
+46
+01:59.410 --> 02:01.580
+It's gone through W3C TAG review
+
+47
+02:02.600 --> 02:06.638
+and it's been implemented by engineers at Microsoft Edge
+
+48
+02:06.638 --> 02:09.380
+in the Chromium open source project
+
+49
+02:09.380 --> 02:12.170
+so that it's available to any Chromium-based browsers
+
+50
+02:12.170 --> 02:13.320
+at the moment.
+
+51
+02:13.320 --> 02:15.210
+This was also done in close collaboration
+
+52
+02:15.210 --> 02:17.630
+with Google Chrome folks.
+
+53-p
+02:17.630 --> 02:19.540
+So let's see what the feature looks like.
+
+54
+02:19.540 --> 02:22.350
+I'm going to go through a couple demos here.
+
+55
+02:22.350 --> 02:24.990
+I have one of a kind of a silly game
+
+56
+02:24.990 --> 02:28.240
+where you're supposed to find the color at the bottom
+
+57
+02:28.240 --> 02:31.790
+that matches the little colored square at the top,
+
+58
+02:31.790 --> 02:33.300
+using the EyeDropper.
+
+59
+02:33.300 --> 02:34.760
+And you can either succeed
+
+60
+02:34.760 --> 02:37.200
+by finding the right color or fail.
+
+61
+02:37.200 --> 02:41.610
+And also if you go above the 10 seconds limit,
+
+62
+02:41.610 --> 02:45.400
+you'll just go back to the normal cursor
+
+63
+02:45.400 --> 02:46.743
+and you fail the round.
+
+64-p
+02:48.270 --> 02:49.760
+Here is another demo,
+
+65
+02:49.760 --> 02:54.760
+which is a sort of a swapping color application
+
+66
+02:55.300 --> 02:57.540
+where you can load an image in the canvas
+
+67
+02:57.540 --> 02:59.880
+and then you can click on the first button
+
+68
+02:59.880 --> 03:02.460
+to sample that color from the image.
+
+69
+03:02.460 --> 03:04.140
+Let's say this color here,
+
+70
+03:04.140 --> 03:05.740
+and then click on the second button
+
+71
+03:05.740 --> 03:08.530
+to go and replace that color with another one
+
+72
+03:08.530 --> 03:10.300
+that you sample from anywhere.
+
+73-p
+03:11.330 --> 03:12.890
+And then that third demo
+
+74
+03:12.890 --> 03:16.520
+is a kind of a random Mondrian art generator,
+
+75
+03:16.520 --> 03:20.270
+where you can change the color of the blocks
+
+76
+03:20.270 --> 03:22.823
+to anything else that you want by clicking on that.
+
+77-p
+03:24.500 --> 03:25.670
+Now let's take a look at
+
+78
+03:25.670 --> 03:27.280
+what the code looks like for those demos.
+
+79
+03:27.280 --> 03:31.250
+And I'm going to use the code from the game demo
+
+80
+03:31.250 --> 03:32.450
+because that's the one that uses
+
+81
+03:32.450 --> 03:35.100
+the most features of the API.
+
+82-p
+03:35.100 --> 03:39.530
+At the heart of the EyeDropper API is the EyeDropper class.
+
+83
+03:39.530 --> 03:42.182
+If you want to use the EyeDropper, instantiate the class
+
+84
+03:42.182 --> 03:46.690
+then you get an object that you can call the open method on.
+
+85-p
+03:46.690 --> 03:47.960
+If you call the open method,
+
+86
+03:47.960 --> 03:50.630
+right away the EyeDropper opens up
+
+87
+03:50.630 --> 03:54.420
+and the user can select a color from the entire screen.
+
+88
+03:54.420 --> 03:56.100
+The method returns a promise,
+
+89
+03:56.100 --> 03:58.627
+which will either reject or resolve.
+
+90
+03:58.627 --> 04:01.477
+It will reject when the user escapes
+
+91
+04:01.477 --> 04:04.630
+from the EyeDropper mode, by pressing the escape button
+
+92
+04:04.630 --> 04:06.200
+on the keyboard, for example.
+
+93
+04:06.200 --> 04:09.470
+And it will resolve when the user
+
+94
+04:09.470 --> 04:11.920
+clicks on a pixel in the screen
+
+95
+04:11.920 --> 04:16.930
+and it will resolve to the value of the pixel color.
+
+96
+04:17.520 --> 04:20.710
+There's also a way to abort the EyeDropper mode.
+
+97-p
+04:20.710 --> 04:23.412
+If at any time your application changes state
+
+98
+04:23.412 --> 04:26.454
+in such a way that the EyeDropper should stop,
+
+99
+04:26.454 --> 04:30.450
+you can send an abort signal to the EyeDropper,
+
+100
+04:30.450 --> 04:35.450
+passing it to the open method as an option parameter.
+
+101
+04:35.610 --> 04:38.703
+And then that will escape the EyeDropper mode.
+
+102-p
+04:40.680 --> 04:43.550
+And that's really all there is to the API.
+
+103
+04:43.550 --> 04:45.972
+It's a very simple API at the moment.
+
+104
+04:45.972 --> 04:49.380
+It only does one thing, but it does it very well.
+
+105-p
+04:49.380 --> 04:53.240
+Now there are concerns related to security and privacy here.
+
+106
+04:53.240 --> 04:57.480
+If a random website is able to collect the colors
+
+107
+04:57.480 --> 05:00.490
+of any pixels on my screen, that could be a problem.
+
+108
+05:00.490 --> 05:02.400
+If they start tracking the coordinates
+
+109
+05:02.400 --> 05:03.800
+of my mouse together with that,
+
+110
+05:03.800 --> 05:06.480
+they could start revealing information
+
+111
+05:06.480 --> 05:09.280
+that I'm not supposed to be exchanging on the web.
+
+112-p
+05:09.280 --> 05:13.920
+But the API addresses those concerns in the following ways.
+
+113
+05:13.920 --> 05:14.980
+First of all,
+
+114
+05:14.980 --> 05:19.960
+you cannot use the open method outside of a user action.
+
+115
+05:19.960 --> 05:21.330
+There needs to be a user intent.
+
+116
+05:21.330 --> 05:24.260
+So in response to the user click, for example,
+
+117
+05:24.260 --> 05:25.923
+then you can use the open method.
+
+118
+05:27.550 --> 05:30.150
+Also once the open method has been called,
+
+119
+05:30.150 --> 05:32.960
+the browser is supposed to be showing the EyeDropper mode
+
+120
+05:32.960 --> 05:35.500
+in a very, very obvious way,
+
+121
+05:35.500 --> 05:39.990
+which is why you can see the big magnifying glass appearing.
+
+122
+05:39.990 --> 05:41.590
+So that's very obvious to the user
+
+123
+05:41.590 --> 05:42.630
+that something's going on,
+
+124
+05:42.630 --> 05:47.390
+that's not the normal cursor that typically appears.
+
+125-p
+05:47.390 --> 05:51.570
+Third, the API cannot collect the colors
+
+126
+05:51.570 --> 05:55.680
+from any pixel as the user is moving the mouse.
+
+127
+05:55.680 --> 05:58.100
+There has to be a user intent again,
+
+128
+05:58.100 --> 06:00.690
+which is typically click on a pixel
+
+129
+06:00.690 --> 06:02.100
+and that's when you can get the color,
+
+130
+06:02.100 --> 06:04.800
+otherwise you can't.
+
+131-p
+06:04.800 --> 06:04.913
+And finally,
+
+132
+06:04.913 --> 06:07.180
+the user is in control of the whole experience
+
+133
+06:07.180 --> 06:09.690
+and they can still escape out of the EyeDropper mode
+
+134
+06:09.690 --> 06:12.470
+by using the escape key on the keyboard.
+
+135-p
+06:12.470 --> 06:13.920
+So that's it for the API.
+
+136
+06:13.920 --> 06:15.600
+We would love your feedback about it,
+
+137
+06:15.600 --> 06:17.960
+specifically, do you think that the API
+
+138
+06:17.960 --> 06:19.820
+should be extended further?
+
+139
+06:19.820 --> 06:22.330
+Are there other capabilities that you have in mind
+
+140
+06:22.330 --> 06:23.260
+for something like this?
+
+141
+06:23.260 --> 06:25.670
+For example, multiple cursor selection
+
+142
+06:25.670 --> 06:29.700
+or getting the screen coded next or anything like that?
+
+143-p
+06:29.700 --> 06:32.850
+So I will leave you with the links to the spec, the demos,
+
+144
+06:32.850 --> 06:35.470
+and where to leave feedback about this API.
+
+145
+06:35.470 --> 06:38.143
+And thank you for your time and have a good day.
+

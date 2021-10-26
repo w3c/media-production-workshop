@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Media Element accuracy and synchronization with the DOM - Sacha Guddoy - W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../talk-ui.css">
+    <link rel="stylesheet" href="https://www.w3.org/2019/09/TPAC-template/fonts/iconmonstr-iconic-font.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="player">
+    <meta property="og:title" content="Media Element accuracy and synchronization with the DOM by Sacha Guddoy (Grabyo)">
+    <meta property="og:description" content="This focuses on accuracy when working with media on the web. Accuracy is crucial In professional media workflows and Web media APIs can be lacking in this area.
+">
+    <meta property="og:image" content="thumbnails/sacha-guddoy-media-element-accuracy.jpg">
+    <meta property="og:video" content="https://iframe.videodelivery.net/b30ccefc6bb3042c2b40434dcc99ac2e">
+    <meta property="twitter:player" content="https://iframe.videodelivery.net/b30ccefc6bb3042c2b40434dcc99ac2e?defaultTextTrack=en">
+    <meta property="twitter:player:width" content="360">
+    <meta property="twitter:player:height" content="202">
+  </head>
+  <body>
+    <form id=form><!-- form to request a page in kiosk mode --></form>
+    <header id="header" class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "../media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "../media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>9-18 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li>
+            <a href="../">Call for Participation</a>
+          </li>
+          <li>
+            <a href="../talks.html">Talks</a>
+          </li>
+          <li>
+            <a href="../speakers.html">Apply as a speaker</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main" class="main talk">
+      <section id="intro">
+        <h2>Media Element accuracy and synchronization with the DOM</h2>
+
+        <p class="talkinfo">
+          Presenter: <strong>Sacha Guddoy (Grabyo)</strong><br>
+          Duration: <strong>7 minutes</strong><br>
+          Slides: <a href="slides/sacha-guddoy-media-element-accuracy.pdf"><strong>PDF</strong></a>
+        </p>
+
+        <p class="buttons">
+          <!-- previousStart -->
+          <button form="form" type="submit" class="picto im-angle-left" formaction="junyue-cao-non-linear-video-editor.html">
+            Previous: A Non-linear Video Editor built with WebAssembly
+          </button>
+          <!-- previousEnd -->
+          <a href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
+          <button form="form" type="submit" formaction="sacha-guddoy-webrtc.html">
+            Next: WebRTC in live media production<span class="picto im-angle-right"></span>
+          </button>
+          <!-- nextEnd -->
+        </p>
+      </section>
+
+      <section id="talk">
+        <h3 style="display:none">Slides &amp; video</h3>
+
+        <details>
+          <summary>Keyboard shortcuts in the video player</summary>
+          <ul>
+            <li>Play/pause: <kbd>space</kbd>
+            </li><li>Increase volume: <kbd>up arrow</kbd>
+            </li><li>Decrease volume: <kbd>down arrow</kbd>
+            </li><li>Seek forward: <kbd>right arrow</kbd>
+            </li><li>Seek backward: <kbd>left arrow</kbd>
+            </li><li>Captions on/off: <kbd>C</kbd>
+            </li><li>Fullscreen on/off: <kbd>F</kbd>
+            </li><li>Mute/unmute: <kbd>M</kbd>
+            </li><li>Seek to 0%, 10%… 90%: <kbd>0-9</kbd>
+          </li></ul>
+        </details>
+
+        <div id="player">
+          <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "Media Element accuracy and synchronization with the DOM",
+              "description": "This focuses on accuracy when working with media on the web. Accuracy is crucial In professional media workflows and Web media APIs can be lacking in this area.\n",
+              "thumbnailUrl": "thumbnails/sacha-guddoy-media-element-accuracy.jpg",
+              "duration": "PT6M48S",
+              "embedUrl": "https://iframe.videodelivery.net/b30ccefc6bb3042c2b40434dcc99ac2e",
+            }
+          </script>
+
+          <iframe id="video" title="Media Element accuracy and synchronization with the DOM" src="https://iframe.videodelivery.net/b30ccefc6bb3042c2b40434dcc99ac2e"
+            allow="accelerometer; autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
+
+          <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
+            <i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#1" class="slide">Slide 1 of 10</i-slide>
+<div>
+  <p>Hello there, my name is Sacha Guddoy. I'm the Lead Front-end Engineer at Grabyo. Today, I'm going to be talking about accuracy and synchronization in HTML media elements, our use cases, and some of the challenges that we've faced.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#2" class="slide">Slide 2 of 10</i-slide>
+<div>
+  <p>Firstly, let me tell you a bit about Grabyo.</p>
+  <p>Grabyo is a SaaS platform for broadcast media production. It's aimed at commercial broadcasters.</p>
+  <p>We use web and cloud-based technologies to bring remote distributed capabilities to broadcast workflows.</p>
+  <p>Some of our offerings include live video production, clipping from live streams, non-linear editing and publishing creative media to various end points, for example, social media or livestream.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#3" class="slide">Slide 3 of 10</i-slide>
+<div>
+  <p>Firstly, I'm going to talk about accuracy in HTML media APIs.</p>
+  <p>A common technique in media production workflows is to create a lower resolution, low bit rate draft version of your media.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#4" class="slide">Slide 4 of 10</i-slide>
+<div>
+  <p>And when you're working on that media, when you're making edits and such, that's what you'll be looking at.</p>
+  <p>Then when you've finished making your edits, you will export it to some more powerful machine, or maybe your own machine, will use a lot of resources to go and render the final high quality version from the original source media.</p>
+  <p>A common pattern that we use is for users to select their in and out points in a video in the web browser, and then we'll send that off to another service which could be in the cloud, and then we'll use that to process the final version of the media from the high quality source media.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#5" class="slide">Slide 5 of 10</i-slide>
+<div>
+  <p>One of the issues that we faced with this kind of workflow is that timestamps that you get from media elements in the web are just not accurate enough. They won't necessarily represent the same frame of the video when another application loads up that same timestamp.</p>
+  <p>So what that means is that when you've exported your video, you play it back and the start and the end can be one frame off, which is not very good.</p>
+  <p>In professional workflows, it's really important to be frame accurate. And it can be very noticeable in a lot of situations.</p>
+  <p>The most common way of getting the time that the user is at, in the video, is using the currentTime property of the HTMLVideoElement interface.</p>
+  <p>The problem with this is that it's not very precise. It's measured in seconds and it only gives you two decimals of precision. So you can only be accurate to 100th of a second.</p>
+  <p>In a 60 FPS video, a single frame only lasts for about 16 milliseconds. So your timestamp, which is only accurate to a hundredth of a second, isn't going to be accurate enough to convey that exact frame.</p>
+  <p>Different video rendering tools might have different interpretations of exactly what that time is.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#6" class="slide">Slide 6 of 10</i-slide>
+<div>
+  <p>The next point is about synchronization with the DOM.</p>
+  <p>Another common use case for us is to manipulate and monitor media in real time using DOM interfaces, for example, controlling state of the playback, controlling playback position, monitoring the audio levels, analyzing or manipulating video or audio, displaying overlays, and synchronizing different pieces of media together.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#7" class="slide">Slide 7 of 10</i-slide>
+<div>
+  <p>In these scenarios, it's really important for the DOM to reflect the current state of media as accurately as possible.</p>
+  <p>Typically, these elements in the DOM would be updated based on the media.</p>
+  <p>There's two ways that you can do that. You can either use event listeners or you can use requestAnimationFrame. Already there is an inherent level of de-synchronization because the DOM and the media element are not running in the same thread. The media element is playing in its own thread, but the updates to the DOM, they rely on the main UI thread, which means that any user interaction or anything else running in that DOM thread can easily block your updates, which means that your DOM representation of what's happening in the media could potentially be lagging behind.</p>
+  <p>Furthermore, this can just be expensive. If you are updating your DOM 60 times per second, because your audio level, for example, is changing 60 times a second, then that is taxing on the UI thread and degrades the user experience.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#8" class="slide">Slide 8 of 10</i-slide>
+<div>
+  <p>The next point is on codecs.</p>
+  <p>All major browsers ship with a range of video codecs. Expansion of codec support and lower level access to the decoding pipeline could enable new features.</p>
+  <p>For example, you could use intra-frame coding to improve seeking performance. You could extract thumbnails faster than real time. You could decode and store specific time ranges for fast referencing, for example, in a nonlinear editing scenario.</p>
+  <p>WebCodecs is the elephant in the room here that can help solve a lot of the issues by giving us lower level access to that decoding pipeline, which is something I'm very excited about. Obviously the browser support at the moment, what's this, October 2021, is not the greatest.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#9" class="slide">Slide 9 of 10</i-slide>
+<div>
+  <p>The next part I want to talk about is multi-threading.</p>
+  <p>So it's often necessary to perform media operations on the same thread as the UI handlers, so for example, rendering a video onto a canvas. This is not particularly desirable, because these tasks can be really resource intensive and run very frequently, blocking the UI thread, degrading performance and the user experience.</p>
+  <p>If you're painting a video to a canvas, that's probably going to be running on every requestAnimationFrame.</p>
+  <p>We'll see the conventional solutions to this last problem is to use multi-threading, i.e., web workers and you do your intensive thread in that web worker. So there is an off-screen canvas interface, and that would allow WebGL to render to a canvas within the scope of a worker.</p>
+  <p>But there isn't an equivalent API for video. Video cannot be used in the worker. It cannot be accessed.</p>
+  <p>This is problematic because then your video to canvas rendering pipeline has to be in the DOM thread. It can't live in a worker by itself.</p>
+</div>
+
+<i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#10" class="slide">Slide 10 of 10</i-slide>
+<div>
+  <p>So that's all I have for you on this topic. I hope that was enlightening in terms of some of the use cases and issues that we were facing. And I'm looking forward to hearing your questions and feedback. Thanks very much. Take care.</p>
+</div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="extrabuttons">
+        <p class="buttons">
+          <!-- previousStart -->
+          <button form="form" id="prevtalk" type="submit" formaction="junyue-cao-non-linear-video-editor.html" class="picto im-angle-left">Previous: A Non-linear Video Editor built with WebAssembly</button>
+          <!-- previousEnd -->
+          <a id="alltalks" href="../talks.html" class="picto im-data">All talks</a>
+          <!-- nextStart -->
+          <button form="form" id="nexttalk" type="submit" formaction="sacha-guddoy-webrtc.html">Next: WebRTC in live media production<span class="picto im-angle-right"></span></button>
+          <!-- nextEnd -->
+        </p>
+      </section>
+
+      <section id="sponsors">
+        <h2>
+          Workshop sponsor
+        </h2>
+        <p><a href="https://www.adobe.com/"><img src="../media/adobe.png" alt="Adobe" width="70"></a></p>
+        <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="../script.js"></script>
+    <script>
+      let captions = [
+  {
+    "language": "en",
+    "label": "English",
+    "src": "captions/sacha-guddoy-media-element-accuracy.vtt",
+    "mode": "hidden",
+    "cues": [],
+    "activeCues": [
+      {
+        "text": ""
+      }
+    ]
+  }
+];
+    </script>
+    <script src="https://www.w3.org/2019/09/TPAC-template/parser.js"></script>
+    <script src="https://embed.videodelivery.net/embed/sdk.latest.js"></script>
+    <script src="../talk-sync.js"></script>
+    <script src="https://w3c.github.io/i-slide/i-slide.js" type="module"></script>
+  </body>
+</html>

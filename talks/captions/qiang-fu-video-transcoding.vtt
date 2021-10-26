@@ -1,0 +1,406 @@
+WEBVTT
+
+1
+00:07.100 --> 00:08.300
+<v ->Hello, everyone.</v>
+
+2
+00:08.300 --> 00:10.620
+I'm Qiang Fu from Bilibili group.
+
+3
+00:10.620 --> 00:12.360
+My topic is video transcoding
+
+4
+00:12.360 --> 00:13.930
+in web browsers.
+
+5-p
+00:13.930 --> 00:17.670
+I will introduce several feasible ways to achieve the goal
+
+6
+00:17.670 --> 00:21.420
+and provide a suggestion for Web API to make video
+
+7
+00:21.420 --> 00:23.900
+transcoding easier for web developers.
+
+8-p
+00:23.900 --> 00:27.890
+Bilibili is based in China and our applications provides a video
+
+9
+00:27.890 --> 00:31.138
+content for users. You may think of it as YouTube in China.
+
+10-p
+00:31.138 --> 00:32.750
+Okay. Now let's begin.
+
+slide-2
+00:35.400 --> 00:38.930
+Why we need to focus on the topic. To guide a new way using
+
+12
+00:38.930 --> 00:40.850
+browsers, we need it.
+
+13-p
+00:40.850 --> 00:43.520
+The first thing is about video preview.
+
+14
+00:43.520 --> 00:45.250
+Some video formats like
+
+15
+00:45.250 --> 00:48.870
+AVI or FLV cannot be played directly by
+
+16
+00:48.870 --> 00:49.703
+HTML.
+
+17
+00:49.703 --> 00:53.940
+Yes. We can implement a player by WebAssembly or JavaScript
+
+18
+00:53.940 --> 00:55.320
+for these videos
+
+19
+00:55.320 --> 00:59.325
+but what if we transcode them to MP4 webM format,
+
+20
+00:59.325 --> 01:04.325
+then we can use a video tag to play on HTML. It is simple.
+
+21-p
+01:04.370 --> 01:08.580
+The other thing related to the details about media
+
+22
+01:08.580 --> 01:10.440
+production, for some videos,
+
+23
+01:10.440 --> 01:12.880
+only small adjustments are required.
+
+24
+01:12.880 --> 01:15.860
+We could offer help to change
+
+25
+01:15.860 --> 01:19.200
+to change the resolution and frame rate or some other
+
+26
+01:19.200 --> 01:23.490
+parameters of a video to meet the (?) for uploading.
+
+27
+01:23.490 --> 01:26.783
+Our goal is to get a new way to, via transcoding.
+
+slide-3
+01:29.510 --> 01:33.380
+The basic steps for transcoding can be concluded as the following:
+
+29
+01:33.380 --> 01:36.700
+passing the input file to a demuxer to get to the streams
+
+30
+01:36.700 --> 01:40.260
+and encoded video chunks. Then passing the video chunks to a decoder
+
+31
+01:40.260 --> 01:42.270
+to get the video frame. There maybe
+
+32
+01:42.270 --> 01:45.660
+we need to perform some operations on the frame.
+
+33
+01:45.660 --> 01:47.510
+After passing it the opposite way,
+
+34
+01:47.510 --> 01:49.600
+finally we get the output file.
+
+35-p
+01:49.600 --> 01:52.600
+I summarized the process for ffmpeg,
+
+36
+01:52.600 --> 01:53.833
+but how can we use it in browser?
+
+slide-4
+01:56.678 --> 01:59.450
+There is a popular way for web developers to experience
+
+38
+01:59.450 --> 02:01.280
+video transcoding.
+
+39
+02:01.280 --> 02:04.311
+WebAssembly can help. After compiling the source code of
+
+40
+02:04.311 --> 02:07.700
+ffmpeg to WebAssembly, run it in a browser
+
+41
+02:07.700 --> 02:09.510
+and give it a quant,
+
+42
+02:09.510 --> 02:12.970
+we get the video we need. that's really simple at first sight.
+
+43-p
+02:12.970 --> 02:16.800
+But WebAssembly looks like a black box and developers
+
+44
+02:16.800 --> 02:19.433
+don't care about the inner details. Let's see how it works.
+
+slide-5
+02:21.590 --> 02:23.680
+Although WebAssembly is a black box,
+
+46
+02:23.680 --> 02:26.830
+we still need some preparations. First of all,
+
+47
+02:26.830 --> 02:30.110
+familiarity with ffmpeg. Then we need to study
+
+48
+02:30.110 --> 02:34.280
+how EMScripten works and the best basic design concepts.
+
+49
+02:34.280 --> 02:37.620
+The last step is to run WebAssembly in browsers.
+
+50-p
+02:37.620 --> 02:41.160
+After you finish the steps and get to demo a few common
+
+51
+02:41.160 --> 02:44.300
+questions will be there. Why it is so slow,
+
+52
+02:44.300 --> 02:47.570
+why the same amount can give such huge difference on
+
+53
+02:47.570 --> 02:50.900
+performance between browsers and OS. How could I make it
+
+54
+02:50.900 --> 02:52.100
+faster?
+
+55-p
+02:52.100 --> 02:55.410
+The answer is tough. WebAssembly has done improvements,
+
+56
+02:55.410 --> 02:57.534
+just like supporting SIMD
+
+57
+02:57.534 --> 03:01.980
+and multi-threads. To enjoy these new features, we usually
+
+58
+03:01.980 --> 03:04.896
+check the configure of EMScripten and ffmpeg.
+
+59
+03:04.896 --> 03:08.831
+And luckily the source coder of ffmpeg should be modified.
+
+60
+03:08.831 --> 03:12.743
+It is really professional and tough for web developers.
+
+slide-6
+03:13.950 --> 03:15.970
+Let's talk about this other way
+
+62
+03:15.970 --> 03:19.140
+where we can divide the process of transcoding into different
+
+63
+03:19.140 --> 03:22.310
+parts. Each part may have unique solution.
+
+64-p
+03:22.310 --> 03:23.310
+For example,
+
+65
+03:23.310 --> 03:27.400
+the demuxer and muxer can be realized by JavaScript,
+
+66
+03:27.400 --> 03:31.600
+encoder and decoder can use WebCodecs API simply.
+
+67
+03:31.900 --> 03:35.120
+The video frame can be drawn on canvas of WebGL.
+
+68-p
+03:35.120 --> 03:38.570
+Tested in an integrated way, everything looks fine.
+
+69
+03:38.570 --> 03:41.683
+We splice each part like Lego blocks.
+
+70-p
+03:43.250 --> 03:46.224
+I searched the GitHub for some repositories.
+
+71
+03:46.224 --> 03:47.570
+Finally,
+
+72
+03:47.570 --> 03:49.640
+I could transcode the video in the integrated way.
+
+73
+03:49.640 --> 03:54.210
+The demuxer and decoders are integrated as a video player.
+
+74
+03:54.210 --> 03:56.130
+To reduce the size of WebAssembly.
+
+75
+03:56.130 --> 03:59.660
+I imported some libraries for ffmpeg and ingested some flux.
+
+76
+03:59.660 --> 04:03.620
+The output of the player is video frames in RGB
+
+77
+04:03.620 --> 04:04.860
+or YUV format.
+
+78
+04:04.860 --> 04:08.950
+I pass it to WebCodecs API to get the encoded video chunk.
+
+79
+04:08.950 --> 04:12.620
+Then the chunks load through a muxer for making video in WebM format.
+
+80
+04:12.620 --> 04:14.580
+Finally I got the local video I need.
+
+81
+04:14.580 --> 04:16.333
+Sounds perfect.
+
+slide-8
+04:18.320 --> 04:20.659
+So integrated way seems flexible enough.
+
+83
+04:20.659 --> 04:24.480
+I could even change the frame in canvas by JavaScript,
+
+84
+04:24.480 --> 04:28.790
+just like what filters do in ffmpeg. WebCodecs is cool.
+
+85
+04:28.790 --> 04:32.190
+And it has option for hardware acceleration.
+
+86
+04:32.190 --> 04:34.670
+The developers don't need to focus on the details.
+
+87-p
+04:34.670 --> 04:38.330
+The only concern is the muxer. Every muxer is different
+
+88
+04:38.330 --> 04:41.330
+and I have to collect solutions for supporting MP4,
+
+89
+04:41.330 --> 04:44.486
+webM and other formats independently.
+
+90
+04:44.486 --> 04:46.363
+It takes a lot of time.
+
+slide-9
+04:48.560 --> 04:52.310
+What if an official muxer API is provided, that's
+
+92
+04:52.310 --> 04:56.460
+my suggestion. Its design can follow the WebCodecs.
+
+93-p
+04:56.460 --> 04:59.280
+The Web will get the following benefits. First,
+
+94
+04:59.280 --> 05:03.760
+it will complete the roadmap of media percentage on browsers.
+
+95
+05:03.760 --> 05:06.750
+And if we want to popularize some video formats,
+
+96
+05:06.750 --> 05:10.572
+like WebM, we should reduce the difficulty for producing those.
+
+97-p
+05:10.572 --> 05:14.500
+The most valuable thing for me is to provide a better coding
+
+98
+05:14.500 --> 05:15.610
+experience.
+
+99
+05:15.610 --> 05:18.970
+The source code of ffmpeg is really tough and you need a lot
+
+100
+05:18.970 --> 05:23.200
+of time to become a real expert. That's all my contents.
+
+101
+05:23.200 --> 05:24.983
+Thank you for watching.
+

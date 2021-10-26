@@ -1,0 +1,179 @@
+/* Additional style rules for the section with the slides and the video.
+
+There are two "modes": the "transcript mode" shows the slides and the
+transcript, but not the captions; the "kiosk mode" shows only one
+slide, no transcript, captions below the slide, with the video next to
+the slide.
+
+The rules below mostly deal with kiosk mode, apart from rules to
+hiding the captions and most of the button bar in transcript mode.
+
+Kiosk mode is in use when there is a class=sync on the BODY.
+
+*/
+
+/* @import "fonts/iconmonstr-iconic-font.css"; */
+
+/* Is this a bug in the pdef_viewer script or style sheet? The element
+   with class=textLayer has 'position: absolute' but its parent with
+   class=page does not create a containing box. So let's do it here.
+   */
+div.page {position: relative}
+
+#slides .slide {hyphens: manual; font-weight: normal}
+#slides table {background: none; display: table; border-spacing: 2px;
+  width: auto;
+  border-collapse: separate; box-sizing: border-box; text-indent: 0}
+#slides td, #slides th {border: none; padding: 1px; height: auto;
+  white-space: normal; width: auto;
+  display: table-cell; vertical-align: inherit; text-align: unset}
+#slides th {/*text-align: center*/}
+#slides table.striped {width: 100%; border-collapse: collapse}
+#slides table.striped th {/*text-align: left*/}
+
+.buttons button {font: inherit; font-weight: 700; cursor: pointer}
+.slide:target {outline: none} /* No big green outline */
+
+#video {overflow: hidden} /* Force border-radius on the video */
+
+output {display: block}
+output button {cursor: pointer}
+
+/* class=button makes elements look like a button */
+.button, button {text-decoration: none; cursor: default;
+  letter-spacing: normal; word-spacing: normal; display: inline-block;
+  text-align: center; font: 400 100%/1.3 system-ui, Segoe UI, sans-serif;
+  padding: 1px 8px 2px; margin: 0.1em; background-color: hsl(204,69%,16%);
+  color: white; border: 1px outset hsl(204,69%,34%)}
+.button > *, button > * {vertical-align: middle;
+  margin-top: 0; margin-bottom: 0}
+.button.picto:empty, button.picto:empty {padding-right: 4px}
+section:nth-of-type(2n+2) .button:focus,
+section:nth-of-type(2n+2) button:focus {outline-color: white}
+
+/* Disabled buttons and button-like elements. */
+.button[disabled], button[disabled] {border-style: inset; opacity: 0.6}
+
+/* On small screens, the slides are scaled down. */
+body:not(.sync) #video {width: 40.889em; height: auto;
+  display: block; margin: 0 0 1rem 0; box-shadow: none}
+body:not(.sync) video#video,
+body:not(.sync) iframe#video {min-height: 23em}
+#video {font-size: calc((100vw - 16px - 2rem) / 40.889)}
+@media (min-width: 46em) and (min-height: 46em) {
+  #video {font-size: calc((100vw - 16px - 4rem) / 40.889)}
+}
+@media (min-width: 56em) { #video {font-size: 100%} }
+/*
+@media (min-aspect-ratio: 12/9) { .slide {font-size: 2.03vw} }
+@media (min-aspect-ratio: 18/9) { .slide {font-size: 3.3vh} }
+*/
+
+body:not(.sync) #slides {margin-top: 2.4em}
+
+/* Buttons are very dark blue in kiosk (.sync) mode. */
+.sync .button, .sync button {background: hsla(204,80%,10%,0.6) padding-box;
+  border-color: hsla(204,80%,30%,0.6)}
+
+#talk details {margin-bottom: 2em}
+
+/* In kiosk (synchronized) mode, hide almost everything. */
+.sync header, .sync section, .sync footer, .sync > aside {display: none}
+.sync section section {display: block} /* ... but don't hide nested sections */
+.sync #talk {display: block; /*border-top: none; border-bottom: none*/}
+.sync #talk > *:not(#buttonbar):not(#player) {display: none}
+.sync #caption {display: flex}
+
+/* A buttonbar. Only the first child is visible, unless in kiosk mode. */
+#buttonbar {display: flex; align-items: stretch; flex-wrap: wrap; /*margin: 0*/}
+#buttonbar > * {margin-left: auto; min-width: 12em; flex-wrap: wrap;
+  align-items: stretch; text-align: center; display: none}
+#buttonbar > *:first-child {margin-left: 0; text-align: left; display: flex}
+#buttonbar > *:last-child {text-align: right}
+#buttonbar > * > * {flex: 1}
+#sync {font-size: 100%}
+#buttonbar [for=sync] {white-space: nowrap}
+#buttonbar [disabled] {color: hsla(0,0%,100%,0.5)}
+.sync #buttonbar > * {display: flex}
+
+/* Style for the slides, video, caption and slide number boxes. */
+.sync {background: 0 0 / 100vw 100vh
+  repeating-linear-gradient(45deg, hsl(204,80%,25%),
+    hsl(204,40%,20%) 15%, hsl(204,80%,25%) 30%);
+  color: white; border-radius: 0}
+.sync #video, .sync #slidenr, .sync #caption, .sync #cue, .sync .slide {
+  border-radius: 0.5em}
+.sync #video {border: none}
+.sync #caption, .sync #slidenr {background: hsla(204,80%,10%,0.6);
+  color: white; text-align: center; padding: 0.3em}
+.sync #caption a, .sync #slidenr a {color: inherit}
+#caption {display: none}
+.sync #caption {height: 3.2em; flex-direction: row-reverse; align-items: center}
+.sync #slidenr {height: 3.2em; line-height: 2.6em}
+#cue {display: block; flex: 1; line-height: 1.2; white-space: pre-line}
+#cue[lang|=zh] {font-size: 110%; min-height: 1.6em}
+.comment, .progress {display: none}
+
+/* In synchronized mode, show only the active slide. */
+.sync .slide {position: absolute; top: 0; left: 0; visibility: hidden}
+.sync .slide.active {position: relative; visibility: visible}
+.sync #slides > *:not(.slide) {display: none}
+
+/* ... and only the active elements of incremental display. */
+.sync .next {visibility: hidden}
+.sync .slide.active .next.active {visibility: visible}
+
+/* Make the link to the current slide in #slidenr less visible. */
+.sync #slidenr a {text-decoration: none}
+
+/* Avoid transition effects when synchronization is off. (Extra class
+   selectors to increase the specificity.) */
+body:not(.sync) .slide.slide.slide {animation: none}
+
+/* No animation when moving backwards. */
+.sync .slide.active ~ .visited {animation: none}
+
+/* Turn off transitions on A inside slides in synchronized mode. */
+.sync .slide a {transition: none}
+
+/* Scale the font so that slides and video each occupy about half the window. */
+.sync #talk {border: none; max-width: none;
+  /* Remove the font-size if the transform is enabled in talk-sync.js */
+   font-size: 1.149vw; font-size: calc(47vw * 9/16/23)}
+.sync #player {margin: 0}
+.sync select {font-size: 80%}
+.sync input {font-size: 90%}
+
+/* Position the buttonbar, slides, video, captions and slide number. */
+.sync {position: absolute; top: 0; left: 0; right: 0; bottom: 0; padding: 0;
+  max-width: none}
+/* If the scale transform is enabled in talk-sync.js, use this instead:
+   In kiosk mode, the body has a fixed with of 88em, enough to put the
+   slides and the video side by side. The talk-sync.js script will
+   calculate a transform to scale those 88em to the actual window
+   width. (It would be 'transform: scale(calc(100vw / 88em))', but it
+   is a syntax error in CSS to divide two dimensions.) The transform
+   only applies when the body is absolutely positioned.
+.sync {position: absolute; top: 0; left: 0; right: auto; bottom: auto;
+  padding: 0; width: 88em; margin: 0; transform-origin: 0 0;
+  max-width: none}
+*/
+.sync #buttonbar, .sync #slides, .sync #video, .sync #slidenr, .sync #caption {
+  position: absolute; margin: 0}
+.sync #buttonbar {top: 2em; left: 2em; right: 2em}
+.sync #slides {top: 6em; left: 2em}
+.sync #video {top: 6em; right: 2em}
+.sync #caption {top: 30em; left: 2em}
+.sync #slidenr {top: 30em; right: 2em}
+
+.sync .slide {margin: 0; box-shadow: none; border: none; overflow: hidden;
+  object-fit: contain; outline: none}
+.sync #caption, .sync #slidenr {box-sizing: border-box}
+.sync #slides, .sync #caption, .sync #video, .sync #slidenr, .sync .slide {
+  width: 40.889em}
+.sync #video {font-size: 1em; height: 23em}
+
+/* The comment form. */
+textarea {box-sizing: border-box; width: 100%; font: inherit;
+  background: white; color: hsl(204, 67%, 35%)}
+button[name=delete] {font-size: smaller; vertical-align: bottom}

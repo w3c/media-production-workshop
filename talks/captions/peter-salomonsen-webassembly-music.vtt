@@ -1,0 +1,454 @@
+WEBVTT
+
+1
+00:06.570 --> 00:08.210
+<v Peter>Hello, I'm Peter.</v>
+
+2
+00:08.210 --> 00:11.970
+And I'm experimenting with creating music in
+
+3
+00:11.970 --> 00:13.480
+the web browser.
+
+4-p
+00:13.480 --> 00:18.480
+And what I want to show you here is a web application
+
+5
+00:18.540 --> 00:21.688
+for creating music in the web browser.
+
+6
+00:21.688 --> 00:24.730
+This video here is also being recorded
+
+7
+00:24.730 --> 00:26.210
+in that same application.
+
+8
+00:26.210 --> 00:30.750
+It's a camera view here on the bottom right.
+
+9
+00:30.750 --> 00:33.150
+And on the left side, here
+
+10
+00:33.150 --> 00:34.690
+it is code
+
+11
+00:34.690 --> 00:37.220
+for generating the music.
+
+12-p
+00:37.220 --> 00:40.220
+This is actually a live coding studio,
+
+13
+00:40.220 --> 00:42.730
+where you have the notes to be played here
+
+14
+00:42.730 --> 00:46.246
+in comments, and you have the durations
+
+15
+00:46.246 --> 00:48.210
+and the velocities.
+
+16
+00:48.210 --> 00:50.120
+And on the right side here
+
+17
+00:50.120 --> 00:53.260
+is a language called assembly script,
+
+18
+00:53.260 --> 00:56.240
+which compiles to WebAssembly.
+
+19-p
+00:56.240 --> 00:59.240
+And what I have here is the instruments.
+
+20
+00:59.240 --> 01:02.560
+There are actually no recorded instruments here.
+
+21
+01:02.560 --> 01:07.140
+It's just generated in real time and you have all the math
+
+22
+01:07.140 --> 01:10.590
+and all the code here for generating the sound.
+
+23-p
+01:10.590 --> 01:12.430
+When I actually
+
+24
+01:13.984 --> 01:15.160
+(playing note on keyboard)
+
+25
+01:15.160 --> 01:17.915
+play here on my MIDI keyboard.
+
+26
+01:17.915 --> 01:20.832
+(playing keyboard)
+
+27
+01:24.610 --> 01:29.100
+The code here on the right side is running and calculating
+
+28
+01:29.100 --> 01:31.654
+all the samples for the instruments in real time.
+
+29
+01:31.654 --> 01:34.904
+(playing the keyboard)
+
+30-p
+01:38.740 --> 01:39.661
+I have a string
+
+31
+01:39.661 --> 01:42.940
+(string instrument notes playing)
+
+32
+01:42.940 --> 01:47.940
+which you can actually see the code for down here.
+
+33
+01:48.100 --> 01:50.290
+I'm not going to go into the code right now.
+
+34
+01:50.290 --> 01:52.815
+That has to be another session.
+
+35
+01:52.815 --> 01:56.650
+(playing the keyboard)
+
+36-p
+01:56.960 --> 02:01.394
+You can create lots of interesting instruments here.
+
+37
+02:01.394 --> 02:05.477
+(flute instrument notes playing)
+
+38
+02:07.580 --> 02:10.846
+That's the flute and also have a drum here.
+
+39
+02:10.846 --> 02:13.490
+(drum beat playing)
+
+40-p
+02:13.490 --> 02:17.720
+And actually I have this leading beat that is recorded here
+
+41
+02:17.720 --> 02:20.290
+so I can start playing it.
+
+42
+02:20.290 --> 02:23.279
+(musical beat playing)
+
+43-p
+02:25.350 --> 02:28.926
+Why not record something while I'm at it?
+
+44
+02:28.926 --> 02:33.509
+(playing bass notes over musical beat)
+
+45-p
+02:51.620 --> 02:56.300
+And what you just saw there was that after I recorded,
+
+46
+02:56.300 --> 02:59.700
+it actually inserted the code here
+
+47
+03:00.981 --> 03:02.470
+on the left side here.
+
+48
+03:02.470 --> 03:05.450
+You got all the notes I played
+
+49
+03:05.450 --> 03:09.200
+and they did the durations and the velocities.
+
+50-p
+03:09.200 --> 03:14.200
+This is a full environment for creating music.
+
+51
+03:14.560 --> 03:17.940
+You have recording and creating the instruments you got all you
+
+52
+03:17.940 --> 03:21.910
+need here actually for creating a complete piece of music.
+
+53-p
+03:21.910 --> 03:26.910
+But the very important thing for making this a pleasant
+
+54
+03:27.280 --> 03:31.394
+experience to work with for a musician and a keyboard player
+
+55
+03:31.394 --> 03:34.338
+(playing the keyboard)
+
+56
+03:34.338 --> 03:36.670
+is that you actually get instant response
+
+57
+03:36.670 --> 03:40.431
+from the MIDI keyboard when you play.
+
+58
+03:40.431 --> 03:44.450
+And it's just a matter of milliseconds.
+
+59
+03:44.450 --> 03:47.530
+If it takes like 10 milliseconds,
+
+60
+03:47.530 --> 03:49.500
+then it's too much.
+
+61-p
+03:49.500 --> 03:51.180
+On this Mac that I have here,
+
+62
+03:51.180 --> 03:53.710
+that's no problem. It just works as it should.
+
+63
+03:53.710 --> 03:56.820
+It's just a low end MacBook air.
+
+64
+03:56.820 --> 04:00.140
+It's not problem at all, but it's a challenge
+
+65
+04:00.140 --> 04:01.683
+across systems.
+
+66
+04:02.520 --> 04:04.190
+This latency.
+
+67-p
+04:04.190 --> 04:08.330
+For example, if you go to a windows computer,
+
+68
+04:08.330 --> 04:10.470
+you generally get good performance,
+
+69
+04:10.470 --> 04:14.580
+but you get this lag of 10 milliseconds,
+
+70
+04:14.580 --> 04:19.580
+which is really too much to have a good playing experience.
+
+71
+04:21.540 --> 04:26.470
+It's okay for listening, but maybe also for gameplay.
+
+72
+04:26.470 --> 04:29.100
+But actually when you are using this as a musician
+
+73
+04:29.100 --> 04:32.400
+you need that instant response.
+
+74-p
+04:32.400 --> 04:34.170
+And also you see that, for example,
+
+75
+04:34.170 --> 04:38.700
+a laptop running on battery. Also, this is with Windows.
+
+76
+04:38.700 --> 04:40.950
+It's not problem with the Mac.
+
+77
+04:40.950 --> 04:45.500
+Then you actually hear that the sound is degraded.
+
+78
+04:45.500 --> 04:46.580
+There are clicks, there are...
+
+79
+04:49.880 --> 04:53.159
+sometimes it just stops and it's not the experience
+
+80
+04:53.159 --> 04:54.170
+it should be.
+
+81
+04:54.170 --> 04:58.408
+These are things that really has to be improved
+
+82
+04:58.408 --> 05:02.338
+in order to make this, because the possibilities are
+
+83
+05:02.338 --> 05:04.620
+very exciting here.
+
+84
+05:04.620 --> 05:08.260
+Just, this is a very simple application,
+
+85
+05:08.260 --> 05:13.140
+but you could create full replacements for what we
+
+86
+05:13.140 --> 05:17.320
+have in desktop apps today for creating music.
+
+87-p
+05:17.320 --> 05:20.800
+I really think there are some interesting possibilities
+
+88
+05:20.800 --> 05:24.693
+there when you expand that area onto the web.
+
+89-p
+05:26.490 --> 05:29.750
+And also across browsers,
+
+90
+05:29.750 --> 05:32.490
+for example, in Firefox,
+
+91
+05:32.490 --> 05:35.295
+you don't have the MIDI support.
+
+92
+05:35.295 --> 05:38.913
+It's a very good AudioWorklet implementation.
+
+93
+05:38.913 --> 05:41.830
+Audioworklet is the technology that
+
+94
+05:42.715 --> 05:47.300
+can bin this WebAssembly code to the Web Audio API.
+
+95
+05:47.300 --> 05:50.790
+And makes it possible to have this low latency,
+
+96
+05:50.790 --> 05:53.360
+this instant response when you play.
+
+97
+05:53.360 --> 05:55.430
+This works very good on Firefox,
+
+98
+05:55.430 --> 05:57.500
+but you don't have a MIDI connectivity.
+
+99
+05:57.500 --> 06:00.820
+You have to find other solutions for connecting
+
+100
+06:00.820 --> 06:02.533
+a MIDI keyboard to Firefox.
+
+101-p
+06:03.530 --> 06:08.362
+And this is also important in order to get this fully
+
+102
+06:08.362 --> 06:12.810
+usable experience is that you have this
+
+103
+06:12.810 --> 06:16.653
+working across browsers.
+
+104-p
+06:19.102 --> 06:21.980
+But other than that, I think this is
+
+105
+06:21.980 --> 06:26.160
+very interesting technology.
+
+106
+06:26.160 --> 06:29.880
+I've created quite a bit of music with it so far.
+
+107
+06:29.880 --> 06:33.780
+I use it for all my music now, and I think it's great.
+
+108
+06:33.780 --> 06:38.500
+I really hope that we will see this stable and
+
+109
+06:38.500 --> 06:42.110
+performant and you get this low latency
+
+110
+06:42.110 --> 06:45.743
+across all browsers or platforms.
+
+111-p
+06:47.600 --> 06:52.600
+That's the point I really want to make today.
+
+112
+06:52.900 --> 06:57.900
+And I hope can get some attention in the future.
+
+113
+06:57.220 --> 06:58.483
+Thank you for watching.
+

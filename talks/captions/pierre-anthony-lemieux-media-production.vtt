@@ -1,0 +1,718 @@
+WEBVTT
+
+1
+00:05.400 --> 00:07.880
+Hi everyone, I am Pierre and co-chair the
+
+2
+00:07.880 --> 00:09.840
+Joint W3C/SMPTE Workshop on
+
+3
+00:09.840 --> 00:11.280
+Professional Media Production on the Web.
+
+5-p
+00:11.960 --> 00:14.280
+Today I want to share with you recent advances that
+
+6
+00:14.280 --> 00:16.560
+make it possible to work with professional media
+
+7
+00:16.560 --> 00:20.800
+in any web browser... and demonstrate it is actually possible
+
+8
+00:20.800 --> 00:23.400
+to play lossless UHD video, directly from
+
+9
+00:23.400 --> 00:26.600
+an HTTP server, without proxies and without plugins.
+
+10
+00:26.600 --> 00:29.280
+But first some background.
+
+slide-2
+00:29.280 --> 00:31.000
+Once upon a time there was a huge gap
+
+13
+00:31.000 --> 00:33.560
+between professional content and the web browser.
+
+14
+00:33.560 --> 00:36.200
+The two used different media formats and codecs.
+
+15
+00:36.200 --> 00:39.240
+The two targeted different qualities of experience.
+
+16
+00:39.240 --> 00:41.920
+And professional content was primarily on-prem
+
+17
+00:41.920 --> 00:44.160
+whereas the browser was Internet-first
+
+18
+00:44.160 --> 00:45.360
+… but times have changed.
+
+slide-3
+00:46.640 --> 00:48.000
+First, the web browser has come
+
+21
+00:48.000 --> 00:49.880
+a long way since 2000.
+
+22
+00:49.880 --> 00:51.320
+Back then, the web was text
+
+23
+00:51.320 --> 00:54.320
+with the occasional video playing through plugins.
+
+25-p
+00:54.320 --> 00:56.800
+Fast forward to today, the web now allows
+
+24
+00:54.320 --> 00:54.320
+
+
+26
+00:56.800 --> 00:58.960
+complex multimedia experiences through standard APIs.
+
+28-p
+00:58.960 --> 01:02.800
+Particularly important for professional content,
+
+27
+00:58.960 --> 00:58.960
+
+
+29
+01:02.800 --> 01:05.360
+WebAssembly now allows any C/C++ codec libraries
+
+30
+01:05.360 --> 01:06.680
+to be ported directly to the web.
+
+31
+01:06.680 --> 01:07.400
+
+
+32-p
+01:07.400 --> 01:09.360
+This makes it possible to use professional media
+
+33
+01:09.360 --> 01:10.800
+formats and codecs that are not
+
+34
+01:10.800 --> 01:12.720
+natively supported by web browsers.
+
+35
+01:12.720 --> 01:14.320
+
+
+slide-4
+01:14.320 --> 01:16.400
+Second, something that seemed improbable
+
+37
+01:16.400 --> 01:19.000
+just 10 years ago has happened: studio content
+
+38
+01:19.000 --> 01:20.600
+is now processed in the public cloud.
+
+40-p
+01:20.600 --> 01:23.160
+This is a stunning reversal for an industry
+
+39
+01:20.600 --> 01:20.600
+
+
+41
+01:23.160 --> 01:24.960
+that was largely based on video tape
+
+42
+01:24.960 --> 01:27.480
+and perceived the Internet as the wild west.
+
+44-p
+01:27.480 --> 01:28.840
+There is probably not a single event
+
+43
+01:27.480 --> 01:27.480
+
+
+45
+01:28.840 --> 01:29.760
+behind this transition.
+
+46
+01:29.760 --> 01:32.280
+Perhaps it was the disruption in tape supplies
+
+47
+01:32.280 --> 01:34.960
+caused by the Tōhoku tsunami in 2010,
+
+48
+01:34.960 --> 01:36.440
+or Netflix’s own experience with
+
+49
+01:36.440 --> 01:39.440
+on-prem database corruption in 2008.
+
+51-p
+01:39.440 --> 01:41.360
+In the end, the cloud is not only more efficient
+
+50
+01:39.440 --> 01:39.440
+
+
+52
+01:41.360 --> 01:44.560
+but also more secure since fewer humans handle
+
+53
+01:44.560 --> 01:46.760
+the content and fewer copies are made.
+
+54
+01:46.760 --> 01:48.880
+… and all major studios now have moved some of
+
+55
+01:48.880 --> 01:50.360
+their workflows to the public cloud.
+
+slide-5
+01:50.360 --> 01:53.360
+So I think the time is right for professional
+
+56
+01:50.360 --> 01:50.360
+
+
+58
+01:53.360 --> 01:55.560
+media to embrace the web platform.
+
+59
+01:55.560 --> 01:57.400
+My personal epiphany came actually in
+
+60
+01:57.400 --> 01:59.120
+the middle of pandemic when I ask myself:
+
+61
+01:59.120 --> 02:00.880
+can UHD lossless video be played
+
+62
+02:00.880 --> 02:02.800
+in a web browser without proxies?
+
+slide-6
+02:02.800 --> 02:07.400
+Professional UHD lossless video is different
+
+63
+02:02.800 --> 02:02.800
+
+
+65
+02:07.400 --> 02:09.000
+than the typical video supported natively
+
+66
+02:09.000 --> 02:10.000
+by web browsers.
+
+68-p
+02:10.000 --> 02:13.440
+The images are often sampled at 48-bit per pixel,
+
+67
+02:10.000 --> 02:10.000
+
+
+69
+02:13.440 --> 02:15.280
+instead of the typical 24-bit per pixel
+
+70
+02:15.280 --> 02:16.200
+for consumer video.
+
+71
+02:16.200 --> 02:17.200
+
+
+72-p
+02:17.200 --> 02:19.840
+The images are routinely losslessly compressed
+
+73
+02:19.840 --> 02:22.520
+using codecs like JPEG 2000, instead of
+
+74
+02:22.520 --> 02:24.920
+using AV1 or AVC lossy compression.
+
+75
+02:24.920 --> 02:27.560
+This results in bitrates in Gbps,
+
+76
+02:27.560 --> 02:29.560
+as opposed to Mbps.
+
+78-p
+02:29.560 --> 02:32.360
+The compressed image is ultimately wrapped
+
+77
+02:29.560 --> 02:29.560
+
+
+79
+02:32.360 --> 02:34.160
+in file formats like MXF, again different
+
+80
+02:34.160 --> 02:36.280
+than the formats used for consumer delivery.
+
+slide-7
+02:36.280 --> 02:39.600
+The traditional approach to playing
+
+81
+02:36.280 --> 02:36.280
+
+
+83
+02:39.600 --> 02:41.320
+professional video in web browsers
+
+84
+02:41.320 --> 02:43.800
+has been to transcode the professional video
+
+85
+02:43.800 --> 02:44.920
+into a format understood by the web browser.
+
+87-p
+02:44.920 --> 02:46.680
+This results in a proxy file.
+
+86
+02:44.920 --> 02:44.920
+
+
+89-p
+02:46.680 --> 02:48.560
+For example, starting from
+
+88
+02:46.680 --> 02:46.680
+
+
+90
+02:48.560 --> 02:51.360
+a 5 Gbps JPEG 2000 MXF file,
+
+91
+02:51.360 --> 02:52.760
+you might end up with
+
+92
+02:52.760 --> 02:55.320
+a 50 Mbps AVC MP4 file.
+
+94-p
+02:55.320 --> 02:58.320
+This approach has significant drawbacks:
+
+93
+02:55.320 --> 02:55.320
+
+
+95
+02:58.320 --> 03:00.560
+there is latency in that conversion,
+
+96
+03:00.560 --> 03:05.800
+and metadata and image fidelity are reduced.
+
+slide-8
+03:05.800 --> 03:06.800
+A no-proxy architecture takes
+
+97
+03:05.800 --> 03:05.800
+
+
+99
+03:06.800 --> 03:07.520
+a different approach.
+
+101-p
+03:07.520 --> 03:09.320
+In this approach, the professional video
+
+100
+03:07.520 --> 03:07.520
+
+
+102
+03:09.320 --> 03:11.120
+is compressed using JPEG 2000
+
+103
+03:11.120 --> 03:12.640
+and wrapped in an MXF file,
+
+104
+03:12.640 --> 03:15.320
+which is stored on an HTTP server.
+
+106-p
+03:15.320 --> 03:16.760
+Using the MXF index table,
+
+105
+03:15.320 --> 03:15.320
+
+
+107
+03:16.760 --> 03:17.880
+the web app can access each
+
+108
+03:17.880 --> 03:19.720
+individual image frame directly
+
+109
+03:19.720 --> 03:21.920
+using standard HTTP byte-range requests.
+
+111-p
+03:21.920 --> 03:23.720
+Depending on the network conditions
+
+110
+03:21.920 --> 03:21.920
+
+
+112
+03:23.720 --> 03:24.720
+and the size of each frame,
+
+113
+03:24.720 --> 03:26.240
+the web app will end up reading
+
+114
+03:26.240 --> 03:28.120
+complete or partial frames.
+
+116-p
+03:28.120 --> 03:31.800
+Using an open source JPEG 2000 C++ library
+
+115
+03:28.120 --> 03:28.120
+
+
+117
+03:31.800 --> 03:33.000
+compiled to WebAssembly,
+
+118
+03:33.000 --> 03:34.840
+the web app can then decode the partial
+
+119
+03:34.840 --> 03:35.840
+or complete image frame.
+
+121-p
+03:35.840 --> 03:39.160
+Because frames are encoded using JPEG 2000,
+
+120
+03:35.840 --> 03:35.840
+
+
+122
+03:39.160 --> 03:41.360
+decoding a partial frame will not fail
+
+123
+03:41.360 --> 03:43.200
+and instead will result in
+
+124
+03:43.200 --> 03:45.000
+a decoded image with reduced resolution.
+
+slide-9
+03:45.000 --> 03:49.800
+This ability for a partial read to result in
+
+125
+03:45.000 --> 03:45.000
+
+
+127
+03:49.800 --> 03:50.000
+a lower resolution image is
+
+128
+03:50.000 --> 03:51.960
+a standard feature of JPEG 2000
+
+129
+03:51.960 --> 03:53.680
+resolution progressive codestreams.
+
+131-p
+03:53.680 --> 03:57.240
+In such a codestream: low spatial frequency
+
+130
+03:53.680 --> 03:53.680
+
+
+132
+03:57.240 --> 03:59.600
+information is stored in the lower bytes
+
+133
+03:59.600 --> 04:00.320
+of the codestream.
+
+134
+04:00.320 --> 04:03.160
+Whereas the high spatial frequency information
+
+135
+04:03.160 --> 04:04.840
+is stored in the higher bytes.
+
+136
+04:04.840 --> 04:07.800
+As a result, reading a partial frame results
+
+137
+04:07.800 --> 04:09.000
+into a lower-resolution decoded image.
+
+slide-10-p
+04:09.000 --> 04:13.440
+Here’s a live demo and proof-of-concept of
+
+138
+04:09.000 --> 04:09.000
+
+
+140
+04:13.440 --> 04:14.800
+the no-proxy architecture,
+
+141
+04:14.800 --> 04:16.480
+which I encourage you to visit.
+
+143-p
+04:16.480 --> 04:21.160
+The video is lossless UHD content at 48-bits per pixel,
+
+142
+04:16.480 --> 04:16.480
+
+
+144
+04:21.160 --> 04:23.440
+which amounts for about 5 Gbps.
+
+146-p
+04:23.440 --> 04:25.640
+The file is stored on S3
+
+145
+04:23.440 --> 04:23.440
+
+
+147
+04:25.640 --> 04:27.000
+and distributed through Cloudfront.
+
+149-p
+04:27.000 --> 04:29.280
+The quality of the video will depend on your
+
+148
+04:27.000 --> 04:27.000
+
+
+150
+04:29.280 --> 04:31.120
+available bandwidth, but is unlikely
+
+151
+04:31.120 --> 04:32.680
+to be pristine given the bit rate involved.
+
+153-p
+04:32.680 --> 04:35.840
+Notice, however, that when the video is paused,
+
+152
+04:32.680 --> 04:32.680
+
+
+154
+04:35.840 --> 04:37.640
+the app can download the full frame,
+
+155
+04:37.640 --> 04:39.720
+which results in pristine quality.
+
+slide-11-p
+04:39.720 --> 04:44.760
+This is of course only a proof of concept,
+
+156
+04:39.720 --> 04:39.720
+
+
+158
+04:44.760 --> 04:46.200
+so much improvement is possible.
+
+160-p
+04:46.200 --> 04:48.800
+It however demonstrates that it is possible
+
+159
+04:46.200 --> 04:46.200
+
+
+161
+04:48.800 --> 04:51.720
+to play back UHD lossless video in the browser
+
+162
+04:51.720 --> 04:53.840
+in a way that adapts to network conditions,
+
+163
+04:53.840 --> 04:56.560
+using standard web APIs and open source libraries,
+
+164
+04:56.560 --> 04:58.200
+without any special web server.
+
+slide-12-p
+04:58.200 --> 05:02.760
+In summary I really believe the time is right
+
+165
+04:58.200 --> 04:58.200
+
+
+167
+05:02.760 --> 05:04.400
+for professional workflows to
+
+168
+05:04.400 --> 05:05.160
+embrace the web platform.
+
+170-p
+05:05.160 --> 05:08.800
+The web can support professional codecs and formats.
+
+169
+05:05.160 --> 05:05.160
+
+
+171
+05:08.800 --> 05:10.120
+and professional media is moving to the cloud.
+
+173-p
+05:10.120 --> 05:12.320
+Some gaps nevertheless remain.
+
+172
+05:10.120 --> 05:10.120
+
+
+174
+05:12.320 --> 05:13.520
+For example the web platform
+
+175
+05:13.520 --> 05:15.560
+really lacks support for high-dynamic range
+
+176
+05:15.560 --> 05:17.360
+and wide-color gamut images.
+
+177
+05:17.360 --> 05:20.240
+And sample and accurate media synchronization
+
+178
+05:20.240 --> 05:21.160
+can really be improved.
+
+179
+05:21.160 --> 05:23.360
+Hopefully these gaps can be filled in time.
+
+181-p
+05:23.360 --> 05:25.360
+Thanks again for listening.
+
+180
+05:23.360 --> 05:23.360
+
+
+182
+05:25.360 --> 05:29.800
+Do not hesitate to contact me.
+

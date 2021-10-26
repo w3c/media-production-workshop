@@ -1,0 +1,1363 @@
+WEBVTT
+
+1
+00:01.500 --> 00:02.940
+Hi everyone, thanks for having me.
+
+2
+00:02.940 --> 00:05.780
+It’s a real pleasure to be a part of this workshop.
+
+3
+00:05.780 --> 00:05.820
+
+
+4-p
+00:05.820 --> 00:08.580
+I titled my talk "Whatever can be done will be done".
+
+5
+00:08.580 --> 00:11.600
+And I hope it becomes apparent in the end why I did so.
+
+slide-2
+00:13.340 --> 00:15.180
+I’m Christoph Guttandin. I have a company
+
+8
+00:15.180 --> 00:17.700
+called Media Codings. And I do freelance work
+
+9
+00:17.700 --> 00:19.100
+for various other companies
+
+10
+00:19.100 --> 00:21.140
+and I guess the two most interesting
+
+11
+00:21.140 --> 00:22.460
+in the context of this workshop
+
+12
+00:22.460 --> 00:25.860
+are Source Elements and InVideo.
+
+14-p
+00:25.860 --> 00:27.420
+I’m usually named chrisguttandin
+
+13
+00:25.860 --> 00:25.860
+
+
+15
+00:27.420 --> 00:29.180
+anywhere on the internet.
+
+16
+00:29.180 --> 00:30.780
+So in case you want to chat with me
+
+17
+00:30.780 --> 00:32.700
+please feel free to reach out.
+
+18
+00:32.700 --> 00:35.220
+Just send me a message on the platform of your choice.
+
+slide-3
+00:37.820 --> 00:40.200
+When I was asked to prepare a talk for this workshop
+
+21
+00:40.200 --> 00:41.620
+I thought it’s a great opportunity
+
+22
+00:41.620 --> 00:43.900
+to present our wishes to the world.
+
+23
+00:43.900 --> 00:47.600
+So I asked my co-workers to help me preparing a list
+
+24
+00:47.600 --> 00:49.220
+with the things that we would like to implement
+
+25
+00:49.220 --> 00:51.940
+at some point or which we implemented already
+
+26
+00:51.940 --> 00:54.100
+but would really like to implement in a better way
+
+27
+00:54.100 --> 00:54.660
+if possible.
+
+slide-4
+00:57.200 --> 01:00.500
+The first item on our list is using custom codecs with WebRTC.
+
+slide-5
+01:02.820 --> 01:04.940
+Doing this has been possible for a while
+
+32
+01:04.940 --> 01:07.940
+at least to a certain extent.
+
+33
+01:07.940 --> 01:10.380
+You can do it by encoding the audio data
+
+34
+01:10.380 --> 01:12.140
+and video data yourself.
+
+35
+01:12.140 --> 01:14.660
+And then you would ignore the media functionality
+
+36
+01:14.660 --> 01:18.420
+of WebRTC and send the data over a DataChannel.
+
+37
+01:18.420 --> 01:20.460
+But the whole process is very cumbersome and
+
+38
+01:20.460 --> 01:23.660
+at least for video it’s not very accurate as well.
+
+39
+01:23.660 --> 01:26.220
+Every video frame needs to be drawn to a canvas
+
+40
+01:26.220 --> 01:27.860
+and then it needs to be grabbed from there
+
+41
+01:27.860 --> 01:30.180
+to hand it over to WebAssembly.
+
+42
+01:30.180 --> 01:32.660
+It’s very likely that you miss a few frames
+
+43
+01:32.660 --> 01:33.940
+when doing this with a live feed.
+
+slide-6
+01:35.940 --> 01:38.500
+Luckily this is not necessary anymore
+
+46
+01:38.500 --> 01:40.660
+since we can now use WebCodecs to do this
+
+47
+01:40.660 --> 01:41.820
+in a much more efficient way.
+
+49-p
+01:41.820 --> 01:45.820
+But WebCodecs are only available in Chromium browsers
+
+48
+01:41.820 --> 01:41.820
+
+
+50
+01:45.820 --> 01:49.200
+so far. Firefox is working on it. But unfortunately
+
+51
+01:49.200 --> 01:51.380
+it’s unclear to me what Apple is thinking about it.
+
+slide-7
+01:53.620 --> 01:56.420
+The next item in our list is partial decoding.
+
+55-p
+01:56.420 --> 01:58.820
+And with that we mean the ability to only decode
+
+54
+01:56.420 --> 01:56.420
+
+
+56
+01:58.820 --> 02:00.900
+a certain range or maybe only
+
+57
+02:00.900 --> 02:02.420
+one specific frame of a media asset.
+
+slide-8
+02:03.900 --> 02:06.340
+There is a very hacky way to do this for audio
+
+60
+02:06.340 --> 02:10.600
+which works by using the decodeAudioData() method.
+
+61
+02:10.600 --> 02:12.940
+This method is available on an AudioContext.
+
+62
+02:12.940 --> 02:15.380
+Unfortunately it automatically re-samples the audio
+
+63
+02:15.380 --> 02:17.780
+to the sampleRate of the AudioContext.
+
+64
+02:17.780 --> 02:20.300
+That means the file needs to be parsed manually
+
+65
+02:20.300 --> 02:21.820
+to know the correct sampleRate
+
+66
+02:21.820 --> 02:23.380
+before doing the actual decoding.
+
+67
+02:23.380 --> 02:28.420
+And decodeAudioData() only works with full files
+
+68
+02:28.420 --> 02:30.600
+which is another reason why the file
+
+69
+02:30.600 --> 02:32.780
+needs to be parsed before the decoding.
+
+70
+02:32.780 --> 02:34.580
+We need to find out where it can be sliced.
+
+71
+02:34.580 --> 02:37.940
+This is not that easy to figure out
+
+72
+02:37.940 --> 02:40.260
+but it’s possible for most file types.
+
+73
+02:40.260 --> 02:42.100
+And when done correctly and you’re lucky
+
+74
+02:42.100 --> 02:45.940
+decodeAudioData() will happily decode a part of a file
+
+75
+02:45.940 --> 02:48.740
+because it believes that it’s decoding the full file.
+
+76
+02:48.740 --> 02:50.900
+
+
+77-p
+02:50.900 --> 02:53.140
+Sadly though decodeAudioData() is really broken
+
+78
+02:53.140 --> 02:55.220
+in the newest version of Safari.
+
+79
+02:55.220 --> 02:57.660
+Apparently the bug is already fixed in the codebase.
+
+80
+02:57.660 --> 03:00.500
+But no one knows when that fix will be available
+
+81
+03:00.500 --> 03:01.660
+for Safari users.
+
+83-p
+03:01.660 --> 03:07.820
+To decode a single video frame one could load the video
+
+82
+03:01.660 --> 03:01.660
+
+
+84
+03:07.820 --> 03:10.100
+with a media element and then use seekToNextFrame()
+
+85
+03:10.100 --> 03:11.420
+to get the frames one by one.
+
+86
+03:11.420 --> 03:13.200
+
+
+87-p
+03:13.200 --> 03:15.300
+But sadly this only works in Firefox.
+
+slide-9
+03:15.300 --> 03:19.220
+But again all of this is not necessary anymore
+
+90
+03:19.220 --> 03:21.820
+now that we have WebCodecs support in Chromium
+
+91
+03:21.820 --> 03:23.140
+and soon in Firefox.
+
+slide-10
+03:25.660 --> 03:27.340
+Another thing which is crucial for us is
+
+94
+03:27.340 --> 03:30.220
+to offload as much as we can to other threads.
+
+95
+03:30.220 --> 03:32.300
+In the end the main thread should just be there
+
+96
+03:32.300 --> 03:34.220
+for triggering the work but not for doing it.
+
+slide-11
+03:34.220 --> 03:37.740
+There are a number of APIs which
+
+99
+03:37.740 --> 03:39.100
+follow this pattern already.
+
+100
+03:39.100 --> 03:41.200
+One of them is the AudioWorklet
+
+101
+03:41.200 --> 03:42.740
+and the Web Audio API in general.
+
+103-p
+03:42.740 --> 03:46.220
+For video content there is the OffscreenCanvas
+
+102
+03:42.740 --> 03:42.740
+
+
+104
+03:46.220 --> 03:48.200
+which can be used from within a Web Worker.
+
+106-p
+03:48.200 --> 03:51.380
+And last but not least it’s possible to insert
+
+105
+03:48.200 --> 03:48.200
+
+
+107
+03:51.380 --> 03:53.260
+a TransformStream into a MediaStream
+
+108
+03:53.260 --> 03:55.940
+and transfer that to a Web Worker as well.
+
+110-p
+03:55.940 --> 03:59.820
+But as you can see browser support for anything
+
+109
+03:55.940 --> 03:55.940
+
+
+111
+03:59.820 --> 04:01.780
+but the Web Audio API is not that great.
+
+112
+04:01.780 --> 04:04.660
+Chromium supports all of those APIs.
+
+113
+04:04.660 --> 04:07.780
+Firefox has an OffscreenCanvas implementation
+
+114
+04:07.780 --> 04:10.380
+behind a flag but didn’t say anything about
+
+115
+04:10.380 --> 04:11.780
+transferable streams so far.
+
+116
+04:11.780 --> 04:14.860
+And as usual I don’t even dare to guess when
+
+117
+04:14.860 --> 04:17.600
+this will be available in Webkit or Safari.
+
+slide-12
+04:17.600 --> 04:22.700
+Another thing which is often tricky for us
+
+120
+04:22.700 --> 04:23.940
+is to keep media in sync.
+
+122-p
+04:23.940 --> 04:26.580
+Especially if there is some audio or video
+
+121
+04:23.940 --> 04:23.940
+
+
+123
+04:26.580 --> 04:29.140
+processing involved which will delay one or the other
+
+124
+04:29.140 --> 04:32.740
+making sure audio and video appear to be sync again
+
+125
+04:32.740 --> 04:34.540
+when played back becomes very tricky.
+
+slide-13
+04:34.540 --> 04:39.220
+There are two properties on an AudioContext
+
+128
+04:39.220 --> 04:41.540
+which allow us to know when a sound scheduled
+
+129
+04:41.540 --> 04:44.180
+on that AudioContext can actually be heard by the user.
+
+130
+04:44.180 --> 04:47.780
+And this allows us to make sure the video frame
+
+131
+04:47.780 --> 04:50.300
+displayed at that time matches the audio.
+
+133-p
+04:50.300 --> 04:53.460
+But sadly these properties only fully work
+
+132
+04:50.300 --> 04:50.300
+
+
+134
+04:53.460 --> 04:56.300
+in Firefox so far. I guess I don’t have to
+
+135
+04:56.300 --> 04:58.260
+mention anymore for which browser I don’t know
+
+136
+04:58.260 --> 05:00.420
+when they will be available or if
+
+137
+05:00.420 --> 05:01.700
+they become available at all.
+
+slide-14
+05:01.700 --> 05:07.600
+Another hot topic for us is the possibility
+
+140
+05:07.600 --> 05:09.860
+to select a certain output device instead of
+
+141
+05:09.860 --> 05:10.820
+using the default one.
+
+slide-15
+05:10.820 --> 05:14.580
+There is a method one can call to change
+
+144
+05:14.580 --> 05:16.300
+the output device of a media element
+
+145
+05:16.300 --> 05:18.420
+but it only works in Chromium browsers so far.
+
+146
+05:18.420 --> 05:20.580
+It’s called setSinkId().
+
+148-p
+05:20.580 --> 05:24.220
+And as far as I know Firefox is currently implementing
+
+147
+05:20.580 --> 05:20.580
+
+
+149
+05:24.220 --> 05:27.500
+the selectAudioOutput() method which is a new way to
+
+150
+05:27.500 --> 05:29.860
+give consent to access audio output devices.
+
+151
+05:29.860 --> 05:32.580
+And this is basically what blocks them from
+
+152
+05:32.580 --> 05:33.740
+enabling setSinkId().
+
+154-p
+05:33.740 --> 05:37.900
+Chromium browsers expose the audio output devices already.
+
+153
+05:33.740 --> 05:33.740
+
+
+155
+05:37.900 --> 05:40.100
+Therefore implementing selectAudioOutput() is not
+
+156
+05:40.100 --> 05:42.540
+really necessary to use setSinkId().
+
+158-p
+05:42.540 --> 05:46.740
+But as usual I don’t have an idea what Apple is up to.
+
+157
+05:42.540 --> 05:42.540
+
+
+slide-16
+05:46.740 --> 05:51.740
+So when looking at the wishlist again
+
+161
+05:51.740 --> 05:53.500
+it looks like it became a todo list.
+
+162
+05:53.500 --> 05:57.600
+All those things can be done now and existing hacks
+
+163
+05:57.600 --> 05:59.180
+can be replaced with solid implementations,
+
+164
+05:59.180 --> 06:01.700
+either today or in the near future.
+
+166-p
+06:01.700 --> 06:04.780
+At least if we ignore Safari for now.
+
+165
+06:01.700 --> 06:01.700
+
+
+168-p
+06:04.780 --> 06:08.820
+Anyway, I came up with some more wishes
+
+167
+06:04.780 --> 06:04.780
+
+
+169
+06:08.820 --> 06:10.660
+which aren’t really spec related anymore
+
+170
+06:10.660 --> 06:12.900
+and are more geared towards the implementers.
+
+slide-17
+06:12.900 --> 06:18.180
+The first item on that list is that I wish for
+
+173
+06:18.180 --> 06:19.860
+releases to be as boring as possible.
+
+175-p
+06:19.860 --> 06:23.200
+I think Chromium browsers and Firefox do have
+
+174
+06:19.860 --> 06:19.860
+
+
+176
+06:23.200 --> 06:24.900
+a pretty good process to ensure that already.
+
+slide-18
+06:24.900 --> 06:30.380
+Both browsers publish a nightly build.
+
+179
+06:30.380 --> 06:32.660
+Right now this is version 97 for Chromium
+
+180
+06:32.660 --> 06:35.860
+and 95 for Firefox. But the exact numbers
+
+181
+06:35.860 --> 06:37.980
+don’t really matter here.
+
+183-p
+06:37.980 --> 06:40.460
+Every 4 weeks the state of the nightly version
+
+182
+06:37.980 --> 06:37.980
+
+
+184
+06:40.460 --> 06:42.180
+gets promoted to the next stage.
+
+slide-19
+06:42.180 --> 06:44.860
+Whatever has been the nightly version at that time
+
+187
+06:44.860 --> 06:46.100
+becomes the beta version.
+
+188
+06:46.100 --> 06:49.340
+Likewise the nightly version will increase as well.
+
+189
+06:49.340 --> 06:52.980
+So it’s clear that whatever is in the nightly versions
+
+190
+06:52.980 --> 06:56.260
+of those browsers today will be in beta
+
+191
+06:56.260 --> 06:57.260
+in at least 4 weeks.
+
+slide-20
+06:57.260 --> 07:01.300
+Another 4 weeks later the beta version
+
+194
+07:01.300 --> 07:03.700
+becomes the stable version and the nightly version
+
+195
+07:03.700 --> 07:05.140
+- whatever that will be at that time -
+
+196
+07:05.140 --> 07:07.200
+becomes the new beta version.
+
+198-p
+07:07.200 --> 07:10.140
+It’s like a steady stream of updates.
+
+197
+07:07.200 --> 07:07.200
+
+
+199
+07:10.140 --> 07:13.140
+And by the time a feature reaches the beta channel
+
+200
+07:13.140 --> 07:16.420
+you can calculate the date at which it becomes available
+
+201
+07:16.420 --> 07:17.700
+to all regular users.
+
+203-p
+07:17.700 --> 07:20.900
+The whole process is very predictable
+
+202
+07:17.700 --> 07:17.700
+
+
+204
+07:20.900 --> 07:22.940
+and yes it is super boring.
+
+206-p
+07:22.940 --> 07:26.180
+I usually test my code against the nightly versions
+
+205
+07:22.940 --> 07:22.940
+
+
+207
+07:26.180 --> 07:29.200
+to check regressions coming down the pipe and
+
+208
+07:29.200 --> 07:31.820
+to make sure there will be no surprises (at least for me)
+
+209
+07:31.820 --> 07:35.380
+when a new version of Chromium or Firefox gets published.
+
+slide-21
+07:35.380 --> 07:40.260
+Sadly things are a bit different with Safari.
+
+212
+07:40.260 --> 07:42.940
+There is a Technology Preview of Safari
+
+213
+07:42.940 --> 07:46.380
+which is currently at version 133.
+
+214
+07:46.380 --> 07:49.820
+It contains a lot of experimental and unfinished
+
+215
+07:49.820 --> 07:51.780
+implementations of upcoming features.
+
+217-p
+07:51.780 --> 07:55.740
+But it is unknown which of those features end up
+
+216
+07:51.780 --> 07:51.780
+
+
+218
+07:55.740 --> 07:57.380
+in the next stable release of Safari.
+
+219
+07:57.380 --> 07:59.780
+They treat it as a secret.
+
+220
+07:59.780 --> 08:03.780
+The Technology Preview and the stable Safari have
+
+221
+08:03.780 --> 08:05.620
+completely unrelated version numbers.
+
+222
+08:05.620 --> 08:08.260
+I guess the stable version is a subset of
+
+223
+08:08.260 --> 08:11.420
+the Technology Preview but I can’t say that for sure.
+
+225-p
+08:11.420 --> 08:15.200
+There is no way for developers to test their apps
+
+224
+08:11.420 --> 08:11.420
+
+
+226
+08:15.200 --> 08:17.820
+with what becomes the next stable version of Safari.
+
+227
+08:17.820 --> 08:20.540
+Testing it is only possible after it got already
+
+228
+08:20.540 --> 08:21.620
+released to all the users.
+
+230-p
+08:21.620 --> 08:24.780
+This is of course challenging when you try to build
+
+229
+08:21.620 --> 08:21.620
+
+
+231
+08:24.780 --> 08:28.620
+a reliable web app that user’s can trust on
+
+232
+08:28.620 --> 08:29.900
+to work as expected.
+
+234-p
+08:29.900 --> 08:34.780
+Another problem is that the stable version of Safari
+
+233
+08:29.900 --> 08:29.900
+
+
+235
+08:34.780 --> 08:36.500
+gets only updated every 6 months.
+
+236
+08:36.500 --> 08:39.340
+Which means the minimum lifetime of regressions
+
+237
+08:39.340 --> 08:40.620
+is usually 6 months.
+
+238
+08:40.620 --> 08:43.140
+And since regressions can’t get caught before
+
+239
+08:43.140 --> 08:46.460
+they get released, regressions are really not
+
+240
+08:46.460 --> 08:47.580
+unheard of in Safari.
+
+242-p
+08:47.580 --> 08:51.180
+As I said there is currently one which breaks
+
+241
+08:47.580 --> 08:47.580
+
+
+243
+08:51.180 --> 08:53.900
+decodeAudioData() and another one which breaks
+
+244
+08:53.900 --> 08:55.380
+audio streams in WebRTC.
+
+slide-22
+08:55.380 --> 08:59.140
+This leads me to my next wish.
+
+248-p
+08:59.140 --> 09:03.200
+I would love regressions to get fixed as soon as possible.
+
+247
+08:59.140 --> 08:59.140
+
+
+250-p
+09:03.200 --> 09:06.500
+Imagine building a web app that media professionals
+
+249
+09:03.200 --> 09:03.200
+
+
+251
+09:06.500 --> 09:09.580
+rely on to get their work done on every single day.
+
+252
+09:09.580 --> 09:13.780
+And suddenly a browser update causes that app to fail.
+
+254-p
+09:13.780 --> 09:19.700
+I know that even Safari can get security updates
+
+253
+09:13.780 --> 09:13.780
+
+
+255
+09:19.700 --> 09:20.700
+in a very timely manner.
+
+256
+09:20.700 --> 09:23.300
+And I would love that to happen for patches
+
+257
+09:23.300 --> 09:24.460
+to fix regressions, too.
+
+slide-23
+09:24.460 --> 09:31.900
+I know some powerful features have the potential
+
+260
+09:31.900 --> 09:33.580
+to get abused by malicious pages.
+
+261
+09:33.580 --> 09:37.200
+And I definitely agree that certain features
+
+262
+09:37.200 --> 09:39.500
+should not be enabled by default for each and every page.
+
+264-p
+09:39.500 --> 09:42.820
+However I think the users of a browser
+
+263
+09:39.500 --> 09:39.500
+
+
+265
+09:42.820 --> 09:45.420
+should have the option to allow certain sites
+
+266
+09:45.420 --> 09:47.540
+to access the file system,
+
+267
+09:47.540 --> 09:48.780
+to record the whole screen,
+
+268
+09:48.780 --> 09:50.780
+to capture the system audio,
+
+269
+09:50.780 --> 09:51.980
+to receive MIDI messages,
+
+270
+09:51.980 --> 09:54.600
+to run high priority threads
+
+271
+09:54.600 --> 09:57.180
+and so on and so on.
+
+273-p
+09:57.180 --> 09:59.600
+I think this doesn’t need to be an explicit
+
+272
+09:57.180 --> 09:57.180
+
+
+274
+09:59.600 --> 10:00.580
+permission prompt in every case.
+
+275
+10:00.580 --> 10:03.180
+It could also be a little toast-style message
+
+276
+10:03.180 --> 10:05.780
+that pops up to notify the users about the usage
+
+277
+10:05.780 --> 10:08.500
+of a certain API or something totally different.
+
+279-p
+10:08.500 --> 10:12.900
+The point is I think the users should be empowered
+
+278
+10:08.500 --> 10:08.500
+
+
+280
+10:12.900 --> 10:15.980
+to decide themselves which features they want to enable
+
+281
+10:15.980 --> 10:18.600
+and which ones they better don’t want to use right now.
+
+slide-24
+10:18.600 --> 10:24.600
+Similarly as a developer I would really love to
+
+284
+10:24.600 --> 10:26.820
+have the same power. As I said before I like to run
+
+285
+10:26.820 --> 10:29.580
+automated tests against the current
+
+286
+10:29.580 --> 10:31.460
+and the upcoming version of each browser.
+
+288-p
+10:31.460 --> 10:35.600
+I do this locally and I also do this in the cloud
+
+287
+10:31.460 --> 10:31.460
+
+
+289
+10:35.600 --> 10:37.220
+with services like BrowserStack and Sauce Labs.
+
+291-p
+10:37.220 --> 10:40.380
+It’s a real challenge to test media APIs
+
+290
+10:37.220 --> 10:37.220
+
+
+292
+10:40.380 --> 10:43.200
+because they usually require user interaction to work.
+
+293
+10:43.200 --> 10:45.740
+But there is obviously no user
+
+294
+10:45.740 --> 10:46.980
+when running automated tests.
+
+296-p
+10:46.980 --> 10:51.100
+There are flags that one can set for Chromium browsers
+
+295
+10:46.980 --> 10:46.980
+
+
+297
+10:51.100 --> 10:55.380
+and Firefox. But they are not really very well documented
+
+298
+10:55.380 --> 10:58.740
+and they always lag behind the capabilities of
+
+299
+10:58.740 --> 11:02.100
+the browser and sadly they have the tendency to break
+
+300
+11:02.100 --> 11:02.860
+from time to time.
+
+302-p
+11:02.860 --> 11:08.540
+And at least as far as I know it’s not even possible
+
+301
+11:02.860 --> 11:02.860
+
+
+303
+11:08.540 --> 11:11.620
+to disable the autoplay policy in Safari
+
+304
+11:11.620 --> 11:14.600
+when starting the browser programmatically.
+
+305
+11:14.600 --> 11:18.100
+That means things are more difficult to test in Safari.
+
+306
+11:18.100 --> 11:21.260
+Which in turn means bugs get less caught.
+
+307
+11:21.260 --> 11:23.460
+And this is of course a real problem since
+
+308
+11:23.460 --> 11:26.140
+as I said before a typical bug stays in Safari
+
+309
+11:26.140 --> 11:27.380
+for at least 6 months.
+
+310
+11:27.380 --> 11:30.500
+But only if it gets caught in the first place.
+
+slide-25
+11:30.500 --> 11:36.820
+Another thing which is of course totally different
+
+313
+11:36.820 --> 11:39.700
+but I think is a bit problematic as well is that
+
+314
+11:39.700 --> 11:42.140
+building web apps seems to be so easy at first glance.
+
+315
+11:42.140 --> 11:45.540
+Last week I saw a full WebCodecs example which fit
+
+316
+11:45.540 --> 11:46.500
+on a single slide.
+
+317
+11:46.500 --> 11:49.660
+That was very impressive and it showed that
+
+318
+11:49.660 --> 11:51.900
+one could build something really powerful in no time.
+
+320-p
+11:51.900 --> 11:54.820
+And yes, that’s absolutely true.
+
+319
+11:51.900 --> 11:51.900
+
+
+321
+11:54.820 --> 11:57.660
+I did for example quickly hack together a little app
+
+322
+11:57.660 --> 11:59.340
+to record this talk in the browser.
+
+323
+11:59.340 --> 12:02.420
+(I didn’t use it in the end but that’s a different story.)
+
+324
+12:02.420 --> 12:06.540
+But building a real web app which is meant to be used
+
+325
+12:06.540 --> 12:09.740
+by people in a professional context day in and day out
+
+326
+12:09.740 --> 12:11.660
+is a completely different story.
+
+327
+12:11.660 --> 12:15.780
+Doing that requires a lot of effort.
+
+328
+12:15.780 --> 12:15.820
+
+
+329-p
+12:15.820 --> 12:19.420
+I think many people underestimate the amount of work
+
+330
+12:19.420 --> 12:21.700
+that needs to be done to build a full product on the web.
+
+332-p
+12:21.700 --> 12:24.860
+I honestly think building professional apps
+
+331
+12:21.700 --> 12:21.700
+
+
+333
+12:24.860 --> 12:26.660
+is challenging in any environment
+
+334
+12:26.660 --> 12:29.980
+and I wouldn’t expect to be easy on the web.
+
+slide-26
+12:29.980 --> 12:34.700
+But after all I think it’s mostly a
+
+337
+12:34.700 --> 12:35.820
+chicken and egg problem.
+
+338
+12:35.820 --> 12:39.220
+Once a few well known and well established web apps
+
+339
+12:39.220 --> 12:42.540
+exist that have a wide adoption among media professionals
+
+340
+12:42.540 --> 12:45.500
+others will become interested in bringing there apps
+
+341
+12:45.500 --> 12:46.340
+to the web as well.
+
+343-p
+12:46.340 --> 12:50.300
+Source Elements does for example have a plugin for DAWs.
+
+342
+12:46.340 --> 12:46.340
+
+
+344
+12:50.300 --> 12:53.420
+It’s currently a native application since the DAWs
+
+345
+12:53.420 --> 12:54.700
+that it’s meant to be used with are
+
+346
+12:54.700 --> 12:56.460
+native applicationsas well.
+
+347
+12:56.460 --> 12:59.180
+And this could only ever change if those DAWs
+
+348
+12:59.180 --> 13:00.580
+become web apps at some point.
+
+350-p
+13:00.580 --> 13:04.500
+There is definitely still a long way to go
+
+349
+13:00.580 --> 13:00.580
+
+
+351
+13:04.500 --> 13:06.420
+but I think the shift has already begun.
+
+slide-27
+13:06.420 --> 13:09.700
+In conclusion I would like to repeat
+
+354
+13:09.700 --> 13:11.600
+the title of this talk again:
+
+355
+13:11.600 --> 13:14.140
+"A fundamental rule in technology says
+
+356
+13:14.140 --> 13:15.700
+whatever can be done will be done.".
+
+358-p
+13:15.700 --> 13:19.600
+I think building professional media applications
+
+357
+13:15.700 --> 13:15.700
+
+
+359
+13:19.600 --> 13:21.600
+for the web is something that can be done today.
+
+360
+13:21.600 --> 13:23.700
+And I know many people working on it.
+
+361
+13:23.700 --> 13:28.340
+I hope and believe it’s only a matter of time
+
+362
+13:28.340 --> 13:29.860
+until that becomes the new normal.
+
+slide-28
+13:29.900 --> 13:34.580
+Thanks again to the people I work with
+
+365
+13:34.580 --> 13:36.260
+for helping me to prepare this talk
+
+366
+13:36.260 --> 13:38.940
+and many thanks to all of you for watching it.
+
+367
+13:38.940 --> 13:42.000
+See you at the workshop. Bye.
+
+
