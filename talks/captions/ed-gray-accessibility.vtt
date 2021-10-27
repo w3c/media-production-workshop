@@ -1,0 +1,914 @@
+WEBVTT
+
+1
+00:08.530 --> 00:09.520
+<v Ed>It's a pleasure to be here</v>
+
+2
+00:09.520 --> 00:11.920
+for today's W3C/SMPTE Joint Workshop
+
+3
+00:11.920 --> 00:14.260
+on professional media production on the web.
+
+4
+00:14.260 --> 00:16.540
+This talk is about the principles of accessibility
+
+5
+00:16.540 --> 00:19.690
+and driving accessibility into the creation of great tools
+
+6
+00:19.690 --> 00:22.370
+and apps and the web interfaces that are so critical
+
+7
+00:22.370 --> 00:24.420
+to their user experience and feature set.
+
+8
+00:25.530 --> 00:28.940
+I'm Ed Gray, I'm a proud 26-year veteran of Avid.
+
+9
+00:28.940 --> 00:30.980
+I'm the head of Avid's audio developer program,
+
+10
+00:30.980 --> 00:33.600
+and also director of accessibility for the company.
+
+11
+00:33.600 --> 00:35.300
+So I get to work with a bunch of talented,
+
+12
+00:35.300 --> 00:36.600
+external and internal developers,
+
+13
+00:36.600 --> 00:39.390
+testers, customer support, and marketing people.
+
+14
+00:39.390 --> 00:41.460
+And I'm also the main spokesman for accessibility,
+
+15
+00:41.460 --> 00:43.760
+so I organize and participate in a lot of panels
+
+16
+00:43.760 --> 00:45.930
+like the ones that you see here.
+
+17
+00:45.930 --> 00:48.200
+I have a CPACC credential, which allows me to consult
+
+18
+00:48.200 --> 00:51.400
+to organizations on accessibility for their websites
+
+19
+00:51.400 --> 00:53.320
+and stores and physical plant.
+
+20
+00:53.320 --> 00:55.350
+And finally, I'm legally blind myself,
+
+21
+00:55.350 --> 00:58.140
+so any accessibility goodness that we crank out,
+
+22
+00:58.140 --> 00:59.940
+I'll be the first in line to try it.
+
+23
+01:00.820 --> 01:02.270
+Now, the business case for accessibility,
+
+24
+01:02.270 --> 01:04.180
+your tools and web interfaces is strong,
+
+25
+01:04.180 --> 01:05.600
+but it's not always obvious,
+
+26
+01:05.600 --> 01:06.670
+just by looking at the market size.
+
+27
+01:06.670 --> 01:08.995
+Now, the incidents of accessibility
+
+28
+01:08.995 --> 01:12.400
+in developed countries is around 15%.
+
+29
+01:12.400 --> 01:14.150
+And then zeroing in on visual impairments,
+
+30
+01:14.150 --> 01:15.440
+around three-quarters of percent
+
+31
+01:15.440 --> 01:16.910
+of people can't see the screen well enough
+
+32
+01:16.910 --> 01:18.330
+to do any reasonable work.
+
+33
+01:18.330 --> 01:21.140
+And another 3 to 4% can view the screen
+
+34
+01:21.140 --> 01:23.450
+with some difficulty with some visual aids.
+
+35
+01:23.450 --> 01:24.350
+So you can imagine that
+
+36
+01:24.350 --> 01:26.490
+if you're trying to justify a project based
+
+37
+01:26.490 --> 01:28.150
+on that small portion of the population,
+
+38
+01:28.150 --> 01:29.800
+it's not always that easy to do.
+
+39
+01:29.800 --> 01:31.420
+But the important points to remember,
+
+40
+01:31.420 --> 01:34.750
+that accessible innovation helps abled-users too.
+
+41
+01:34.750 --> 01:36.790
+And that accessibility helps build your brand
+
+42
+01:36.790 --> 01:39.787
+and your reputation and creates goodwill
+
+43
+01:39.787 --> 01:42.860
+and brings a lot of people to the media creation party.
+
+44
+01:42.860 --> 01:44.630
+And finally, accessible development
+
+45
+01:44.630 --> 01:48.300
+is just development for usability for disabled persons.
+
+46
+01:48.300 --> 01:49.840
+And so accessible development can help you
+
+47
+01:49.840 --> 01:53.440
+uncover usability fixes and improvements
+
+48
+01:53.440 --> 01:54.740
+that can benefit everyone.
+
+49
+01:55.690 --> 01:57.660
+So let's talk about some principles and trends
+
+50
+01:57.660 --> 01:58.610
+that you should keep in mind
+
+51
+01:58.610 --> 02:01.130
+if you're becoming a student of accessibility.
+
+52
+02:01.130 --> 02:02.440
+And this gives me a chance to show
+
+53
+02:02.440 --> 02:04.220
+and to brag about my picture of Stevie Wonder.
+
+54
+02:04.220 --> 02:06.720
+Here he is at the 2017 GRAMMY Awards,
+
+55
+02:06.720 --> 02:09.200
+saying, make everything accessible for everyone,
+
+56
+02:09.200 --> 02:11.880
+everywhere in the world, no matter what disabilities.
+
+57
+02:11.880 --> 02:12.760
+And what he was speaking to
+
+58
+02:12.760 --> 02:14.930
+is the principle of universal design.
+
+59
+02:14.930 --> 02:17.950
+Universal design just means one tool for everybody,
+
+60
+02:17.950 --> 02:20.340
+instead of one version of the app for the blind users,
+
+61
+02:20.340 --> 02:21.550
+and another for the sighted folks,
+
+62
+02:21.550 --> 02:23.630
+and one version of your website for people
+
+63
+02:23.630 --> 02:25.660
+with motor disabilities, one without.
+
+64
+02:25.660 --> 02:27.647
+You want one tool that people can all walk up to
+
+65
+02:27.647 --> 02:30.380
+and use in the same facility, in the same way.
+
+66
+02:30.380 --> 02:33.300
+And that's a very important guiding principle.
+
+67
+02:33.300 --> 02:34.970
+And accessibility is also legally driven
+
+68
+02:34.970 --> 02:37.600
+because whether or not it's wise or fair,
+
+69
+02:37.600 --> 02:40.100
+people are being hit with accessibility inquiries,
+
+70
+02:40.100 --> 02:41.510
+and sometimes lawsuits demanding
+
+71
+02:41.510 --> 02:44.770
+that they improve the accessibility of their products.
+
+72
+02:44.770 --> 02:47.780
+And as long as the company has a team committed
+
+73
+02:47.780 --> 02:50.830
+to accessibility, shows a record of accessible innovation,
+
+74
+02:50.830 --> 02:53.290
+and a place to ask questions about accessibility,
+
+75
+02:53.290 --> 02:56.290
+they will be pretty well protected.
+
+76
+02:56.290 --> 02:58.140
+Accessibility is also procurement driven,
+
+77
+02:58.140 --> 03:01.720
+meaning that in our space, in the media production space,
+
+78
+03:01.720 --> 03:03.980
+there are schools and institutions
+
+79
+03:03.980 --> 03:06.710
+that won't consider committing to purchases
+
+80
+03:06.710 --> 03:08.590
+unless you establish that your product
+
+81
+03:08.590 --> 03:09.660
+is decently accessible.
+
+82
+03:09.660 --> 03:10.493
+That's usually done
+
+83
+03:10.493 --> 03:12.830
+with a Voluntary Product Accessibility Template,
+
+84
+03:12.830 --> 03:16.260
+which is a document that you fill out independently
+
+85
+03:16.260 --> 03:18.500
+that shows what features
+
+86
+03:18.500 --> 03:19.970
+of your product meet, partially meet
+
+87
+03:19.970 --> 03:22.500
+and do not meet certain accessibility standards.
+
+88
+03:22.500 --> 03:25.200
+And then finally, accessibility is external,
+
+89
+03:25.200 --> 03:26.570
+beta tester and engineer driven.
+
+90
+03:26.570 --> 03:29.870
+So you don't want your accessibility features prioritized
+
+91
+03:29.870 --> 03:34.870
+and pursued by a group of empathetic, sighted engineers,
+
+92
+03:35.520 --> 03:38.530
+you want people with different disabilities giving input
+
+93
+03:38.530 --> 03:41.840
+and showing you how they work around real-world problems,
+
+94
+03:41.840 --> 03:43.750
+they can help you prioritize fixes
+
+95
+03:43.750 --> 03:45.100
+in the most meaningful way.
+
+96
+03:46.540 --> 03:48.810
+The website front end to your application are tools
+
+97
+03:48.810 --> 03:50.380
+like a mailbox at the foot of the driveway,
+
+98
+03:50.380 --> 03:52.125
+gives you the impression of how it'll be used
+
+99
+03:52.125 --> 03:54.350
+and what the overall experience will be like.
+
+100
+03:54.350 --> 03:56.470
+So if it's not a winner for accessibility,
+
+101
+03:56.470 --> 03:59.120
+it can be a killer, can render parts of the app invisible
+
+102
+03:59.120 --> 04:01.600
+or inaccessible by assisted devices
+
+103
+04:01.600 --> 04:03.600
+for people with motor challenges.
+
+104
+04:03.600 --> 04:04.790
+And so there's some tools that come to the rescue
+
+105
+04:04.790 --> 04:07.830
+from the WCAG, the Web Content Accessibility Group,
+
+106
+04:07.830 --> 04:09.810
+which is part of the W3C.
+
+107
+04:09.810 --> 04:12.990
+And they show checklist of accessibility features
+
+108
+04:12.990 --> 04:15.300
+that can or must be implemented
+
+109
+04:15.300 --> 04:17.740
+to meet certain accessibility standards,
+
+110
+04:17.740 --> 04:20.500
+and give you guidelines on how to pursue them.
+
+111
+04:20.500 --> 04:21.850
+And the important thing is that these are pursued, again,
+
+112
+04:21.850 --> 04:25.210
+by a diverse group of internal and external stakeholders
+
+113
+04:25.210 --> 04:27.240
+with and without disabilities.
+
+114
+04:27.240 --> 04:29.690
+Now, this is an example of an accessibility audit.
+
+115
+04:29.690 --> 04:32.660
+So companies should audit their accessibility capabilities
+
+116
+04:32.660 --> 04:33.980
+from time to time, you know, quarterly,
+
+117
+04:33.980 --> 04:38.810
+or at least semi-annually to see how things are progressing.
+
+118
+04:38.810 --> 04:41.370
+And it is not a one-and-done effort,
+
+119
+04:41.370 --> 04:44.400
+but should be a sustained ongoing effort
+
+120
+04:45.600 --> 04:46.960
+that represents a longterm commitment.
+
+121
+04:47.970 --> 04:49.660
+I encourage you as often as you can,
+
+122
+04:49.660 --> 04:52.280
+to look at developer programs
+
+123
+04:52.280 --> 04:56.150
+and explore their sections that deal with accessibility,
+
+124
+04:56.150 --> 04:59.500
+and also to check out the many web resources
+
+125
+04:59.500 --> 05:02.600
+that help you keep on top of what's new and what's next
+
+126
+05:02.600 --> 05:03.840
+in the world of accessibility.
+
+127
+05:03.840 --> 05:05.690
+They fall into a couple of categories.
+
+128
+05:05.690 --> 05:07.130
+Corporate accessibility websites,
+
+129
+05:07.130 --> 05:09.770
+usually if you type in the URL of a tech company,
+
+130
+05:09.770 --> 05:11.430
+you type /accessibility,
+
+131
+05:11.430 --> 05:14.810
+you'll be taken to a developer website that shows tools
+
+132
+05:14.810 --> 05:16.850
+and how to get help and ask questions
+
+133
+05:16.850 --> 05:19.350
+and shows you accessibility success stories.
+
+134
+05:19.350 --> 05:21.960
+Next are communities of practice like the IAAP,
+
+135
+05:21.960 --> 05:23.217
+the International Association
+
+136
+05:23.217 --> 05:25.280
+of Accessibility Professionals,
+
+137
+05:25.280 --> 05:28.220
+and WebAIM, which stands for Web Access In Mind.
+
+138
+05:28.220 --> 05:32.700
+There are also very good courses offered by schools,
+
+139
+05:32.700 --> 05:33.580
+and a good place to look for them
+
+140
+05:33.580 --> 05:35.840
+is Coursera and also Skillshare.
+
+141
+05:35.840 --> 05:38.560
+They have courses ranging from introductions
+
+142
+05:38.560 --> 05:41.390
+to accessibility program on the web
+
+143
+05:41.390 --> 05:45.470
+to building accessibility teams in your companies.
+
+144
+05:45.470 --> 05:48.120
+And the fourth category are accessibility consultancies.
+
+145
+05:48.120 --> 05:51.470
+They offer, they do a lot of content creation
+
+146
+05:51.470 --> 05:54.600
+and have webinars on accessibility topics.
+
+147
+05:54.600 --> 05:57.160
+But be mindful, one of their main objectives
+
+148
+05:57.160 --> 05:59.500
+is to send a bot to your website
+
+149
+05:59.500 --> 06:02.460
+to search for accessibility defects
+
+150
+06:02.460 --> 06:04.180
+and then sell you consulting services.
+
+151
+06:04.180 --> 06:08.440
+And that's no substitute for an accessibility program
+
+152
+06:08.440 --> 06:10.420
+at your company that's fully resourced
+
+153
+06:10.420 --> 06:12.300
+and designed for the longterm.
+
+154
+06:13.440 --> 06:15.220
+So why are we so interested in accessibility?
+
+155
+06:15.220 --> 06:17.430
+Well, I think the WCAG expresses it in the right way.
+
+156
+06:17.430 --> 06:20.100
+They say that they want just to make interfaces
+
+157
+06:20.100 --> 06:22.140
+that are perceivable, operable and understandable
+
+158
+06:22.140 --> 06:24.230
+by the widest possible range of users.
+
+159
+06:24.230 --> 06:26.680
+And also robust, so they stand up to and take advantage
+
+160
+06:26.680 --> 06:29.150
+of platforms and operating systems
+
+161
+06:29.150 --> 06:30.820
+as they evolve from time to time.
+
+162
+06:30.820 --> 06:32.700
+This involves a commitment to universal design,
+
+163
+06:32.700 --> 06:34.270
+again, one version of the app for everyone,
+
+164
+06:34.270 --> 06:35.190
+not different versions
+
+165
+06:35.190 --> 06:38.000
+for different disabled subpopulations.
+
+166
+06:38.000 --> 06:41.340
+It involves us creating experiences that are customizable
+
+167
+06:41.340 --> 06:44.620
+by end-users 'cause not all people are cognitively disabled
+
+168
+06:44.620 --> 06:47.940
+or blind or hearing-impaired in the same manner.
+
+169
+06:47.940 --> 06:52.240
+So you want things to be able to be tailored
+
+170
+06:52.240 --> 06:55.770
+and you want to, again, involve a diverse community
+
+171
+06:55.770 --> 06:59.100
+of internal and external stakeholders,
+
+172
+06:59.100 --> 07:02.560
+so you can get to the right sweet spot of issues
+
+173
+07:02.560 --> 07:03.680
+and address the issues
+
+174
+07:03.680 --> 07:07.120
+that solve problems the most meaningfully.
+
+175
+07:07.120 --> 07:09.260
+If we do this, we'll be doing a great service.
+
+176
+07:09.260 --> 07:12.962
+And then I encourage you to find people you love
+
+177
+07:12.962 --> 07:15.510
+with disabilities and people in your community,
+
+178
+07:15.510 --> 07:18.820
+and lead them to these accessibility innovations
+
+179
+07:18.820 --> 07:21.310
+and teach them what's going on.
+
+180
+07:21.310 --> 07:23.760
+Because I guarantee you that not all disabled people
+
+181
+07:23.760 --> 07:27.100
+are as capable or as willing
+
+182
+07:27.100 --> 07:31.400
+to discover accessible innovations as we might think.
+
+183
+07:31.400 --> 07:34.100
+And so if we do that, we'll be doing a great service.
+
+184
+07:34.100 --> 07:37.300
+And again, we're part of the media creation business.
+
+185
+07:37.300 --> 07:39.820
+And I think that it's a wonderful thing we're doing
+
+186
+07:39.820 --> 07:42.900
+to involve more and more people
+
+187
+07:42.900 --> 07:46.760
+in the use of our creation tools, and creating goodwill
+
+188
+07:46.760 --> 07:48.660
+and building our reputations and brands
+
+189
+07:48.660 --> 07:50.760
+and building better products for everyone.
+
+190
+07:52.510 --> 07:54.490
+So let me wrap it all up with a treat for you.
+
+191
+07:54.490 --> 07:55.860
+This is Jason Dasent,
+
+192
+07:55.860 --> 07:59.150
+he's the owner of Overdrive Recording in Trinidad.
+
+193
+07:59.150 --> 08:02.590
+He is a key advisor and consultant to Avid
+
+194
+08:02.590 --> 08:05.190
+and other companies on accessibility.
+
+195
+08:05.190 --> 08:06.720
+He is completely blind.
+
+196
+08:06.720 --> 08:10.910
+So here he is working on some Caribbean music tracks
+
+197
+08:10.910 --> 08:13.500
+independently and without sighted assistance.
+
+198
+08:13.500 --> 08:14.510
+We owe him a great deal.
+
+199
+08:14.510 --> 08:16.920
+You can see that he moves through Pro Tools
+
+200
+08:16.920 --> 08:20.810
+and other products with the same speed and facility,
+
+201
+08:20.810 --> 08:23.650
+as people with normal eyesight.
+
+202
+08:23.650 --> 08:26.270
+And it's the same version of Pro Tools
+
+203
+08:26.270 --> 08:27.843
+that the sighted users have.
+
+204
+08:29.476 --> 08:32.643
+(upbeat reggae music)
+
+205
+08:36.310 --> 08:37.890 line:15%
+<v ->Hey guys, I'm Jay,</v>
+
+206
+08:37.890 --> 08:40.260 line:15%
+a producer from Trinidad in the Caribbean,
+
+207
+08:40.260 --> 08:42.150 line:15%
+currently based here in the UK.
+
+208
+08:42.150 --> 08:43.820 line:15%
+And today's a really special day.
+
+209
+08:43.820 --> 08:45.850
+I'm getting to hang out with Avid, right,
+
+210
+08:45.850 --> 08:48.830
+my friends at Avid, talking about the Carbon
+
+211
+08:48.830 --> 08:51.980
+and the Vintage Organ plugins
+
+212
+08:51.980 --> 08:54.130
+that comes with it from Native Instruments.
+
+213
+08:56.000 --> 08:58.520
+Okay, so nothing is quantized or anything yet, right?
+
+214
+08:58.520 --> 09:00.950
+I'll do it after, because I just want to go
+
+215
+09:00.950 --> 09:03.140
+like on the spur of the moment, whatever I'm feeling,
+
+216
+09:03.140 --> 09:04.820
+we can definitely clean it up after.
+
+217
+09:04.820 --> 09:06.950
+But that's the organ and some drums.
+
+218
+09:06.950 --> 09:08.000
+Let's get a bassline.
+
+219
+09:09.220 --> 09:12.622
+Let's hit record and see what it gives.
+
+220
+09:12.622 --> 09:14.738
+(metronome starts)
+
+221
+09:14.738 --> 09:19.710
+(Jason playing upbeat reggae music)
+
+222
+09:41.340 --> 09:42.710
+<v Ed>Well, I sure appreciate your time,</v>
+
+223
+09:42.710 --> 09:44.190
+and I hope you enjoyed this talk.
+
+224
+09:44.190 --> 09:46.400
+If you have any questions about this document
+
+225
+09:46.400 --> 09:48.520
+or the work that Avid's doing on accessibility,
+
+226
+09:48.520 --> 09:50.870
+or just want to share some cool ideas,
+
+227
+09:50.870 --> 09:53.740
+just write to meet accessibility@avid.com.
+
+228
+09:53.740 --> 09:54.723
+Thank you again.
+
