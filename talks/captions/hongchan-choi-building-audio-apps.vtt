@@ -900,7 +900,7 @@ Theoretically, this will guarantee the code path
 11:01.180 --> 11:03.830
 that minimizes the output latency.
 
-226-p
+slide-18
 11:04.660 --> 11:07.802
 Also, one can dream about creating new API
 
@@ -916,11 +916,11 @@ I'm curious how many people would want that.
 11:13.240 --> 11:14.940
 Please let me know what you think.
 
-slide-18
+slide-19
 11:16.720 --> 11:19.420
 That's all I have for today and here's the conclusion.
 
-slide-19
+slide-20
 11:20.350 --> 11:21.970
 We talked about the design
 
@@ -948,7 +948,7 @@ By all means, this is just a conversation starter,
 11:37.662 --> 11:40.800
 not a comprehensive guideline.
 
-slide-20
+slide-21
 11:40.800 --> 11:44.410
 With that, I would like to invite you to a survey,
 
