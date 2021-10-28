@@ -117,9 +117,62 @@ lightweight web system as well as HDR features.">
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <div id="ts-1"><i-slide src="slides/he-zhi-production-olympics.pdf#1" class="slide">Slide 1 of 1</i-slide>
+            <div id="ts-1"><i-slide src="slides/he-zhi-production-olympics.pdf#1" class="slide">Slide 1 of 10</i-slide>
 <div>
-  <p id="tp-1">Hello I am He Zhi the web-based media production team leader from China Mobile Migu Company. Today, I would like to share the application of Migu web editing technology in live and post production for sports broadcasting. During the UEFA Euro2020 and the Tokyo2020 web-based technologies have been largely deployed for live and post production. The application tools are mainly divided into three categories, live broadcast and streaming, post production and editing, and AI enhanced production. These tools are implemented based on HTML5 and ffmpeg technology. The below tables list used protocols and technologies. OK, let us look at the live broadcast editing tool. The favorite function is to strip and publish. In order to produce and publish video within 30s, we have made lots of improvements. First, uniformly recode live stream as HLS with ffmpeg, and slice each ts file within 2 seconds; The second is to quickly compress 720p low bit stream for web browsing and editing; Third, provide key frame pictures, which are displayed by DOM on the operation track to facilitate interception and location; Fourth, add video JS playback object to quickly browse the content after simulated strip removal; Fifth, use background services for parallel processing to improve performance; Sixth, CDN cache is used. And there is still an ongoing issue, which is, there are two video JS objects with two play windows, both need to download m3u8 files. We hope that they can share data to avoid repeated downloading and save network bandwidth, so that we can open more windows and preview the contents in different periods at the same time. OK, let us turn to the post editing. It could be regarded as an upgrade of live editing tool. Here we no longer pursue timeliness, but professionalism. We need control different types of content through complex multi-track object and display them by canvas. The difficulty here lies in the processing performance and efficiency. How to achieve? Firstly, for the whole architecture, it keeps the way of web simulating with final processing by media services to reduce the web load. Secondly, we try to control the window resolution of the displayed content at 480 * 270. This is because rendering special effect at high resolution by WebGL takes ordinary laptop 80% CPU; Thirdly, in order to preview content without delay by mouse hover, we recode content as HLS with ffmpeg during uploading; Finally, there are some operation optimization points, such as providing a small H5 editing window for users to preprocess and cut the required content when uploading. We have tried to implement with Webcodecs, which is very convenient, but it needs to be processed frame by frame. I have to say, it is not very friendly to locate and clip content. The easy way is webassembly + ffmpeg. We expect that webcodecs could support more such kinds of functions. OK, in order to meet the different needs of editing, we have also developed a series of tool sets, including image editing, cover production, subtitle production, video template, horizontal to vertical screen, removing watermark tools and so on. Due to the web framework and modular design, it makes most of basic capabilities reusable, and it could easily implement incremental functions. On the whole, we choose W/S architecture of the light front and heavy back, which is mainly due to three reasons: first, there are the performance issue mentioned above; second, for flexibility, light front can be easily integrated into commercial applications; the third is for compatibility. Background services can provide API for various terminals on cloud. OK, we could achieve quickly business integration, strong reusability, and easy expansion. in order to produce more content with low cost, we add AI functions, such as automatically add label, automatically add subtitles, automatically remove watermark, automatically turn horizontal to vertical screen, automatically cut video, and so on. finally, let's look back and see why we choose web editing technology for online operation and production platform. Take a media company with 200 employees as example. The first is the need of copyright. Through web editing, we can minimize the risk of content copy, download and disclosure; the second is the need of operation. Users could save a lot of time by online modification and resubmission the content for operation; the third is R & D needs. As mentioned above, for better performance, flexibility and compatibility; Fourth, for the cost. Compared with purchasing workstations, web editing can save more than 80% of cost with shared cloud servers; Fifth, the construction and maturity cycle is shorter, which can save 70% of time. Online operation and production platform could be used to produce and operate large number of music, videos, and movies and live broadcasts, and plays a core role in the content production system. we are full of expectations, We expect that webcodecs can provide more functions and API, such as, support video JS object sharing data, support location, cutting media, and support high-resolution special effect rendering with low CPU cost, support RMVB \ AVI \ MKV and other common network video format, And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8K video in the future Thank you, thank you very much</p>
+  <p id="tp-1">Hello I am He Zhi the web-based media production team leader from China Mobile Migu Company. Today, I would like to share the application of Migu web editing technology in live and post production for sports broadcasting.</p>
+</div>
+
+</div><div id="ts-2"><i-slide src="slides/he-zhi-production-olympics.pdf#2" class="slide">Slide 2 of 10</i-slide>
+<div>
+  <p id="tp-2">During the UEFA Euro2020 and the Tokyo2020 web-based technologies have been largely deployed for live and post production. The application tools are mainly divided into three categories, live broadcast and streaming, post production and editing, and AI enhanced production.</p>
+  <p id="tp-3">These tools are implemented based on HTML5 and ffmpeg technology. The below tables list used protocols and technologies.</p>
+</div>
+
+</div><div id="ts-3"><i-slide src="slides/he-zhi-production-olympics.pdf#3" class="slide">Slide 3 of 10</i-slide>
+<div>
+  <p id="tp-4">OK, let us look at the live broadcast editing tool. The favorite function is to strip and publish. In order to produce and publish video within 30s, we have made lots of improvements.</p>
+  <p id="tp-5">First, uniformly recode live stream as HLS with ffmpeg, and slice each ts file within 2 seconds; The second is to quickly compress 720p low bit stream for web browsing and editing; Third, provide key frame pictures, which are displayed by DOM on the operation track to facilitate interception and location; Fourth, add video JS playback object to quickly browse the content after simulated strip removal; Fifth, use background services for parallel processing to improve performance; Sixth, CDN cache is used.</p>
+  <p id="tp-6">And there is still an ongoing issue, which is, there are two video JS objects with two play windows, both need to download m3u8 files. We hope that they can share data to avoid repeated downloading and save network bandwidth, so that we can open more windows and preview the contents in different periods at the same time.</p>
+</div>
+
+</div><div id="ts-4"><i-slide src="slides/he-zhi-production-olympics.pdf#4" class="slide">Slide 4 of 10</i-slide>
+<div>
+  <p id="tp-7">OK, let us turn to the post editing. It could be regarded as an upgrade of live editing tool. Here we no longer pursue timeliness, but professionalism.</p>
+  <p id="tp-8">We need control different types of content through complex multi-track object and display them by canvas. The difficulty here lies in the processing performance and efficiency. How to achieve?</p>
+  <p id="tp-9">Firstly, for the whole architecture, it keeps the way of web simulating with final processing by media services to reduce the web load. Secondly, we try to control the window resolution of the displayed content at 480 * 270. This is because rendering special effect at high resolution by WebGL takes ordinary laptop 80% CPU; Thirdly, in order to preview content without delay by mouse hover, we recode content as HLS with ffmpeg during uploading; Finally, there are some operation optimization points, such as providing a small H5 editing window for users to preprocess and cut the required content when uploading.</p>
+  <p id="tp-10">We have tried to implement with Webcodecs, which is very convenient, but it needs to be processed frame by frame. I have to say, it is not very friendly to locate and clip content. The easy way is webassembly + ffmpeg. We expect that webcodecs could support more such kinds of functions.</p>
+</div>
+
+</div><div id="ts-5"><i-slide src="slides/he-zhi-production-olympics.pdf#5" class="slide">Slide 5 of 10</i-slide>
+<div>
+  <p id="tp-11">OK, in order to meet the different needs of editing, we have also developed a series of tool sets, including image editing, cover production, subtitle production, video template, horizontal to vertical screen, removing watermark tools and so on. Due to the web framework and modular design, it makes most of basic capabilities reusable, and it could easily implement incremental functions.</p>
+</div>
+
+</div><div id="ts-6"><i-slide src="slides/he-zhi-production-olympics.pdf#6" class="slide">Slide 6 of 10</i-slide>
+<div>
+  <p id="tp-12">On the whole, we choose W/S architecture of the light front and heavy back, which is mainly due to three reasons. First, there are the performance issue mentioned above; second, for flexibility, light front can be easily integrated into commercial applications; the third is for compatibility. Background services can provide API for various terminals on cloud. OK, we could achieve quickly business integration, strong reusability, and easy expansion.</p>
+</div>
+
+</div><div id="ts-7"><i-slide src="slides/he-zhi-production-olympics.pdf#7" class="slide">Slide 7 of 10</i-slide>
+<div>
+  <p id="tp-13">In order to produce more content with low cost, we add AI functions, such as automatically add label, automatically add subtitles, automatically remove watermark, automatically turn horizontal to vertical screen, automatically cut video, and so on.</p>
+</div>
+
+</div><div id="ts-8"><i-slide src="slides/he-zhi-production-olympics.pdf#8" class="slide">Slide 8 of 10</i-slide>
+<div>
+  <p id="tp-14">Finally, let's look back and see why we choose web editing technology for online operation and production platform.</p>
+  <p id="tp-15">Take a media company with 200 employees as example. The first is the need of copyright. Through web editing, we can minimize the risk of content copy, download and disclosure. The second is the need of operation. Users could save a lot of time by online modification and resubmission the content for operation. The third is R&D needs. As mentioned above, for better performance, flexibility and compatibility. Fourth, for the cost. Compared with purchasing workstations, web editing can save more than 80% of cost with shared cloud servers; Fifth, the construction and maturity cycle is shorter, which can save 70% of time.</p>
+  <p id="tp-16">Online operation and production platform could be used to produce and operate large number of music, videos, and movies and live broadcasts, and plays a core role in the content production system.</p>
+</div>
+
+</div><div id="ts-9"><i-slide src="slides/he-zhi-production-olympics.pdf#9" class="slide">Slide 9 of 10</i-slide>
+<div>
+  <p id="tp-17">We are full of expectations. We expect that webcodecs can provide more functions and API, such as, support video JS object sharing data, support location, cutting media, and support high-resolution special effect rendering with low CPU cost, support RMVB \ AVI \ MKV and other common network video format, And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8K video in the future</p>
+</div>
+
+</div><div id="ts-10"><i-slide src="slides/he-zhi-production-olympics.pdf#10" class="slide">Slide 10 of 10</i-slide>
+<div>
+  <p id="tp-18">Thank you, thank you very much</p>
 </div>
 
 </div>

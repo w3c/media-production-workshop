@@ -16,7 +16,7 @@ the web-based media production team leader from China Mobile Migu Company.
 00:12.700 --> 00:22.700
 Today, I would like to share the application of Migu web editing technology in live and post production for sports broadcasting.
 
-5
+slide-2
 00:23.700 --> 00:26.700
 During the UEFA Euro2020
 
@@ -44,7 +44,7 @@ post production and editing,
 00:45.700 --> 00:47.700
 and AI enhanced production.
 
-12
+12-p
 00:48.700 --> 00:54.700
 These tools are implemented based on HTML5 and ffmpeg technology.
 
@@ -52,7 +52,7 @@ These tools are implemented based on HTML5 and ffmpeg technology.
 00:55.700 --> 00:59.700
 The below tables list used protocols and technologies.
 
-14
+slide-3
 01:01.700 --> 01:07.700
 OK, let us look at the live broadcast editing tool. The favorite function is to strip and publish.
 
@@ -64,7 +64,7 @@ In order to produce and publish video within 30s,
 01:13.700 --> 01:15.700
 we have made lots of improvements.
 
-17
+17-p
 01:16.700 --> 01:22.700
 First, uniformly recode live stream as HLS with ffmpeg,
 
@@ -96,7 +96,7 @@ Fifth, use background services for parallel processing to improve performance;
 02:04.700 --> 02:06.700
 Sixth, CDN cache is used.
 
-25
+25-p
 02:07.700 --> 02:11.700
 And there is still an ongoing issue, which is,
 
@@ -120,7 +120,7 @@ downloading and save network bandwidth,
 02:27.700 --> 02:35.700
 so that we can open more windows and preview the contents in different periods at the same time.
 
-31
+slide-4
 02:36.700 --> 02:38.700
 OK, let us turn to the post editing.
 
@@ -132,7 +132,7 @@ It could be regarded as an upgrade of live editing tool.
 02:44.700 --> 02:47.700
 Here we no longer pursue timeliness, but professionalism.
 
-34
+34-p
 02:48.700 --> 02:56.700
 We need control different types of content through complex multi-track object and display them by canvas.
 
@@ -144,7 +144,7 @@ The difficulty here lies in the processing performance and efficiency.
 03:02.700 --> 03:03.700
 How to achieve?
 
-37
+37-p
 03:04.700 --> 03:06.700
 Firstly, for the whole architecture,
 
@@ -176,7 +176,7 @@ Finally, there are some operation optimization points,
 03:47.700 --> 04:01.700
 such as providing a small H5 editing window for users to preprocess and cut the required content when uploading.
 
-45
+45-p
 04:01.700 --> 04:05.700
 We have tried to implement with Webcodecs,
 
@@ -196,7 +196,7 @@ The easy way is webassembly + ffmpeg.
 04:22.700 --> 04:27.700
 We expect that webcodecs could support more such kinds of functions.
 
-50
+slide-5
 04:29.700 --> 04:32.700
 OK, in order to meet the different needs of editing,
 
@@ -224,17 +224,17 @@ it makes most of basic capabilities reusable,
 04:57.700 --> 05:03.700
 and it could easily implement incremental functions.
 
-57
+slide-6
 05:03.700 --> 05:09.700
 On the whole, we choose W/S architecture of the light front and heavy back,
 
 58
 05:09.700 --> 05:12.700
-which is mainly due to three reasons:
+which is mainly due to three reasons.
 
 59
 05:14.700 --> 05:16.700
-first, there are the performance issue mentioned above;
+First, there are the performance issue mentioned above;
 
 60
 05:17.700 --> 05:24.700
@@ -252,9 +252,9 @@ Background services can provide API for various terminals on cloud.
 05:34.700 --> 05:43.700
 OK, we could achieve quickly business integration, strong reusability, and easy expansion.
 
-64
+slide-7
 05:43.700 --> 05:46.700
-in order to produce more content with low cost,
+In order to produce more content with low cost,
 
 65
 05:47.700 --> 05:51.700
@@ -268,11 +268,11 @@ automatically add subtitles, automatically remove watermark,
 05:56.700 --> 06:03.700
 automatically turn horizontal to vertical screen, automatically cut video, and so on.
 
-68
+slide-8
 06:04.700 --> 06:12.700
-finally, let's look back and see why we choose web editing technology for online operation and production platform.
+Finally, let's look back and see why we choose web editing technology for online operation and production platform.
 
-69
+69-p
 06:13.700 --> 06:17.700
 Take a media company with 200 employees as example.
 
@@ -282,23 +282,23 @@ The first is the need of copyright. Through web editing,
 
 71
 06:21.700 --> 06:26.700
-we can minimize the risk of content copy, download and disclosure;
+we can minimize the risk of content copy, download and disclosure.
 
 72
 06:27.700 --> 06:35.700
-the second is the need of operation. Users could save a lot of time by online modification
+The second is the need of operation. Users could save a lot of time by online modification
 
 73
 06:35.700 --> 06:37.700
-and resubmission the content for operation;
+and resubmission the content for operation.
 
 74
 06:37.700 --> 06:41.700
-the third is R &amp; D needs. As mentioned above, for better performance,
+The third is R&amp;D needs. As mentioned above, for better performance,
 
 75
 06:42.700 --> 06:50.700
-flexibility and compatibility; Fourth, for the cost. Compared with purchasing workstations,
+flexibility and compatibility. Fourth, for the cost. Compared with purchasing workstations,
 
 76
 06:50.700 --> 06:55.700
@@ -308,7 +308,7 @@ web editing can save more than 80% of cost with shared cloud servers;
 06:56.700 --> 07:03.700
 Fifth, the construction and maturity cycle is shorter, which can save 70% of time.
 
-78
+78-p
 07:04.700 --> 07:12.700
 Online operation and production platform could be used to produce and operate large number of music,
 
@@ -316,9 +316,9 @@ Online operation and production platform could be used to produce and operate la
 07:12.700 --> 07:20.700
 videos, and movies and live broadcasts, and plays a core role in the content production system.
 
-80
+slide-9
 07:21.700 --> 07:23.700
-we are full of expectations,
+We are full of expectations.
 
 81
 07:24.700 --> 07:29.700
@@ -340,7 +340,7 @@ support RMVB \ AVI \ MKV and other common network video format,
 07:49.700 --> 07:59.700
 And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8K video in the future
 
-86
+slide-10
 08:00.700 --> 08:01.700
 Thank you, thank you very much
 
