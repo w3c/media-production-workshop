@@ -199,7 +199,7 @@ It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, a
   <p>But this is all that is needed for using WebRTC in a professional media flow? Unfortunately not. And it is not mainly due to the lack of specifications, but mostly because the implementation of many of the features required is lagging behind in most of the browsers, and even with (?) API available to enable them, most of the time, they are in experimental status or hidden behind flags, undocumented or difficult to discover.</p>
   <p>For example, some of the issues that we have found with audio if that WebRTC... we can support multichannel audio with Multiopus. Multiopus is not official standard and it's only supported by Chrome. And it is hidden, that requests SDP mangling in order to support it.</p>
   <p>NetEQ, that is a jitter buffer implementation in all WebRTC browser has issues with music. And for example, Lorenzo has made a great presentation on the topic, referencing all the issues that he has found when trying to use WebRTC for music. So I will encourage everyone to watch it.</p>
-  <p>Or for example, the integration between WebRTC and Web Audio has implementation issues on chrome that either adds echo, when you play audio with audio captured by WebRTC and it has been acknowledged by Google itself.</p>
+  <p>Or for example, the integration between WebRTC and Web Audio has implementation issues on Chrome that either adds echo, when you play audio with audio captured by WebRTC and it has been acknowledged by Google itself.</p>
   <p>Or for example, there is a lack of integration between WebRTC and WebVTT making live subtitles impossible.</p>
 </div>
 
@@ -208,14 +208,14 @@ It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, a
   <p>Also on the video side. For example, SVC extension APIs only working in Chrome and it's an  experimental feature, although this is likely going to change in the following weeks.</p>
   <p>AV1 is only supported by Chrome and not enabled in it. Even if they share almost the same codebase. The almost the same code base beeping enter file,</p>
   <p>VP9 profile which supports 10 bits is only supported by Chrome and only on the receiving side. And it is experimental in Safari.</p>
-  <p>The playoutdelayhint is an optional extension and it is only supported in chrome.</p>
+  <p>The playoutdelayhint is an optional extension and it is only supported in Chrome.</p>
   <p>Eh, also another sample is that abs-capture-time that is a header extension that could be used for synchronizing a video with standard metadata is only supporting in Chrome but it is a thing hidden and requires SDP mangling to enable it.</p>
   <p>And at last, as an example of how professional-grade features are not always sought to be used with the WebRTC, video alpha is not supported, never meant to be supported in WebRTC but it is under consideration for being implemented in WebCodecs.</p>
 </div>
 
 <i-slide src="slides/sergio-garcia-murillo-whip.pdf#16" class="slide">Slide 16 of 17</i-slide>
 <div>
-  <p>So as a conclusion, WebRTC today is (?). And I will say, even, it is the best option for delivering professional broadcast quality media with minimal latency, but there is a still a lot of work to do in order to be able to WHIP WebRTC into shape.</p>
+  <p>So as a conclusion, WebRTC today is available. And I will say, even, it is the best option for delivering professional broadcast quality media with minimal latency, but there is a still a lot of work to do in order to be able to WHIP WebRTC into shape.</p>
 </div>
 
 <i-slide src="slides/sergio-garcia-murillo-whip.pdf#17" class="slide">Slide 17 of 17</i-slide>

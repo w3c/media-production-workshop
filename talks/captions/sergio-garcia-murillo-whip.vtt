@@ -474,7 +474,7 @@ Or for example, the integration between WebRTC and Web Audio
 
 120
 05:31.370 --> 05:35.640
-has implementation issues on chrome that either adds echo,
+has implementation issues on Chrome that either adds echo,
 
 121
 05:35.640 --> 05:38.240
@@ -510,7 +510,7 @@ For example, SVC extension APIs
 
 129
 05:58.267 --> 06:01.100
-only working in Chrome and it's an 
+only working in Chrome and it's an
 
 130
 06:01.100 --> 06:01.843
@@ -558,7 +558,7 @@ The playoutdelayhint is an optional extension
 
 141
 06:23.821 --> 06:25.317
-and it is only supported in chrome.
+and it is only supported in Chrome.
 
 142-p
 06:26.960 --> 06:27.793
@@ -606,7 +606,7 @@ in WebCodecs.
 
 slide-16
 06:59.520 --> 07:02.400
-So as a conclusion, WebRTC today is (?).
+So as a conclusion, WebRTC today is available.
 
 155
 07:02.400 --> 07:03.770
@@ -631,4 +631,3 @@ to WHIP WebRTC into shape.
 slide-17
 07:13.280 --> 07:15.323
 But the good news is that we are on it.
-

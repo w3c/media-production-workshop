@@ -106,7 +106,7 @@ we have audio effects, reverbs, filters,
 
 27
 01:20.830 --> 01:22.343
-guitar, automation and so on.
+guitar amp simulation and so on.
 
 28
 01:23.840 --> 01:26.340
@@ -118,7 +118,7 @@ of web standards such as Web Audio, Web media,
 
 30
 01:29.300 --> 01:30.820
-media recorder, media stream
+MediaRecorder, MediaStream
 
 31
 01:30.820 --> 01:31.920
@@ -170,7 +170,7 @@ from what you record.
 
 43
 01:57.720 --> 02:01.260
-So you would record from mic, process stuff in web audio and
+So you would record from a mic, process stuff in Web Audio and
 
 44
 02:01.260 --> 02:03.800
@@ -178,7 +178,7 @@ play back through your speaker
 
 45
 02:03.800 --> 02:05.253
-as it go.
+as you go.
 
 46-p
 02:06.370 --> 02:10.240
@@ -218,15 +218,15 @@ like, how hard should I string to get this kind of tone
 
 55
 02:28.980 --> 02:30.430
-in my repo, whatever.
+in my riff, or whatever.
 
 56-p
 02:31.760 --> 02:34.300
-And another example is the key
+And another example is a keyboardist
 
 57
 02:34.300 --> 02:37.250
-that is playing using the DAW
+playing using the DAW
 
 58
 02:37.250 --> 02:39.730
@@ -238,15 +238,15 @@ if there's a substantial lag from pressing a key to
 
 60
 02:42.420 --> 02:44.540
-hearing it the note you get for an orphan.
+hearing it the note you get thrown off.
 
 61
 02:44.540 --> 02:47.600
-Additionally you play alone
+Additionally you play along
 
 62
 02:47.600 --> 02:50.763
-every already existing track or set of tracks.
+over an existing track or set of tracks.
 
 slide-5
 02:54.309 --> 02:56.670
@@ -262,7 +262,7 @@ what is
 
 66
 02:59.820 --> 03:00.670
-this current state?
+the current state?
 
 67
 03:00.670 --> 03:03.630
@@ -277,16 +277,12 @@ round-trip latency, which is
 passable for monitoring purposes, but not great.
 
 70
-03:12.000 --> 03:13.420
-And then it's, in some cases it's not sufficient
-
-71
-03:13.420 --> 03:14.840
-to delay low, we think,
+03:12.000 --> 03:14.840
+In some cases it's not sufficiently low, we think
 
 72
 03:14.840 --> 03:17.730
-and we'd like to get this much lowered to be able to compete
+and we'd like to get this much lower to be able to compete
 
 73
 03:17.730 --> 03:20.330
@@ -334,7 +330,7 @@ There are probably other words for it as well.
 
 84-p
 03:54.670 --> 03:59.400
-In order to show that you need two things really,
+In order to achieve that you need two things really,
 
 85
 03:59.400 --> 04:00.600
@@ -350,7 +346,7 @@ what is the round-trip latency.
 
 88
 04:02.540 --> 04:05.810
-You need to know that actually, actual latency.
+You need to know that actually, the actual latency.
 
 89
 04:05.810 --> 04:09.260
@@ -366,7 +362,7 @@ To be able to when you play them back later,
 
 92
 04:20.000 --> 04:22.100
-the data that ou aggregated, the relative alignment of
+the data that you aggregated, the relative alignment of
 
 93
 04:22.100 --> 04:25.530
@@ -478,7 +474,7 @@ allow knowing this, so naturally strive for
 
 120
 05:44.920 --> 05:49.200
-picking technical solutions data that allow this.
+picking technical solutions that allow this.
 
 121
 05:49.200 --> 05:51.260
@@ -490,7 +486,7 @@ It's not just the
 
 123
 05:56.000 --> 05:58.930
-path towards the browser or from the browser thought
+path towards the browser or from the browser that
 
 124
 05:58.930 --> 06:00.920
@@ -514,7 +510,7 @@ bear with us.
 
 129
 06:09.610 --> 06:13.800
-We pretend that the media stream track setting latency
+We pretend that the MediaStreamTrack setting latency
 
 130
 06:13.800 --> 06:14.530
@@ -646,7 +642,7 @@ compensation done correctly is knowing accurately
 
 162
 07:40.440 --> 07:44.520
-when your data arrived. As I mentioned earlier.
+when your data arrived, as I mentioned earlier.
 
 163
 07:44.520 --> 07:46.650
@@ -666,7 +662,7 @@ There's no brilliant way to do it.
 
 167-p
 07:54.580 --> 07:57.650
-Traditionally. We've been using the media recorder
+Traditionally, we've been using the MediaRecorder
 
 168
 07:59.830 --> 08:00.940
@@ -678,7 +674,7 @@ it's nice in many ways,
 
 170
 08:02.770 --> 08:06.000
-because that allows you to sort of encode the file
+because that allows you to sort of encode on the fly
 
 171
 08:06.000 --> 08:06.640
@@ -706,7 +702,7 @@ And even if it were you're still going to be like a
 
 177
 08:17.670 --> 08:21.000
-quantum material of your sample, but then it started,
+quantum or two off your sample, but then it started,
 
 178
 08:21.000 --> 08:21.400
@@ -718,7 +714,7 @@ And I mean, a second option could be like,
 
 180
 08:24.400 --> 08:26.670
-you do something custom based on the worklet.
+you do something custom based on a Worklet.
 
 181
 08:26.670 --> 08:28.300
@@ -738,7 +734,7 @@ it seems that you still have to packetize
 
 185
 08:36.260 --> 08:39.200
-into like a container from it, which is, I mean,
+into like a container format, which is, I mean,
 
 186
 08:39.200 --> 08:40.770
@@ -750,7 +746,7 @@ Slide 11
 
 188-p
 08:44.400 --> 08:46.300
-To conclude the stock,
+To conclude this talk,
 
 189
 08:46.300 --> 08:48.810
@@ -766,11 +762,11 @@ spec-ed.
 
 192
 08:52.400 --> 08:56.800
-It's not clear that they are the full parts that we
+It's not clear that they are the full paths that we
 
 193
 08:56.800 --> 08:56.913
-intend to hear.
+intend here.
 
 194-p
 08:58.600 --> 08:59.363
@@ -842,7 +838,7 @@ low obviously,
 
 211
 09:44.300 --> 09:47.950
-and pick drivers that allows exposing the information
+and pick drivers that allow exposing the information
 
 212
 09:49.570 --> 09:50.630
@@ -859,4 +855,3 @@ Thank you. That's all for us.
 215
 09:53.590 --> 09:55.223
 And see you at the discussions.
-
