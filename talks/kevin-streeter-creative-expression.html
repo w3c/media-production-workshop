@@ -114,12 +114,12 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/kevin-streeter-creative-expression.pdf#1" class="slide">Slide 1 of 8</i-slide>
+            <div id="ts-1"><i-slide src="slides/kevin-streeter-creative-expression.pdf#1" class="slide">Slide 1 of 8</i-slide>
 <div>
   <p id="tp-1">Hello everyone. My name is Kevin Streeter, and I'm here to talk about some of the challenges that exist to bringing desktop class creative applications to the web. In this talk, we'll begin with a broad summary of the many technical areas we need to work through to create powerful creative tools. Then we will dive into a few selected topics to get a better feel for the kind of capabilities we need from the web to make it all possible. Let's get started.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/kevin-streeter-creative-expression.pdf#2" class="slide">Slide 2 of 8</i-slide>
+</div><div id="ts-2"><i-slide src="slides/kevin-streeter-creative-expression.pdf#2" class="slide">Slide 2 of 8</i-slide>
 <div>
   <p id="tp-2"> Creators are accustomed to having the full power of desktop class hardware at their fingertips. How can we build applications that have the same level of performance and expressivity, but also having all the benefits of a web based experience?</p>
   <p id="tp-3">Here are some of the ways that applications take advantage of traditional desktop platforms.</p>
@@ -134,7 +134,7 @@
   <p id="tp-12">And finally, they have access to the kind of quality of experience capabilities such as clipboards, accessibilities and other things that really make a tool work for the creative professional.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/kevin-streeter-creative-expression.pdf#3" class="slide">Slide 3 of 8</i-slide>
+</div><div id="ts-3"><i-slide src="slides/kevin-streeter-creative-expression.pdf#3" class="slide">Slide 3 of 8</i-slide>
 <div>
   <p id="tp-13"> The first area that we're gonna dive deeper into is the use of WebAssembly.</p>
   <p id="tp-14">Creative media tools tend to use a mix of new and existing media processing code. The existing code is typically written in C++. This code tends to be a mix of sort of compute intensive and memory intensive operations. Importantly, not all of this code can simply be ported to a GPU.</p>
@@ -145,7 +145,7 @@
   <p id="tp-19">One important aspect of this is that the SIMD proposals that are currently being investigated really do emphasize portability over performance. And what this means is that we no longer really have access to the lowest level of instruction sets, and that does have an impact on overall performance.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/kevin-streeter-creative-expression.pdf#4" class="slide">Slide 4 of 8</i-slide>
+</div><div id="ts-4"><i-slide src="slides/kevin-streeter-creative-expression.pdf#4" class="slide">Slide 4 of 8</i-slide>
 <div>
   <p id="tp-20"> The next important area I'd like to discuss is color.</p>
   <p id="tp-21">Color management, wide color gamut, and high dynamic range capabilities are critical for pro media production. This is true regardless of the type of media, whether it's video photography or print.</p>
@@ -156,7 +156,7 @@
   <p id="tp-26">Last, it's really important to note that different industries have their own standards around color. What that means is that the web platform needs to be inclusive if we want to support the creation of tools that target these industries.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/kevin-streeter-creative-expression.pdf#5" class="slide">Slide 5 of 8</i-slide>
+</div><div id="ts-5"><i-slide src="slides/kevin-streeter-creative-expression.pdf#5" class="slide">Slide 5 of 8</i-slide>
 <div>
   <p id="tp-27"> Next let's talk about disks and file systems.</p>
   <p id="tp-28">Desktop creative tools use the local disk heavily and rely on access to the local file system. These tools use disks for variety of reasons. They use them to store documents and projects. They use them for importing and exporting content in and out of the application, and they use them for scratch space and for caching.</p>
@@ -166,7 +166,7 @@
   <p id="tp-32">In the end, many low level capabilities don't really have an analog in the web platform. For example, there's no support for sparse files or zero copy file I/O.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/kevin-streeter-creative-expression.pdf#6" class="slide">Slide 6 of 8</i-slide>
+</div><div id="ts-6"><i-slide src="slides/kevin-streeter-creative-expression.pdf#6" class="slide">Slide 6 of 8</i-slide>
 <div>
   <p id="tp-33"> The last topic I'd like to dive deeper on is hardware encoding and decoding of media.</p>
   <p id="tp-34">Pro media production tools often use more specialized media formats than in a typical consumer application. For example, a photography tool will use formats like TIFF, JPEG 2000 in a variety of different raw image formats. Similarly, video tools will use things like REDCODE, ARRIRAW, or ProRes.</p>
@@ -176,17 +176,17 @@
   <p id="tp-38">So what we may need here is some way to access plugable or modular hardware acceleration capabilities, so when this capability is present on a device, the application can get access to it.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/kevin-streeter-creative-expression.pdf#7" class="slide">Slide 7 of 8</i-slide>
+</div><div id="ts-7"><i-slide src="slides/kevin-streeter-creative-expression.pdf#7" class="slide">Slide 7 of 8</i-slide>
 <div>
   <p id="tp-39">Last slide. I hope you enjoyed this talk. I'd like to give a quick thank you to all the folks at Adobe that helped me prepare this material. And in particular, I'd like to thank Sean Voisen for his insights.</p>
 </div>
 
-<i-slide id="ts-8" src="slides/kevin-streeter-creative-expression.pdf#8" class="slide">Slide 8 of 8</i-slide>
+</div><div id="ts-8"><i-slide src="slides/kevin-streeter-creative-expression.pdf#8" class="slide">Slide 8 of 8</i-slide>
 <div>
   <p id="tp-40">See you at the workshop.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

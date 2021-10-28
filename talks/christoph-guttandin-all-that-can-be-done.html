@@ -114,46 +114,46 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/christoph-guttandin-all-that-can-be-done.pdf#1" class="slide">Slide 1 of 28</i-slide>
+            <div id="ts-1"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#1" class="slide">Slide 1 of 28</i-slide>
 <div>
   <p id="tp-1">Hi everyone, thanks for having me. It’s a real pleasure to be a part of this workshop. </p>
   <p id="tp-2">I titled my talk Whatever can be done will be done". And I hope it becomes apparent in the end why I did so.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/christoph-guttandin-all-that-can-be-done.pdf#2" class="slide">Slide 2 of 28</i-slide>
+</div><div id="ts-2"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#2" class="slide">Slide 2 of 28</i-slide>
 <div>
   <p id="tp-3">I’m Christoph Guttandin. I have a company called Media Codings. And I do freelance work for various other companies and I guess the two most interesting in the context of this workshop are Source Elements and InVideo.</p>
   <p id="tp-4">I’m usually named chrisguttandin  anywhere on the internet. So in case you want to chat with me please feel free to reach out. Just send me a message on the platform of your choice.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/christoph-guttandin-all-that-can-be-done.pdf#3" class="slide">Slide 3 of 28</i-slide>
+</div><div id="ts-3"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#3" class="slide">Slide 3 of 28</i-slide>
 <div>
   <p id="tp-5">When I was asked to prepare a talk for this workshop I thought it’s a great opportunity to present our wishes to the world. So I asked my co-workers to help me preparing a list with the things that we would like to implement at some point or which we implemented already but would really like to implement in a better way if possible.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/christoph-guttandin-all-that-can-be-done.pdf#4" class="slide">Slide 4 of 28</i-slide>
+</div><div id="ts-4"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#4" class="slide">Slide 4 of 28</i-slide>
 <div>
   <p id="tp-6">The first item on our list is using custom codecs with WebRTC.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/christoph-guttandin-all-that-can-be-done.pdf#5" class="slide">Slide 5 of 28</i-slide>
+</div><div id="ts-5"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#5" class="slide">Slide 5 of 28</i-slide>
 <div>
   <p id="tp-7">Doing this has been possible for a while at least to a certain extent. You can do it by encoding the audio data and video data yourself. And then you would ignore the media functionality of WebRTC and send the data over a DataChannel. But the whole process is very cumbersome and at least for video it’s not very accurate as well. Every video frame needs to be drawn to a canvas and then it needs to be grabbed from there to hand it over to WebAssembly. It’s very likely that you miss a few frames when doing this with a live feed.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/christoph-guttandin-all-that-can-be-done.pdf#6" class="slide">Slide 6 of 28</i-slide>
+</div><div id="ts-6"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#6" class="slide">Slide 6 of 28</i-slide>
 <div>
   <p id="tp-8">Luckily this is not necessary anymore since we can now use WebCodecs to do this in a much more efficient way.</p>
   <p id="tp-9">But WebCodecs are only available in Chromium browsers  so far. Firefox is working on it. But unfortunately it’s unclear to me what Apple is thinking about it.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/christoph-guttandin-all-that-can-be-done.pdf#7" class="slide">Slide 7 of 28</i-slide>
+</div><div id="ts-7"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#7" class="slide">Slide 7 of 28</i-slide>
 <div>
   <p id="tp-10">The next item in our list is partial decoding.</p>
   <p id="tp-11">And with that we mean the ability to only decode  a certain range or maybe only one specific frame of a media asset.</p>
 </div>
 
-<i-slide id="ts-8" src="slides/christoph-guttandin-all-that-can-be-done.pdf#8" class="slide">Slide 8 of 28</i-slide>
+</div><div id="ts-8"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#8" class="slide">Slide 8 of 28</i-slide>
 <div>
   <p id="tp-12">There is a very hacky way to do this for audio which works by using the decodeAudioData() method. This method is available on an AudioContext. Unfortunately it automatically re-samples the audio to the sampleRate of the AudioContext. That means the file needs to be parsed manually to know the correct sampleRate before doing the actual decoding. And decodeAudioData() only works with full files which is another reason why the file needs to be parsed before the decoding. We need to find out where it can be sliced. This is not that easy to figure out but it’s possible for most file types. And when done correctly and you’re lucky decodeAudioData() will happily decode a part of a file because it believes that it’s decoding the full file. </p>
   <p id="tp-13">Sadly though decodeAudioData() is really broken in the newest version of Safari. Apparently the bug is already fixed in the codebase. But no one knows when that fix will be available for Safari users.</p>
@@ -161,17 +161,17 @@
   <p id="tp-15">But sadly this only works in Firefox.</p>
 </div>
 
-<i-slide id="ts-9" src="slides/christoph-guttandin-all-that-can-be-done.pdf#9" class="slide">Slide 9 of 28</i-slide>
+</div><div id="ts-9"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#9" class="slide">Slide 9 of 28</i-slide>
 <div>
   <p id="tp-16">But again all of this is not necessary anymore now that we have WebCodecs support in Chromium and soon in Firefox.</p>
 </div>
 
-<i-slide id="ts-10" src="slides/christoph-guttandin-all-that-can-be-done.pdf#10" class="slide">Slide 10 of 28</i-slide>
+</div><div id="ts-10"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#10" class="slide">Slide 10 of 28</i-slide>
 <div>
   <p id="tp-17">Another thing which is crucial for us is to offload as much as we can to other threads. In the end the main thread should just be there for triggering the work but not for doing it.</p>
 </div>
 
-<i-slide id="ts-11" src="slides/christoph-guttandin-all-that-can-be-done.pdf#11" class="slide">Slide 11 of 28</i-slide>
+</div><div id="ts-11"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#11" class="slide">Slide 11 of 28</i-slide>
 <div>
   <p id="tp-18">There are a number of APIs which follow this pattern already. One of them is the AudioWorklet and the Web Audio API in general.</p>
   <p id="tp-19">For video content there is the OffscreenCanvas  which can be used from within a Web Worker.</p>
@@ -179,24 +179,24 @@
   <p id="tp-21">But as you can see browser support for anything  but the Web Audio API is not that great. Chromium supports all of those APIs. Firefox has an OffscreenCanvas implementation behind a flag but didn’t say anything about transferable streams so far. And as usual I don’t even dare to guess when this will be available in Webkit or Safari.</p>
 </div>
 
-<i-slide id="ts-12" src="slides/christoph-guttandin-all-that-can-be-done.pdf#12" class="slide">Slide 12 of 28</i-slide>
+</div><div id="ts-12"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#12" class="slide">Slide 12 of 28</i-slide>
 <div>
   <p id="tp-22">Another thing which is often tricky for us is to keep media in sync.</p>
   <p id="tp-23">Especially if there is some audio or video  processing involved which will delay one or the other making sure audio and video appear to be sync again when played back becomes very tricky.</p>
 </div>
 
-<i-slide id="ts-13" src="slides/christoph-guttandin-all-that-can-be-done.pdf#13" class="slide">Slide 13 of 28</i-slide>
+</div><div id="ts-13"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#13" class="slide">Slide 13 of 28</i-slide>
 <div>
   <p id="tp-24">There are two properties on an AudioContext which allow us to know when a sound scheduled on that AudioContext can actually be heard by the user. And this allows us to make sure the video frame displayed at that time matches the audio.</p>
   <p id="tp-25">But sadly these properties only fully work  in Firefox so far. I guess I don’t have to mention anymore for which browser I don’t know when they will be available or if they become available at all.</p>
 </div>
 
-<i-slide id="ts-14" src="slides/christoph-guttandin-all-that-can-be-done.pdf#14" class="slide">Slide 14 of 28</i-slide>
+</div><div id="ts-14"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#14" class="slide">Slide 14 of 28</i-slide>
 <div>
   <p id="tp-26">Another hot topic for us is the possibility to select a certain output device instead of using the default one.</p>
 </div>
 
-<i-slide id="ts-15" src="slides/christoph-guttandin-all-that-can-be-done.pdf#15" class="slide">Slide 15 of 28</i-slide>
+</div><div id="ts-15"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#15" class="slide">Slide 15 of 28</i-slide>
 <div>
   <p id="tp-27">There is a method one can call to change the output device of a media element but it only works in Chromium browsers so far. It’s called setSinkId().</p>
   <p id="tp-28">And as far as I know Firefox is currently implementing  the selectAudioOutput() method which is a new way to give consent to access audio output devices. And this is basically what blocks them from enabling setSinkId().</p>
@@ -204,31 +204,31 @@
   <p id="tp-30">But as usual I don’t have an idea what Apple is up to. </p>
 </div>
 
-<i-slide id="ts-16" src="slides/christoph-guttandin-all-that-can-be-done.pdf#16" class="slide">Slide 16 of 28</i-slide>
+</div><div id="ts-16"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#16" class="slide">Slide 16 of 28</i-slide>
 <div>
   <p id="tp-31">So when looking at the wishlist again it looks like it became a todo list. All those things can be done now and existing hacks can be replaced with solid implementations, either today or in the near future.</p>
   <p id="tp-32">At least if we ignore Safari for now. </p>
   <p id="tp-33">Anyway, I came up with some more wishes  which aren’t really spec related anymore and are more geared towards the implementers.</p>
 </div>
 
-<i-slide id="ts-17" src="slides/christoph-guttandin-all-that-can-be-done.pdf#17" class="slide">Slide 17 of 28</i-slide>
+</div><div id="ts-17"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#17" class="slide">Slide 17 of 28</i-slide>
 <div>
   <p id="tp-34">The first item on that list is that I wish for releases to be as boring as possible.</p>
   <p id="tp-35">I think Chromium browsers and Firefox do have  a pretty good process to ensure that already.</p>
 </div>
 
-<i-slide id="ts-18" src="slides/christoph-guttandin-all-that-can-be-done.pdf#18" class="slide">Slide 18 of 28</i-slide>
+</div><div id="ts-18"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#18" class="slide">Slide 18 of 28</i-slide>
 <div>
   <p id="tp-36">Both browsers publish a nightly build. Right now this is version 97 for Chromium and 95 for Firefox. But the exact numbers don’t really matter here.</p>
   <p id="tp-37">Every 4 weeks the state of the nightly version  gets promoted to the next stage.</p>
 </div>
 
-<i-slide id="ts-19" src="slides/christoph-guttandin-all-that-can-be-done.pdf#19" class="slide">Slide 19 of 28</i-slide>
+</div><div id="ts-19"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#19" class="slide">Slide 19 of 28</i-slide>
 <div>
   <p id="tp-38">Whatever has been the nightly version at that time becomes the beta version. Likewise the nightly version will increase as well. So it’s clear that whatever is in the nightly versions of those browsers today will be in beta in at least 4 weeks.</p>
 </div>
 
-<i-slide id="ts-20" src="slides/christoph-guttandin-all-that-can-be-done.pdf#20" class="slide">Slide 20 of 28</i-slide>
+</div><div id="ts-20"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#20" class="slide">Slide 20 of 28</i-slide>
 <div>
   <p id="tp-39">Another 4 weeks later the beta version becomes the stable version and the nightly version - whatever that will be at that time - becomes the new beta version.</p>
   <p id="tp-40">It’s like a steady stream of updates.  And by the time a feature reaches the beta channel you can calculate the date at which it becomes available to all regular users.</p>
@@ -236,7 +236,7 @@
   <p id="tp-42">I usually test my code against the nightly versions  to check regressions coming down the pipe and to make sure there will be no surprises (at least for me) when a new version of Chromium or Firefox gets published.</p>
 </div>
 
-<i-slide id="ts-21" src="slides/christoph-guttandin-all-that-can-be-done.pdf#21" class="slide">Slide 21 of 28</i-slide>
+</div><div id="ts-21"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#21" class="slide">Slide 21 of 28</i-slide>
 <div>
   <p id="tp-43">Sadly things are a bit different with Safari. There is a Technology Preview of Safari which is currently at version 133. It contains a lot of experimental and unfinished implementations of upcoming features.</p>
   <p id="tp-44">But it is unknown which of those features end up  in the next stable release of Safari. They treat it as a secret. The Technology Preview and the stable Safari have completely unrelated version numbers. I guess the stable version is a subset of the Technology Preview but I can’t say that for sure.</p>
@@ -246,7 +246,7 @@
   <p id="tp-48">As I said there is currently one which breaks  decodeAudioData() and another one which breaks audio streams in WebRTC.</p>
 </div>
 
-<i-slide id="ts-22" src="slides/christoph-guttandin-all-that-can-be-done.pdf#22" class="slide">Slide 22 of 28</i-slide>
+</div><div id="ts-22"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#22" class="slide">Slide 22 of 28</i-slide>
 <div>
   <p id="tp-49">This leads me to my next wish.</p>
   <p id="tp-50">I would love regressions to get fixed as soon as possible. </p>
@@ -254,7 +254,7 @@
   <p id="tp-52">I know that even Safari can get security updates  in a very timely manner. And I would love that to happen for patches to fix regressions, too.</p>
 </div>
 
-<i-slide id="ts-23" src="slides/christoph-guttandin-all-that-can-be-done.pdf#23" class="slide">Slide 23 of 28</i-slide>
+</div><div id="ts-23"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#23" class="slide">Slide 23 of 28</i-slide>
 <div>
   <p id="tp-53">I know some powerful features have the potential to get abused by malicious pages. And I definitely agree that certain features should not be enabled by default for each and every page.</p>
   <p id="tp-54">However I think the users of a browser  should have the option to allow certain sites to access the file system, to record the whole screen, to capture the system audio, to receive MIDI messages, to run high priority threads and so on and so on.</p>
@@ -262,7 +262,7 @@
   <p id="tp-56">The point is I think the users should be empowered  to decide themselves which features they want to enable and which ones they better don’t want to use right now.</p>
 </div>
 
-<i-slide id="ts-24" src="slides/christoph-guttandin-all-that-can-be-done.pdf#24" class="slide">Slide 24 of 28</i-slide>
+</div><div id="ts-24"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#24" class="slide">Slide 24 of 28</i-slide>
 <div>
   <p id="tp-57">Similarly as a developer I would really love to have the same power. As I said before I like to run automated tests against the current and the upcoming version of each browser.</p>
   <p id="tp-58">I do this locally and I also do this in the cloud  with services like BrowserStack and Sauce Labs.</p>
@@ -271,7 +271,7 @@
   <p id="tp-61">And at least as far as I know it’s not even possible  to disable the autoplay policy in Safari when starting the browser programmatically. That means things are more difficult to test in Safari. Which in turn means bugs get less caught. And this is of course a real problem since as I said before a typical bug stays in Safari for at least 6 months. But only if it gets caught in the first place.</p>
 </div>
 
-<i-slide id="ts-25" src="slides/christoph-guttandin-all-that-can-be-done.pdf#25" class="slide">Slide 25 of 28</i-slide>
+</div><div id="ts-25"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#25" class="slide">Slide 25 of 28</i-slide>
 <div>
   <p id="tp-62">Another thing which is of course totally different but I think is a bit problematic as well is that building web apps seems to be so easy at first glance. Last week I saw a full WebCodecs example which fit on a single slide. That was very impressive and it showed that one could build something really powerful in no time.</p>
   <p id="tp-63">And yes, that’s absolutely true.  I did for example quickly hack together a little app to record this talk in the browser. (I didn’t use it in the end but that’s a different story.) But building a real web app which is meant to be used by people in a professional context day in and day out is a completely different story. Doing that requires a lot of effort. </p>
@@ -279,25 +279,25 @@
   <p id="tp-65">I honestly think building professional apps  is challenging in any environment and I wouldn’t expect to be easy on the web.</p>
 </div>
 
-<i-slide id="ts-26" src="slides/christoph-guttandin-all-that-can-be-done.pdf#26" class="slide">Slide 26 of 28</i-slide>
+</div><div id="ts-26"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#26" class="slide">Slide 26 of 28</i-slide>
 <div>
   <p id="tp-66">But after all I think it’s mostly a chicken and egg problem. Once a few well known and well established web apps exist that have a wide adoption among media professionals others will become interested in bringing there apps to the web as well.</p>
   <p id="tp-67">Source Elements does for example have a plugin for DAWs.  It’s currently a native application since the DAWs that it’s meant to be used with are native applicationsas well. And this could only ever change if those DAWs become web apps at some point.</p>
   <p id="tp-68">There is definitely still a long way to go  but I think the shift has already begun.</p>
 </div>
 
-<i-slide id="ts-27" src="slides/christoph-guttandin-all-that-can-be-done.pdf#27" class="slide">Slide 27 of 28</i-slide>
+</div><div id="ts-27"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#27" class="slide">Slide 27 of 28</i-slide>
 <div>
   <p id="tp-69">In conclusion I would like to repeat the title of this talk again: A fundamental rule in technology says whatever can be done will be done..</p>
   <p id="tp-70">I think building professional media applications  for the web is something that can be done today. And I know many people working on it. I hope and believe it’s only a matter of time until that becomes the new normal.</p>
 </div>
 
-<i-slide id="ts-28" src="slides/christoph-guttandin-all-that-can-be-done.pdf#28" class="slide">Slide 28 of 28</i-slide>
+</div><div id="ts-28"><i-slide src="slides/christoph-guttandin-all-that-can-be-done.pdf#28" class="slide">Slide 28 of 28</i-slide>
 <div>
   <p id="tp-71">Thanks again to the people I work with for helping me to prepare this talk and many thanks to all of you for watching it. See you at the workshop. Bye.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

@@ -114,34 +114,34 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/soeren-balko-clipchamp-webcodecs.pdf#1" class="slide">Slide 1 of 12</i-slide>
+            <div id="ts-1"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#1" class="slide">Slide 1 of 12</i-slide>
 <div>
   <p id="tp-1">Hello, and welcome to my talk. In this presentation I'm going to talk about how Clipchamp has adopted WebCodecs in the past 12 months, round about. Clipchamp is a in browser video editor.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/soeren-balko-clipchamp-webcodecs.pdf#3" class="slide">Slide 3 of 12</i-slide>
+</div><div id="ts-3"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#3" class="slide">Slide 3 of 12</i-slide>
 <div>
   <p id="tp-2">At Clipchamp our mission is to empower anyone, to tell stories worth sharing.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/soeren-balko-clipchamp-webcodecs.pdf#4" class="slide">Slide 4 of 12</i-slide>
+</div><div id="ts-4"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
   <p id="tp-3">And what that looks like is we have built a fully in-browser video editor.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/soeren-balko-clipchamp-webcodecs.pdf#5" class="slide">Slide 5 of 12</i-slide>
+</div><div id="ts-5"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
   <p id="tp-4">And we firmly believed from the early days of when we founded the company that only in-browser platforms offer the convenience of such a cloud service combined with the speed of a desktop application, and we fused that kind of in browser paradigm.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/soeren-balko-clipchamp-webcodecs.pdf#6" class="slide">Slide 6 of 12</i-slide>
+</div><div id="ts-6"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
   <p id="tp-5">For once, probably the most important reason is that caters for a great user experience. And the reason for that is video files are large.</p>
   <p id="tp-6">It also comes with this fantastic advantage from a commercial perspective that it has near zero runtime cost. The hardware has already been paid for.</p>
   <p id="tp-7">And finally, there's also the aspect of privacy, obviously very important in this day and age that everything you do not upload to a cloud service, but that stays on your devices is obviously kind of subject to a perfect privacy.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/soeren-balko-clipchamp-webcodecs.pdf#7" class="slide">Slide 7 of 12</i-slide>
+</div><div id="ts-7"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#7" class="slide">Slide 7 of 12</i-slide>
 <div>
   <p id="tp-8">The browser remains a challenging platform, as you all know, especially when you do heavy lifting like video encoding or decoding.</p>
   <p id="tp-9">And that is obviously first and foremost resource allocation memory and storage. Performance is equally important. Video encoding is expensive. If you use software encoding paradigm, as we, for the longest time have done, access to low-level hardware capabilities, again, it's limited. Yes, these days you do have WebAssembly SIMD and we've made good use of that. You do have WebGL for a long time. WebGPU has just launched and thankfully, that's where WebCodecs fit in.</p>
@@ -149,26 +149,26 @@
   <p id="tp-11">The two aspects that I encircled in purple here, performance and access to low level hardware capabilities, are obviously the challenges that WebCodecs addresses</p>
 </div>
 
-<i-slide id="ts-8" src="slides/soeren-balko-clipchamp-webcodecs.pdf#8" class="slide">Slide 8 of 12</i-slide>
+</div><div id="ts-8"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
   <p id="tp-12">Talking about a lot of video processing pipelines specifically about probably the most challenging part which is when you're exporting a video project that you've been editing, where you put together various pieces of footage. So that project which combines all of that, or can combine all of that, turn that into an MP4 file, which you can then distribute around the web.</p>
 </div>
 
-<i-slide id="ts-8" src="slides/soeren-balko-clipchamp-webcodecs.pdf#8" class="slide">Slide 8 of 12</i-slide>
+</div><div id="ts-8"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
   <p id="tp-13">That is quite an involved process. And again, we run it all in the browser and currently it's subdivided into three stages.</p>
   <p id="tp-14">Here we have the decoder which takes care of extracting a stream of kind of raw frames from your source footage and then passed into the middle stage, which we call the compositor that is where kind of all of those pieces of footage are combined, effects are layered on top. And that one again, produces a composed stream of raw frames, which is then passed until the encoder, which turns it into an MP4 file.</p>
   <p id="tp-15">We basically retrofitted WebCodecs into this architecture.</p>
 </div>
 
-<i-slide id="ts-9" src="slides/soeren-balko-clipchamp-webcodecs.pdf#9" class="slide">Slide 9 of 12</i-slide>
+</div><div id="ts-9"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#9" class="slide">Slide 9 of 12</i-slide>
 <div>
   <p id="tp-16">And the way we did that is we combined that WebAssembly build of FFmpeg that I was just showing you with the WebCodecs API and the way to do that is we created codec stubs, inside FFmpeg, and what those codec stubs then do is they call out from that WebAssembly build into JavaScript land.</p>
   <p id="tp-17">And that is basically to go through the WebCodecs API lifecycle a lot better to say that video encoder API, inside of that WebCodecs specification, initially, you initialize and configure your video encoder instance, obviously.</p>
   <p id="tp-18">And then you go through the process of pushing in the raw frames and then pulling out the encoded chunks, which are then put back to FFmpeg, which then puts them into the container format. And lastly, you close down and de-initialize your video encoder instance.</p>
 </div>
 
-<i-slide id="ts-10" src="slides/soeren-balko-clipchamp-webcodecs.pdf#10" class="slide">Slide 10 of 12</i-slide>
+</div><div id="ts-10"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#10" class="slide">Slide 10 of 12</i-slide>
 <div>
   <p id="tp-19">Now that has worked really well for us, but didn't come without some gotchas. And that's maybe the most interesting part of this talk.</p>
   <p id="tp-20">And maybe then also kind of stimulate some discussions around what can be done about that for others who have had the same challenges.</p>
@@ -177,7 +177,7 @@
   <p id="tp-23">One concern, which has less to do with WebCodecs, but more with the fact that FFmpeg as such is obviously normally used as a command line tool, And that means it's typically a synchronous call stack and that's inherently not a good fit for WebCodecs, which is like any browser, almost any browser API asynchronous. You have to break up the synchronous call stack for FFmpeg into multiple asynchronous calls.</p>
 </div>
 
-<i-slide id="ts-11" src="slides/soeren-balko-clipchamp-webcodecs.pdf#11" class="slide">Slide 11 of 12</i-slide>
+</div><div id="ts-11"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
   <p id="tp-24">And lastly, we have a bit of a wishlist. Obviously WebCodecs 1.0 or the current version of WebCodecs, I should say, it's great. A big thank you goes out to all the people that have pushed for this standard, who have implemented it in browsers.</p>
   <p id="tp-25">I can only imagine that it might've been a hard sell because like it's a very specialized capability. Nevertheless, it's kind of fantastic that this has happened.</p>
@@ -193,12 +193,12 @@
   <p id="tp-35">I don't know what the solution to that might be. There's obviously a lot of complexity in this part. And FFmpeg already does all of that. So that's why I didn't include it. I'm not sure if it's a good idea to include this into WebCodecs, because this is a bit of a different concern, even though pretty much anyone using WebCodecs would probably have to deal with it one way or another.</p>
 </div>
 
-<i-slide id="ts-12" src="slides/soeren-balko-clipchamp-webcodecs.pdf#12" class="slide">Slide 12 of 12</i-slide>
+</div><div id="ts-12"><i-slide src="slides/soeren-balko-clipchamp-webcodecs.pdf#12" class="slide">Slide 12 of 12</i-slide>
 <div>
   <p id="tp-36">And that concludes my talk. Thank you. And I'm free for questions.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

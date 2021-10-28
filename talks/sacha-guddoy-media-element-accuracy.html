@@ -115,12 +115,12 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/sacha-guddoy-media-element-accuracy.pdf#1" class="slide">Slide 1 of 10</i-slide>
+            <div id="ts-1"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#1" class="slide">Slide 1 of 10</i-slide>
 <div>
   <p id="tp-1">Hello there, my name is Sacha Guddoy. I'm the Lead Front-end Engineer at Grabyo. Today, I'm going to be talking about accuracy and synchronization in HTML media elements, our use cases, and some of the challenges that we've faced.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/sacha-guddoy-media-element-accuracy.pdf#2" class="slide">Slide 2 of 10</i-slide>
+</div><div id="ts-2"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#2" class="slide">Slide 2 of 10</i-slide>
 <div>
   <p id="tp-2">Firstly, let me tell you a bit about Grabyo.</p>
   <p id="tp-3">Grabyo is a SaaS platform for broadcast media production. It's aimed at commercial broadcasters.</p>
@@ -128,20 +128,20 @@
   <p id="tp-5">Some of our offerings include live video production, clipping from live streams, non-linear editing and publishing creative media to various end points, for example, social media or livestream.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/sacha-guddoy-media-element-accuracy.pdf#3" class="slide">Slide 3 of 10</i-slide>
+</div><div id="ts-3"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#3" class="slide">Slide 3 of 10</i-slide>
 <div>
   <p id="tp-6">Firstly, I'm going to talk about accuracy in HTML media APIs.</p>
   <p id="tp-7">A common technique in media production workflows is to create a lower resolution, low bit rate draft version of your media.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/sacha-guddoy-media-element-accuracy.pdf#4" class="slide">Slide 4 of 10</i-slide>
+</div><div id="ts-4"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#4" class="slide">Slide 4 of 10</i-slide>
 <div>
   <p id="tp-8">And when you're working on that media, when you're making edits and such, that's what you'll be looking at.</p>
   <p id="tp-9">Then when you've finished making your edits, you will export it to some more powerful machine, or maybe your own machine, will use a lot of resources to go and render the final high quality version from the original source media.</p>
   <p id="tp-10">A common pattern that we use is for users to select their in and out points in a video in the web browser, and then we'll send that off to another service which could be in the cloud, and then we'll use that to process the final version of the media from the high quality source media.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/sacha-guddoy-media-element-accuracy.pdf#5" class="slide">Slide 5 of 10</i-slide>
+</div><div id="ts-5"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#5" class="slide">Slide 5 of 10</i-slide>
 <div>
   <p id="tp-11">One of the issues that we faced with this kind of workflow is that timestamps that you get from media elements in the web are just not accurate enough. They won't necessarily represent the same frame of the video when another application loads up that same timestamp.</p>
   <p id="tp-12">So what that means is that when you've exported your video, you play it back and the start and the end can be one frame off, which is not very good.</p>
@@ -152,13 +152,13 @@
   <p id="tp-17">Different video rendering tools might have different interpretations of exactly what that time is.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/sacha-guddoy-media-element-accuracy.pdf#6" class="slide">Slide 6 of 10</i-slide>
+</div><div id="ts-6"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#6" class="slide">Slide 6 of 10</i-slide>
 <div>
   <p id="tp-18">The next point is about synchronization with the DOM.</p>
   <p id="tp-19">Another common use case for us is to manipulate and monitor media in real time using DOM interfaces, for example, controlling state of the playback, controlling playback position, monitoring the audio levels, analyzing or manipulating video or audio, displaying overlays, and synchronizing different pieces of media together.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/sacha-guddoy-media-element-accuracy.pdf#7" class="slide">Slide 7 of 10</i-slide>
+</div><div id="ts-7"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#7" class="slide">Slide 7 of 10</i-slide>
 <div>
   <p id="tp-20">In these scenarios, it's really important for the DOM to reflect the current state of media as accurately as possible.</p>
   <p id="tp-21">Typically, these elements in the DOM would be updated based on the media.</p>
@@ -166,7 +166,7 @@
   <p id="tp-23">Furthermore, this can just be expensive. If you are updating your DOM 60 times per second, because your audio level, for example, is changing 60 times a second, then that is taxing on the UI thread and degrades the user experience.</p>
 </div>
 
-<i-slide id="ts-8" src="slides/sacha-guddoy-media-element-accuracy.pdf#8" class="slide">Slide 8 of 10</i-slide>
+</div><div id="ts-8"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#8" class="slide">Slide 8 of 10</i-slide>
 <div>
   <p id="tp-24">The next point is on codecs.</p>
   <p id="tp-25">All major browsers ship with a range of video codecs. Expansion of codec support and lower level access to the decoding pipeline could enable new features.</p>
@@ -174,7 +174,7 @@
   <p id="tp-27">WebCodecs is the elephant in the room here that can help solve a lot of the issues by giving us lower level access to that decoding pipeline, which is something I'm very excited about. Obviously the browser support at the moment, what's this, October 2021, is not the greatest.</p>
 </div>
 
-<i-slide id="ts-9" src="slides/sacha-guddoy-media-element-accuracy.pdf#9" class="slide">Slide 9 of 10</i-slide>
+</div><div id="ts-9"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#9" class="slide">Slide 9 of 10</i-slide>
 <div>
   <p id="tp-28">The next part I want to talk about is multi-threading.</p>
   <p id="tp-29">So it's often necessary to perform media operations on the same thread as the UI handlers, so for example, rendering a video onto a canvas. This is not particularly desirable, because these tasks can be really resource intensive and run very frequently, blocking the UI thread, degrading performance and the user experience.</p>
@@ -184,12 +184,12 @@
   <p id="tp-33">This is problematic because then your video to canvas rendering pipeline has to be in the DOM thread. It can't live in a worker by itself.</p>
 </div>
 
-<i-slide id="ts-10" src="slides/sacha-guddoy-media-element-accuracy.pdf#10" class="slide">Slide 10 of 10</i-slide>
+</div><div id="ts-10"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#10" class="slide">Slide 10 of 10</i-slide>
 <div>
   <p id="tp-34">So that's all I have for you on this topic. I hope that was enlightening in terms of some of the use cases and issues that we were facing. And I'm looking forward to hearing your questions and feedback. Thanks very much. Take care.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

@@ -114,25 +114,25 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/paul-adenot-webcodecs-performance.pdf#1" class="slide">Slide 1 of 12</i-slide>
+            <div id="ts-1"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#1" class="slide">Slide 1 of 12</i-slide>
 <div>
   <p id="tp-1">Hi, my name is Paul Adenot. I work at Mozilla on anything related to audio and video in Firefox.</p>
   <p id="tp-2">Today, I'd like to talk about a recent API called the WebCodecs API. And in particular about memory access patterns when using this API in conjunction with other APIs on the web platform. We'll talk about some raw performance numbers when accessing video frames, what WebCodecs does today to minimize memory, access overhead and some problems that the API has today, where a solution exists, but hasn't been implemented. And more importantly about a couple of harder problems that we'll tackle in the future, so that using WebCodecs will have the same performance profile as a native app.</p>
   <p id="tp-3">Before starting, I'd like to say that any simple scenario, such as decoding and rendering video and audio are fairly optimized today, and we'll be talking about advanced use cases, such as big native apps compiled to WebAssembly that want to leverage WebCodecs to speed up their encoding and decoding operations or other programs that are making a rather intensive use WebCodecs and want to minimize any inefficiencies.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/paul-adenot-webcodecs-performance.pdf#2" class="slide">Slide 2 of 12</i-slide>
+</div><div id="ts-2"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#2" class="slide">Slide 2 of 12</i-slide>
 <div>
   <p id="tp-4">But first let me repeat an old quote often heard in the free software multimedia development circles: memcpy is murder". Behind this tongue-in-cheek sentence lies in important fact: to maximize performance, the minimum of memory copies need to happen. And the working set of nap needs to be as small as possible to ideally git into CPU caches. Fetching memory into caches is slow, caches are small, so no duplications should happen.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/paul-adenot-webcodecs-performance.pdf#3" class="slide">Slide 3 of 12</i-slide>
+</div><div id="ts-3"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#3" class="slide">Slide 3 of 12</i-slide>
 <div>
   <p id="tp-5">But first let's consider the size of the problem.</p>
   <p id="tp-6">A video frame in YUV420, full HD, standard dynamic range is around 4MB. A video frame in YUV420, 4K, standard dynamic range is around 16MB. A video frame in P010, full HD, high dynamic range, (either 10 or 12 bits) is around 32MB.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/paul-adenot-webcodecs-performance.pdf#4" class="slide">Slide 4 of 12</i-slide>
+</div><div id="ts-4"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
   <p id="tp-7">Here are some performance numbers that I've gathered, writing a small C++ program on my extremely high-end Linux workstation, of copying a single frame of this size. A video frame in YUV420, full HD, standard dynamic range, takes about 1.5ms to copy when the cache is hot, which means the source is already in the cache. And 4.5ms if not. The source needs to be fetched from memory. Two frames easily fit in the cache of this CPU.</p>
   <p id="tp-8">A video frame in YUV 420, 4K, standard dynamic range, takes 6.6ms and 17ms when in CPU cache. This only works because the CPU I'm running on has lots of cache, and a single frame still fits.</p>
@@ -140,12 +140,12 @@
   <p id="tp-10">Considering the budget for a single frame at 30Hz is 33ms and 16.6ms at 60Hz, we can quickly see that the numbers here are uncomfortable, and minimizing memory copies are going to be of importance. I'll repeat that standard scenarios in WebCodecs such as playback don't make copies. I'm talking about advanced use cases here, such as processing.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/paul-adenot-webcodecs-performance.pdf#5" class="slide">Slide 5 of 12</i-slide>
+</div><div id="ts-5"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
   <p id="tp-11">Additionally, GPU to CPU copies (read back) and CPU to GPU copies (texture uploads) are also quite expensive. It's best to carefully consider when and how they need to be done, and to try to minimize transfers, if possible. WebCodecs has been carefully designed to allow to easily leave VideoFrames on the GPU and makes all copies explicit.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/paul-adenot-webcodecs-performance.pdf#6" class="slide">Slide 6 of 12</i-slide>
+</div><div id="ts-6"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
   <p id="tp-12">But sometimes it's really necessary to perform copies. Here are three scenarios when this is unavoidable.</p>
   <p id="tp-13">Custom processing of video frames that are on the GPU using regular JavaScript or WASM code in which case we need to read back.</p>
@@ -153,7 +153,7 @@
   <p id="tp-15">For example, playing audio data with an AudioWorklet will require copying into the AudioWorklet output buffer.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/paul-adenot-webcodecs-performance.pdf#7" class="slide">Slide 7 of 12</i-slide>
+</div><div id="ts-7"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#7" class="slide">Slide 7 of 12</i-slide>
 <div>
   <p id="tp-16">As said, WebCodecs has been designed with copy minimization in mind. The memory is not visible directly to script, and authors need to call a function called copyTo" to get an ArrayBuffer that can be directly manipulated. This copyTo" method can also take care of conversion in certain cases. when calling clone on a VideoFrame or AudioData object, the underlying resources are referenced for a second time, instead of copied, so a single frame can be used in different context efficiently. Doing a deep copy is still possible.</p>
   <p id="tp-17">Now, let's see a number of copies that exist today in WebCodecs</p>
@@ -162,22 +162,22 @@
   <p id="tp-20">Finally, the API for now does a lot of allocations and deallocation, thrashing CPU caches unnecessarily.</p>
 </div>
 
-<i-slide id="ts-8" src="slides/paul-adenot-webcodecs-performance.pdf#8" class="slide">Slide 8 of 12</i-slide>
+</div><div id="ts-8"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
   <p id="tp-21">Here are two simple design proposals to fix the two last points in this list.</p>
 </div>
 
-<i-slide id="ts-9" src="slides/paul-adenot-webcodecs-performance.pdf#9" class="slide">Slide 9 of 12</i-slide>
+</div><div id="ts-9"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#9" class="slide">Slide 9 of 12</i-slide>
 <div>
   <p id="tp-22">First, a method called detach" could return an ArrayBuffer and close the video frame in one call, skipping a copy when possible, for example, when it hasn't been cloned, that's fairly common. Similarly, we can add this method on AudioData.</p>
 </div>
 
-<i-slide id="ts-10" src="slides/paul-adenot-webcodecs-performance.pdf#10" class="slide">Slide 10 of 12</i-slide>
+</div><div id="ts-10"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#10" class="slide">Slide 10 of 12</i-slide>
 <div>
   <p id="tp-23">Next, we can limit the native allocation and deallocation pressure by taking a buffer in the decode method, in which the decoded data is going to be written to, and getting back the input buffer to reuse, in the output callback. This will matter a lot for audio where it's a lot easier for buffer to fit in CPU caches, but their numbers are a lot bigger.</p>
 </div>
 
-<i-slide id="ts-11" src="slides/paul-adenot-webcodecs-performance.pdf#11" class="slide">Slide 11 of 12</i-slide>
+</div><div id="ts-11"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
   <p id="tp-24">Now let's talk, about some of the harder problems faced on the web platform today.</p>
   <p id="tp-25">First, the necessity to copy from into the WASM heap becomes problematic when the data to copy is big enough, such as video frames. Decoding into the WASM heap would be a welcomed feature, but this needs some work.</p>
@@ -185,12 +185,12 @@
   <p id="tp-27">An effort has been started to try to document the problems about copies on the platform at the WICG, and I encourage interested parties to voice their opinions and contribute their experience to the discussion, reports from the field are always welcomed and very important to inform future developments.</p>
 </div>
 
-<i-slide id="ts-12" src="slides/paul-adenot-webcodecs-performance.pdf#12" class="slide">Slide 12 of 12</i-slide>
+</div><div id="ts-12"><i-slide src="slides/paul-adenot-webcodecs-performance.pdf#12" class="slide">Slide 12 of 12</i-slide>
 <div>
   <p id="tp-28">In conclusion, while WebCodecs can and will be improved when it comes to memory access, it's already extremely powerful and common use cases are already quite fast. Making it perfect is definitely possible and will probably happen in the future. Thanks.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

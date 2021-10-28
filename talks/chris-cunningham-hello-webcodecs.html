@@ -114,7 +114,7 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/chris-cunningham-hello-webcodecs.pdf#1" class="slide">Slide 1 of 7</i-slide>
+            <div id="ts-1"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#1" class="slide">Slide 1 of 7</i-slide>
 <div>
   <p id="tp-1">Hi, I'm Chris Cunningham. I am the tech lead for WebCodecs effort in Chrome and a co-editor on the spec.</p>
   <p id="tp-2">This talk is going to be a primer on the API. If you have already seen the API and played with it a little bit, or if you saw my talk at IIT earlier this week, you can skip this one.</p>
@@ -123,14 +123,14 @@
   <p id="tp-5">Those libraries have been a dependency of the browser for years in support of the video tag and WebRTC. And with WebCodecs, we're exposing those and others in a unified manner directly to JavaScript.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/chris-cunningham-hello-webcodecs.pdf#2" class="slide">Slide 2 of 7</i-slide>
+</div><div id="ts-2"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#2" class="slide">Slide 2 of 7</i-slide>
 <div>
   <p id="tp-6">Let's look at a typical decoder flow.</p>
   <p id="tp-7">In this graphic the large blue square is WebCodecs, and the diagram shows chunks of encoded video coming from network or storage, heading into the decoder, being decoded to these video frames, and then coming out where they are rendered to canvas or media stream track.</p>
   <p id="tp-8">We can use all these pieces together without writing a ton of code. And I think that's a good way to kind of get familiar with the API. Let's do that now.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/chris-cunningham-hello-webcodecs.pdf#3" class="slide">Slide 3 of 7</i-slide>
+</div><div id="ts-3"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#3" class="slide">Slide 3 of 7</i-slide>
 <div>
   <p id="tp-9">I am going to share my screen, bare with me. Right. All right, so before I start coding, I want to show you what we're going to build.</p>
   <p id="tp-10">Big buck bunny, of course, being demuxed from an MP4 file, then decoded and rendered to canvas, all using WebCodecs.</p>
@@ -159,12 +159,12 @@
   <p id="tp-33">All right. There you have it, Big Buck Bunny, decoding and rendering.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/chris-cunningham-hello-webcodecs.pdf#4" class="slide">Slide 4 of 7</i-slide>
+</div><div id="ts-4"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#4" class="slide">Slide 4 of 7</i-slide>
 <div>
   <p id="tp-34">We didn't talk at all about audio, but here in the slides, I'm going to link to the same demo basically, but with an audio playout that is synchronized to the video, and then this will also be a link to the GitHub code to make that work. The short of it is uses audio decoder, but instead of a canvas, you're going to use AudioWorklet to do the rendering. Just one option that you have, you could also use like audio buffer sourceNode. If you're going to do just kind of like smaller chunks of audio, or media stream track, if you are doing kind of a real time scenario.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/chris-cunningham-hello-webcodecs.pdf#5" class="slide">Slide 5 of 7</i-slide>
+</div><div id="ts-5"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#5" class="slide">Slide 5 of 7</i-slide>
 <div>
   <p id="tp-35">All right, let's talk a little bit about audio decoding.</p>
   <p id="tp-36">Here is the audio decoder interface. I didn't even show the video decoder interface. They're basically the same.</p>
@@ -174,19 +174,19 @@
   <p id="tp-40">The other one that we didn't talk about is reset. Reset is going to completely reset the codec. It's going to drop all active work, all queued work. It's going to drop the active configuration, just everything. You would use this if you would do like a seek. And so the user said stop where you are. I'm going to go to this other point in the timeline, start there instead.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/chris-cunningham-hello-webcodecs.pdf#6" class="slide">Slide 6 of 7</i-slide>
+</div><div id="ts-6"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#6" class="slide">Slide 6 of 7</i-slide>
 <div>
   <p id="tp-41">Okay. That was decoding. Let's talk a little bit about encoding.</p>
   <p id="tp-42">The flow is pretty much the same, but in reverse. Frames go in, they get encoded, they produce chunks.</p>
   <p id="tp-43">The encoder interfaces are nearly identical to those from decode. You swap decode for Incode, but otherwise it's the same five methods you saw in the last slide. And then audio and coding also follows this exact same pattern.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/chris-cunningham-hello-webcodecs.pdf#7" class="slide">Slide 7 of 7</i-slide>
+</div><div id="ts-7"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#7" class="slide">Slide 7 of 7</i-slide>
 <div>
   <p id="tp-44">At this point, you've had a glance at all the core interfaces and the relationships to each other. And that's, that's kind of the gist. That's, that's the primer on WebCodecs. As a reminder, I have another talk coming up for a video coder configuration, please check that out.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

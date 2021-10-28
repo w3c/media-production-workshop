@@ -114,27 +114,27 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#1" class="slide">Slide 1 of 5</i-slide>
+            <div id="ts-1"><i-slide src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#1" class="slide">Slide 1 of 5</i-slide>
 <div>
   <p id="tp-1">Hi, I'm Chris Cunningham. If you missed my earlier WebCodecs primer talk, I encourage you to check that one out first.</p>
   <p id="tp-2">In this talk, I'm going to focus on WebCodecs encoding configuration. The idea is to surface what we have and the reasoning behind it, and have you tell us what to prioritize next. If you look at our configuration structure and compare that to FFmpeg or libvpx, it will immediately be clear that we have lots of knobs we could consider adding.</p>
   <p id="tp-3">Having said that, there are lots of folks who are using WebCodecs and encoding in media production settings and apps. Don't let this talk scare you off.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#2" class="slide">Slide 2 of 5</i-slide>
+</div><div id="ts-2"><i-slide src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#2" class="slide">Slide 2 of 5</i-slide>
 <div>
   <p id="tp-4">Before I get into the structure, I wanna mention the underlying design principle, which is don't constrain features or quality unless the user asks for it.</p>
   <p id="tp-5">For encoding defaults, this might mean we don't constrain quality for the sake of latency. We don't constrain bit rate unless requested. It's VBR by default. We allow B-frames wherever the profile that is configured would allow B-frames.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#3" class="slide">Slide 3 of 5</i-slide>
+</div><div id="ts-3"><i-slide src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#3" class="slide">Slide 3 of 5</i-slide>
 <div>
   <p id="tp-6">Another thing to mention. When you start encoding, the output callback will also admit a metadata dictionary that contains the video decoding config. This is obviously very important if you want to eventually decode the content you encoded.</p>
   <p id="tp-7">And then it admits that same config anytime the configuration changes, such that, now you need a slightly different configuration to decode what is now being output.</p>
   <p id="tp-8">I mention this because it's useful to describe some of the encoder configuration parameters we're about to get into, in terms of their effect on the admitted decoder config.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#4" class="slide">Slide 4 of 5</i-slide>
+</div><div id="ts-4"><i-slide src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#4" class="slide">Slide 4 of 5</i-slide>
 <div>
   <p id="tp-9">All right, so here we have just a screenshot from the spec. This is the video encoder config dictionary. At the top, we've got the required parameters. We have codec, which is a codec string, very similar to what you would see in MSE or media capabilities. This is like for H.264,  It's av1 dot profile byte, level byte. For VP9, it's VP09 dot profile dot so-on. AV1, AV01. For all codecs that are usable WebCodecs, you can go to the WebCodecs specification Codec Registry", and there you can look up the specific codec strings to use for a given codec.</p>
   <p id="tp-10">All right, so next we have width and height, and this is the number of pixels to encode. For video frames, this corresponds to visible width and visible height. For decoder config, this corresponds to display. No. It's again visible with and visible height. If you give us a video frame with a visible width and height that don't match these dimensions, we will actually scale the frame before we encode, and that is originally motivated by RTC use cases, where the camera's open to the high resolution, but then you want the encoder to be able to encode at whatever resolution, because your needs fluctuate with the changes in bit rate and CPU load.</p>
@@ -152,13 +152,13 @@
   <p id="tp-22">All right, scalabilityMode. This is a string that identifies patterns of layering for scalable codecs. For media production, you probably don't care about this. You probably just want one layer. This is probably more interesting for RTC folks. The lead spec here, WebRTC SVC, has lots more details in the diagrams and patterns of scalability layering. And then finally latencyMode. This is, by default, quality", where the other option is, what is it? realtime". Most folks in this group probably want quality, but it's interesting to talk about realtime, because obviously very useful for realtime scenarios. But there's an interaction with some of the knobs above, which is that, in realtime, we strive to get the frames out and achieve the bit rate target and the frame rate target more strictly. We'll actually use frame rate as kind of a deadline. If we can't encode a frame in realtime mode and maintain the frame rate, in terms of our output, then we will drop frames, where encoders support that.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#5" class="slide">Slide 5 of 5</i-slide>
+</div><div id="ts-5"><i-slide src="slides/chris-cunningham-webcodecs-videoencoderconfig.pdf#5" class="slide">Slide 5 of 5</i-slide>
 <div>
   <p id="tp-23">Okay, so those are our different knobs that we have so far. This is a link to our GitHub. Please let us know what you need. We like to prioritize things by impact. If you can tell us why you need it, what is it you plan to do with it, how is it gonna be a better experience for your users, if you come to our GitHub and you already see an issue filed for the knob that you want, pile on. Again, that's impact, to say, hey, there's five apps that want this knob. Okay, we'll pay attention to that, sure.</p>
   <p id="tp-24">Yeah, that's it. Thank you so much for watching.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>

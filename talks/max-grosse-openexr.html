@@ -110,13 +110,13 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide id="ts-1" src="slides/max-grosse-openexr.pdf#1" class="slide">Slide 1 of 11</i-slide>
+            <div id="ts-1"><i-slide src="slides/max-grosse-openexr.pdf#1" class="slide">Slide 1 of 11</i-slide>
 <div>
   <p id="tp-1">Welcome to my presentation on Reviewing production OpenEXR files on the web for Machine Learning. I'm Max Grosse, Principal Software Engineer at DisneyResearch|Studios.</p>
   <p id="tp-2">I will show you a little bit of our machine learning pipeline we employ here, and how dealing with feature film production assets provides a unique challenge in this, and how we address it using modern web technology.</p>
 </div>
 
-<i-slide id="ts-2" src="slides/max-grosse-openexr.pdf#2" class="slide">Slide 2 of 11</i-slide>
+</div><div id="ts-2"><i-slide src="slides/max-grosse-openexr.pdf#2" class="slide">Slide 2 of 11</i-slide>
 <div>
   <p id="tp-3">As we are part of the Studio segment of the Walt Disney Company, we naturally deal with production assets.</p>
   <p id="tp-4">When it comes to images, this typically means we deal with higher resolution, 1080p at least, up to 4k and even more. Additionally, the imagery is typically of high dynamic range, stored in the OpenEXR file format as 16-bit or 32-bit floating points.</p>
@@ -124,13 +124,13 @@
   <p id="tp-6">To inspect the training data that gets fed into our deep neural networks, to view error maps on the validation, and generally being able to judge the visual quality of our results - or enable artists to properly judge these - we require a little bit more than a cut-out thumbnail of a jpeg image within, for example, Tensorboard.</p>
 </div>
 
-<i-slide id="ts-3" src="slides/max-grosse-openexr.pdf#3" class="slide">Slide 3 of 11</i-slide>
+</div><div id="ts-3"><i-slide src="slides/max-grosse-openexr.pdf#3" class="slide">Slide 3 of 11</i-slide>
 <div>
   <p id="tp-7">An example is our work on Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings that my colleagues published in 2017 at ACM SIGGRAPH.</p>
   <p id="tp-8">This introduces a deep learning approach for denoising Monte-Carlo rendered images that produces high-quality results suitable for production.</p>
 </div>
 
-<i-slide id="ts-4" src="slides/max-grosse-openexr.pdf#4" class="slide">Slide 4 of 11</i-slide>
+</div><div id="ts-4"><i-slide src="slides/max-grosse-openexr.pdf#4" class="slide">Slide 4 of 11</i-slide>
 <div>
   <p id="tp-9">This is when work on JERI started, the JavaScript Extended-Range image viewer.</p>
   <p id="tp-10">The idea is that we can have a remote, or local, HTTP server that serves not only the OpenEXR images we are interested in directly, but also an HTML5-based viewer such that these OpenEXR images can be directly inspected within a modern browser.</p>
@@ -138,7 +138,7 @@
   <p id="tp-12">This also guarantees that the client receives the original images, without any additional compression, providing full control over the very exact pixel values that will be displayed. It functions like a very configurable <img> tag with a lot of additional features to dig deep into extended-range images.</p>
 </div>
 
-<i-slide id="ts-5" src="slides/max-grosse-openexr.pdf#5" class="slide">Slide 5 of 11</i-slide>
+</div><div id="ts-5"><i-slide src="slides/max-grosse-openexr.pdf#5" class="slide">Slide 5 of 11</i-slide>
 <div>
   <p id="tp-13">For this, we have compiled the OpenEXR library to WebAssembly using EMScripten.</p>
   <p id="tp-14">The EMScripten toolchain still lacks a bit in terms of quality of life, so this was a bit of a tedious process to get right, however once built, it can be potentially used in a variety of applications.</p>
@@ -146,7 +146,7 @@
   <p id="tp-16">In particular with some local caching, switching the loaded images usually is instantaneous anyways.</p>
 </div>
 
-<i-slide id="ts-6" src="slides/max-grosse-openexr.pdf#6" class="slide">Slide 6 of 11</i-slide>
+</div><div id="ts-6"><i-slide src="slides/max-grosse-openexr.pdf#6" class="slide">Slide 6 of 11</i-slide>
 <div>
   <p id="tp-17">Given the extended range nature of the input imagery, we need a way to control things like gamma and exposure - also in case we want to drill into details at particular dark or bright regions.</p>
   <p id="tp-18">Deep learning is commonly driven by a loss function, which in our case is often a combination of image difference metrics. Visualizing this error is of great importance in helping develop the desired model.</p>
@@ -155,12 +155,12 @@
   <p id="tp-21">The basic viewer application then was written in mostly TypeScript with React.js, optionally handling the UI aspects and helping integrating the viewer into other React.js projects.</p>
 </div>
 
-<i-slide id="ts-7" src="slides/max-grosse-openexr.pdf#7" class="slide">Slide 7 of 11</i-slide>
+</div><div id="ts-7"><i-slide src="slides/max-grosse-openexr.pdf#7" class="slide">Slide 7 of 11</i-slide>
 <div>
   <p id="tp-22">The viewer itself is configured by providing a JSON file that describes which EXR images to load, the remote paths to find them, which images to group, the images that should be used to generate error maps (i.e. image differences).</p>
 </div>
 
-<i-slide id="ts-8" src="slides/max-grosse-openexr.pdf#8" class="slide">Slide 8 of 11</i-slide>
+</div><div id="ts-8"><i-slide src="slides/max-grosse-openexr.pdf#8" class="slide">Slide 8 of 11</i-slide>
 <div>
   <p id="tp-23">Here's a quick demonstration of JERI in action.</p>
   <p id="tp-24">The examples are right from the jeri website and only intended to illustrate the idea, note that these are not production assets and the results are far worse than our production results and serve only as illustration.</p>
@@ -175,24 +175,24 @@
   <p id="tp-33">We can repeat that for a different set of images, if we want to see how it performed on different input.</p>
 </div>
 
-<i-slide id="ts-9" src="slides/max-grosse-openexr.pdf#9" class="slide">Slide 9 of 11</i-slide>
+</div><div id="ts-9"><i-slide src="slides/max-grosse-openexr.pdf#9" class="slide">Slide 9 of 11</i-slide>
 <div>
   <p id="tp-34">We have integrated it into our ML monitoring system that is running on our cluster.</p>
   <p id="tp-35">Here you can see a more typical use case where you can see the recorded training runs on the left, and a lot of different sets of images and metrics displayed in the main plane, allowing to quickly drill down and monitor your progress and results.</p>
   <p id="tp-36">For example we can look at different validation images, different channel sets and at different points in time during the training. At any time we could also fire up a Tensorboard to look at other recorded metrics or write a report on our results, so a web-based solution like JERI really fits in nicely.</p>
 </div>
 
-<i-slide id="ts-10" src="slides/max-grosse-openexr.pdf#10" class="slide">Slide 10 of 11</i-slide>
+</div><div id="ts-10"><i-slide src="slides/max-grosse-openexr.pdf#10" class="slide">Slide 10 of 11</i-slide>
 <div>
   <p id="tp-37">We have released JERI as Open Source Software, you can try it out yourself and integrate it into your own solutions, see jeri.io for details.</p>
 </div>
 
-<i-slide id="ts-11" src="slides/max-grosse-openexr.pdf#11" class="slide">Slide 11 of 11</i-slide>
+</div><div id="ts-11"><i-slide src="slides/max-grosse-openexr.pdf#11" class="slide">Slide 11 of 11</i-slide>
 <div>
   <p id="tp-38">That's all from my side. Thanks you for your attention.</p>
 </div>
 
-
+</div>
           </div>
         </div>
       </section>
