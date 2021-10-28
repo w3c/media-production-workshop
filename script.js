@@ -27,9 +27,11 @@
             }
             var a = createAnchorFromHeading(el);
             el.classList.add("has-ref");
-            el.addEventListener("click", function () {
-                a.click();
-            });
+            if (el.nodeName !== 'P') {
+                el.addEventListener("click", function () {
+                    a.click();
+                });
+            }
             el.insertBefore(a, el.firstChild);
         });
 
