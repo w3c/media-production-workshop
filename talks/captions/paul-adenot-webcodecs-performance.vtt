@@ -530,11 +530,11 @@ for now does a lot of allocations and deallocation,
 
 133
 05:21.220 --> 05:23.123
-trashing CPU caches unnecessarily.
+thrashing CPU caches unnecessarily.
 
 slide-8
 05:24.210 --> 05:26.670
-Here are two simple design proposal to fix the two last
+Here are two simple design proposals to fix the two last
 
 135
 05:26.670 --> 05:28.200
@@ -731,4 +731,3 @@ future.
 183
 07:21.340 --> 07:22.173
 Thanks.
-
