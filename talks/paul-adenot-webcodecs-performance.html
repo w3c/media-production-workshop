@@ -159,12 +159,12 @@
   <p>Now, let's see a number of copies that exist today in WebCodecs</p>
   <p>First, the compressed input of a decoder is currently copied. This is not that problematic because the input is a lot smaller than the output. It could be optimized.</p>
   <p>More importantly, there is currently no way to become the owner of the memory behind a VideoFrame or an AudioData, when it's regular memory, non GPU.</p>
-  <p>Finally, the API for now does a lot of allocations and deallocation, trashing CPU caches unnecessarily.</p>
+  <p>Finally, the API for now does a lot of allocations and deallocation, thrashing CPU caches unnecessarily.</p>
 </div>
 
 <i-slide src="slides/paul-adenot-webcodecs-performance.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
-  <p>Here are two simple design proposal to fix the two last points in this list.</p>
+  <p>Here are two simple design proposals to fix the two last points in this list.</p>
 </div>
 
 <i-slide src="slides/paul-adenot-webcodecs-performance.pdf#9" class="slide">Slide 9 of 12</i-slide>

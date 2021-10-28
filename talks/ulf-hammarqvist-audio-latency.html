@@ -70,7 +70,7 @@
         <p class="buttons">
           <!-- previousStart -->
           <button form="form" type="submit" class="picto im-angle-left" formaction="peter-salomonsen-webassembly-music.html">
-            Previous: WebAssembly Music - latency/stability across platforms
+            Previous: WebAssembly Music - latency/stability across platforms 
           </button>
           <!-- previousEnd -->
           <a href="../talks.html" class="picto im-data">All talks</a>
@@ -141,7 +141,7 @@
 <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
   <p>But as I mentioned that we focusing here today on aspects of audio latency, and it is essential to many of our use cases of Soundtrap.</p>
-  <p>Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from a mic, process stuff in web audio and play back through your speaker as you go.</p>
+  <p>Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from a mic, process stuff in Web Audio and play back through your speaker as you go.</p>
   <p>A good example of that is a guitarist that uses the DAW as a substitute really for the hardware, as pedals and amplifiers.</p>
   <p>And they play along with what they hear. I mean, it matters what the output, resulting output is, like, how hard should I string to get this kind of tone in my riff, or whatever.</p>
   <p>And another example is a keyboardist playing using the DAW as a software instrument essentially. And if there's a substantial lag from pressing a key to hearing it the note you get thrown off. Additionally you play along over an existing track or set of tracks.</p>
@@ -149,7 +149,7 @@
 
 <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
-  <p>Well, what is the current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. And then it's, in some cases it's not sufficiently low, we think, and we'd like to get this much lower to be able to compete with the native offerings. Really.</p>
+  <p>Well, what is the current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. In some cases it's not sufficiently low, we think and we'd like to get this much lower to be able to compete with the native offerings. Really.</p>
   <p>I mean, 10ms is a good target, that really is decent.</p>
 </div>
 
@@ -170,7 +170,7 @@
 <div>
   <p>The point is that both the input and output paths have many pieces or steps involved. And these things look differently on different audio stacks and/or operating systems and what have you.</p>
   <p>The latencies introduced by these steps are also vastly different, and not all of them, allow knowing this, so naturally strive for picking technical solutions that allow this. To allow knowing this, sorry, I should say.</p>
-  <p>It's not just the path towards the browser or from the browser that may have hidden latencies. It could also be within the browser itself if you're not careful. And here we try to illustrate this with, well, bear with us. We pretend that the media stream track setting latency property is a good indication of the input path latency. Might not be, but we can return to that.</p>
+  <p>It's not just the path towards the browser or from the browser that may have hidden latencies. It could also be within the browser itself if you're not careful. And here we try to illustrate this with, well, bear with us. We pretend that the MediaStreamTrack setting latency property is a good indication of the input path latency. Might not be, but we can return to that.</p>
   <p>Anyway, so we operate in the Web Audio world. So that means that we take that number from the setting, and then we can see it probably isn't the same once you sort of stepped into the Web Audio world, because there's a node there as well, which may or may not do any additional buffering and that additional buffering or latency is not exposed anywhere.</p>
   <p>But it ought to be, otherwise we don't have good accurate numbers.</p>
 </div>
@@ -193,7 +193,7 @@
 
 <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
-  <p>To conclude this talk, first off the input and output latency are maybe spec-ed. It's not clear that they are the full paths that we intend to hear.</p>
+  <p>To conclude this talk, first off the input and output latency are maybe spec-ed. It's not clear that they are the full paths that we intend here.</p>
   <p>And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
   <p>And then, there seems to be an opportunity to spice up the media stream recorder, to get accurate timing information by some callback or something.</p>
   <p>Finally, the WebCodecs API is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
