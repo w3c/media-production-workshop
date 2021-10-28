@@ -114,64 +114,64 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/sacha-guddoy-webrtc.pdf#1" class="slide">Slide 1 of 8</i-slide>
+            <i-slide id="ts-1" src="slides/sacha-guddoy-webrtc.pdf#1" class="slide">Slide 1 of 8</i-slide>
 <div>
-  <p>Hello, there. My name is Sacha Guddoy and I'm the lead Front End Engineer at Grabyo.</p>
+  <p id="tp-1">Hello, there. My name is Sacha Guddoy and I'm the lead Front End Engineer at Grabyo.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#2" class="slide">Slide 2 of 8</i-slide>
+<i-slide id="ts-2" src="slides/sacha-guddoy-webrtc.pdf#2" class="slide">Slide 2 of 8</i-slide>
 <div>
-  <p>Grabyo is a SaaS platform which delivers tools for live broadcast production to commercial broadcasters.</p>
-  <p>Some of the offerings include live broadcast production, video editing, clipping from live streams, and publishing to various endpoints.</p>
+  <p id="tp-2">Grabyo is a SaaS platform which delivers tools for live broadcast production to commercial broadcasters.</p>
+  <p id="tp-3">Some of the offerings include live broadcast production, video editing, clipping from live streams, and publishing to various endpoints.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#3" class="slide">Slide 3 of 8</i-slide>
+<i-slide id="ts-3" src="slides/sacha-guddoy-webrtc.pdf#3" class="slide">Slide 3 of 8</i-slide>
 <div>
-  <p>At Grabyo, we use WebRTC in our live production offering.</p>
-  <p>The way that this works is the user will see, in their web browser, they'll have multiple live streams coming in and they will be able to monitor these live streams and choose which ones are being output to their broadcast endpoint.</p>
-  <p>We also have multiple sidecar applications and multi-window workflows. For example, popping out a player.</p>
+  <p id="tp-4">At Grabyo, we use WebRTC in our live production offering.</p>
+  <p id="tp-5">The way that this works is the user will see, in their web browser, they'll have multiple live streams coming in and they will be able to monitor these live streams and choose which ones are being output to their broadcast endpoint.</p>
+  <p id="tp-6">We also have multiple sidecar applications and multi-window workflows. For example, popping out a player.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#4" class="slide">Slide 4 of 8</i-slide>
+<i-slide id="ts-4" src="slides/sacha-guddoy-webrtc.pdf#4" class="slide">Slide 4 of 8</i-slide>
 <div>
-  <p>One of the challenges that we face is the synchronization of streams.</p>
-  <p>What we'd like to do is to have multiple live feeds from different cameras coming in and to be able to switch between them. But if our live feeds aren't perfectly in sync with each other, if those two cameras aren't perfectly in sync, it's going to be very noticeable when you switch between them that there's some delay between them and it's jarring for the viewer.</p>
-  <p>When you have multiple WebRTC streams on your page, keeping those all in sync is not necessarily the most straightforward thing. The browser will do its best, but they aren't tied together.</p>
-  <p>So, for example, if you are cutting between different cameras, you want those camera feeds to be showing exactly at the same time. If you're doing multi-party chat, you don't want latency.</p>
+  <p id="tp-7">One of the challenges that we face is the synchronization of streams.</p>
+  <p id="tp-8">What we'd like to do is to have multiple live feeds from different cameras coming in and to be able to switch between them. But if our live feeds aren't perfectly in sync with each other, if those two cameras aren't perfectly in sync, it's going to be very noticeable when you switch between them that there's some delay between them and it's jarring for the viewer.</p>
+  <p id="tp-9">When you have multiple WebRTC streams on your page, keeping those all in sync is not necessarily the most straightforward thing. The browser will do its best, but they aren't tied together.</p>
+  <p id="tp-10">So, for example, if you are cutting between different cameras, you want those camera feeds to be showing exactly at the same time. If you're doing multi-party chat, you don't want latency.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#5" class="slide">Slide 5 of 8</i-slide>
+<i-slide id="ts-5" src="slides/sacha-guddoy-webrtc.pdf#5" class="slide">Slide 5 of 8</i-slide>
 <div>
-  <p>The synchronization aspect is pretty difficult. Network conditions can be unpredictable and you don't really have a way of correcting for that or to reconcile with synchronization of streams on the client side.</p>
-  <p>If there were embedded time stamps on the streams, then you potentially could do that. Using something lower level, such as web transport, may allow you to do that and may even be a more performant technology for this use case than WebRTC anyway.</p>
+  <p id="tp-11">The synchronization aspect is pretty difficult. Network conditions can be unpredictable and you don't really have a way of correcting for that or to reconcile with synchronization of streams on the client side.</p>
+  <p id="tp-12">If there were embedded time stamps on the streams, then you potentially could do that. Using something lower level, such as web transport, may allow you to do that and may even be a more performant technology for this use case than WebRTC anyway.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#6" class="slide">Slide 6 of 8</i-slide>
+<i-slide id="ts-6" src="slides/sacha-guddoy-webrtc.pdf#6" class="slide">Slide 6 of 8</i-slide>
 <div>
-  <p>One pattern that we've been using recently is splitting workflows into different browser contexts. Being able to create a pop out window which allows you to monitor a specific video in one window and be able to monitor everything else in another window.</p>
-  <p>Or to be able to edit your audio in one window and monitor your videos in another window. In that last scenario, you're going to be having two instances in your browser of that same WebRTC connection. If I wanted to have the video of my live stream in one window because that's my video control suite and I want to have the same live stream in another window because that's my audio control suite, then I have to have two WebRTC connections. That's twice the performance overhead, twice the bandwidth, et cetera.</p>
-  <p>We think about the way that Shared WebWorkers work, the shared workflow space, that allows multiple contexts to share whatever is happening in that work area. If we could do the exact same thing with WebRTC, that would significantly reduce our performance overhead.</p>
-  <p>And these kinds of workflows are really powerful for professional desktop applications. If you are a video editor using some kind of NLW, you probably want as much screen space as you want for your timeline, your monitors, your asset bins, et cetera. Being able to kind of split different parts of our interfaces out into different windows so the user can position them as they see fit is really, really helpful.</p>
+  <p id="tp-13">One pattern that we've been using recently is splitting workflows into different browser contexts. Being able to create a pop out window which allows you to monitor a specific video in one window and be able to monitor everything else in another window.</p>
+  <p id="tp-14">Or to be able to edit your audio in one window and monitor your videos in another window. In that last scenario, you're going to be having two instances in your browser of that same WebRTC connection. If I wanted to have the video of my live stream in one window because that's my video control suite and I want to have the same live stream in another window because that's my audio control suite, then I have to have two WebRTC connections. That's twice the performance overhead, twice the bandwidth, et cetera.</p>
+  <p id="tp-15">We think about the way that Shared WebWorkers work, the shared workflow space, that allows multiple contexts to share whatever is happening in that work area. If we could do the exact same thing with WebRTC, that would significantly reduce our performance overhead.</p>
+  <p id="tp-16">And these kinds of workflows are really powerful for professional desktop applications. If you are a video editor using some kind of NLW, you probably want as much screen space as you want for your timeline, your monitors, your asset bins, et cetera. Being able to kind of split different parts of our interfaces out into different windows so the user can position them as they see fit is really, really helpful.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#7" class="slide">Slide 7 of 8</i-slide>
+<i-slide id="ts-7" src="slides/sacha-guddoy-webrtc.pdf#7" class="slide">Slide 7 of 8</i-slide>
 <div>
-  <p>What are the advantages of doing this?</p>
-  <p>There's obviously less resource consumption because you only have that one connection.</p>
-  <p>There's inherent synchronization between the contexts because the data is coming from that same connection. Now this is probably possible using shared workers and web transport. But browser support for that is not particularly great.</p>
-  <p>Accuracy is also important in this technology. More accurate time stamps might help us synchronize those streams together. And also it helps synchronize other things.</p>
-  <p>For example, synchronize an overlay in the DOM. Or a notification in the DOM.</p>
+  <p id="tp-17">What are the advantages of doing this?</p>
+  <p id="tp-18">There's obviously less resource consumption because you only have that one connection.</p>
+  <p id="tp-19">There's inherent synchronization between the contexts because the data is coming from that same connection. Now this is probably possible using shared workers and web transport. But browser support for that is not particularly great.</p>
+  <p id="tp-20">Accuracy is also important in this technology. More accurate time stamps might help us synchronize those streams together. And also it helps synchronize other things.</p>
+  <p id="tp-21">For example, synchronize an overlay in the DOM. Or a notification in the DOM.</p>
 </div>
 
-<i-slide src="slides/sacha-guddoy-webrtc.pdf#8" class="slide">Slide 8 of 8</i-slide>
+<i-slide id="ts-8" src="slides/sacha-guddoy-webrtc.pdf#8" class="slide">Slide 8 of 8</i-slide>
 <div>
-  <p>Capability to encode and decode data from the web RTC connection would also be really useful.</p>
-  <p>Right now, the API surface of the WebRTC connection is pretty minimal and it doesn't expose much useful information to us. Being able to put our own code in that pipeline would allow us to do all this interesting stuff.</p>
-  <p>Say, for example, presenting a particular frame when we want to present it. Say, for example, synchronizing audio and video from different browser windows.</p>
-  <p>We could know exactly which frame is being presented before they even get rendered to the DOM, so we can prepare our DOM elements which would synchronize to that. We could potentially send over proprietary error correction data to smooth over any link failures with picture quality as a priority.</p>
-  <p>And going back the other way, you could do stuff like funny hats. You could do chroma keying. You could do machine learning analysis and do stuff like background blur or embedding meta data.</p>
-  <p>A lot of this can be solved using the MediaStreamTrack Insertable Streams feature. That is still in a draft specification and I'd really love to see more browser support for that.</p>
-  <p>Thank you for watching. I hope you enjoyed hearing about our use cases and I'm looking forward to hearing any questions and feedback. Thanks, bye.</p>
+  <p id="tp-22">Capability to encode and decode data from the web RTC connection would also be really useful.</p>
+  <p id="tp-23">Right now, the API surface of the WebRTC connection is pretty minimal and it doesn't expose much useful information to us. Being able to put our own code in that pipeline would allow us to do all this interesting stuff.</p>
+  <p id="tp-24">Say, for example, presenting a particular frame when we want to present it. Say, for example, synchronizing audio and video from different browser windows.</p>
+  <p id="tp-25">We could know exactly which frame is being presented before they even get rendered to the DOM, so we can prepare our DOM elements which would synchronize to that. We could potentially send over proprietary error correction data to smooth over any link failures with picture quality as a priority.</p>
+  <p id="tp-26">And going back the other way, you could do stuff like funny hats. You could do chroma keying. You could do machine learning analysis and do stuff like background blur or embedding meta data.</p>
+  <p id="tp-27">A lot of this can be solved using the MediaStreamTrack Insertable Streams feature. That is still in a draft specification and I'd really love to see more browser support for that.</p>
+  <p id="tp-28">Thank you for watching. I hope you enjoyed hearing about our use cases and I'm looking forward to hearing any questions and feedback. Thanks, bye.</p>
 </div>
 
 

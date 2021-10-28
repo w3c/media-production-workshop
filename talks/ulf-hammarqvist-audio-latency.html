@@ -118,91 +118,91 @@
             allowfullscreen="" width="640" height="360" frameborder="0"></iframe>
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
-            <i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#1" class="slide">Slide 1 of 12</i-slide>
+            <i-slide id="ts-1" src="slides/ulf-hammarqvist-audio-latency.pdf#1" class="slide">Slide 1 of 12</i-slide>
 <div>
-  <p>Greetings from Sweden. This is Ulf over at Soundtrap from Spotify and I'm going to give a talk around some audio latency aspects of the web standards and the browser states.</p>
+  <p id="tp-1">Greetings from Sweden. This is Ulf over at Soundtrap from Spotify and I'm going to give a talk around some audio latency aspects of the web standards and the browser states.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#2" class="slide">Slide 2 of 12</i-slide>
+<i-slide id="ts-2" src="slides/ulf-hammarqvist-audio-latency.pdf#2" class="slide">Slide 2 of 12</i-slide>
 <div>
-  <p>So let's go to the slide number two directly and just watch a small clip showcasing using Soundtrap.</p>
-  <p>(gentle music)</p>
-  <p>(enthusiastic music)</p>
-  <p>Okay. So, what you saw and heard was me messing about with the product itself, playing some notes, and playback of a project.</p>
+  <p id="tp-2">So let's go to the slide number two directly and just watch a small clip showcasing using Soundtrap.</p>
+  <p id="tp-3">(gentle music)</p>
+  <p id="tp-4">(enthusiastic music)</p>
+  <p id="tp-5">Okay. So, what you saw and heard was me messing about with the product itself, playing some notes, and playback of a project.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#3" class="slide">Slide 3 of 12</i-slide>
+<i-slide id="ts-3" src="slides/ulf-hammarqvist-audio-latency.pdf#3" class="slide">Slide 3 of 12</i-slide>
 <div>
-  <p>What is Soundtrap then?</p>
-  <p>Well, Soundtrap is an online collaborative DAW and DAW is, as you may know, a Digital Audio Workstation.</p>
-  <p>And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar amp simulation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web media, MediaRecorder, MediaStream and so on and so forth</p>
+  <p id="tp-6">What is Soundtrap then?</p>
+  <p id="tp-7">Well, Soundtrap is an online collaborative DAW and DAW is, as you may know, a Digital Audio Workstation.</p>
+  <p id="tp-8">And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar amp simulation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web media, MediaRecorder, MediaStream and so on and so forth</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4" class="slide">Slide 4 of 12</i-slide>
+<i-slide id="ts-4" src="slides/ulf-hammarqvist-audio-latency.pdf#4" class="slide">Slide 4 of 12</i-slide>
 <div>
-  <p>But as I mentioned that we focusing here today on aspects of audio latency, and it is essential to many of our use cases of Soundtrap.</p>
-  <p>Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from a mic, process stuff in Web Audio and play back through your speaker as you go.</p>
-  <p>A good example of that is a guitarist that uses the DAW as a substitute really for the hardware, as pedals and amplifiers.</p>
-  <p>And they play along with what they hear. I mean, it matters what the output, resulting output is, like, how hard should I string to get this kind of tone in my riff, or whatever.</p>
-  <p>And another example is a keyboardist playing using the DAW as a software instrument essentially. And if there's a substantial lag from pressing a key to hearing it the note you get thrown off. Additionally you play along over an existing track or set of tracks.</p>
+  <p id="tp-9">But as I mentioned that we focusing here today on aspects of audio latency, and it is essential to many of our use cases of Soundtrap.</p>
+  <p id="tp-10">Specifically here, we want to mention the case of monitoring, and that is immediate feedback from what you record. So you would record from a mic, process stuff in Web Audio and play back through your speaker as you go.</p>
+  <p id="tp-11">A good example of that is a guitarist that uses the DAW as a substitute really for the hardware, as pedals and amplifiers.</p>
+  <p id="tp-12">And they play along with what they hear. I mean, it matters what the output, resulting output is, like, how hard should I string to get this kind of tone in my riff, or whatever.</p>
+  <p id="tp-13">And another example is a keyboardist playing using the DAW as a software instrument essentially. And if there's a substantial lag from pressing a key to hearing it the note you get thrown off. Additionally you play along over an existing track or set of tracks.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#5" class="slide">Slide 5 of 12</i-slide>
+<i-slide id="ts-5" src="slides/ulf-hammarqvist-audio-latency.pdf#5" class="slide">Slide 5 of 12</i-slide>
 <div>
-  <p>Well, what is the current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. In some cases it's not sufficiently low, we think and we'd like to get this much lower to be able to compete with the native offerings. Really.</p>
-  <p>I mean, 10ms is a good target, that really is decent.</p>
+  <p id="tp-14">Well, what is the current state? I mean, we can see something like 30ms best case round-trip latency, which is passable for monitoring purposes, but not great. In some cases it's not sufficiently low, we think and we'd like to get this much lower to be able to compete with the native offerings. Really.</p>
+  <p id="tp-15">I mean, 10ms is a good target, that really is decent.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#6" class="slide">Slide 6 of 12</i-slide>
+<i-slide id="ts-6" src="slides/ulf-hammarqvist-audio-latency.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
-  <p>The second problem that we have in our use case that is maybe not immediately clear obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
-  <p>In order to achieve that you need two things really, you need to know what is the round-trip latency. You need to know that actually, the actual latency. And you need to know when the data arrived towards your storage or stream, or what have you. To be able to when you play them back later, the data that you aggregated, the relative alignment of what you heard and what you produced should be retained.</p>
+  <p id="tp-16">The second problem that we have in our use case that is maybe not immediately clear obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
+  <p id="tp-17">In order to achieve that you need two things really, you need to know what is the round-trip latency. You need to know that actually, the actual latency. And you need to know when the data arrived towards your storage or stream, or what have you. To be able to when you play them back later, the data that you aggregated, the relative alignment of what you heard and what you produced should be retained.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#7" class="slide">Slide 7 of 12</i-slide>
+<i-slide id="ts-7" src="slides/ulf-hammarqvist-audio-latency.pdf#7" class="slide">Slide 7 of 12</i-slide>
 <div>
-  <p>And what do we mean by roundtrip latency? Well, that is several things combined. It's the input latency, it's the processing latency and it's the output latency. And that's not very surprising, I guess. But we'll get back to why it gets complicated.</p>
-  <p>Then what if we have the wrong information or really no information, we can't do a good job, we would have misaligned playback, and obviously we do something, but that involves educated guesswork and that's not ideal. We'd like to explicitly know what the latencies are that are involved here.</p>
-  <p>I mean, if not doing anything, the user would have to manually align, which is far from ideal.</p>
+  <p id="tp-18">And what do we mean by roundtrip latency? Well, that is several things combined. It's the input latency, it's the processing latency and it's the output latency. And that's not very surprising, I guess. But we'll get back to why it gets complicated.</p>
+  <p id="tp-19">Then what if we have the wrong information or really no information, we can't do a good job, we would have misaligned playback, and obviously we do something, but that involves educated guesswork and that's not ideal. We'd like to explicitly know what the latencies are that are involved here.</p>
+  <p id="tp-20">I mean, if not doing anything, the user would have to manually align, which is far from ideal.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#8" class="slide">Slide 8 of 12</i-slide>
+<i-slide id="ts-8" src="slides/ulf-hammarqvist-audio-latency.pdf#8" class="slide">Slide 8 of 12</i-slide>
 <div>
-  <p>The point is that both the input and output paths have many pieces or steps involved. And these things look differently on different audio stacks and/or operating systems and what have you.</p>
-  <p>The latencies introduced by these steps are also vastly different, and not all of them, allow knowing this, so naturally strive for picking technical solutions that allow this. To allow knowing this, sorry, I should say.</p>
-  <p>It's not just the path towards the browser or from the browser that may have hidden latencies. It could also be within the browser itself if you're not careful. And here we try to illustrate this with, well, bear with us. We pretend that the MediaStreamTrack setting latency property is a good indication of the input path latency. Might not be, but we can return to that.</p>
-  <p>Anyway, so we operate in the Web Audio world. So that means that we take that number from the setting, and then we can see it probably isn't the same once you sort of stepped into the Web Audio world, because there's a node there as well, which may or may not do any additional buffering and that additional buffering or latency is not exposed anywhere.</p>
-  <p>But it ought to be, otherwise we don't have good accurate numbers.</p>
+  <p id="tp-21">The point is that both the input and output paths have many pieces or steps involved. And these things look differently on different audio stacks and/or operating systems and what have you.</p>
+  <p id="tp-22">The latencies introduced by these steps are also vastly different, and not all of them, allow knowing this, so naturally strive for picking technical solutions that allow this. To allow knowing this, sorry, I should say.</p>
+  <p id="tp-23">It's not just the path towards the browser or from the browser that may have hidden latencies. It could also be within the browser itself if you're not careful. And here we try to illustrate this with, well, bear with us. We pretend that the MediaStreamTrack setting latency property is a good indication of the input path latency. Might not be, but we can return to that.</p>
+  <p id="tp-24">Anyway, so we operate in the Web Audio world. So that means that we take that number from the setting, and then we can see it probably isn't the same once you sort of stepped into the Web Audio world, because there's a node there as well, which may or may not do any additional buffering and that additional buffering or latency is not exposed anywhere.</p>
+  <p id="tp-25">But it ought to be, otherwise we don't have good accurate numbers.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#9" class="slide">Slide 9 of 12</i-slide>
+<i-slide id="ts-9" src="slides/ulf-hammarqvist-audio-latency.pdf#9" class="slide">Slide 9 of 12</i-slide>
 <div>
-  <p>For completeness, I'll just talk a little bit about the output and the processing steps.</p>
-  <p>And it has a certain quantum size or block size, or which is separate quantum sum. That latency also needs to be known and tracked somewhere.</p>
-  <p>And likewise for the input, the output latencies also need to be exposed somehow somewhere.</p>
-  <p>If you take a closer look at the Web Audio context property outputLatency, it does seem to indicate that is the block size as well as the output path combined, but it's not immediately clear.</p>
+  <p id="tp-26">For completeness, I'll just talk a little bit about the output and the processing steps.</p>
+  <p id="tp-27">And it has a certain quantum size or block size, or which is separate quantum sum. That latency also needs to be known and tracked somewhere.</p>
+  <p id="tp-28">And likewise for the input, the output latencies also need to be exposed somehow somewhere.</p>
+  <p id="tp-29">If you take a closer look at the Web Audio context property outputLatency, it does seem to indicate that is the block size as well as the output path combined, but it's not immediately clear.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#10" class="slide">Slide 10 of 12</i-slide>
+<i-slide id="ts-10" src="slides/ulf-hammarqvist-audio-latency.pdf#10" class="slide">Slide 10 of 12</i-slide>
 <div>
-  <p>The other aspect to get compensation done correctly is knowing accurately when your data arrived, as I mentioned earlier. It can be done in various ways, but not really. There's no brilliant way to do it.</p>
-  <p>Traditionally, we've been using the MediaRecorder and it's nice in many ways, because that allows you to sort of encode on the fly and things like that.</p>
-  <p>But there's no, as far as we can see spec-wise or guarantees that when you start it, it's going to start immediately. And even if it were you're still going to be like a quantum or two off your sample, but then it started, you get the idea.</p>
-  <p>And I mean, a second option could be like, you do something custom based on a Worklet. You know everything then, but then you have to do everything as well. And even if using something like WebCodecs, it seems that you still have to packetize into like a container format, which is, I mean, it can be done, but it's not ideal.</p>
+  <p id="tp-30">The other aspect to get compensation done correctly is knowing accurately when your data arrived, as I mentioned earlier. It can be done in various ways, but not really. There's no brilliant way to do it.</p>
+  <p id="tp-31">Traditionally, we've been using the MediaRecorder and it's nice in many ways, because that allows you to sort of encode on the fly and things like that.</p>
+  <p id="tp-32">But there's no, as far as we can see spec-wise or guarantees that when you start it, it's going to start immediately. And even if it were you're still going to be like a quantum or two off your sample, but then it started, you get the idea.</p>
+  <p id="tp-33">And I mean, a second option could be like, you do something custom based on a Worklet. You know everything then, but then you have to do everything as well. And even if using something like WebCodecs, it seems that you still have to packetize into like a container format, which is, I mean, it can be done, but it's not ideal.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#11" class="slide">Slide 11 of 12</i-slide>
+<i-slide id="ts-11" src="slides/ulf-hammarqvist-audio-latency.pdf#11" class="slide">Slide 11 of 12</i-slide>
 <div>
-  <p>To conclude this talk, first off the input and output latency are maybe spec-ed. It's not clear that they are the full paths that we intend here.</p>
-  <p>And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
-  <p>And then, there seems to be an opportunity to spice up the media stream recorder, to get accurate timing information by some callback or something.</p>
-  <p>Finally, the WebCodecs API is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
-  <p>And finally, of course, we just want to encourage all the implementers to get the input and output latencies low obviously, and pick drivers that allow exposing the information because we need it to do a good job.</p>
+  <p id="tp-34">To conclude this talk, first off the input and output latency are maybe spec-ed. It's not clear that they are the full paths that we intend here.</p>
+  <p id="tp-35">And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
+  <p id="tp-36">And then, there seems to be an opportunity to spice up the media stream recorder, to get accurate timing information by some callback or something.</p>
+  <p id="tp-37">Finally, the WebCodecs API is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
+  <p id="tp-38">And finally, of course, we just want to encourage all the implementers to get the input and output latencies low obviously, and pick drivers that allow exposing the information because we need it to do a good job.</p>
 </div>
 
-<i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#12" class="slide">Slide 12 of 12</i-slide>
+<i-slide id="ts-12" src="slides/ulf-hammarqvist-audio-latency.pdf#12" class="slide">Slide 12 of 12</i-slide>
 <div>
-  <p>Thank you. That's all for us. And see you at the discussions.</p>
+  <p id="tp-39">Thank you. That's all for us. And see you at the discussions.</p>
 </div>
 
 
