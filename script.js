@@ -59,6 +59,9 @@
                     el.parentNode.open = true;
                 }
             }
+            window.setTimeout(() => {
+                window.location.hash = window.location.hash;
+            }, 50);
         }
 
         const toggle = document.querySelector('[data-action=toggle]');
