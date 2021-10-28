@@ -12,11 +12,11 @@ I am He Zhi
 00:07.700 --> 00:12.700
 the web-based media production team leader from China Mobile Migu Company.
 
-4
+slide-2
 00:12.700 --> 00:22.700
 Today, I would like to share the application of Migu web editing technology in live and post production for sports broadcasting.
 
-slide-2
+slide-3
 00:23.700 --> 00:26.700
 During the UEFA Euro2020
 
@@ -52,7 +52,7 @@ These tools are implemented based on HTML5 and ffmpeg technology.
 00:55.700 --> 00:59.700
 The below tables list used protocols and technologies.
 
-slide-3
+slide-4
 01:01.700 --> 01:07.700
 OK, let us look at the live broadcast editing tool. The favorite function is to strip and publish.
 
@@ -120,7 +120,7 @@ downloading and save network bandwidth,
 02:27.700 --> 02:35.700
 so that we can open more windows and preview the contents in different periods at the same time.
 
-slide-4
+slide-5
 02:36.700 --> 02:38.700
 OK, let us turn to the post editing.
 
@@ -196,7 +196,7 @@ The easy way is webassembly + ffmpeg.
 04:22.700 --> 04:27.700
 We expect that webcodecs could support more such kinds of functions.
 
-slide-5
+slide-6
 04:29.700 --> 04:32.700
 OK, in order to meet the different needs of editing,
 
@@ -224,7 +224,7 @@ it makes most of basic capabilities reusable,
 04:57.700 --> 05:03.700
 and it could easily implement incremental functions.
 
-slide-6
+slide-7
 05:03.700 --> 05:09.700
 On the whole, we choose W/S architecture of the light front and heavy back,
 
@@ -252,7 +252,7 @@ Background services can provide API for various terminals on cloud.
 05:34.700 --> 05:43.700
 OK, we could achieve quickly business integration, strong reusability, and easy expansion.
 
-slide-7
+slide-8
 05:43.700 --> 05:46.700
 In order to produce more content with low cost,
 
@@ -268,7 +268,7 @@ automatically add subtitles, automatically remove watermark,
 05:56.700 --> 06:03.700
 automatically turn horizontal to vertical screen, automatically cut video, and so on.
 
-slide-8
+slide-9
 06:04.700 --> 06:12.700
 Finally, let's look back and see why we choose web editing technology for online operation and production platform.
 
@@ -316,7 +316,7 @@ Online operation and production platform could be used to produce and operate la
 07:12.700 --> 07:20.700
 videos, and movies and live broadcasts, and plays a core role in the content production system.
 
-slide-9
+slide-10
 07:21.700 --> 07:23.700
 We are full of expectations.
 
@@ -340,7 +340,7 @@ support RMVB \ AVI \ MKV and other common network video format,
 07:49.700 --> 07:59.700
 And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8K video in the future
 
-slide-10
+slide-11
 08:00.700 --> 08:01.700
-Thank you, thank you very much
+Thank you, thank you very much.
 
