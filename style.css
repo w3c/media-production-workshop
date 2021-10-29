@@ -1285,3 +1285,18 @@ body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
 .sync.noslides #buttonbar span:nth-child(2) {
   display: none;
 }
+
+.related {
+  background-color: #C2CDCF;
+  border-radius: .6em;
+  padding: 1em;
+  width: 40.889em;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+}
+
+.sync .related {
+  display: none;
+}

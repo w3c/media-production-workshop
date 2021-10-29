@@ -56,7 +56,7 @@ section:nth-of-type(2n+2) button:focus {outline-color: white}
 
 /* On small screens, the slides are scaled down. */
 body:not(.sync) #video {width: 40.889em; height: auto;
-  display: block; margin: 0 0 1rem 0; box-shadow: none}
+  display: block; margin: 0 0 1.5rem 0; box-shadow: none}
 body:not(.sync) video#video,
 body:not(.sync) iframe#video {min-height: 23em}
 #video {font-size: calc((100vw - 16px - 2rem) / 40.889)}
@@ -68,8 +68,6 @@ body:not(.sync) iframe#video {min-height: 23em}
 @media (min-aspect-ratio: 12/9) { .slide {font-size: 2.03vw} }
 @media (min-aspect-ratio: 18/9) { .slide {font-size: 3.3vh} }
 */
-
-body:not(.sync) #slides {margin-top: 2.4em}
 
 /* Buttons are very dark blue in kiosk (.sync) mode. */
 .sync .button, .sync button {background: hsla(204,80%,10%,0.6) padding-box;
@@ -117,7 +115,7 @@ body:not(.sync) #slides {margin-top: 2.4em}
 /* In synchronized mode, show only the active slide. */
 .sync .slide {position: absolute; top: 0; left: 0; visibility: hidden}
 .sync .slide.active {position: relative; visibility: visible}
-.sync #slides > *:not(.slide) {display: none}
+.sync #slides > div > *:not(.slide) {display: none}
 
 /* ... and only the active elements of incremental display. */
 .sync .next {visibility: hidden}
