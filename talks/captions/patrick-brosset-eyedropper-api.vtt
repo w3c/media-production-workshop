@@ -46,7 +46,7 @@ to go and grab the color from a different object
 
 12
 00:27.550 --> 00:31.490
-so that you don't have to, like remember what color it was,
+so that you don't have to remember what color it was,
 
 13
 00:31.490 --> 00:34.800
@@ -69,28 +69,20 @@ in the styles panel of dev tools,
 usually there's an EyeDropper icon
 
 18
-00:44.300 --> 00:46.180
-that allows you to go and just click,
-
-19
-00:46.180 --> 00:47.760
-you know, part of the webpage
+00:44.300 --> 00:47.760
+that allows you to go and just click part of the webpage
 
 20
 00:47.760 --> 00:49.630
 so that you can grab that color right away
 
 21
-00:49.630 --> 00:51.120
-and not have to, you know,
-
-22
-00:51.120 --> 00:53.457
-remember the hex code, for example.
+00:49.630 --> 00:53.457
+and not have to remember the hex code, for example.
 
 23-p
 00:53.457 --> 00:57.850
-Photoshop or Photoshop light applications
+Photoshop or Photoshop-like applications
 
 24
 00:57.850 --> 00:59.700
@@ -486,7 +478,7 @@ which is why you can see the big magnifying glass appearing.
 
 122
 05:39.990 --> 05:41.590
-So that's very obvious to the user
+So that it's very obvious to the user
 
 123
 05:41.590 --> 05:42.630
@@ -562,11 +554,11 @@ for something like this?
 
 141
 06:23.260 --> 06:25.670
-For example, multiple cursor selection
+For example, multiple color selection
 
 142
 06:25.670 --> 06:29.700
-or getting the screen coded next or anything like that?
+or getting the screen coordinates or anything like that?
 
 143-p
 06:29.700 --> 06:32.850
@@ -579,4 +571,3 @@ and where to leave feedback about this API.
 145
 06:35.470 --> 06:38.143
 And thank you for your time and have a good day.
-

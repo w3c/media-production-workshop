@@ -46,7 +46,7 @@ with existing codecs APIs,
 
 12
 00:35.649 --> 00:38.310
-like ffmpeg, AV foundation, media codec,
+like ffmpeg, AVFoundation, MediaCodec,
 
 13
 00:38.310 --> 00:40.143
@@ -114,7 +114,7 @@ the API. Let's do that now.
 
 slide-3
 01:25.800 --> 01:29.830
-I am going to share my screen, bare with me.
+I am going to share my screen, bear with me.
 
 30
 01:31.560 --> 01:33.700
@@ -130,7 +130,7 @@ to show you what we're going to build.
 
 33-p
 01:39.280 --> 01:43.823
-Big buck bunny, of course, being demuxed from an MP4 file,
+Big Buck Bunny, of course, being demuxed from an MP4 file,
 
 34
 01:43.823 --> 01:47.220
@@ -238,15 +238,15 @@ I'm just gonna skip over it,
 
 60
 02:53.580 --> 02:55.284
-and feel free to check it out and get up.
+and feel free to check it out on GitHub.
 
 61-p
 02:55.284 --> 02:59.670
-All you need to know here is that it opens up the file for
+All you need to know here is that it opens up the file for me
 
 62
 02:59.670 --> 03:02.800
-me and sort of populates the basic track info structure that
+and sort of populates the basic track info structure that
 
 63
 03:02.800 --> 03:04.520
@@ -254,7 +254,7 @@ I need telling me about width and height,
 
 64
 03:04.520 --> 03:08.270
-and video, and it's Kodak details, etc.
+and video, and it's codec details, etc.
 
 65-p
 03:08.270 --> 03:09.911
@@ -274,7 +274,7 @@ to use that to paint video frames, shortly.
 
 69-p
 03:19.230 --> 03:21.733
-Let's make a paint frame function.
+Let's make a paintFrame function.
 
 70
 03:24.570 --> 03:27.610
@@ -306,7 +306,7 @@ One, we were able to call drawImage like this
 
 77
 03:49.679 --> 03:52.979
-because frame, video frame, is a canvas image source.
+because frame, VideoFrame, is a CanvasImageSource.
 
 78
 03:52.979 --> 03:54.122
@@ -314,7 +314,7 @@ And that means you can use it here,
 
 79
 03:54.122 --> 03:56.610
-but also with a text image 2D, create image bitmap
+but also with a texImage2D, createImageBitmap
 
 80
 03:56.610 --> 04:00.200
@@ -334,11 +334,11 @@ backs that frame back to the browser
 
 84
 04:08.470 --> 04:13.391
-for recycling and reuse. Video frame objects and
+for recycling and reuse. VideoFrame objects and
 
 85
 04:13.391 --> 04:16.460
-the audio analog, which is called audio data,
+the audio analog, which is called AudioData,
 
 86
 04:16.460 --> 04:18.772
@@ -386,11 +386,11 @@ Okay.
 
 97
 04:42.933 --> 04:46.127
-We've got our paint frame. Let's make a decoder.
+We've got our paintFrame. Let's make a decoder.
 
 98-p
 04:51.270 --> 04:53.430
-A constructor takes two callbacks.
+The constructor takes two callbacks.
 
 99
 04:53.430 --> 04:55.220
@@ -430,19 +430,19 @@ we need to make a configuration.
 
 108
 05:17.800 --> 05:21.320
-The required parameters here are going to be codec string,
+The required parameters here are going to be a codec string,
 
 109
 05:21.320 --> 05:24.510
-which if you've used media source or video can play type
+which if you've used MediaSource or video canPlayType,
 
 110
 05:24.510 --> 05:25.450
-media capabilities.
+MediaCapabilities,
 
 111
 05:25.450 --> 05:28.500
-Any of these APIs is the familiar codec string.
+any of these APIs is the familiar codec string.
 
 112
 05:28.500 --> 05:29.910
@@ -450,7 +450,7 @@ For H264,
 
 113
 05:29.910 --> 05:34.513
-this is a AVC1.1.profile bytes level bytes.
+this is a AVC1.1, profile bytes, level bytes.
 
 114
 05:35.930 --> 05:38.950
@@ -470,11 +470,11 @@ If you are familiar with FFmpeg,
 
 118
 05:46.910 --> 05:50.370
-this is the extra data. For those of you familiar with H264
+this is the extradata. For those of you familiar with h.264
 
 119
 05:52.665 --> 05:55.450
-and MP4 files, this is the AVCC header.
+and MP4 files, this is the AVCC atom.
 
 120
 05:56.556 --> 05:59.170
@@ -498,7 +498,7 @@ You can find more details about the description and the
 
 125
 06:12.740 --> 06:17.740
-codec string and the codec registry in the WebCodecs spec.
+codec string in the codec registry in the WebCodecs spec.
 
 126
 06:18.400 --> 06:21.950
@@ -514,7 +514,7 @@ what its details are. In our case, like I said,
 
 129
 06:28.700 --> 06:29.230
-it comes from the AVCC header.
+it comes from the AVCC atom.
 
 130
 06:29.230 --> 06:32.710
@@ -530,15 +530,15 @@ All right, before we can use the configuration,
 
 133
 06:37.940 --> 06:40.853
-we just check that the configuration is actually supported,
+we just check that the configuration is actually supported.
 
 134
 06:40.853 --> 06:45.853
-like any media API in the web support for a given codec.
+Like any media API in the web support for a given codec,
 
 135
 06:46.700 --> 06:48.730
-And the details of this configuration is going to vary by
+and the details of this configuration is going to vary by
 
 136
 06:48.730 --> 06:50.610
@@ -590,11 +590,11 @@ And now it's just time to start feeding the decoder with
 
 148
 07:33.740 --> 07:38.740
-chunks to decode. We're going to say Demuxer,
+chunks to decode. We're going to say demuxer,
 
 149
 07:41.570 --> 07:43.993
-give me the video streaming, happens to be track zero,
+give me the video stream, happens to be track zero,
 
 150
 07:44.970 --> 07:49.100
@@ -630,7 +630,7 @@ before we call the second decode.
 
 158-p
 08:08.420 --> 08:12.280
-It's a fire and forget kind of an acute processing model
+It's a fire and forget kind of a queued processing model
 
 159
 08:12.280 --> 08:13.490
@@ -694,7 +694,7 @@ and then this will also be a link to the GitHub code to make
 
 174
 08:54.439 --> 08:56.540
-that work. The short of it is uses audio decoder,
+that work. The short of it is uses AdioDecoder,
 
 175
 08:56.540 --> 08:57.780
@@ -710,7 +710,7 @@ Just one option that you have,
 
 178
 09:02.290 --> 09:04.340
-you could also use like audio buffer sourceNode.
+you could also use like AudioBufferSourceNode.
 
 179
 09:04.340 --> 09:05.959
@@ -718,11 +718,11 @@ If you're going to do, you know,
 
 180
 09:05.959 --> 09:08.590
-just kind of like smaller chunks of audio, or media stream
+just kind of like smaller chunks of audio, or MediaStreamTrack
 
 181
 09:08.590 --> 09:12.553
-track, if you are doing kind of a real time scenario.
+if you are doing kind of a real time scenario.
 
 slide-5
 09:13.831 --> 09:17.103
@@ -730,11 +730,11 @@ All right, let's talk a little bit about audio decoding.
 
 183-p
 09:19.640 --> 09:21.450
-Here is the audio decoder interface.
+Here is the AudioDecoder interface.
 
 184
 09:21.450 --> 09:23.370
-I didn't even show the video decoder interface.
+I didn't even show the VideoDecoder interface.
 
 185
 09:23.370 --> 09:24.998
@@ -746,11 +746,11 @@ The things to point out are instead of outputting,
 
 187
 09:29.390 --> 09:30.500
-a video frame,
+a VideoFrame,
 
 188
 09:30.500 --> 09:33.580
-audio decoder is going to output an AudioData object,
+AudioDecoder is going to output an AudioData object,
 
 189
 09:33.580 --> 09:35.979
@@ -786,11 +786,11 @@ As it's going to admit any outputs that might've been ready,
 
 197
 09:58.690 --> 10:01.510
-but haven't quite made it to the output callback.
+but haven't quite made it to the output callback yet.
 
 198
 10:01.510 --> 10:03.990
-You might use this in like an industry scenario where you
+You might use this in an end of stream scenario where you
 
 199
 10:03.990 --> 10:06.330
@@ -862,7 +862,7 @@ The encoder interfaces are nearly identical to those from
 
 216
 10:48.270 --> 10:51.120
-decode. You swap decode for Incode,
+decode. You swap decode for encode,
 
 217
 10:51.120 --> 10:53.360
@@ -890,15 +890,15 @@ you've had a glance at all the core interfaces and the
 
 223
 11:01.530 --> 11:05.600
-relationships to each other. And, you know, that's,
+relationships to each other.
 
 224
 11:05.600 --> 11:05.980
-that's kind of the gist. That's,
+And that's kind of the gist.
 
 225
 11:05.980 --> 11:07.853
-that's the primer on WebCodecs.
+That's the primer on WebCodecs.
 
 226
 11:07.853 --> 11:08.960
@@ -906,13 +906,12 @@ As a reminder,
 
 227
 11:08.960 --> 11:10.500
-I have another talk coming up for a
+I have another talk coming up for
 
 228
 11:10.500 --> 11:13.340
-video coder configuration,
+VideoEncoder configuration,
 
 229
 11:13.340 --> 11:14.440
 please check that out.
-

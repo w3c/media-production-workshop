@@ -182,11 +182,11 @@ to pull vast quantities of data into a common cloudy store,
 
 46
 02:02.910 --> 02:06.940
-and to play as much compute, and as much... stuff,
+and apply as much compute, and as much...
 
 47
 02:06.940 --> 02:10.200
-as you can afford in the Cloud.
+stuff as you can afford in the Cloud.
 
 48
 02:10.200 --> 02:12.830
@@ -266,7 +266,7 @@ Is it binary, or is it text?
 
 67
 02:55.220 --> 02:56.870
-And this is important, 'cause that turns out
+And this is important, because that turns out
 
 68
 02:56.870 --> 02:59.290
@@ -278,11 +278,11 @@ the metadata downstream.
 
 70
 03:01.320 --> 03:04.340
-The second axis is where the data is isochronous.
+The second axis is where the data is isochronous,
 
 71
 03:04.340 --> 03:06.820
-In other words, one sample for each clock tick,
+in other words, one sample for each clock tick,
 
 72
 03:06.820 --> 03:08.700
@@ -322,7 +322,7 @@ or maybe, sampled every frame.
 
 81
 03:25.287 --> 03:28.000
-Isochronous text, this might be, oh,
+Isochronous text, this might be
 
 82
 03:28.000 --> 03:31.800

@@ -22,7 +22,7 @@ for live broadcast production to commercial broadcasters.
 
 6-p
 00:19.280 --> 00:22.470
-Some of the offerings include live broadcast production,
+Some of our offerings include live broadcast production,
 
 7
 00:22.470 --> 00:25.450
@@ -182,7 +182,7 @@ then you potentially could do that.
 
 46
 02:07.970 --> 02:10.870
-Using something lower level, such as web transport,
+Using something lower level, such as Web Transport,
 
 47
 02:10.870 --> 02:12.140
@@ -274,7 +274,7 @@ We think about the way that Shared WebWorkers work,
 
 69
 03:13.880 --> 03:16.120
-the shared workflow space,
+the SharedWorker itnerface,
 
 70
 03:16.120 --> 03:20.490
@@ -282,7 +282,7 @@ that allows multiple contexts to share whatever
 
 71
 03:20.490 --> 03:22.660
-is happening in that work area.
+is happening in that Worker.
 
 72
 03:22.660 --> 03:25.570
@@ -302,7 +302,7 @@ for professional desktop applications.
 
 76
 03:35.360 --> 03:38.500
-If you are a video editor using some kind of NLW,
+If you are a video editor using some kind of NLE,
 
 77
 03:38.500 --> 03:39.880
@@ -358,7 +358,7 @@ Now this is probably possible using shared workers
 
 90
 04:12.900 --> 04:14.730
-and web transport.
+and Web Transport.
 
 91
 04:14.920 --> 04:17.833
@@ -394,7 +394,7 @@ Capability to encode and decode data
 
 99
 04:39.730 --> 04:42.860
-from the web RTC connection would also be really useful.
+from a WebRTC connection would also be really useful.
 
 100-p
 04:42.860 --> 04:44.460
@@ -486,7 +486,7 @@ and do stuff like background blur
 
 122
 05:37.410 --> 05:40.240
-or embedding meta data.
+or embedding metadata.
 
 123-p
 05:40.240 --> 05:42.610
@@ -523,4 +523,3 @@ any questions and feedback.
 131
 06:02.240 --> 06:03.730
 Thanks, bye.
-

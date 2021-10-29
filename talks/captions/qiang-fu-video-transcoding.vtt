@@ -2,7 +2,7 @@ WEBVTT
 
 1
 00:07.100 --> 00:08.300
-<v ->Hello, everyone.</v>
+<v ->Hello everyone.</v>
 
 2
 00:08.300 --> 00:10.620
@@ -30,7 +30,7 @@ transcoding easier for web developers.
 
 8-p
 00:23.900 --> 00:27.890
-Bilibili is based in China and our applications provides a video
+Bilibili is based in China and our application provides video
 
 9
 00:27.890 --> 00:31.138
@@ -42,7 +42,7 @@ Okay. Now let's begin.
 
 slide-2
 00:35.400 --> 00:38.930
-Why we need to focus on the topic. To guide a new way using
+Why we need to focus on the topic? To guide a new way using
 
 12
 00:38.930 --> 00:40.850
@@ -74,11 +74,11 @@ for these videos
 
 19
 00:55.320 --> 00:59.325
-but what if we transcode them to MP4 webM format,
+but what if we transcode them to MP4 or WebM format,
 
 20
 00:59.325 --> 01:04.325
-then we can use a video tag to play on HTML. It is simple.
+then we can use a video tag to play in HTML. It is simple.
 
 21-p
 01:04.370 --> 01:08.580
@@ -86,7 +86,7 @@ The other thing related to the details about media
 
 22
 01:08.580 --> 01:10.440
-production, for some videos,
+production. For some videos,
 
 23
 01:10.440 --> 01:12.880
@@ -122,7 +122,7 @@ and encoded video chunks. Then passing the video chunks to a decoder
 
 31
 01:40.260 --> 01:42.270
-to get the video frame. There maybe
+to get the video frame. Then maybe
 
 32
 01:42.270 --> 01:45.660
@@ -162,7 +162,7 @@ ffmpeg to WebAssembly, run it in a browser
 
 41
 02:07.700 --> 02:09.510
-and give it a quant,
+and give it a command,
 
 42
 02:09.510 --> 02:12.970
@@ -206,7 +206,7 @@ questions will be there. Why it is so slow,
 
 52
 02:44.300 --> 02:47.570
-why the same amount can give such huge difference on
+why the same command can give such huge difference on
 
 53
 02:47.570 --> 02:50.900
@@ -250,7 +250,7 @@ where we can divide the process of transcoding into different
 
 63
 03:19.140 --> 03:22.310
-parts. Each part may have unique solution.
+parts. Each part may have a unique solution.
 
 64-p
 03:22.310 --> 03:23.310
@@ -266,7 +266,7 @@ encoder and decoder can use WebCodecs API simply.
 
 67
 03:31.900 --> 03:35.120
-The video frame can be drawn on canvas of WebGL.
+The video frame can be drawn on canvas or WebGL.
 
 68-p
 03:35.120 --> 03:38.570
@@ -298,7 +298,7 @@ To reduce the size of WebAssembly.
 
 75
 03:56.130 --> 03:59.660
-I imported some libraries for ffmpeg and ingested some flux.
+I imported some libraries for ffmpeg and derived some files.
 
 76
 03:59.660 --> 04:03.620
@@ -314,7 +314,7 @@ I pass it to WebCodecs API to get the encoded video chunk.
 
 79
 04:08.950 --> 04:12.620
-Then the chunks load through a muxer for making video in WebM format.
+Then the chunks flow through a muxer for making video in WebM for watching.
 
 80
 04:12.620 --> 04:14.580
@@ -354,7 +354,7 @@ and I have to collect solutions for supporting MP4,
 
 89
 04:41.330 --> 04:44.486
-webM and other formats independently.
+WebM and other formats independently.
 
 90
 04:44.486 --> 04:46.363
@@ -374,7 +374,7 @@ The Web will get the following benefits. First,
 
 94
 04:59.280 --> 05:03.760
-it will complete the roadmap of media percentage on browsers.
+it will complete the roadmap of media processing in browsers.
 
 95
 05:03.760 --> 05:06.750
@@ -382,7 +382,7 @@ And if we want to popularize some video formats,
 
 96
 05:06.750 --> 05:10.572
-like WebM, we should reduce the difficulty for producing those.
+like WebM, we should reduce the difficulty for producing them.
 
 97-p
 05:10.572 --> 05:14.500
@@ -403,4 +403,3 @@ of time to become a real expert. That's all my contents.
 101
 05:23.200 --> 05:24.983
 Thank you for watching.
-

@@ -26,7 +26,7 @@ around WebRTC has never been very good.
 
 slide-2
 00:17.209 --> 00:19.462
-And it has never been seen
+And it has not been seen
 
 8
 00:19.462 --> 00:21.990
@@ -50,7 +50,7 @@ The industry is really dominated by video-on-demand models
 
 13
 00:30.800 --> 00:31.755
-like Netflix, the Hulu,
+like Netflix or Hulu,
 
 14
 00:31.755 --> 00:32.767
@@ -78,11 +78,11 @@ that have finally bridged the gap between web and broadcast.
 
 20-p
 00:43.373 --> 00:46.360
-real-time media has enabled a need for interactivity
+Real-time media has enabled a need for interactivity
 
 21
 00:46.360 --> 00:47.193
-that requires near zero latency.
+that requires near zero latency,
 
 22
 00:48.640 --> 00:51.350
@@ -98,7 +98,7 @@ WebRTC is the perfect technology for delivering
 
 25
 00:57.170 --> 00:58.830
-these real-time media.
+this real-time media.
 
 slide-5
 00:58.830 --> 01:01.600
@@ -114,11 +114,11 @@ it is possible to deliver a high quality media
 
 29
 01:05.940 --> 01:08.510
-with broadcast quality at a web scale
+with broadcast quality at web scale
 
 30
 01:08.510 --> 01:10.980
-with additional properties like end-to-end encryption or simulcast streaming support.
+with additional properties like end-to-end encryption or simulcast and SVC support.
 
 slide-7
 01:12.920 --> 01:16.300
@@ -162,7 +162,7 @@ is still ubiquitous for
 
 41
 01:38.700 --> 01:42.600
-live streaming and for media ingest, into hundreds or so media platforms.
+live streaming and for media ingest, into hundreds or even thousands of media platforms.
 
 slide-9
 01:43.520 --> 01:45.850
@@ -170,7 +170,7 @@ WebRTC offers a lot of technical advantages
 
 43
 01:45.850 --> 01:49.180
-when doing live media ingest like with network resiliency
+when doing live media ingest like better network resiliency
 
 44
 01:49.180 --> 01:50.310
@@ -178,11 +178,11 @@ without increasing
 
 45
 01:50.310 --> 01:53.343
-the end to end delay, by using SVC codec or
+the end to end delay, by using SVC codecs or
 
 46
 01:56.180 --> 01:58.970
-simulcast where they reuse the server (?) required, with per-codec choices like VP9 or AV1,
+simulcast where they reuse the server-side processing required, with per-codec choices like VP9 or AV1,
 
 47
 01:58.970 --> 02:01.659
@@ -190,7 +190,7 @@ an end to end content as video for content,
 
 48
 02:01.659 --> 02:03.840
-but over the delivering network.
+but over the delivery network.
 
 slide-10
 02:03.840 --> 02:06.770
@@ -222,11 +222,11 @@ Other media transports could be used for ingest,
 
 56
 02:25.350 --> 02:28.990
-but using WebRTC for both ingest and delivery allow to
+but using WebRTC for both ingest and delivery allow us to
 
 57
 02:28.990 --> 02:32.470
-work natively in browsers avoids protocol translation which
+work natively in browsers, avoids protocol translation which
 
 58
 02:32.470 --> 02:35.130
@@ -238,7 +238,7 @@ Avoiding the transcoding by setting
 
 60
 02:38.110 --> 02:42.620
-common codecs and use WebRTC features into it.
+common codecs and use WebRTC features end to end.
 
 slide-11
 02:42.620 --> 02:43.700
@@ -258,7 +258,7 @@ be simpler to implement.
 
 65
 02:51.690 --> 02:56.180
-And easy to use at the current RTMP URI, support this
+And easy to use at the current RTMP URI, support the
 
 66
 02:56.180 --> 02:58.480
@@ -290,7 +290,7 @@ but we have to lower
 
 73
 03:14.350 --> 03:17.410
-their requirements and the complexity
+the requirements and the complexity
 
 74
 03:17.410 --> 03:20.400
@@ -318,7 +318,7 @@ as much as possible.
 
 80
 03:30.490 --> 03:35.490
-So we did use HTTP post for exchanging the SDP offer offer and answer.
+So we did use HTTP POST for exchanging the SDP offer and answer.
 
 81
 03:35.500 --> 03:37.140
@@ -326,15 +326,15 @@ And the connection state is controlled
 
 82
 03:37.140 --> 03:40.900
-by the WebRTC ICE states.
+by the WebRTC ICE and DTLS states.
 
 84
 03:41.600 --> 03:44.580
-The authentication is supported by
+The authentication and authorization is supported by
 
 85
 03:44.580 --> 03:49.800
-as most of the SDP rest nowadays does by the
+most of the SDP rest nowadays does by the
 
 86
 03:49.800 --> 03:50.563
@@ -362,7 +362,7 @@ that support it, and we have some client
 
 92
 04:06.240 --> 04:07.760
-implementation based on your GStreamer
+implementations based GStreamer
 
 93
 04:07.760 --> 04:09.480
@@ -422,7 +422,7 @@ the issues that we have found with audio
 
 107
 04:52.610 --> 04:52.894
-if that WebRTC...
+is that WebRTC...
 
 108
 04:54.750 --> 04:58.680
@@ -446,11 +446,11 @@ that requests SDP mangling in order to support it.
 
 113-p
 05:10.640 --> 05:15.300
-NetEQ, that is a jitter buffer implementation in all WebRTC browser
+NetEQ, that is a jitter buffer implementation in all WebRTC browsers
 
 114
 05:15.300 --> 05:16.750
-has issues with music. And for example,
+has issues with music. For example,
 
 115
 05:16.750 --> 05:19.370
@@ -458,7 +458,7 @@ Lorenzo has made a great presentation on the topic,
 
 116
 05:19.370 --> 05:20.203
-referencing
+describing
 
 117
 05:20.203 --> 05:24.380
@@ -486,7 +486,7 @@ and it has been acknowledged by Google itself.
 
 123-p
 05:44.700 --> 05:45.590
-Or for example,
+Another example is that
 
 124
 05:45.590 --> 05:48.660
@@ -526,15 +526,11 @@ going to change in the following weeks.
 
 133-p
 06:05.140 --> 06:07.900
-AV1 is only supported by Chrome and not enabled in it.
+AV1 is only supported by Chrome and not enabled in Edge
 
 134
 06:07.900 --> 06:08.970
-Even if they share almost the same codebase.
-
-135
-06:08.970 --> 06:11.980
-The almost the same code base beeping enter file,
+even if they share almost the same codebase.
 
 136-p
 06:11.980 --> 06:14.970
@@ -561,12 +557,8 @@ The playoutdelayhint is an optional extension
 and it is only supported in Chrome.
 
 142-p
-06:26.960 --> 06:27.793
-Eh,
-
-143
-06:27.793 --> 06:30.410
-also another sample is that abs-capture-time that
+06:26.960 --> 06:30.410
+Also, another sample is that abs-capture-time that
 
 144
 06:30.410 --> 06:34.370
@@ -578,7 +570,7 @@ video with standard metadata is only supporting in Chrome
 
 146
 06:37.580 --> 06:39.240
-but it is a thing hidden
+but it is again hidden
 
 147
 06:39.240 --> 06:42.180
@@ -590,7 +582,7 @@ And at last, as an example of how professional-grade features
 
 150
 06:46.683 --> 06:50.597
-are not always sought to be used with the WebRTC,
+are not always thought to be used with the WebRTC,
 
 151
 06:50.597 --> 06:54.960

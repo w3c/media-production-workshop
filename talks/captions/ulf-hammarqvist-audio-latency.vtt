@@ -114,7 +114,7 @@ And we implement all of this through heavy use
 
 29
 01:26.340 --> 01:29.300
-of web standards such as Web Audio, Web media,
+of web standards such as Web Audio, Web MIDI,
 
 30
 01:29.300 --> 01:30.820
@@ -153,32 +153,16 @@ Specifically here, we want to mention
 the case of monitoring,
 
 39
-01:52.400 --> 01:52.873
-and that is
-
-40
-01:53.850 --> 01:55.540
-immediate
-
-41
-01:55.540 --> 01:56.790
-feedback
-
-42
-01:56.790 --> 01:57.720
-from what you record.
+01:52.400 --> 01:57.720
+and that is immediate feedback from what you record.
 
 43
 01:57.720 --> 02:01.260
 So you would record from a mic, process stuff in Web Audio and
 
 44
-02:01.260 --> 02:03.800
-play back through your speaker
-
-45
-02:03.800 --> 02:05.253
-as you go.
+02:01.260 --> 02:05.253
+play back through your speaker as you go.
 
 46-p
 02:06.370 --> 02:10.240
@@ -253,16 +237,8 @@ slide-5
 Slide 5
 
 64-p
-02:56.670 --> 02:57.503
-Well,
-
-65
-02:58.440 --> 02:59.820
-what is
-
-66
-02:59.820 --> 03:00.670
-the current state?
+02:56.670 --> 03:00.670
+Well, what is the current state?
 
 67
 03:00.670 --> 03:03.630
@@ -302,7 +278,7 @@ that we have in our use case that is
 
 77
 03:32.520 --> 03:35.670
-maybe not immediately clear obvious to people is
+maybe not immediately clearly obvious to people is
 
 78
 03:36.950 --> 03:39.910
@@ -333,12 +309,8 @@ There are probably other words for it as well.
 In order to achieve that you need two things really,
 
 85
-03:59.400 --> 04:00.600
-you need
-
-86
-04:00.600 --> 04:01.230
-to know
+03:59.400 --> 04:01.230
+you need to know
 
 87
 04:01.230 --> 04:02.540
@@ -425,12 +397,8 @@ involved here.
 I mean, if not doing anything, the user would have to
 
 108
-05:12.330 --> 05:13.320
-manually align,
-
-109
-05:13.320 --> 05:14.723
-which is far from ideal.
+05:12.330 --> 05:14.723
+manually align, which is far from ideal.
 
 slide-8
 05:18.650 --> 05:19.830
@@ -509,12 +477,8 @@ well,
 bear with us.
 
 129
-06:09.610 --> 06:13.800
-We pretend that the MediaStreamTrack setting latency
-
-130
-06:13.800 --> 06:14.530
-property
+06:09.610 --> 06:14.530
+We pretend that the MediaStreamTrack setting latency property
 
 131
 06:14.530 --> 06:18.480
@@ -589,12 +553,8 @@ I'll just talk a little bit about the output
 and the processing steps.
 
 149-p
-07:00.210 --> 07:01.430
-And
-
-150
-07:01.900 --> 07:04.740
-it has a certain quantum size or block size,
+07:00.210 --> 07:04.740
+And it has a certain quantum size or block size,
 
 151
 07:04.740 --> 07:06.700
@@ -645,12 +605,8 @@ compensation done correctly is knowing accurately
 when your data arrived, as I mentioned earlier.
 
 163
-07:44.520 --> 07:46.650
-It can be done in
-
-164
-07:46.650 --> 07:47.700
-various ways, but
+07:44.520 --> 07:47.700
+It can be done in various ways, but
 
 165
 07:48.770 --> 07:50.440
@@ -689,12 +645,8 @@ But there's no,
 as far as we can see spec-wise or guarantees that
 
 174
-08:12.100 --> 08:13.650
-when you start it, it's going to start
-
-175
-08:13.650 --> 08:14.483
-immediately.
+08:12.100 --> 08:14.483
+when you start it, it's going to start immediately.
 
 176
 08:14.483 --> 08:17.670
@@ -793,20 +745,12 @@ And then, there seems to be an opportunity to
 spice up the media stream recorder,
 
 200
-09:18.640 --> 09:21.720
-to get accurate timing information by some callback or
-
-201
-09:21.720 --> 09:23.900
-something.
+09:18.640 --> 09:23.900
+to get accurate timing information by some callback or something.
 
 202-p
-09:23.900 --> 09:24.853
-Finally, the WebCodecs API
-
-203
-09:24.853 --> 09:26.490
-is very nice, but
+09:23.900 --> 09:26.490
+Finally, the WebCodecs is very nice, but
 
 204
 09:26.490 --> 09:28.800

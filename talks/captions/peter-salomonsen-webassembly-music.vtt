@@ -2,11 +2,11 @@ WEBVTT
 
 1
 00:06.570 --> 00:08.210
-<v Peter>Hello, I'm Peter.</v>
+<v Peter>Hello, I'm Peter</v>
 
 2
 00:08.210 --> 00:11.970
-And I'm experimenting with creating music in
+and I'm experimenting with creating music in
 
 3
 00:11.970 --> 00:13.480
@@ -37,12 +37,8 @@ It's a camera view here on the bottom right.
 And on the left side, here
 
 10
-00:33.150 --> 00:34.690
-it is code
-
-11
-00:34.690 --> 00:37.220
-for generating the music.
+00:33.150 --> 00:37.220
+it is code for generating the music.
 
 12-p
 00:37.220 --> 00:40.220
@@ -66,7 +62,7 @@ And on the right side here
 
 17
 00:50.120 --> 00:53.260
-is a language called assembly script,
+is a language called AssemblyScript,
 
 18
 00:53.260 --> 00:56.240
@@ -118,7 +114,7 @@ all the samples for the instruments in real time.
 
 30-p
 01:38.740 --> 01:39.661
-I have a string
+I have lots of instruments here. I have a string
 
 31
 01:39.661 --> 01:42.940
@@ -150,7 +146,7 @@ You can create lots of interesting instruments here.
 
 38
 02:07.580 --> 02:10.846
-That's the flute and also have a drum here.
+That's the flute and also I have a drum here.
 
 39
 02:10.846 --> 02:13.490
@@ -158,7 +154,7 @@ That's the flute and also have a drum here.
 
 40-p
 02:13.490 --> 02:17.720
-And actually I have this leading beat that is recorded here
+And actually I have this little beat that is recorded here
 
 41
 02:17.720 --> 02:20.290
@@ -202,7 +198,7 @@ This is a full environment for creating music.
 
 51
 03:14.560 --> 03:17.940
-You have recording and creating the instruments you got all you
+You have recording and creating the instruments, you got all you
 
 52
 03:17.940 --> 03:21.910
@@ -250,7 +246,7 @@ that's no problem. It just works as it should.
 
 63
 03:53.710 --> 03:56.820
-It's just a low end MacBook air.
+It's just a low end MacBook Air.
 
 64
 03:56.820 --> 04:00.140
@@ -258,15 +254,15 @@ It's not problem at all, but it's a challenge
 
 65
 04:00.140 --> 04:01.683
-across systems.
+across systems,
 
 66
 04:02.520 --> 04:04.190
-This latency.
+this latency.
 
 67-p
 04:04.190 --> 04:08.330
-For example, if you go to a windows computer,
+For example, if you go to a Windows computer,
 
 68
 04:08.330 --> 04:10.470
@@ -322,7 +318,7 @@ it should be.
 
 81
 04:54.170 --> 04:58.408
-These are things that really has to be improved
+These are things that really have to be improved
 
 82
 04:58.408 --> 05:02.338
@@ -358,7 +354,7 @@ And also across browsers,
 
 90
 05:29.750 --> 05:32.490
-for example, in Firefox,
+for example, in Firefox
 
 91
 05:32.490 --> 05:35.295
@@ -370,11 +366,11 @@ It's a very good AudioWorklet implementation.
 
 93
 05:38.913 --> 05:41.830
-Audioworklet is the technology that
+AudioWorklet is the technology that
 
 94
 05:42.715 --> 05:47.300
-can bin this WebAssembly code to the Web Audio API.
+can bind this WebAssembly code to the Web Audio API.
 
 95
 05:47.300 --> 05:50.790
@@ -390,7 +386,7 @@ This works very good on Firefox,
 
 98
 05:55.430 --> 05:57.500
-but you don't have a MIDI connectivity.
+but you don't have any MIDI connectivity.
 
 99
 05:57.500 --> 06:00.820
@@ -426,11 +422,11 @@ I've created quite a bit of music with it so far.
 
 107
 06:29.880 --> 06:33.780
-I use it for all my music now, and I think it's great.
+I use it for all my music now, and I think it's great
 
 108
 06:33.780 --> 06:38.500
-I really hope that we will see this stable and
+and I really hope that we will see this stable and
 
 109
 06:38.500 --> 06:42.110
@@ -446,9 +442,8 @@ That's the point I really want to make today.
 
 112
 06:52.900 --> 06:57.900
-And I hope can get some attention in the future.
+And I hope it can get some attention in the future.
 
 113
 06:57.220 --> 06:58.483
 Thank you for watching.
-

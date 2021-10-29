@@ -8,10 +8,6 @@ Hi everyone, thanks for having me.
 00:08.840 --> 00:11.680
 It’s a real pleasure to be a part of this workshop.
 
-3
-00:11.680 --> 00:11.720
-
-
 4-p
 00:11.720 --> 00:14.480
 I titled my talk "Whatever can be done will be done".
@@ -48,10 +44,6 @@ are Source Elements and InVideo.
 00:31.760 --> 00:33.320
 I’m usually named chrisguttandin
 
-13
-00:31.760 --> 00:31.760
-
-
 15
 00:33.320 --> 00:35.800
 anywhere on the internet.
@@ -82,7 +74,7 @@ to present our wishes to the world.
 
 23
 00:49.800 --> 00:53.500
-So I asked my co-workers to help me preparing a list
+So I asked my co-workers to help me prepare a list
 
 24
 00:53.500 --> 00:55.120
@@ -172,10 +164,6 @@ in a much more efficient way.
 01:47.720 --> 01:51.720
 But WebCodecs are only available in Chromium browsers
 
-48
-01:47.720 --> 01:47.720
-
-
 50
 01:51.720 --> 01:55.100
 so far. Firefox is working on it. But unfortunately
@@ -191,10 +179,6 @@ The next item in our list is partial decoding.
 55-p
 02:02.320 --> 02:04.720
 And with that we mean the ability to only decode
-
-54
-02:02.320 --> 02:02.320
-
 
 56
 02:04.720 --> 02:06.800
@@ -272,10 +256,6 @@ decodeAudioData() will happily decode a part of a file
 02:51.840 --> 02:54.640
 because it believes that it’s decoding the full file.
 
-76
-02:54.640 --> 02:56.800
-
-
 77-p
 02:56.800 --> 02:59.400
 Sadly though decodeAudioData() is really broken
@@ -300,10 +280,6 @@ for Safari users.
 03:07.560 --> 03:13.720
 To decode a single video frame one could load the video
 
-82
-03:07.560 --> 03:07.560
-
-
 84
 03:13.720 --> 03:16.000
 with a media element and then use seekToNextFrame()
@@ -311,10 +287,6 @@ with a media element and then use seekToNextFrame()
 85
 03:16.000 --> 03:17.320
 to get the frames one by one.
-
-86
-03:17.320 --> 03:19.100
-
 
 87-p
 03:19.100 --> 03:21.200
@@ -368,10 +340,6 @@ and the Web Audio API in general.
 03:48.640 --> 03:52.120
 For video content there is the OffscreenCanvas
 
-102
-03:48.640 --> 03:48.640
-
-
 104
 03:52.120 --> 03:54.100
 which can be used from within a Web Worker.
@@ -379,10 +347,6 @@ which can be used from within a Web Worker.
 106-p
 03:54.100 --> 03:57.280
 And last but not least it’s possible to insert
-
-105
-03:54.100 --> 03:54.100
-
 
 107
 03:57.280 --> 03:59.160
@@ -395,10 +359,6 @@ and transfer that to a Web Worker as well.
 110-p
 04:01.840 --> 04:05.720
 But as you can see browser support for anything
-
-109
-04:01.840 --> 04:01.840
-
 
 111
 04:05.720 --> 04:07.680
@@ -440,10 +400,6 @@ is to keep media in sync.
 04:29.840 --> 04:32.480
 Especially if there is some audio or video
 
-121
-04:29.840 --> 04:29.840
-
-
 123
 04:32.480 --> 04:35.400
 processing involved which will delay one or the other
@@ -479,10 +435,6 @@ displayed at that time matches the audio.
 133-p
 04:56.200 --> 04:59.360
 But sadly these properties only fully work
-
-132
-04:56.200 --> 04:56.200
-
 
 134
 04:59.360 --> 05:02.200
@@ -532,10 +484,6 @@ It’s called setSinkId().
 05:26.480 --> 05:30.120
 And as far as I know Firefox is currently implementing
 
-147
-05:26.480 --> 05:26.480
-
-
 149
 05:30.120 --> 05:33.400
 the selectAudioOutput() method which is a new way to
@@ -556,10 +504,6 @@ enabling setSinkId().
 05:39.640 --> 05:43.800
 Chromium browsers expose the audio output devices already.
 
-153
-05:39.640 --> 05:39.640
-
-
 155
 05:43.800 --> 05:46.000
 Therefore implementing selectAudioOutput() is not
@@ -571,10 +515,6 @@ really necessary to use setSinkId().
 158-p
 05:48.440 --> 05:52.640
 But as usual I don’t have an idea what Apple is up to.
-
-157
-05:48.440 --> 05:48.440
-
 
 slide-16
 05:52.640 --> 05:57.640
@@ -600,17 +540,9 @@ either today or in the near future.
 06:07.600 --> 06:10.680
 At least if we ignore Safari for now.
 
-165
-06:07.600 --> 06:07.600
-
-
 168-p
 06:10.680 --> 06:14.720
 Anyway, I came up with some more wishes
-
-167
-06:10.680 --> 06:10.680
-
 
 169
 06:14.720 --> 06:16.560
@@ -631,10 +563,6 @@ releases to be as boring as possible.
 175-p
 06:25.760 --> 06:29.100
 I think Chromium browsers and Firefox do have
-
-174
-06:25.760 --> 06:25.760
-
 
 176
 06:29.100 --> 06:30.800
@@ -659,10 +587,6 @@ don’t really matter here.
 183-p
 06:43.880 --> 06:46.360
 Every 4 weeks the state of the nightly version
-
-182
-06:43.880 --> 06:43.880
-
 
 184
 06:46.360 --> 06:48.800
@@ -712,10 +636,6 @@ becomes the new beta version.
 07:13.100 --> 07:16.400
 It’s like a steady stream of updates.
 
-197
-07:13.100 --> 07:13.100
-
-
 199
 07:16.400 --> 07:19.400
 And by the time a feature reaches the beta channel
@@ -732,21 +652,13 @@ to all regular users.
 07:23.600 --> 07:26.800
 The whole process is very predictable
 
-202
-07:23.600 --> 07:23.600
-
-
 204
 07:26.800 --> 07:28.840
-and yes it is super boring.
+and yes it's also super boring.
 
 206-p
 07:28.840 --> 07:32.800
 I usually test my code against the nightly versions
-
-205
-07:28.840 --> 07:28.840
-
 
 207
 07:32.800 --> 07:35.100
@@ -784,10 +696,6 @@ implementations of upcoming features.
 07:57.680 --> 08:01.640
 But it is unknown which of those features end up
 
-216
-07:57.680 --> 07:57.680
-
-
 218
 08:01.640 --> 08:03.280
 in the next stable release of Safari.
@@ -810,15 +718,11 @@ I guess the stable version is a subset of
 
 223
 08:14.160 --> 08:17.320
-the Technology Preview but I can’t say that for sure.
+the Technology Preview but I can’t really say that for sure.
 
 225-p
 08:17.320 --> 08:21.100
 There is no way for developers to test their apps
-
-224
-08:17.320 --> 08:17.320
-
 
 226
 08:21.100 --> 08:23.720
@@ -836,13 +740,9 @@ released to all the users.
 08:27.520 --> 08:30.680
 This is of course challenging when you try to build
 
-229
-08:27.520 --> 08:27.520
-
-
 231
 08:30.680 --> 08:34.520
-a reliable web app that user’s can trust on
+a reliable web app that users can trust
 
 232
 08:34.520 --> 08:35.800
@@ -851,10 +751,6 @@ to work as expected.
 234-p
 08:35.800 --> 08:40.680
 Another problem is that the stable version of Safari
-
-233
-08:35.800 --> 08:35.800
-
 
 235
 08:40.680 --> 08:42.400
@@ -884,10 +780,6 @@ unheard of in Safari.
 08:53.480 --> 08:57.800
 As I said there is currently one which breaks
 
-241
-08:53.480 --> 08:53.480
-
-
 243
 08:57.800 --> 08:59.800
 decodeAudioData() and another one which breaks
@@ -904,17 +796,9 @@ This leads me to my next wish.
 09:05.400 --> 09:09.100
 I would love regressions to get fixed as soon as possible.
 
-247
-09:05.400 --> 09:05.400
-
-
 250-p
 09:09.100 --> 09:12.400
 Imagine building a web app that media professionals
-
-249
-09:09.100 --> 09:09.100
-
 
 251
 09:12.400 --> 09:15.480
@@ -927,10 +811,6 @@ And suddenly a browser update causes that app to fail.
 254-p
 09:19.680 --> 09:25.600
 I know that even Safari can get security updates
-
-253
-09:19.680 --> 09:19.680
-
 
 255
 09:25.600 --> 09:26.600
@@ -964,10 +844,6 @@ should not be enabled by default for each and every page.
 09:45.400 --> 09:48.720
 However I think the users of a browser
 
-263
-09:45.400 --> 09:45.400
-
-
 265
 09:48.720 --> 09:51.320
 should have the option to allow certain sites
@@ -1000,10 +876,6 @@ and so on and so on.
 10:03.800 --> 10:05.500
 I think this doesn’t need to be an explicit
 
-272
-10:03.800 --> 10:03.800
-
-
 274
 10:05.500 --> 10:06.480
 permission prompt in every case.
@@ -1023,10 +895,6 @@ of a certain API or something totally different.
 279-p
 10:14.400 --> 10:18.800
 The point is I think the users should be empowered
-
-278
-10:14.400 --> 10:14.400
-
 
 280
 10:18.800 --> 10:21.880
@@ -1056,10 +924,6 @@ and the upcoming version of each browser.
 10:37.360 --> 10:41.500
 I do this locally and I also do this in the cloud
 
-287
-10:37.360 --> 10:37.360
-
-
 289
 10:41.500 --> 10:43.120
 with services like BrowserStack and Sauce Labs.
@@ -1067,10 +931,6 @@ with services like BrowserStack and Sauce Labs.
 291-p
 10:43.120 --> 10:46.280
 It’s a real challenge to test media APIs
-
-290
-10:43.120 --> 10:43.120
-
 
 292
 10:46.280 --> 10:49.100
@@ -1087,10 +947,6 @@ when running automated tests.
 296-p
 10:52.880 --> 10:57.000
 There are flags that one can set for Chromium browsers
-
-295
-10:52.880 --> 10:52.880
-
 
 297
 10:57.000 --> 11:01.280
@@ -1111,10 +967,6 @@ from time to time.
 302-p
 11:08.760 --> 11:14.440
 And at least as far as I know it’s not even possible
-
-301
-11:08.760 --> 11:08.760
-
 
 303
 11:14.440 --> 11:17.520
@@ -1180,10 +1032,6 @@ one could build something really powerful in no time.
 11:57.800 --> 12:00.720
 And yes, that’s absolutely true.
 
-319
-11:57.800 --> 11:57.800
-
-
 321
 12:00.720 --> 12:03.560
 I did for example quickly hack together a little app
@@ -1194,7 +1042,7 @@ to record this talk in the browser.
 
 323
 12:05.240 --> 12:08.320
-(I didn’t use it in the end but that’s a different story.)
+I didn’t use it in the end but that’s a different story.
 
 324
 12:08.320 --> 12:12.440
@@ -1212,10 +1060,6 @@ is a completely different story.
 12:17.560 --> 12:21.680
 Doing that requires a lot of effort.
 
-328
-12:21.680 --> 12:21.720
-
-
 329-p
 12:21.720 --> 12:25.320
 I think many people underestimate the amount of work
@@ -1227,10 +1071,6 @@ that needs to be done to build a full product on the web.
 332-p
 12:27.600 --> 12:30.760
 I honestly think building professional apps
-
-331
-12:27.600 --> 12:27.600
-
 
 333
 12:30.760 --> 12:32.560
@@ -1254,7 +1094,7 @@ Once a few well known and well established web apps
 
 339
 12:45.120 --> 12:48.440
-exist that have a wide adoption among media professionals
+exist that have wide adoption among media professionals
 
 340
 12:48.440 --> 12:51.400
@@ -1268,10 +1108,6 @@ to the web as well.
 12:52.240 --> 12:56.200
 Source Elements does for example have a plugin for DAWs.
 
-342
-12:52.240 --> 12:52.240
-
-
 344
 12:56.200 --> 12:59.320
 It’s currently a native application since the DAWs
@@ -1282,11 +1118,11 @@ that it’s meant to be used with are
 
 346
 13:00.600 --> 13:02.360
-native applicationsas well.
+native applications as well.
 
 347
 13:02.360 --> 13:05.800
-And this could only ever change if those DAWs
+And this could only ever change if the DAWs
 
 348
 13:05.800 --> 13:06.480
@@ -1295,10 +1131,6 @@ become web apps at some point.
 350-p
 13:06.480 --> 13:10.400
 There is definitely still a long way to go
-
-349
-13:06.480 --> 13:06.480
-
 
 351
 13:10.400 --> 13:12.320
@@ -1323,10 +1155,6 @@ whatever can be done will be done.".
 358-p
 13:21.600 --> 13:25.500
 I think building professional media applications
-
-357
-13:21.600 --> 13:21.600
-
 
 359
 13:25.500 --> 13:27.500
@@ -1359,4 +1187,3 @@ and many thanks to all of you for watching it.
 367
 13:44.840 --> 13:47.900
 See you at the workshop. Bye.
-
