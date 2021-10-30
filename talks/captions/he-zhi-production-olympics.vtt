@@ -6,7 +6,7 @@ Hello
 
 2
 00:06.700 --> 00:06.710
-I am He Zhi
+I am He Zhi,
 
 3
 00:07.700 --> 00:12.700
@@ -18,11 +18,11 @@ Today, I would like to share the application of Migu web editing technology in l
 
 slide-3
 00:23.700 --> 00:26.700
-During the UEFA Euro2020
+During the UEFA Euro 2020
 
 6
 00:26.700 --> 00:28.700
-and the Tokyo2020
+and the Tokyo 2020
 
 7
 00:28.700 --> 00:35.700
@@ -70,11 +70,11 @@ First, uniformly recode live stream as HLS with ffmpeg,
 
 18
 01:22.700 --> 01:26.700
-and slice each ts file within 2 seconds;
+and slice each ts file within 2 seconds.
 
 19
 01:26.700 --> 01:35.700
-The second is to quickly compress 720p low bit stream for web browsing and editing;
+The second is to quickly compress 720p low bit stream for web browsing and editing.
 
 20
 01:36.700 --> 01:38.700
@@ -82,15 +82,15 @@ Third, provide key frame pictures,
 
 21
 01:39.700 --> 01:46.700
-which are displayed by DOM on the operation track to facilitate interception and location;
+which are displayed by DOM on the operation track to facilitate interception and location.
 
 22
 01:46.700 --> 01:55.700
-Fourth, add video JS playback object to quickly browse the content after simulated strip removal;
+Fourth, add video.js playback object to quickly browse the content after simulated strip removal.
 
 23
 01:56.700 --> 02:04.700
-Fifth, use background services for parallel processing to improve performance;
+Fifth, use background services for parallel processing to improve performance.
 
 24
 02:04.700 --> 02:06.700
@@ -102,7 +102,7 @@ And there is still an ongoing issue, which is,
 
 26
 02:12.700 --> 02:16.700
-there are two video JS objects with two play windows,
+there are two video.js objects with two play windows,
 
 27
 02:16.700 --> 02:19.700
@@ -126,7 +126,7 @@ OK, let us turn to the post editing.
 
 32
 02:38.700 --> 02:43.700
-It could be regarded as an upgrade of live editing tool.
+It could be regarded as an upgrade of the live editing tool.
 
 33
 02:44.700 --> 02:47.700
@@ -142,7 +142,7 @@ The difficulty here lies in the processing performance and efficiency.
 
 36
 03:02.700 --> 03:03.700
-How to achieve?
+How to achieve this?
 
 37-p
 03:04.700 --> 03:06.700
@@ -150,7 +150,7 @@ Firstly, for the whole architecture,
 
 38
 03:06.700 --> 03:14.700
-it keeps the way of web simulating with final processing by media services to reduce the web load.
+it keeps the way of WebGL simulating with final processing by media services to reduce the web load.
 
 39
 03:14.700 --> 03:23.700
@@ -158,7 +158,7 @@ Secondly, we try to control the window resolution of the displayed content at 48
 
 40
 03:24.700 --> 03:34.700
-This is because rendering special effect at high resolution by WebGL takes ordinary laptop 80% CPU;
+This is because rendering special effect processing at high resolution by WebGL takes ordinary laptop 80% CPU.
 
 41
 03:35.700 --> 03:40.700
@@ -166,7 +166,7 @@ Thirdly, in order to preview content without delay by mouse hover,
 
 42
 03:40.700 --> 03:45.700
-we recode content as HLS with ffmpeg during uploading;
+we recode content as HLS with ffmpeg during uploading.
 
 43
 03:46.700 --> 03:47.700
@@ -190,11 +190,11 @@ I have to say, it is not very friendly to locate and clip content.
 
 48
 04:17.700 --> 04:21.700
-The easy way is webassembly + ffmpeg.
+The easy way is WebAssembly with ffmpeg.
 
 49
 04:22.700 --> 04:27.700
-We expect that webcodecs could support more such kinds of functions.
+We expect that WebCodecs could support more such kinds of functions.
 
 slide-6
 04:29.700 --> 04:32.700
@@ -218,7 +218,7 @@ Due to the web framework and modular design,
 
 55
 04:53.700 --> 04:57.700
-it makes most of basic capabilities reusable,
+it makes most basic capabilities reusable,
 
 56
 04:57.700 --> 05:03.700
@@ -234,15 +234,15 @@ which is mainly due to three reasons.
 
 59
 05:14.700 --> 05:16.700
-First, there are the performance issue mentioned above;
+First, there are the performance issue mentioned above.
 
 60
 05:17.700 --> 05:24.700
-second, for flexibility, light front can be easily integrated into commercial applications;
+Second, for flexibility, light front can be easily integrated into commercial applications.
 
 61
 05:25.700 --> 05:27.700
-the third is for compatibility.
+The third is for compatibility.
 
 62
 05:28.700 --> 05:33.700
@@ -274,7 +274,7 @@ Finally, let's look back and see why we choose web editing technology for online
 
 69-p
 06:13.700 --> 06:17.700
-Take a media company with 200 employees as example.
+Take a media company with 200 employees as an example.
 
 70
 06:17.700 --> 06:21.700
@@ -302,7 +302,7 @@ flexibility and compatibility. Fourth, for the cost. Compared with purchasing wo
 
 76
 06:50.700 --> 06:55.700
-web editing can save more than 80% of cost with shared cloud servers;
+web editing can save more than 80% of cost with shared cloud servers.
 
 77
 06:56.700 --> 07:03.700
@@ -322,11 +322,11 @@ We are full of expectations.
 
 81
 07:24.700 --> 07:29.700
-We expect that webcodecs can provide more functions and API,
+We expect that WebCodecs can provide more functions and API,
 
 82
 07:30.700 --> 07:33.700
-such as, support video JS object sharing data,
+such as, support video.js object sharing data,
 
 83
 07:34.700 --> 07:42.700
@@ -334,7 +334,7 @@ support location, cutting media, and support high-resolution special effect rend
 
 84
 07:42.700 --> 07:49.700
-support RMVB \ AVI \ MKV and other common network video format,
+support RMVB \ AVI \ MKV and other common network video formats,
 
 85
 07:49.700 --> 07:59.700
@@ -343,4 +343,3 @@ And support h265 \ VP9 encoding and decoding for ultra-high definition of 4K \ 8
 slide-11
 08:00.700 --> 08:01.700
 Thank you, thank you very much.
-

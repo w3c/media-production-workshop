@@ -14,7 +14,7 @@ and I'm here to talk about some of the challenges that exist
 
 4
 00:11.680 --> 00:15.420
-to bringing desktop class creative applications to the web.
+bringing desktop class creative applications to the web.
 
 5
 00:15.420 --> 00:17.790
@@ -158,7 +158,7 @@ Slide two.
 
 40
 02:05.810 --> 02:08.180
-The first area that we're gonna dive deeper into
+The first area that we're going to dive deeper into
 
 41
 02:08.180 --> 02:09.480
@@ -178,7 +178,7 @@ The existing code is typically written in C++.
 
 45
 02:23.690 --> 02:27.800
-This code tends to be a mix of sort of compute
+This code tends to be a mix of compute
 
 46
 02:27.800 --> 02:29.963
@@ -242,15 +242,15 @@ If we want to do these types of things on the web,
 
 61
 03:12.200 --> 03:14.670
-we've got a few challenges to that.
+we've got a few challenges today.
 
 62
 03:14.670 --> 03:17.360
-One is that in browser support
+One is that in-browser support
 
 63
 03:17.360 --> 03:19.733
-for WebAssembly today is all 32 bit.
+for WebAssembly today is all 32-bit.
 
 64
 03:22.473 --> 03:24.350
@@ -554,7 +554,7 @@ For example, a photography tool will use formats
 
 139
 07:27.740 --> 07:30.960
-like TIFF, JPEG 2000 in a variety
+like TIFF, JPEG 2000, and a variety
 
 140
 07:30.960 --> 07:33.790
@@ -650,7 +650,7 @@ on all devices all the time.
 
 163-p
 08:44.800 --> 08:48.960
-So what we may need here is some way to access plugable
+So what we may need here is some way to access pluggable
 
 164
 08:48.960 --> 08:52.390
@@ -691,4 +691,3 @@ Sean Voisen for his insights.
 slide-8
 09:14.880 --> 09:16.163
 See you at the workshop.
-

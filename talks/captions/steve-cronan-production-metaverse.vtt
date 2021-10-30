@@ -2,7 +2,7 @@ WEBVTT
 
 1
 00:05.400 --> 00:06.233
-<v Steve>From 5th Kind, and welcome</v>
+<v Steve>Hello and welcome</v>
 
 2
 00:06.233 --> 00:08.400
@@ -178,11 +178,11 @@ from the story location into, say,
 
 45
 01:54.220 --> 01:59.220
-the physical location of where is that set gonna be a shot,
+the physical location of where is that set going to be a shot,
 
 46
 01:59.478 --> 02:04.478
-or are they gonna create it in a particular stage?
+or are they going to create it in a particular stage?
 
 47
 02:04.670 --> 02:07.770
@@ -306,7 +306,7 @@ connecting a shot to a vendor through external databases
 
 77
 03:31.650 --> 03:35.963
-like File Maker, Ftrack or a shotgun database.
+like File Maker, Ftrack or a Shotgun database.
 
 78-p
 03:36.850 --> 03:39.170
@@ -394,7 +394,7 @@ transfers distributed globally around the world.
 
 99
 04:41.870 --> 04:42.630
-When you've gotta be uploading, you know,
+When you've gotta be uploading
 
 100
 04:42.630 --> 04:45.530
@@ -402,7 +402,7 @@ many terabytes overnight, and it's required to be delivered
 
 101
 04:45.530 --> 04:48.300
-in a location for that next, you know, artist
+in a location for that next artist
 
 102
 04:48.300 --> 04:50.800
@@ -446,7 +446,7 @@ commonly requires people to zip things up
 
 112
 05:14.850 --> 05:17.763
-and then have them decompress, you know, on upload.
+and then have them decompress on upload.
 
 113-p
 05:18.610 --> 05:21.350
@@ -462,7 +462,7 @@ in New Zealand and your post house is in LA
 
 116
 05:25.590 --> 05:28.700
-and the effects house is in the UK, et cetera,
+and VFX  house is in the UK, et cetera,
 
 117
 05:28.700 --> 05:31.428
@@ -558,11 +558,11 @@ is accelerating.
 
 140
 06:30.740 --> 06:33.820
-And a lot of challenges dealing with RAW media costs,
+And a lot of challenges dealing with raw media costs,
 
 141
 06:33.820 --> 06:35.954
-constantly requiring, you know, transcoding,
+constantly requiring transcoding,
 
 142
 06:35.954 --> 06:40.753
@@ -574,7 +574,7 @@ Now with playback, we've seen a good evolution,
 
 144
 06:44.100 --> 06:46.285
-obviously on the browsers, as we've seen, you know,
+obviously on the browsers, as we've seen,
 
 145
 06:46.285 --> 06:50.450
@@ -590,7 +590,7 @@ this industry right now, but the need for higher bit rates,
 
 148
 06:57.150 --> 07:00.202
-higher fidelity, you know, 5.1 audio, et cetera,
+higher fidelity, 5.1 audio, et cetera,
 
 149
 07:00.202 --> 07:03.400
@@ -598,19 +598,19 @@ is definitely a higher requirement.
 
 150
 07:03.400 --> 07:05.600
-You know, visual and forensic watermarking have always been
+Visual and forensic watermarking have always been
 
 151
 07:05.600 --> 07:07.310
-the fundamentals of what we do.
+fundamental to what we do.
 
 152-p
 07:07.310 --> 07:10.500
-We used to be able to have a, you know,
+We used to be able to have a
 
 153
 07:10.500 --> 07:12.440
-compiled container back in the days when flash
+compiled container back in the days when Flash
 
 154
 07:12.440 --> 07:17.440
@@ -618,7 +618,7 @@ was semi-secure and allowed you to have a DRM
 
 155
 07:19.460 --> 07:22.260
-protected stream with the client side overlay
+protected stream with a client side overlay
 
 156
 07:22.260 --> 07:25.430
@@ -626,11 +626,11 @@ that allowed you to leverage things like CDNs
 
 157
 07:25.430 --> 07:28.280
-for, you know, optimize, you know, streaming.
+for, you know, optimize, streaming.
 
 158
 07:28.280 --> 07:32.227
-As we have lost that and, you know, WebAssembly
+As we have lost that and WebAssembly
 
 159
 07:32.227 --> 07:35.500
@@ -646,7 +646,7 @@ It has required a lot of server-side watermarking to occur,
 
 162
 07:41.875 --> 07:43.930
-which then of course, you know,
+which then of course
 
 163
 07:43.930 --> 07:46.561
@@ -662,7 +662,7 @@ with DRM, being able to maintain security as we move
 
 166
 07:54.194 --> 07:59.000
-into more of these virtual worlds is gonna be critical.
+into more of these virtual worlds is going to be critical.
 
 167-p
 07:59.000 --> 08:01.441
@@ -674,7 +674,7 @@ tends to come up a lot, the security,
 
 169
 08:03.328 --> 08:06.980
-when things go offline, how can we keep, you know,
+when things go offline, how can we keep
 
 170
 08:06.980 --> 08:10.480
@@ -710,11 +710,11 @@ and we'll be leveraging a lot more of that going forward.
 
 178-p
 08:26.270 --> 08:28.114
-So I hope you found that useful, as you know,
+So I hope you found that useful,
 
 179
 08:28.114 --> 08:32.410
-some of the pipelines and tools used in the orchestration
+as some of the pipelines and tools used in the orchestration
 
 180
 08:32.410 --> 08:34.610
@@ -727,8 +727,3 @@ and yeah, hopefully we can all work together
 182
 08:36.499 --> 08:37.332
 to make it great.
-
-183
-08:37.332 --> 08:39.700
-Have a good day.
-

@@ -70,7 +70,7 @@ Before I get into the structure,
 
 18
 00:49.580 --> 00:51.660
-I wanna mention the underlying design principle,
+I want to mention the underlying design principle,
 
 19
 00:51.660 --> 00:54.510
@@ -162,7 +162,7 @@ we're about to get into, in terms of
 
 41
 01:47.700 --> 01:50.833
-their effect on the admitted decoder config.
+their effect on the emitted decoder config.
 
 slide-4
 01:52.950 --> 01:55.850
@@ -190,11 +190,11 @@ very similar to what you would see in MSE
 
 48
 02:08.100 --> 02:10.200
-or media capabilities.
+or MediaCapabilities.
 
 49
 02:10.200 --> 02:13.200
-This is like for H.264, 
+This is like for H.264,
 
 50
 02:13.200 --> 02:17.330
@@ -210,11 +210,11 @@ AV1, AV01.
 
 53
 02:24.720 --> 02:28.300
-For all codecs that are usable WebCodecs,
+For all codecs that are usable with WebCodecs,
 
 54
 02:28.300 --> 02:31.920
-you can go to the WebCodecs specification "Codec Registry",
+you can go to the WebCodecs specification codec registry,
 
 55
 02:31.920 --> 02:34.700
@@ -250,7 +250,7 @@ No.
 
 63
 02:53.900 --> 02:56.823
-It's again visible with and visible height.
+It's again visible width and visible height.
 
 64
 02:58.220 --> 03:00.900
@@ -274,7 +274,7 @@ by RTC use cases, where the camera's open
 
 69
 03:10.260 --> 03:11.820
-to the high resolution, but then
+at a high resolution, but then
 
 70
 03:11.820 --> 03:14.640
@@ -318,7 +318,7 @@ Where this is interesting is for things
 
 80
 03:37.140 --> 03:40.150
-like anamorphic content, where the pixel's
+like anamorphic content, where the pixel is
 
 81
 03:40.150 --> 03:42.560
@@ -334,7 +334,7 @@ We actually stretch the rendered video just slightly.
 
 84-p
 03:49.430 --> 03:50.790
-Then we have bit rate.
+Then we have bitrate.
 
 85
 03:50.790 --> 03:54.670
@@ -350,7 +350,7 @@ like let's say libvpx would use,
 
 88
 03:58.510 --> 04:00.350
-if you didn't specify a bit rate.
+if you didn't specify a bitrate.
 
 89
 04:00.350 --> 04:02.460
@@ -362,7 +362,7 @@ If you're using this production,
 
 91
 04:03.760 --> 04:06.200
-I recommend setting bit rate,
+I recommend setting bitrate,
 
 92
 04:06.200 --> 04:09.200
@@ -378,7 +378,7 @@ The value here can be rough,
 
 95
 04:12.330 --> 04:15.300
-like variable frame rate video's common.
+like variable frame rate video is common.
 
 96
 04:15.300 --> 04:17.970
@@ -386,7 +386,7 @@ But the idea is to guide the rate controller.
 
 97
 04:17.970 --> 04:20.500
-Bit rate is bits per second.
+bitrate is bits per second.
 
 98
 04:20.500 --> 04:22.820
@@ -446,7 +446,7 @@ All right, so I'm gonna go out of order
 
 112
 04:55.720 --> 04:57.890
-just a second and keep talking about bit rate.
+just a second and keep talking about bitrate.
 
 113
 04:57.890 --> 04:59.560
@@ -482,7 +482,7 @@ And that reflects the reality that WebCodecs is built
 
 121
 05:17.200 --> 05:18.670
-on top of many codec compilations,
+on top of many codec implementations,
 
 122
 05:18.670 --> 05:21.923
@@ -646,7 +646,7 @@ Most folks will probably just take the default
 
 162
 06:50.800 --> 06:53.300
-of no preference, and for that default,
+of no-preference, and for that default,
 
 163
 06:53.300 --> 06:55.420
@@ -714,7 +714,7 @@ This is probably more interesting for RTC folks.
 
 179
 07:34.700 --> 07:36.570
-The lead spec here, WebRTC SVC,
+The linked spec here, WebRTC SVC,
 
 180
 07:36.570 --> 07:38.390
@@ -843,4 +843,3 @@ Yeah, that's it.
 211
 09:13.420 --> 09:14.970
 Thank you so much for watching.
-

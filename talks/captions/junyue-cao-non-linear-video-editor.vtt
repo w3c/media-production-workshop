@@ -10,7 +10,7 @@ I'm a software engineer who works for
 
 3
 00:11.160 --> 00:13.280
-multi-media team at Bytedance.
+the multi-media team at Bytedance.
 
 4
 00:13.280 --> 00:16.240
@@ -74,7 +74,7 @@ There are many video editing software including
 
 21
 00:56.680 --> 01:00.880
-desktop applications, mobile applications
+desktop applications and mobile applications,
 
 22
 01:00.880 --> 01:03.720
@@ -126,7 +126,7 @@ on Android, iOS, Windows and MacOS.
 
 36
 01:45.840 --> 01:48.800
-With the improvement of the browser's support
+With the improvement of the browser support
 
 37
 01:48.800 --> 01:51.720
@@ -170,7 +170,7 @@ We provide JS APIs to the web page to control the engine.
 
 49
 02:21.000 --> 02:26.200
-The JS APIs call to C++ engine compiled with EMScripten.
+The JS APIs call to the C++ engine compiled with EMScripten.
 
 50
 02:26.200 --> 02:30.440
@@ -178,11 +178,11 @@ And the C++ engine calls the browser feature APIs
 
 51
 02:30.440 --> 02:34.960
-provided by EMScripten to use all the features.
+provided by EMScripten to use all the features
 
 52
 02:34.960 --> 02:39.240
-Such as WebGL for video and special effect rendering,
+such as WebGL for video and special effect rendering,
 
 53
 02:39.240 --> 02:46.560
@@ -218,7 +218,7 @@ to decode the video frame.
 
 63
 03:10.400 --> 03:15.560
-After we get the decoded video, we convert it into texture,
+After we get the decoded video, we convert it into a texture,
 
 64
 03:15.560 --> 03:19.440
@@ -234,7 +234,7 @@ For the audio part, we also use WebAssembly to decode,
 
 68
 03:27.520 --> 03:32.920
-and then send the decoded data to WebAudio API for playback.
+and then send the decoded data to the Web Audio API for playback.
 
 70-p
 03:33.840 --> 03:36.520
@@ -322,7 +322,7 @@ To use WebCodecs in a thread, that is a worker, providing
 
 94
 04:42.480 --> 04:45.560
-synchronized WebCodecs API will be more friendly
+synchronous WebCodecs API will be more friendly
 
 95
 04:45.560 --> 04:47.800
@@ -507,4 +507,3 @@ OK. That's all for me.
 148
 07:12.440 --> 07:15.800
 Thank you very much.
-

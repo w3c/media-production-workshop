@@ -18,7 +18,7 @@ in the past 12 months, round about.
 
 5
 00:21.510 --> 00:24.940
-Clipchamp is a in browser video editor.
+Clipchamp is an in browser video editor.
 
 slide-3
 00:24.940 --> 00:26.860
@@ -54,11 +54,11 @@ combined with the speed of a desktop application,
 
 14
 00:51.270 --> 00:54.190
-and we fused that kind of in browser paradigm.
+and we've used that in-browser paradigm.
 
 slide-6
 00:54.190 --> 00:57.500
-For once, probably the most important reason is that
+For one, probably the most important reason is that
 
 16
 00:57.500 --> 00:59.330
@@ -70,7 +70,7 @@ And the reason for that is video files are large.
 
 18-p
 01:03.790 --> 01:06.350
-It also comes with this fantastic advantage from a
+It also comes with the fantastic advantage from a
 
 19
 01:06.350 --> 01:09.860
@@ -90,7 +90,7 @@ obviously very important in this day and age
 
 23
 01:19.650 --> 01:22.860
-that everything you do not upload to a cloud service,
+where everything you do not upload to a cloud service,
 
 24
 01:22.860 --> 01:25.900
@@ -98,7 +98,7 @@ but that stays on your devices is obviously
 
 25
 01:25.900 --> 01:28.530
-kind of subject to a perfect privacy.
+kind of subject to perfect privacy.
 
 slide-7
 01:28.530 --> 01:31.660
@@ -114,27 +114,27 @@ video encoding or decoding.
 
 29-p
 01:35.470 --> 01:39.240
-And that is obviously first and foremost resource allocation
+And that is obviously first and foremost resource allocation.
 
 30
 01:39.240 --> 01:42.340
-memory and storage. Performance is
+Memory is scarce still. Performance is
 
 31
 01:42.340 --> 01:45.590
-equally important. Video encoding is expensive.
+equally important. Video encoding is expensive
 
 32
 01:45.590 --> 01:49.470
-If you use software encoding paradigm, as we,
+if you use software encoding paradigm, as we,
 
 33
 01:49.470 --> 01:53.310
-for the longest time have done, access to low-level hardware
+for the longest time have done. Access to low-level hardware
 
 34
 01:53.310 --> 01:55.350
-capabilities, again, it's limited.
+capabilities, again, is limited.
 
 35
 01:55.350 --> 01:59.440
@@ -150,11 +150,11 @@ WebGPU has just launched and thankfully,
 
 38
 02:05.140 --> 02:07.820
-that's where WebCodecs fit in.
+and obviously that's where WebCodecs fit in.
 
 39-p
 02:07.820 --> 02:12.590
-We now also have access to a circuitry that's devoted to
+We now also have access to the circuitry that's devoted to
 
 40
 02:12.590 --> 02:16.180
@@ -238,11 +238,11 @@ and then passed into the middle stage,
 
 60
 03:11.330 --> 03:14.400
-which we call the compositor that is where, you know,
+which we call the compositor that is where,
 
 61
 03:14.400 --> 03:19.150
-kind of all of those pieces of footage are combined,
+all of those pieces of footage are combined,
 
 62
 03:19.150 --> 03:22.600
@@ -254,7 +254,7 @@ produces a composed stream of raw frames,
 
 64
 03:26.220 --> 03:28.613
-which is then passed until the encoder,
+which is then passed into the encoder,
 
 65
 03:29.547 --> 03:32.180
@@ -294,15 +294,15 @@ And that is basically to go through the WebCodecs API
 
 74
 04:03.120 --> 04:05.870
-lifecycle a lot better to say that video encoder API,
+lifecycle, or it's lot better to say the VideoEncoder API
 
 75
 04:05.870 --> 04:08.150
-inside of that WebCodecs specification,
+inside of the WebCodecs specification.
 
 76
 04:08.150 --> 04:11.300
-initially, you initialize and configure your video encoder
+Initially, you initialize and configure your VideoEncoder
 
 77
 04:11.300 --> 04:12.133
@@ -330,7 +330,7 @@ And lastly, you close down and de-initialize
 
 83
 04:28.310 --> 04:29.843
-your video encoder instance.
+your VideoEncoder instance.
 
 slide-10
 04:33.990 --> 04:36.630
@@ -338,7 +338,7 @@ Now that has worked really well for us,
 
 85
 04:36.630 --> 04:38.330
-but didn't come without some gotchas.
+but it didn't come without some gotchas.
 
 86
 04:38.330 --> 04:41.300
@@ -346,11 +346,11 @@ And that's maybe the most interesting part of this talk.
 
 87-p
 04:41.300 --> 04:43.120
-And maybe then also, you know,
+And maybe then also,
 
 88
 04:43.120 --> 04:45.910
-kind of stimulate some discussions around what can be done
+stimulate some discussions around what can be done
 
 89
 04:45.910 --> 04:49.160
@@ -358,7 +358,7 @@ about that for others who have had the same challenges.
 
 90-p
 04:49.160 --> 04:51.910
-What we had to do is, you know, create an artificial,
+What we had to do is create an artificial,
 
 91
 04:51.910 --> 04:55.940
@@ -374,11 +374,11 @@ just to generate that piece of extra data.
 
 94-p
 05:02.700 --> 05:02.970
-And I think in WebCodecs
+And I think in WebCodecs API
 
 95
 05:02.970 --> 05:07.260
-API parliance, it's called a description.
+parliance, it's called a description.
 
 96
 05:07.260 --> 05:09.850
@@ -402,7 +402,7 @@ such that it can be put in the container format at the
 
 101
 05:25.650 --> 05:27.860
-right place. Now leave it at that.
+right place. Now I leave it at that.
 
 102
 05:27.860 --> 05:30.600
@@ -434,7 +434,7 @@ that's inherently not a good fit for WebCodecs,
 
 109
 05:47.540 --> 05:49.920
-which is like any browser,
+which is, like any browser,
 
 110
 05:49.920 --> 05:52.200
@@ -490,7 +490,7 @@ That being said, if you're hoping that
 
 123
 06:29.290 --> 06:32.870
-it doesn't remain this way, but that further in
+it doesn't remain this way, but that further
 
 124
 06:32.870 --> 06:34.660
@@ -506,11 +506,11 @@ our lives a little bit easier.
 
 127-p
 06:40.160 --> 06:42.390
-One thing we were struggling with, and maybe again,
+One thing we were struggling with, and where we again
 
 128
 06:42.390 --> 06:46.870
-have only a crushed in place, there's not an active
+have only a crutch in place, there's not an active
 
 129
 06:46.870 --> 06:50.685
@@ -518,11 +518,11 @@ back pressure on the VideoEncoder object where
 
 130
 06:50.685 --> 06:54.930
-the VideoEncoder object actively tells you, you know,
+the VideoEncoder object actively tells you
 
 131
 06:54.930 --> 06:59.320
-kind of throttle the way you pass raw video frames,
+to throttle the way you pass raw video frames,
 
 132
 06:59.320 --> 07:02.860
@@ -545,16 +545,12 @@ video encoder object that actively tells people
 Another concern is right now,
 
 137
-07:14.500 --> 07:15.710
-the way to
-
-138
-07:15.710 --> 07:17.120
-kind of configure video encoders
+07:14.500 --> 07:17.120
+the way to configure video encoders
 
 139
 07:17.120 --> 07:19.280
-is largely through the bit rate.
+is largely through the bitrate.
 
 140
 07:19.280 --> 07:22.490
@@ -562,23 +558,23 @@ And that's okay for many typical workloads,
 
 141
 07:22.490 --> 07:24.490
-think about streaming scenario and so forth,
+think about streaming scenarios and so forth,
 
 142
 07:24.490 --> 07:26.490
-but in our case for video editor,
+but in our case for a video editor,
 
 143
 07:26.490 --> 07:29.350
-you are probably a bit more focused on a,
+you are probably a bit more focused on,
 
 144
 07:29.350 --> 07:32.320
-you are probably a bit more obsessed about quality.
+you are probably a bit more obsessed about quality,
 
 145
 07:32.320 --> 07:34.100
-So visual quality that is.
+visual quality that is.
 
 146
 07:34.100 --> 07:38.120
@@ -593,16 +589,12 @@ quality tuning knob,
 which is more like an abstract parameter which just says,
 
 149
-07:43.500 --> 07:45.560
-you know, kind of, from zero to one,
-
-150
-07:45.560 --> 07:49.300
-one means perfect quality, zero means crap quality
+07:43.500 --> 07:49.300
+from zero to one, one means perfect quality, zero means crap quality
 
 151
 07:49.300 --> 07:50.940
-and you know, anything in between,
+and anything in between,
 
 152
 07:50.940 --> 07:54.350
@@ -610,27 +602,27 @@ but that gives you like a bit of a more objective means
 
 153
 07:54.350 --> 07:56.723
-to control the quality other than the bit rate.
+to control the quality other than the bitrate.
 
 154-p
 07:59.523 --> 08:01.380
-Obviously with HDR, there's more
+Obviously HDR matters more and more,
 
 155
 08:01.380 --> 08:04.477
-and more displays being in use, like on forums already,
+as more displays are being in use, on phones its already commonplace,
 
 156
 08:04.477 --> 08:09.477
-commonplace TV is pretty much the same,
+TV is pretty much the same,
 
 157
 08:09.570 --> 08:11.980
-PC monitors, maybe not quite as much yet,
+PC monitors maybe not quite as much yet,
 
 158
 08:11.980 --> 08:14.000
-but be good to see that being supported
+but it would be good to see that being supported
 
 159
 08:14.000 --> 08:16.440
@@ -642,7 +634,7 @@ HEVC decoding,
 
 161
 08:17.700 --> 08:21.670
-and I know that's an entire discussion around IP and patent
+and I know there's an entire discussion around IP and patent
 
 162
 08:22.740 --> 08:25.880
@@ -674,7 +666,7 @@ but it would be good if at least the codecs that are
 
 169
 08:40.870 --> 08:43.460
-installed would be kind of funneled through index posts,
+installed would be kind of funneled through and exposed
 
 170
 08:43.460 --> 08:44.813
@@ -689,12 +681,8 @@ And unfortunately there's certain well-known companies that
 push for HEVC despite the difficult IP situation.
 
 173
-08:53.700 --> 08:54.200
-So that's something that's an
-
-174
-08:54.200 --> 08:55.700
-audience we want to cater for.
+08:53.700 --> 08:55.700
+So that's something that's an audience we want to cater for.
 
 175-p
 08:57.400 --> 08:59.620
@@ -726,15 +714,11 @@ In general, WebCodecs as such doesn't offer anything
 
 182
 09:21.550 --> 09:26.550
-by way of kind of pausing a video file.
+by way of kind of parsing a video file.
 
 183
-09:26.960 --> 09:29.750
-So the demuxing part, or
-
-184
-09:29.750 --> 09:31.843
-producing like an MP4 file.
+09:26.960 --> 09:31.843
+So the demuxing part, or producing an MP4 file.
 
 185-p
 09:35.129 --> 09:37.623
@@ -775,4 +759,3 @@ And that concludes my talk.
 194
 10:01.800 --> 10:03.413
 Thank you. And I'm free for questions.
-

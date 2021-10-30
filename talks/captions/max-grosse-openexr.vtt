@@ -126,11 +126,11 @@ and generally being able to judge
 
 36
 01:19.280 --> 01:21.400
-the visual quality of our results -
+the visual quality of our results,
 
 37
 01:21.400 --> 01:24.280
-or enable artists to properly judge these -
+or enable artists to properly judge these,
 
 38
 01:24.280 --> 01:25.920
@@ -146,7 +146,7 @@ for example, Tensorboard.
 
 slide-3
 01:31.200 --> 01:35.720
-An example is our work on Kernel-Predicting
+An example of our work is the Kernel-Predicting
 
 43
 01:35.720 --> 01:37.960
@@ -326,7 +326,7 @@ switching the loaded images usually
 
 97
 03:22.720 --> 03:24.280
-is instantaneous anyways.
+is instantaneous anyway.
 
 slide-6
 03:26.400 --> 03:28.480
@@ -338,7 +338,7 @@ the input imagery, we need a way to control things
 
 101
 03:31.360 --> 03:33.880
-like gamma and exposure - also in case we want to
+like gamma and exposure, also in case we want to
 
 102
 03:33.880 --> 03:37.160
@@ -434,7 +434,7 @@ the remote paths to find them, which images to group,
 
 130
 04:39.960 --> 04:43.000
-the images that should be used to generate error maps
+as well which images together should form an image difference error map
 
 131
 04:43.000 --> 04:44.800
@@ -466,7 +466,7 @@ results and serve only as illustration.
 
 141-p
 05:05.920 --> 05:09.840
-In this example, we have a noise input
+In this example, we have a noisy input
 
 142
 05:09.840 --> 05:12.240
@@ -482,7 +482,7 @@ the results from a simple denoiser.
 
 147-p
 05:17.760 --> 05:23.680
-We can now zoom in and pan around
+Then We can zoom in and pan around
 
 148
 05:23.680 --> 05:30.920

@@ -86,7 +86,7 @@ This editor, it's pretty much fully featured,
 
 22
 01:09.860 --> 01:12.370
-in the sense that we've gonna have arbitrary numbers
+in the sense that we're gonna have arbitrary numbers
 
 23
 01:12.370 --> 01:15.490
@@ -134,7 +134,7 @@ In terms of transitions, as well,
 
 34
 01:46.600 --> 01:50.210
-we have a variety, based on, you know, feedback from users,
+we have a variety, based on feedback from users,
 
 35
 01:50.210 --> 01:54.610
@@ -150,7 +150,7 @@ And again, controls to adjust what that transition does.
 
 38-p
 02:02.130 --> 02:06.780
-That's in terms of some of the
+In terms of some of the
 
 39
 02:06.780 --> 02:08.880
@@ -203,7 +203,7 @@ and we're getting audio, as well.
 
 51
 02:35.913 --> 02:38.460
-As I play faster and faster, at some point,
+As I play faster and faster, at some point
 
 52
 02:38.460 --> 02:41.930
@@ -239,7 +239,7 @@ And if you can hear, you get chirps, to tell me...
 
 60
 03:03.840 --> 03:05.900
-You know, where I am in the audio.
+where I am in the audio.
 
 61
 03:05.900 --> 03:07.300
@@ -259,7 +259,7 @@ I can hear that by just frame-stepping through.
 
 65-p
 03:17.900 --> 03:20.320
-This is just a demonstration of, you know,
+This is just a demonstration of
 
 66
 03:20.320 --> 03:22.540
@@ -347,11 +347,11 @@ but their performance has improved significantly,
 
 87
 04:32.980 --> 04:37.980
-and also, power consumption, and sort of associated,
+and also, power consumption, and associated
 
 88
 04:39.460 --> 04:42.500
-elements of performance that, you know,
+elements of performance that
 
 89
 04:42.500 --> 04:43.930
@@ -379,7 +379,7 @@ And for the most part, we can do that,
 
 95
 05:00.610 --> 05:03.180
-where off-screen canvases are available,
+where OffscreenCanvas is available,
 
 96
 05:03.180 --> 05:05.850
@@ -415,7 +415,7 @@ to try and buffer as much as possible,
 
 104
 05:24.820 --> 05:27.810
-so that playback isn't effected by, you know,
+so that playback isn't effected by,
 
 105
 05:27.810 --> 05:31.270
@@ -555,7 +555,7 @@ to perform parsing of the MP4 files that we need to,
 
 139
 07:24.250 --> 07:27.750
-to kind of de-multiplex
+to de-multiplex
 
 140
 07:27.750 --> 07:29.764
@@ -563,7 +563,7 @@ the elementary streams.
 
 141-p
 07:29.764 --> 07:32.460
-We're using Web Audio APIs,
+We're using Web Audio API,
 
 142
 07:32.460 --> 07:34.990
@@ -571,7 +571,7 @@ that's the one that we'd like to see move
 
 143
 07:34.990 --> 07:39.680
-to the Web Workers, and we're using WebGL,
+to Web Workers, and we're using WebGL,
 
 144
 07:39.680 --> 07:43.870
@@ -638,12 +638,8 @@ tend to be centered around the current position,
 so we have a cursor, as you can see, here, on the screen.
 
 160
-08:16.630 --> 08:20.770
-What we try and do is predict, given the, you know,
-
-161
-08:20.770 --> 08:22.650
-what the user is doing,
+08:16.630 --> 08:22.650
+What we try and do is predict, given what the user is doing,
 
 162
 08:22.650 --> 08:25.360
@@ -691,7 +687,7 @@ so we're trying to buffer ahead,
 
 173
 08:52.780 --> 08:55.610
-but we're always buffering a few, you know,
+but we're always buffering a few,
 
 174
 08:55.610 --> 08:57.960
@@ -723,7 +719,7 @@ And that gives us the ability to do this,
 
 181
 09:15.330 --> 09:17.640
-where we're, you know, jogging up and down,
+where we're jogging up and down,
 
 182
 09:17.640 --> 09:19.230
@@ -796,4 +792,3 @@ and I think we should stop there.
 199-p
 10:01.740 --> 10:02.633
 <v James Pearce>Okay.</v>
-

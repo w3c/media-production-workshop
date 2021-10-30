@@ -102,7 +102,7 @@ such as big native apps
 
 26
 00:58.400 --> 01:01.833
-compiled to WebAssembly that want to leverage WebCodecs
+compiled to WebAssembly that leverage WebCodecs
 
 27
 01:01.833 --> 01:05.190
@@ -150,11 +150,11 @@ the minimum of memory copies need to happen.
 
 38
 01:28.170 --> 01:31.240
-And the working set of nap needs to be as small as possible
+And the working set of an app needs to be as small as possible
 
 39
 01:31.240 --> 01:33.933
-to ideally git into CPU caches.
+to ideally fit into CPU caches.
 
 40
 01:35.270 --> 01:37.300
@@ -166,7 +166,7 @@ caches are small,
 
 42
 01:38.390 --> 01:40.400
-so no duplications should happen.
+so no duplication should happen.
 
 slide-3
 01:41.220 --> 01:44.540
@@ -241,12 +241,8 @@ And 4.5ms if not. The source needs to be fetched from memory.
 Two frames easily fit in the cache of this CPU.
 
 61-p
-02:32.710 --> 02:33.543
-A video frame
-
-62
-02:33.543 --> 02:36.790
-in YUV 420, 4K, standard dynamic range,
+02:32.710 --> 02:36.790
+A video frame in YUV 420, 4K, standard dynamic range,
 
 63
 02:36.790 --> 02:41.790
@@ -274,11 +270,11 @@ if the caches are hot and 33ms if not.
 
 69
 02:58.320 --> 03:01.910
-The CPU I'm running this on has 20MB of L3 cache.
+The CPU I'm running this on has 20MB of L3 cache,
 
 70
 03:01.910 --> 03:03.730
-So only a partial frame fits.
+so only a partial frame fits.
 
 71-p
 03:04.750 --> 03:05.630
@@ -333,12 +329,8 @@ and CPU to GPU copies (texture uploads)
 are also quite expensive.
 
 84
-03:35.700 --> 03:38.210
-It's best to carefully consider when and how they need to be
-
-85
-03:38.210 --> 03:39.430
-done,
+03:35.700 --> 03:39.430
+It's best to carefully consider when and how they need to be done,
 
 86
 03:39.430 --> 03:40.630
@@ -358,7 +350,7 @@ explicit.
 
 slide-6
 03:49.990 --> 03:53.250
-But sometimes it's really necessary to perform copies.
+But sometimes it really is necessary to perform copies.
 
 91
 03:53.250 --> 03:55.140
@@ -381,12 +373,8 @@ are on the GPU using regular JavaScript or WASM code
 in which case we need to read back.
 
 96-p
-04:04.190 --> 04:06.887
-Custom processing of video frames that are on the CPU,
-
-97
-04:06.887 --> 04:08.600
-via WASM,
+04:04.190 --> 04:08.600
+Custom processing of video frames that are on the CPU via WASM,
 
 98
 04:08.600 --> 04:11.900
@@ -445,44 +433,28 @@ certain cases.
 when calling clone on a VideoFrame or AudioData object,
 
 112
-04:40.490 --> 04:44.260
-the underlying resources are referenced for a second
-
-113
-04:44.260 --> 04:45.930
-time,
+04:40.490 --> 04:45.930
+the underlying resources are referenced for a second time,
 
 114
 04:45.930 --> 04:46.220
 instead of copied,
 
 115
-04:46.220 --> 04:48.450
-so a single frame can be used in different context
-
-116
-04:48.450 --> 04:49.900
-efficiently.
+04:46.220 --> 04:49.900
+so a single frame can be used in different context efficiently.
 
 117
 04:49.900 --> 04:51.803
 Doing a deep copy is still possible.
 
 118-p
-04:53.570 --> 04:54.403
-Now,
-
-119
-04:54.403 --> 04:57.140
-let's see a number of copies that exist today in WebCodecs
+04:53.570 --> 04:57.140
+Now, let's see a number of copies that exist today in WebCodecs.
 
 120-p
-04:57.140 --> 04:57.973
-First,
-
-121
-04:57.973 --> 05:01.103
-the compressed input of a decoder is currently copied.
+04:57.140 --> 05:01.103
+First, the compressed input of a decoder is currently copied.
 
 122
 05:01.990 --> 05:03.537
@@ -509,24 +481,16 @@ there is currently no way to become the owner of the memory
 behind a VideoFrame or an AudioData,
 
 128
-05:12.560 --> 05:13.730
-when it's regular memory,
-
-129
-05:13.730 --> 05:14.683
-non GPU.
+05:12.560 --> 05:14.683
+when it's regular memory, non GPU.
 
 130-p
 05:16.600 --> 05:17.310
 Finally,
 
 131
-05:17.310 --> 05:18.470
-the API
-
-132
-05:18.470 --> 05:21.220
-for now does a lot of allocations and deallocation,
+05:17.310 --> 05:21.220
+the API for now does a lot of allocations and deallocation,
 
 133
 05:21.220 --> 05:23.123
@@ -558,7 +522,7 @@ skipping a copy when possible,
 
 140
 05:36.310 --> 05:38.300
-for example, when it hasn't been cloned,
+for example, when it hasn't been closed,
 
 141
 05:38.300 --> 05:40.240
@@ -605,12 +569,8 @@ buffer to fit in CPU caches,
 but their numbers are a lot bigger.
 
 slide-11
-06:07.490 --> 06:08.700
-Now let's talk,
-
-153
-06:08.700 --> 06:11.380
-about some of the harder problems faced on the
+06:07.490 --> 06:11.380
+Now let's talk about some of the harder problems faced on the
 
 154
 06:11.380 --> 06:13.120
@@ -622,7 +582,7 @@ First,
 
 156
 06:14.120 --> 06:16.690
-the necessity to copy from into the WASM heap becomes
+the necessity to copy from and to the WASM heap becomes
 
 157
 06:16.690 --> 06:18.800
@@ -634,15 +594,11 @@ such as video frames. Decoding into the WASM heap would be
 
 159
 06:22.290 --> 06:24.823
-a welcomed feature, but this needs some work.
+a welcome feature, but this needs some work.
 
 160-p
-06:25.660 --> 06:28.910
-Then there is a problem of passing views over SharedArrayBuffer
-
-161
-06:28.910 --> 06:30.440
-to APIs.
+06:25.660 --> 06:30.440
+Then there is a problem of passing views over SharedArrayBuffer to APIs.
 
 162
 06:30.440 --> 06:33.660
@@ -701,12 +657,8 @@ slide-12
 In conclusion,
 
 176
-07:08.440 --> 07:11.900
-while WebCodecs can and will be improved when it comes
-
-177
-07:11.900 --> 07:12.300
-to memory access,
+07:08.440 --> 07:12.300
+while WebCodecs can and will be improved when it comes to memory access,
 
 178
 07:12.300 --> 07:15.300
@@ -717,16 +669,8 @@ it's already extremely powerful and common use cases
 are already quite fast.
 
 180
-07:16.650 --> 07:17.600
-Making it perfect
-
-181
-07:17.600 --> 07:20.000
-is definitely possible and will probably happen in the
-
-182
-07:20.000 --> 07:21.340
-future.
+07:16.650 --> 07:21.340
+Making it perfect is certainly possible and will probably happen in the future.
 
 183
 07:21.340 --> 07:22.173
