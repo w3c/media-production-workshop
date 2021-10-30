@@ -120,7 +120,7 @@
 
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
             <div>
-  <p id="tp-1">Hi everyone, I am Pierre and co-chair the Joint W3C/SMPTE Workshop on Professional Media Production on the Web.</p>
+  <p id="tp-1">Hi everyone, I am Pierre and I co-chair the Joint W3C/SMPTE Workshop on Professional Media Production on the Web.</p>
   <p id="tp-2">Today I want to share with you recent advances that make it possible to work with professional media in any web browser... and demonstrate it is actually possible to play lossless UHD video, directly from an HTTP server, without proxies and without plugins. But first some background.</p>
 </div>
 
@@ -130,68 +130,68 @@
 
 <div>
   <p id="tp-4">First, the web browser has come a long way since 2000. Back then, the web was text with the occasional video playing through plugins.</p>
-  <p id="tp-5">Fast forward to today, the web now allows  complex multimedia experiences through standard APIs.</p>
-  <p id="tp-6">Particularly important for professional content,  WebAssembly now allows any C/C++ codec libraries to be ported directly to the web. </p>
-  <p id="tp-7">This makes it possible to use professional media formats and codecs that are not natively supported by web browsers. </p>
+  <p id="tp-5">Fast forward to today, the web now allows complex multimedia experiences through standard APIs.</p>
+  <p id="tp-6">Particularly important for professional content, WebAssembly now allows C/C++ libraries to be ported directly to the web.</p>
+  <p id="tp-7">This makes it possible to use professional media formats and codecs that are not natively supported by web browsers.</p>
 </div>
 
 <div>
   <p id="tp-8">Second, something that seemed improbable just 10 years ago has happened: studio content is now processed in the public cloud.</p>
-  <p id="tp-9">This is a stunning reversal for an industry  that was largely based on video tape and perceived the Internet as the wild west.</p>
-  <p id="tp-10">There is probably not a single event  behind this transition. Perhaps it was the disruption in tape supplies caused by the Tōhoku tsunami in 2010, or Netflix’s own experience with on-prem database corruption in 2008.</p>
-  <p id="tp-11">In the end, the cloud is not only more efficient  but also more secure since fewer humans handle the content and fewer copies are made. … and all major studios now have moved some of their workflows to the public cloud.</p>
+  <p id="tp-9">This is a stunning reversal for an industry that was largely based on video tape and perceived the Internet as the wild west.</p>
+  <p id="tp-10">There is probably not a single event behind this transition. Perhaps it was the disruption in tape supplies caused by the Tōhoku tsunami in 2010, or Netflix’s own experience with on-prem database corruption in 2008.</p>
+  <p id="tp-11">In the end, the cloud is not only more efficient but also more secure since fewer humans handle the content and fewer copies are made. … and all major studios now have moved some of their workflows to the public cloud.</p>
 </div>
 
 <div>
-  <p id="tp-12">So I think the time is right for professional  media to embrace the web platform. My personal epiphany came actually in the middle of pandemic when I ask myself: can UHD lossless video be played in a web browser without proxies?</p>
+  <p id="tp-12">So I think the time is right for professional media to embrace the web platform. My personal epiphany came actually in the middle of pandemic when I ask myself: can UHD lossless video be played in a web browser without proxies?</p>
 </div>
 
 <div>
-  <p id="tp-13">Professional UHD lossless video is different  than the typical video supported natively by web browsers.</p>
-  <p id="tp-14">The images are often sampled at 48-bit per pixel,  instead of the typical 24-bit per pixel for consumer video. </p>
+  <p id="tp-13">Professional UHD lossless video is different than the typical video supported natively by web browsers.</p>
+  <p id="tp-14">The images are often sampled at 48-bit per pixel, instead of the typical 24-bit per pixel for consumer video.</p>
   <p id="tp-15">The images are routinely losslessly compressed using codecs like JPEG 2000, instead of using AV1 or AVC lossy compression. This results in bitrates in Gbps, as opposed to Mbps.</p>
-  <p id="tp-16">The compressed image is ultimately wrapped  in file formats like MXF, again different than the formats used for consumer delivery.</p>
+  <p id="tp-16">The compressed image is ultimately wrapped in file formats like MXF, again different than the formats used for consumer delivery.</p>
 </div>
 
 <div>
-  <p id="tp-17">The traditional approach to playing  professional video in web browsers has been to transcode the professional video into a format understood by the web browser.</p>
-  <p id="tp-18">This results in a proxy file. </p>
-  <p id="tp-19">For example, starting from  a 5 Gbps JPEG 2000 MXF file, you might end up with a 50 Mbps AVC MP4 file.</p>
-  <p id="tp-20">This approach has significant drawbacks:  there is latency in that conversion, and metadata and image fidelity are reduced.</p>
+  <p id="tp-17">The traditional approach to playing professional video in web browsers has been to transcode the professional video into a format understood by the web browser.</p>
+  <p id="tp-18">This results in a proxy.</p>
+  <p id="tp-19">For example, starting from a 5 Gbps JPEG 2000 MXF file, you might end up with a 50 Mbps AVC MP4 file.</p>
+  <p id="tp-20">This approach has significant drawbacks: there is latency in that conversion, and metadata and image fidelity are reduced.</p>
 </div>
 
 <div>
-  <p id="tp-21">A no-proxy architecture takes  a different approach.</p>
-  <p id="tp-22">In this approach, the professional video  is compressed using JPEG 2000 and wrapped in an MXF file, which is stored on an HTTP server.</p>
-  <p id="tp-23">Using the MXF index table,  the web app can access each individual image frame directly using standard HTTP byte-range requests.</p>
-  <p id="tp-24">Depending on the network conditions  and the size of each frame, the web app will end up reading complete or partial frames.</p>
-  <p id="tp-25">Using an open source JPEG 2000 C++ library  compiled to WebAssembly, the web app can then decode the partial or complete image frame.</p>
-  <p id="tp-26">Because frames are encoded using JPEG 2000,  decoding a partial frame will not fail and instead will result in a decoded image with reduced resolution.</p>
+  <p id="tp-21">A no-proxy architecture takes a different approach.</p>
+  <p id="tp-22">In this approach, the professional video is compressed using JPEG 2000 and wrapped in an MXF file, which is stored on an HTTP server.</p>
+  <p id="tp-23">Using the MXF index table, the web app can access each individual image frame directly using standard HTTP byte-range requests.</p>
+  <p id="tp-24">Depending on the network conditions and the size of each frame, the web app will end up reading complete or partial frames.</p>
+  <p id="tp-25">Using an open source JPEG 2000 C++ library compiled to WebAssembly, the web app can then decode the partial or complete image frames.</p>
+  <p id="tp-26">Because frames are encoded using JPEG 2000, decoding a partial frame will not fail and instead will result in a decoded image with reduced resolution.</p>
 </div>
 
 <div>
-  <p id="tp-27">This ability for a partial read to result in  a lower resolution image is a standard feature of JPEG 2000 resolution progressive codestreams.</p>
-  <p id="tp-28">In such a codestream: low spatial frequency  information is stored in the lower bytes of the codestream. Whereas the high spatial frequency information is stored in the higher bytes. As a result, reading a partial frame results into a lower-resolution decoded image.</p>
+  <p id="tp-27">This ability for a partial read of a frame to result in a lower resolution image is a standard feature of JPEG 2000 resolution progressive codestreams.</p>
+  <p id="tp-28">In such a codestream low spatial frequency information is stored in the lower bytes of the codestream. Whereas the high spatial frequency information is stored in the higher bytes. As a result, reading a partial frame results into a lower-resolution decoded image.</p>
 </div>
 
 <div>
-  <p id="tp-29">Here’s a live demo and proof-of-concept of  the no-proxy architecture, which I encourage you to visit.</p>
-  <p id="tp-30">The video is lossless UHD content at 48-bits per pixel,  which amounts for about 5 Gbps.</p>
-  <p id="tp-31">The file is stored on S3  and distributed through Cloudfront.</p>
-  <p id="tp-32">The quality of the video will depend on your  available bandwidth, but is unlikely to be pristine given the bit rate involved.</p>
-  <p id="tp-33">Notice, however, that when the video is paused,  the app can download the full frame, which results in pristine quality.</p>
+  <p id="tp-29">Here’s a live demo and proof-of-concept of the no-proxy architecture, which I encourage you to visit directly.</p>
+  <p id="tp-30">The video is lossless UHD content at 48-bits per pixel, which amounts for about 5 Gbps.</p>
+  <p id="tp-31">The file is stored on S3 and distributed through CloudFront.</p>
+  <p id="tp-32">The quality of the video will depend on your available bandwidth, but is unlikely to be pristine given the bit rate involved.</p>
+  <p id="tp-33">Notice, however, that when the video is paused, the app can download the full frame, which results in pristine quality.</p>
 </div>
 
 <div>
-  <p id="tp-34">This is of course only a proof of concept,  so much improvement is possible.</p>
-  <p id="tp-35">It however demonstrates that it is possible  to play back UHD lossless video in the browser in a way that adapts to network conditions, using standard web APIs and open source libraries, without any special web server.</p>
+  <p id="tp-34">This is of course only a proof of concept, so much improvement is possible.</p>
+  <p id="tp-35">It however demonstrates that it is possible to play back UHD lossless video in the browser in a way that adapts to network conditions, using standard web APIs and open source libraries, without any special web server.</p>
 </div>
 
 <div>
-  <p id="tp-36">In summary I really believe the time is right  for professional workflows to embrace the web platform.</p>
-  <p id="tp-37">The web can support professional codecs and formats.  and professional media is moving to the cloud.</p>
-  <p id="tp-38">Some gaps nevertheless remain.  For example the web platform really lacks support for high-dynamic range and wide-color gamut images. And sample and accurate media synchronization can really be improved. Hopefully these gaps can be filled in time.</p>
-  <p id="tp-39">Thanks again for listening.  Do not hesitate to contact me.</p>
+  <p id="tp-36">In summary I really believe the time is right for professional workflows to embrace the web platform.</p>
+  <p id="tp-37">The web can support professional codecs and formats and professional media is moving to the cloud.</p>
+  <p id="tp-38">Some gaps nevertheless remain. For example the web platform really lacks support for high-dynamic range and wide-color gamut images. And sample and accurate media synchronization can really be improved. Hopefully these gaps can be filled in time.</p>
+  <p id="tp-39">Thanks again for listening. Do not hesitate to contact me. Bye!</p>
 </div>
 
 

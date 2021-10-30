@@ -127,7 +127,7 @@
   <p id="tp-1">Hi, I'm Chris Cunningham. I am the tech lead for WebCodecs effort in Chrome and a co-editor on the spec.</p>
   <p id="tp-2">This talk is going to be a primer on the API. If you have already seen the API and played with it a little bit, or if you saw my talk at IIT earlier this week, you can skip this one.</p>
   <p id="tp-3">I am going to do a talk about video encoder configuration, and I do encourage everybody to check that one out.</p>
-  <p id="tp-4">You're probably already familiar with existing codecs APIs, like ffmpeg, AV foundation, media codec, and WebCodecs is similar to those.</p>
+  <p id="tp-4">You're probably already familiar with existing codecs APIs, like ffmpeg, AVFoundation, MediaCodec, and WebCodecs is similar to those.</p>
   <p id="tp-5">Those libraries have been a dependency of the browser for years in support of the video tag and WebRTC. And with WebCodecs, we're exposing those and others in a unified manner directly to JavaScript.</p>
 </div>
 
@@ -140,45 +140,45 @@
 
 </div><div id="ts-3"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#3" class="slide">Slide 3 of 7</i-slide>
 <div>
-  <p id="tp-9">I am going to share my screen, bare with me. Right. All right, so before I start coding, I want to show you what we're going to build.</p>
-  <p id="tp-10">Big buck bunny, of course, being demuxed from an MP4 file, then decoded and rendered to canvas, all using WebCodecs.</p>
+  <p id="tp-9">I am going to share my screen, bear with me. Right. All right, so before I start coding, I want to show you what we're going to build.</p>
+  <p id="tp-10">Big Buck Bunny, of course, being demuxed from an MP4 file, then decoded and rendered to canvas, all using WebCodecs.</p>
   <p id="tp-11">And I should point out that on the recording, it was just being done with Google Hangouts. You're probably seeing some stutter and some chop. And that is just the nature of recording using Hangouts. Locally, this is a smooth playback. Every frame is rendered. It's not being dropped. It's a little bit faster than the native playback rate for this file. And that's just because we're painting every frame as soon as it comes out of the decoder.</p>
   <p id="tp-12">Right. Let me show you where we are now. We have a blank canvas. Let's pull open the code. Alright. Like I said, we have a simple blank canvas and then I'm using MP4Box.js to do the demuxing of the MP4 file. That's why I'm pulling it here.</p>
-  <p id="tp-13">And then we open up the script tag and I bring in an MP4 demuxer module, which is really just a wrapper around MP4Box.js. And there's some interesting stuff in there, but none of it really uses WebCodecs. I'm just gonna skip over it, and feel free to check it out and get up.</p>
-  <p id="tp-14">All you need to know here is that it opens up the file for me and sort of populates the basic track info structure that I need telling me about width and height, and video, and it's Kodak details, etc.</p>
+  <p id="tp-13">And then we open up the script tag and I bring in an MP4 demuxer module, which is really just a wrapper around MP4Box.js. And there's some interesting stuff in there, but none of it really uses WebCodecs. I'm just gonna skip over it, and feel free to check it out on GitHub.</p>
+  <p id="tp-14">All you need to know here is that it opens up the file for me and sort of populates the basic track info structure that I need telling me about width and height, and video, and it's codec details, etc.</p>
   <p id="tp-15">All right, then I grabbed the canvas element, set its dimensions according to what was found in the MP4. And I grabbed the context because I'm going to use that to paint video frames, shortly.</p>
-  <p id="tp-16">Let's make a paint frame function. All right, we're going to call it context.drawImage passing in frame at the origin and using the canvas width and height (inaudible.)</p>
+  <p id="tp-16">Let's make a paintFrame function. All right, we're going to call it context.drawImage passing in frame at the origin and using the canvas width and height (inaudible.)</p>
   <p id="tp-17">Now that we're done rendering the frame, we're gonna call frame.close().</p>
-  <p id="tp-18">A few things to talk about here. One, we were able to call drawImage like this because frame, video frame, is a canvas image source. And that means you can use it here, but also with a text image 2D, create image bitmap anywhere that image source is accepted.</p>
-  <p id="tp-19">Also we call frame.close() right away because we want to release the memory that backs that frame back to the browser for recycling and reuse. Video frame objects and the audio analog, which is called audio data, are just lightweight JavaScript objects. But they hold references to heavier memory like actual pixel data or GPU buffers, typically pooled resources inside the browser. You want to call close on these objects as soon as you're done with them, so that the browser can reuse them, especially in the case of decoding because the decoder actually owns those pool resources. Returning them to the decoder prevents the decoder from stalling.</p>
-  <p id="tp-20">Okay. We've got our paint frame. Let's make a decoder.</p>
-  <p id="tp-21">A constructor takes two callbacks. The first is an output callback, which we'll bring from above, the second is an error callback which you should use to do some kind of fallback handling, show a message to the user. In our case, this is just a demo, so, we'll just log it.</p>
-  <p id="tp-22">All right. Now that we've got the decoder, we need to make a configuration. The required parameters here are going to be codec string, which if you've used media source or video can play type media capabilities. Any of these APIs is the familiar codec string. For H264, this is a AVC1.1.profile bytes level bytes. In our case, the demuxer has found those for us, so we're just going to call trackInfo.codec.</p>
-  <p id="tp-23">But then we also need the description. If you are familiar with FFmpeg, this is the extra data. For those of you familiar with H264 and MP4 files, this is the AVCC header. Generically, this is a sequence of codec specific bytes that is used to prepare the decoder for the stream that's about to decode.</p>
-  <p id="tp-24">You can find more details about the description and the codec string and the codec registry in the WebCodecs spec. There we have the codec string for each codec and whether the description is required and if it is required, what its details are. In our case, like I said, it comes from the AVCC header. The demuxer has already found it for us. I'll just plop it in there.</p>
-  <p id="tp-25">All right, before we can use the configuration, we just check that the configuration is actually supported, like any media API in the web support for a given codec. And the details of this configuration is going to vary by platform, by browser. It's important to first check before we try to use it.</p>
+  <p id="tp-18">A few things to talk about here. One, we were able to call drawImage like this because frame, VideoFrame, is a CanvasImageSource. And that means you can use it here, but also with a texImage2D, createImageBitmap anywhere that image source is accepted.</p>
+  <p id="tp-19">Also we call frame.close() right away because we want to release the memory that backs that frame back to the browser for recycling and reuse. VideoFrame objects and the audio analog, which is called AudioData, are just lightweight JavaScript objects. But they hold references to heavier memory like actual pixel data or GPU buffers, typically pooled resources inside the browser. You want to call close on these objects as soon as you're done with them, so that the browser can reuse them, especially in the case of decoding because the decoder actually owns those pool resources. Returning them to the decoder prevents the decoder from stalling.</p>
+  <p id="tp-20">Okay. We've got our paintFrame. Let's make a decoder.</p>
+  <p id="tp-21">The constructor takes two callbacks. The first is an output callback, which we'll bring from above, the second is an error callback which you should use to do some kind of fallback handling, show a message to the user. In our case, this is just a demo, so, we'll just log it.</p>
+  <p id="tp-22">All right. Now that we've got the decoder, we need to make a configuration. The required parameters here are going to be a codec string, which if you've used MediaSource or video canPlayType, MediaCapabilities, any of these APIs is the familiar codec string. For H264, this is a AVC1.1, profile bytes, level bytes. In our case, the demuxer has found those for us, so we're just going to call trackInfo.codec.</p>
+  <p id="tp-23">But then we also need the description. If you are familiar with FFmpeg, this is the extradata. For those of you familiar with h.264 and MP4 files, this is the AVCC atom. Generically, this is a sequence of codec specific bytes that is used to prepare the decoder for the stream that's about to decode.</p>
+  <p id="tp-24">You can find more details about the description and the codec string in the codec registry in the WebCodecs spec. There we have the codec string for each codec and whether the description is required and if it is required, what its details are. In our case, like I said, it comes from the AVCC atom. The demuxer has already found it for us. I'll just plop it in there.</p>
+  <p id="tp-25">All right, before we can use the configuration, we just check that the configuration is actually supported. Like any media API in the web support for a given codec, and the details of this configuration is going to vary by platform, by browser. It's important to first check before we try to use it.</p>
   <p id="tp-26">We're going to call VideoDecoder.isConfigSupported passing in the config. And then we're going to get the results of that.</p>
   <p id="tp-27">Here's where you would check: is it supported? And if not implement some sort of fallback plan, maybe you use WASM. Maybe you choose a different codec. This is a demo. I'm just going to say: assert that it is a supported.</p>
   <p id="tp-28">Okay, now that we know we can grab and configure the decoder.</p>
-  <p id="tp-29">And now it's just time to start feeding the decoder with chunks to decode. We're going to say Demuxer, give me the video streaming, happens to be track zero, and then we're going to give a callback. For every chunk, please call decoder.decode, passing up that chunk.</p>
+  <p id="tp-29">And now it's just time to start feeding the decoder with chunks to decode. We're going to say demuxer, give me the video stream, happens to be track zero, and then we're going to give a callback. For every chunk, please call decoder.decode, passing up that chunk.</p>
   <p id="tp-30">A few things to point out. There was no waiting here. When we called configure, we didn't wait for that to complete, before we started calling decode. When we called decode, We don't wait for the first decode to complete before we call the second decode.</p>
-  <p id="tp-31">It's a fire and forget kind of an acute processing model under the hood. A decode that follows the configure is presumed to use the configuration that followed it in the configure. That preceded it in the configure. And then you can queue up as much work as you want.</p>
+  <p id="tp-31">It's a fire and forget kind of a queued processing model under the hood. A decode that follows the configure is presumed to use the configuration that followed it in the configure. That preceded it in the configure. And then you can queue up as much work as you want.</p>
   <p id="tp-32">Alright, that should do it. Let's see if I have any typos.</p>
   <p id="tp-33">All right. There you have it, Big Buck Bunny, decoding and rendering.</p>
 </div>
 
 </div><div id="ts-4"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#4" class="slide">Slide 4 of 7</i-slide>
 <div>
-  <p id="tp-34">We didn't talk at all about audio, but here in the slides, I'm going to link to the same demo basically, but with an audio playout that is synchronized to the video, and then this will also be a link to the GitHub code to make that work. The short of it is uses audio decoder, but instead of a canvas, you're going to use AudioWorklet to do the rendering. Just one option that you have, you could also use like audio buffer sourceNode. If you're going to do just kind of like smaller chunks of audio, or media stream track, if you are doing kind of a real time scenario.</p>
+  <p id="tp-34">We didn't talk at all about audio, but here in the slides, I'm going to link to the same demo basically, but with an audio playout that is synchronized to the video, and then this will also be a link to the GitHub code to make that work. The short of it is uses AdioDecoder, but instead of a canvas, you're going to use AudioWorklet to do the rendering. Just one option that you have, you could also use like AudioBufferSourceNode. If you're going to do just kind of like smaller chunks of audio, or MediaStreamTrack if you are doing kind of a real time scenario.</p>
 </div>
 
 </div><div id="ts-5"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#5" class="slide">Slide 5 of 7</i-slide>
 <div>
   <p id="tp-35">All right, let's talk a little bit about audio decoding.</p>
-  <p id="tp-36">Here is the audio decoder interface. I didn't even show the video decoder interface. They're basically the same.</p>
-  <p id="tp-37">The things to point out are instead of outputting, a video frame, audio decoder is going to output an AudioData object, which is conceptually just a buffer of PCM samples. Otherwise it's the same five methods, same two attributes, same constructor same semantics.</p>
+  <p id="tp-36">Here is the AudioDecoder interface. I didn't even show the VideoDecoder interface. They're basically the same.</p>
+  <p id="tp-37">The things to point out are instead of outputting, a VideoFrame, AudioDecoder is going to output an AudioData object, which is conceptually just a buffer of PCM samples. Otherwise it's the same five methods, same two attributes, same constructor same semantics.</p>
   <p id="tp-38">Two methods we didn't get to when we talked about video, which are present in both interfaces are flush and reset.</p>
-  <p id="tp-39">Flush is going to force the codec to flush the pipeline of all completed work. As it's going to admit any outputs that might've been ready, but haven't quite made it to the output callback. You might use this in like an industry scenario where you have fed the decoder with all the things you need to give it, but you wanna make sure that you get like the last frame out.</p>
+  <p id="tp-39">Flush is going to force the codec to flush the pipeline of all completed work. As it's going to admit any outputs that might've been ready, but haven't quite made it to the output callback yet. You might use this in an end of stream scenario where you have fed the decoder with all the things you need to give it, but you wanna make sure that you get like the last frame out.</p>
   <p id="tp-40">The other one that we didn't talk about is reset. Reset is going to completely reset the codec. It's going to drop all active work, all queued work. It's going to drop the active configuration, just everything. You would use this if you would do like a seek. And so the user said stop where you are. I'm going to go to this other point in the timeline, start there instead.</p>
 </div>
 
@@ -186,12 +186,12 @@
 <div>
   <p id="tp-41">Okay. That was decoding. Let's talk a little bit about encoding.</p>
   <p id="tp-42">The flow is pretty much the same, but in reverse. Frames go in, they get encoded, they produce chunks.</p>
-  <p id="tp-43">The encoder interfaces are nearly identical to those from decode. You swap decode for Incode, but otherwise it's the same five methods you saw in the last slide. And then audio and coding also follows this exact same pattern.</p>
+  <p id="tp-43">The encoder interfaces are nearly identical to those from decode. You swap decode for encode, but otherwise it's the same five methods you saw in the last slide. And then audio and coding also follows this exact same pattern.</p>
 </div>
 
 </div><div id="ts-7"><i-slide src="slides/chris-cunningham-hello-webcodecs.pdf#7" class="slide">Slide 7 of 7</i-slide>
 <div>
-  <p id="tp-44">At this point, you've had a glance at all the core interfaces and the relationships to each other. And that's, that's kind of the gist. That's, that's the primer on WebCodecs. As a reminder, I have another talk coming up for a video coder configuration, please check that out.</p>
+  <p id="tp-44">At this point, you've had a glance at all the core interfaces and the relationships to each other. And that's kind of the gist. That's the primer on WebCodecs. As a reminder, I have another talk coming up for VideoEncoder configuration, please check that out.</p>
 </div>
 
 </div>

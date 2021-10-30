@@ -141,19 +141,19 @@ It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, a
 
 </div><div id="ts-2"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#2" class="slide">Slide 2 of 17</i-slide>
 <div>
-  <p id="tp-2">And it has never been seen as a viable solution for streaming media because it doesn't scale. It is weak on quality at best and it is hard to use.</p>
+  <p id="tp-2">And it has not been seen as a viable solution for streaming media because it doesn't scale. It is weak on quality at best and it is hard to use.</p>
 </div>
 
 </div><div id="ts-3"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#3" class="slide">Slide 3 of 17</i-slide>
 <div>
-  <p id="tp-3">The industry is really dominated by video-on-demand models like Netflix, the Hulu, or even Disney with does not require real-time.</p>
+  <p id="tp-3">The industry is really dominated by video-on-demand models like Netflix or Hulu, or even Disney with does not require real-time.</p>
   <p id="tp-4">However, the pandemic has really changed all of this and it has accelerated the adoption of real-time media workflows that have finally bridged the gap between web and broadcast.</p>
-  <p id="tp-5">real-time media has enabled a need for interactivity that requires near zero latency. with new use cases that big professional-grade workflows possible in consumer grade devices.</p>
+  <p id="tp-5">Real-time media has enabled a need for interactivity that requires near zero latency, with new use cases that big professional-grade workflows possible in consumer grade devices.</p>
 </div>
 
 </div><div id="ts-4"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#4" class="slide">Slide 4 of 17</i-slide>
 <div>
-  <p id="tp-6">WebRTC is the perfect technology for delivering these real-time media.</p>
+  <p id="tp-6">WebRTC is the perfect technology for delivering this real-time media.</p>
 </div>
 
 </div><div id="ts-5"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#5" class="slide">Slide 5 of 17</i-slide>
@@ -163,7 +163,7 @@ It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, a
 
 </div><div id="ts-6"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#6" class="slide">Slide 6 of 17</i-slide>
 <div>
-  <p id="tp-8">And despite some misconceptions, it is possible to deliver a high quality media with broadcast quality at a web scale with additional properties like end-to-end encryption or simulcast streaming support.</p>
+  <p id="tp-8">And despite some misconceptions, it is possible to deliver a high quality media with broadcast quality at web scale with additional properties like end-to-end encryption or simulcast and SVC support.</p>
 </div>
 
 </div><div id="ts-7"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#7" class="slide">Slide 7 of 17</i-slide>
@@ -174,54 +174,54 @@ It’s time to WHIP WebRTC into shape and take advantage of WebRTC end-to-end, a
 
 </div><div id="ts-8"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#8" class="slide">Slide 8 of 17</i-slide>
 <div>
-  <p id="tp-11">In the broadcasting industry, RTMP is still ubiquitous for live streaming and for media ingest, into hundreds or so media platforms.</p>
+  <p id="tp-11">In the broadcasting industry, RTMP is still ubiquitous for live streaming and for media ingest, into hundreds or even thousands of media platforms.</p>
 </div>
 
 </div><div id="ts-9"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#9" class="slide">Slide 9 of 17</i-slide>
 <div>
-  <p id="tp-12">WebRTC offers a lot of technical advantages when doing live media ingest like with network resiliency without increasing the end to end delay, by using SVC codec or simulcast where they reuse the server (?) required, with per-codec choices like VP9 or AV1, an end to end content as video for content, but over the delivering network.</p>
+  <p id="tp-12">WebRTC offers a lot of technical advantages when doing live media ingest like better network resiliency without increasing the end to end delay, by using SVC codecs or simulcast where they reuse the server-side processing required, with per-codec choices like VP9 or AV1, an end to end content as video for content, but over the delivery network.</p>
 </div>
 
 </div><div id="ts-10"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#10" class="slide">Slide 10 of 17</i-slide>
 <div>
   <p id="tp-13">When we tried to use WebRTC for media ingest, we realized that while WebRTC is the best media transport protocol for real time streaming, the lack of a standard protocol has made that each WebRTC streaming service requires implementing a custom ad-hoc protocol, making it a no-go for hardware encoders and broadcasting tools to adopt it.</p>
-  <p id="tp-14">Other media transports could be used for ingest, but using WebRTC for both ingest and delivery allow to work natively in browsers avoids protocol translation which adds delays and implementation complexity. Avoiding the transcoding by setting common codecs and use WebRTC features into it.</p>
+  <p id="tp-14">Other media transports could be used for ingest, but using WebRTC for both ingest and delivery allow us to work natively in browsers, avoids protocol translation which adds delays and implementation complexity. Avoiding the transcoding by setting common codecs and use WebRTC features end to end.</p>
 </div>
 
 </div><div id="ts-11"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#11" class="slide">Slide 11 of 17</i-slide>
 <div>
-  <p id="tp-15">So the solution is simple, we just need a reference signal protocol. The requirements for this new protocol would be that it might be simpler to implement. And easy to use at the current RTMP URI, support this specific ingest use-case which is a subset of the WebRTC possible use cases because we only need support for unidirectional flows. And we don't need support for re-negotiations.</p>
-  <p id="tp-16">We need to be fully compliant with WebRTC and RTCWeb specs but we have to lower their requirements and the complexity to reimplement it so it can be adopted by both hardware encoders and brodcasting tools.</p>
+  <p id="tp-15">So the solution is simple, we just need a reference signal protocol. The requirements for this new protocol would be that it might be simpler to implement. And easy to use at the current RTMP URI, support the specific ingest use-case which is a subset of the WebRTC possible use cases because we only need support for unidirectional flows. And we don't need support for re-negotiations.</p>
+  <p id="tp-16">We need to be fully compliant with WebRTC and RTCWeb specs but we have to lower the requirements and the complexity to reimplement it so it can be adopted by both hardware encoders and brodcasting tools.</p>
 </div>
 
 </div><div id="ts-12"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#12" class="slide">Slide 12 of 17</i-slide>
 <div>
-  <p id="tp-17">One thing that was clear to us is there was that this new protocol should reuse the current Web technologies as much as possible. So we did use HTTP post for exchanging the SDP offer offer and answer. And the connection state is controlled by the WebRTC ICE states. The authentication is supported by as most of the SDP rest nowadays does by the Authorization HTTP header. The standardization of this protocol is being done at the IETF.</p>
+  <p id="tp-17">One thing that was clear to us is there was that this new protocol should reuse the current Web technologies as much as possible. So we did use HTTP POST for exchanging the SDP offer and answer. And the connection state is controlled by the WebRTC ICE and DTLS states. The authentication and authorization is supported by most of the SDP rest nowadays does by the Authorization HTTP header. The standardization of this protocol is being done at the IETF.</p>
 </div>
 
 </div><div id="ts-13"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#13" class="slide">Slide 13 of 17</i-slide>
 <div>
-  <p id="tp-18">And there are already some platforms that are implemented like Millicast or media server like Janus that support it, and we have some client implementation based on your GStreamer and of course in JavaScript.</p>
+  <p id="tp-18">And there are already some platforms that are implemented like Millicast or media server like Janus that support it, and we have some client implementations based GStreamer and of course in JavaScript.</p>
   <p id="tp-19">The goal is to gain traction so we can get the hardware encoders to implement it and be able to use it in the same tools that are available for RTMP.</p>
 </div>
 
 </div><div id="ts-14"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#14" class="slide">Slide 14 of 17</i-slide>
 <div>
   <p id="tp-20">But this is all that is needed for using WebRTC in a professional media flow? Unfortunately not. And it is not mainly due to the lack of specifications, but mostly because the implementation of many of the features required is lagging behind in most of the browsers, and even with (?) API available to enable them, most of the time, they are in experimental status or hidden behind flags, undocumented or difficult to discover.</p>
-  <p id="tp-21">For example, some of the issues that we have found with audio if that WebRTC... we can support multichannel audio with Multiopus. Multiopus is not official standard and it's only supported by Chrome. And it is hidden, that requests SDP mangling in order to support it.</p>
-  <p id="tp-22">NetEQ, that is a jitter buffer implementation in all WebRTC browser has issues with music. And for example, Lorenzo has made a great presentation on the topic, referencing all the issues that he has found when trying to use WebRTC for music. So I will encourage everyone to watch it.</p>
+  <p id="tp-21">For example, some of the issues that we have found with audio is that WebRTC... we can support multichannel audio with Multiopus. Multiopus is not official standard and it's only supported by Chrome. And it is hidden, that requests SDP mangling in order to support it.</p>
+  <p id="tp-22">NetEQ, that is a jitter buffer implementation in all WebRTC browsers has issues with music. For example, Lorenzo has made a great presentation on the topic, describing all the issues that he has found when trying to use WebRTC for music. So I will encourage everyone to watch it.</p>
   <p id="tp-23">Or for example, the integration between WebRTC and Web Audio has implementation issues on Chrome that either adds echo, when you play audio with audio captured by WebRTC and it has been acknowledged by Google itself.</p>
-  <p id="tp-24">Or for example, there is a lack of integration between WebRTC and WebVTT making live subtitles impossible.</p>
+  <p id="tp-24">Another example is that there is a lack of integration between WebRTC and WebVTT making live subtitles impossible.</p>
 </div>
 
 </div><div id="ts-15"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#15" class="slide">Slide 15 of 17</i-slide>
 <div>
   <p id="tp-25">Also on the video side. For example, SVC extension APIs only working in Chrome and it's an experimental feature, although this is likely going to change in the following weeks.</p>
-  <p id="tp-26">AV1 is only supported by Chrome and not enabled in it. Even if they share almost the same codebase. The almost the same code base beeping enter file,</p>
+  <p id="tp-26">AV1 is only supported by Chrome and not enabled in Edge even if they share almost the same codebase.</p>
   <p id="tp-27">VP9 profile which supports 10 bits is only supported by Chrome and only on the receiving side. And it is experimental in Safari.</p>
   <p id="tp-28">The playoutdelayhint is an optional extension and it is only supported in Chrome.</p>
-  <p id="tp-29">Eh, also another sample is that abs-capture-time that is a header extension that could be used for synchronizing a video with standard metadata is only supporting in Chrome but it is a thing hidden and requires SDP mangling to enable it.</p>
-  <p id="tp-30">And at last, as an example of how professional-grade features are not always sought to be used with the WebRTC, video alpha is not supported, never meant to be supported in WebRTC but it is under consideration for being implemented in WebCodecs.</p>
+  <p id="tp-29">Also, another sample is that abs-capture-time that is a header extension that could be used for synchronizing a video with standard metadata is only supporting in Chrome but it is again hidden and requires SDP mangling to enable it.</p>
+  <p id="tp-30">And at last, as an example of how professional-grade features are not always thought to be used with the WebRTC, video alpha is not supported, never meant to be supported in WebRTC but it is under consideration for being implemented in WebCodecs.</p>
 </div>
 
 </div><div id="ts-16"><i-slide src="slides/sergio-garcia-murillo-whip.pdf#16" class="slide">Slide 16 of 17</i-slide>

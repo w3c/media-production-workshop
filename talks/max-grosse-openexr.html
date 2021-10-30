@@ -123,12 +123,12 @@
   <p id="tp-3">As we are part of the Studio segment of the Walt Disney Company, we naturally deal with production assets.</p>
   <p id="tp-4">When it comes to images, this typically means we deal with higher resolution, 1080p at least, up to 4k and even more. Additionally, the imagery is typically of high dynamic range, stored in the OpenEXR file format as 16-bit or 32-bit floating points.</p>
   <p id="tp-5">For many applications, we also need to inspect other aspects of images apart from the final composed color data. These can be feature buffers from rendering, such as depth, normals, or alpha masks and provided as separate inputs so you can quickly determine for each final color pixel the depth or normal that goes along with it.</p>
-  <p id="tp-6">To inspect the training data that gets fed into our deep neural networks, to view error maps on the validation, and generally being able to judge the visual quality of our results - or enable artists to properly judge these - we require a little bit more than a cut-out thumbnail of a jpeg image within, for example, Tensorboard.</p>
+  <p id="tp-6">To inspect the training data that gets fed into our deep neural networks, to view error maps on the validation, and generally being able to judge the visual quality of our results, or enable artists to properly judge these, we require a little bit more than a cut-out thumbnail of a jpeg image within, for example, Tensorboard.</p>
 </div>
 
 </div><div id="ts-3"><i-slide src="slides/max-grosse-openexr.pdf#3" class="slide">Slide 3 of 11</i-slide>
 <div>
-  <p id="tp-7">An example is our work on Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings that my colleagues published in 2017 at ACM SIGGRAPH.</p>
+  <p id="tp-7">An example of our work is the Kernel-Predicting Convolutional Networks for Denoising Monte Carlo Renderings that my colleagues published in 2017 at ACM SIGGRAPH.</p>
   <p id="tp-8">This introduces a deep learning approach for denoising Monte-Carlo rendered images that produces high-quality results suitable for production.</p>
 </div>
 
@@ -137,7 +137,7 @@
   <p id="tp-9">This is when work on JERI started, the JavaScript Extended-Range image viewer.</p>
   <p id="tp-10">The idea is that we can have a remote, or local, HTTP server that serves not only the OpenEXR images we are interested in directly, but also an HTML5-based viewer such that these OpenEXR images can be directly inspected within a modern browser.</p>
   <p id="tp-11">In particular, this allows conveniently reviewing result images stored on our compute cluster without the need to explicitly copy or mount it locally.</p>
-  <p id="tp-12">This also guarantees that the client receives the original images, without any additional compression, providing full control over the very exact pixel values that will be displayed. It functions like a very configurable &lt;img&gt; tag with a lot of additional features to dig deep into extended-range images.</p>
+  <p id="tp-12">This also guarantees that the client receives the original images, without any additional compression, providing full control over the very exact pixel values that will be displayed. It functions like a very configurable &lt;;img&gt;; tag with a lot of additional features to dig deep into extended-range images.</p>
 </div>
 
 </div><div id="ts-5"><i-slide src="slides/max-grosse-openexr.pdf#5" class="slide">Slide 5 of 11</i-slide>
@@ -145,12 +145,12 @@
   <p id="tp-13">For this, we have compiled the OpenEXR library to WebAssembly using EMScripten.</p>
   <p id="tp-14">The EMScripten toolchain still lacks a bit in terms of quality of life, so this was a bit of a tedious process to get right, however once built, it can be potentially used in a variety of applications.</p>
   <p id="tp-15">Decoding speed was not our primary concern, so we did not perform any extensive benchmarks on how fast it can decode EXR images compared to a native solution. Typically, even on local network, we will already have a small delay for downloading the EXR, so decoding speed did not show to be an issue to our users so far.</p>
-  <p id="tp-16">In particular with some local caching, switching the loaded images usually is instantaneous anyways.</p>
+  <p id="tp-16">In particular with some local caching, switching the loaded images usually is instantaneous anyway.</p>
 </div>
 
 </div><div id="ts-6"><i-slide src="slides/max-grosse-openexr.pdf#6" class="slide">Slide 6 of 11</i-slide>
 <div>
-  <p id="tp-17">Given the extended range nature of the input imagery, we need a way to control things like gamma and exposure - also in case we want to drill into details at particular dark or bright regions.</p>
+  <p id="tp-17">Given the extended range nature of the input imagery, we need a way to control things like gamma and exposure, also in case we want to drill into details at particular dark or bright regions.</p>
   <p id="tp-18">Deep learning is commonly driven by a loss function, which in our case is often a combination of image difference metrics. Visualizing this error is of great importance in helping develop the desired model.</p>
   <p id="tp-19">For all these visualization aspects, we have opted to facilitate WebGL. This was a very natural choice and provides a very efficient and convenient way to change the way things get displayed without too much code and without modifying the original pixel values directly.</p>
   <p id="tp-20">In particular, this offloads all the pixel operations to the GPU, keeping the user experience smooth and avoiding manipulating large arrays of pixels directly in a single JavaScript thread.</p>
@@ -159,16 +159,16 @@
 
 </div><div id="ts-7"><i-slide src="slides/max-grosse-openexr.pdf#7" class="slide">Slide 7 of 11</i-slide>
 <div>
-  <p id="tp-22">The viewer itself is configured by providing a JSON file that describes which EXR images to load, the remote paths to find them, which images to group, the images that should be used to generate error maps (i.e. image differences).</p>
+  <p id="tp-22">The viewer itself is configured by providing a JSON file that describes which EXR images to load, the remote paths to find them, which images to group, as well which images together should form an image difference error map (i.e. image differences).</p>
 </div>
 
 </div><div id="ts-8"><i-slide src="slides/max-grosse-openexr.pdf#8" class="slide">Slide 8 of 11</i-slide>
 <div>
   <p id="tp-23">Here's a quick demonstration of JERI in action.</p>
   <p id="tp-24">The examples are right from the jeri website and only intended to illustrate the idea, note that these are not production assets and the results are far worse than our production results and serve only as illustration.</p>
-  <p id="tp-25">In this example, we have a noise input that we might have gotten from our renderer.</p>
+  <p id="tp-25">In this example, we have a noisy input that we might have gotten from our renderer.</p>
   <p id="tp-26">We can now toggle to Improved" to inspect the results from a simple denoiser.</p>
-  <p id="tp-27">We can now zoom in and pan around to really compare even on a pixel level.</p>
+  <p id="tp-27">Then We can zoom in and pan around to really compare even on a pixel level.</p>
   <p id="tp-28">Ultimately, we are interested in how we compare to a ground truth, or reference, which is also available here and we can simply toggle to that as well.</p>
   <p id="tp-29">As you see for example there's quite some detail lost in the ice cubes.</p>
   <p id="tp-30">Even better though is to have an error map between the output and the reference computed on the fly, as you can see here.</p>

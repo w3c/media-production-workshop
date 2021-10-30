@@ -145,7 +145,7 @@
 <div>
   <p id="tp-6">What is Soundtrap then?</p>
   <p id="tp-7">Well, Soundtrap is an online collaborative DAW and DAW is, as you may know, a Digital Audio Workstation.</p>
-  <p id="tp-8">And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar amp simulation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web media, MediaRecorder, MediaStream and so on and so forth</p>
+  <p id="tp-8">And, this means that we have features such as multi-track with a media recording and editing. We have software instruments, we have audio effects, reverbs, filters, guitar amp simulation and so on. And we implement all of this through heavy use of web standards such as Web Audio, Web MIDI, MediaRecorder, MediaStream and so on and so forth</p>
 </div>
 
 </div><div id="ts-4"><i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#4" class="slide">Slide 4 of 12</i-slide>
@@ -165,7 +165,7 @@
 
 </div><div id="ts-6"><i-slide src="slides/ulf-hammarqvist-audio-latency.pdf#6" class="slide">Slide 6 of 12</i-slide>
 <div>
-  <p id="tp-16">The second problem that we have in our use case that is maybe not immediately clear obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
+  <p id="tp-16">The second problem that we have in our use case that is maybe not immediately clearly obvious to people is you record several things in succession and you need to align them. (chuckles) Sounds obvious, but it is trickier than you might think. That we call recording latency compensation. There are probably other words for it as well.</p>
   <p id="tp-17">In order to achieve that you need two things really, you need to know what is the round-trip latency. You need to know that actually, the actual latency. And you need to know when the data arrived towards your storage or stream, or what have you. To be able to when you play them back later, the data that you aggregated, the relative alignment of what you heard and what you produced should be retained.</p>
 </div>
 
@@ -206,7 +206,7 @@
   <p id="tp-34">To conclude this talk, first off the input and output latency are maybe spec-ed. It's not clear that they are the full paths that we intend here.</p>
   <p id="tp-35">And then specifically, we have some thoughts around the MediaStreamSourceNode and similar translation pieces between different standards, like any additional latency needs to be exposed.</p>
   <p id="tp-36">And then, there seems to be an opportunity to spice up the media stream recorder, to get accurate timing information by some callback or something.</p>
-  <p id="tp-37">Finally, the WebCodecs API is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
+  <p id="tp-37">Finally, the WebCodecs is very nice, but there's something missing in the sense that we don't have packetization, or containerization or whatever the correct term would be.</p>
   <p id="tp-38">And finally, of course, we just want to encourage all the implementers to get the input and output latencies low obviously, and pick drivers that allow exposing the information because we need it to do a good job.</p>
 </div>
 

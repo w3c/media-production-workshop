@@ -137,7 +137,7 @@
   <p id="tp-2">Firstly, let me tell you a bit about Grabyo.</p>
   <p id="tp-3">Grabyo is a SaaS platform for broadcast media production. It's aimed at commercial broadcasters.</p>
   <p id="tp-4">We use web and cloud-based technologies to bring remote distributed capabilities to broadcast workflows.</p>
-  <p id="tp-5">Some of our offerings include live video production, clipping from live streams, non-linear editing and publishing creative media to various end points, for example, social media or livestream.</p>
+  <p id="tp-5">Some of our offerings include live video production, clipping from live streams, non-linear editing and publishing creative media to various endpoints, for example, social media or livestream.</p>
 </div>
 
 </div><div id="ts-3"><i-slide src="slides/sacha-guddoy-media-element-accuracy.pdf#3" class="slide">Slide 3 of 10</i-slide>
@@ -191,7 +191,7 @@
   <p id="tp-28">The next part I want to talk about is multi-threading.</p>
   <p id="tp-29">So it's often necessary to perform media operations on the same thread as the UI handlers, so for example, rendering a video onto a canvas. This is not particularly desirable, because these tasks can be really resource intensive and run very frequently, blocking the UI thread, degrading performance and the user experience.</p>
   <p id="tp-30">If you're painting a video to a canvas, that's probably going to be running on every requestAnimationFrame.</p>
-  <p id="tp-31">We'll see the conventional solutions to this last problem is to use multi-threading, i.e., web workers and you do your intensive thread in that web worker. So there is an off-screen canvas interface, and that would allow WebGL to render to a canvas within the scope of a worker.</p>
+  <p id="tp-31">Obviously, the conventional solutions to this last problem is to use multi-threading, i.e., web workers and you do your intensive thread in that web worker. So there is an off-screen canvas interface, and that would allow WebGL to render to a canvas within the scope of a worker.</p>
   <p id="tp-32">But there isn't an equivalent API for video. Video cannot be used in the worker. It cannot be accessed.</p>
   <p id="tp-33">This is problematic because then your video to canvas rendering pipeline has to be in the DOM thread. It can't live in a worker by itself.</p>
 </div>

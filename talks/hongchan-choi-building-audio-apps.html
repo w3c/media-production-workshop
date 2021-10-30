@@ -140,38 +140,38 @@
 
 </div><div id="ts-4"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#4" class="slide">Slide 4 of 21</i-slide>
 <div>
-  <p id="tp-4">Obviously, the first thing you need to take a look at is Web Audio API, but I'm not going to talk about how to use it here today.</p>
+  <p id="tp-4">Obviously, the first thing you need to take a look at is the Web Audio API, but I'm not going to talk about how to use it here today.</p>
   <p id="tp-5">It has been around for more than a decade and we have plenty of code examples and tutorials out there. Instead, I would like to discuss its architecture and performance characteristics.</p>
 </div>
 
 </div><div id="ts-5"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#5" class="slide">Slide 5 of 21</i-slide>
 <div>
-  <p id="tp-6">Two notes, first Web Audio API is a graph-based audio programming environment. There are a handful of audio nodes you can interconnect to create a graph.</p>
+  <p id="tp-6">Two notes, first, Web Audio API is a graph-based audio programming environment. There are a handful of audio nodes you can interconnect to create a graph.</p>
   <p id="tp-7">Secondly, the graph renderer is run by a dedicated high priority thread which is usually a real-time thread.</p>
   <p id="tp-8">This design was inevitable because the Web Audio API is a part of the web platform.</p>
 </div>
 
 </div><div id="ts-6"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#6" class="slide">Slide 6 of 21</i-slide>
 <div>
-  <p id="tp-9">The processing audio streams directly on the application's main thread causes a poor user experience in general. This is why the web audio node leaps on the main thread and the actual audio processing, I call them internals, happens on a dedicated isolated thread.</p>
-  <p id="tp-10">For better or worse, Web Audio API hides the low-level audio implementation away from the developer. It means that you don't have to write on oscillator or a filter or a compressor from scratch, it is provided by the implementation, but it also means that things can get complicated quickly when you want to touch the bare metal such as implementing your own filter that manipulates audio samples.</p>
+  <p id="tp-9">Processing audio streams directly on the application's main thread causes a poor user experience in general. This is why the web audio node lives on the main thread and the actual audio processing, I call them internals, happens on a dedicated isolated thread.</p>
+  <p id="tp-10">For better or worse, Web Audio API hides the low-level audio implementation away from the developer. It means that you don't have to write on oscillator or a filter or a compressor from scratch, it is provided by the implementation. But it also means that things can get complicated quickly when you want to touch the bare metal such as implementing your own filter that manipulates audio samples.</p>
 </div>
 
 </div><div id="ts-7"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#7" class="slide">Slide 7 of 21</i-slide>
 <div>
-  <p id="tp-11">For that sort of use case, Web Audio API has Audio Worklet. With this object, you can write your own audio processing modules with JavaScript and WebAssembly.</p>
+  <p id="tp-11">For that sort of use case, Web Audio API has AudioWorklet. With this object, you can write your own audio processing modules with JavaScript and WebAssembly.</p>
 </div>
 
 </div><div id="ts-8"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#8" class="slide">Slide 8 of 21</i-slide>
 <div>
-  <p id="tp-12">Another interesting aspect is that Web Audio API is a JavaScript API. As you already know, JavaScript is a garbage collected language with some controversial quirks like typing and scoping and et cetera. When you are building a larger scale real world product, you will encounter problems related to the garbage collection and performance.</p>
+  <p id="tp-12">Another interesting aspect is that Web Audio API is a JavaScript API. As you already know, JavaScript is a garbage collected language with some controversial quirks like typing and scoping, et cetera. When you are building a larger scale real world product, you will encounter problems related to the garbage collection and performance.</p>
   <p id="tp-13">It's something you cannot control and it varies across browsers, but you have to be mindful.</p>
   <p id="tp-14">Technically, garbage collection should not impact Web Audio API's renderer because it runs on a different thread, but that's not always the case. Even though your code is flawless, not creating any garbages, libraries that you're using might be wasteful, it might be inducing garbage collection. Creating too many objects at once will eventually put pressure on the audio renderer because audio nodes are garbage collected objects, even though internals are not, but they are still associated together.</p>
 </div>
 
 </div><div id="ts-9"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#9" class="slide">Slide 9 of 21</i-slide>
 <div>
-  <p id="tp-15">What do you do? You inspect and profile the performance. It gives you insights on when it happened and how it happened.</p>
+  <p id="tp-15">So what do you do? You inspect and profile the performance. It gives you insights on when it happened and how it happened.</p>
   <p id="tp-16">In Chrome, you can use the Web Audio perf toolkit and that's my first offer today.</p>
 </div>
 
@@ -186,7 +186,7 @@
 
 </div><div id="ts-11"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#11" class="slide">Slide 11 of 21</i-slide>
 <div>
-  <p id="tp-22">Secondly, we have the audio graph visualizer extension. This is the most recent addition to our toolkit. This is not shipped with Chrome, so you will have to install it from the Chrome Web Store, which is just one time process.</p>
+  <p id="tp-22">Secondly, we have the audio graph visualizer extension. This is the most recent addition to our toolkit. This is not shipped with Chrome, so you will have to install it from the Chrome Web Store, which is just a one time process.</p>
   <p id="tp-23">This tool is useful in at least two cases. First, a larger scale web audio application typically constructs and destroys a lot of audio nodes. It's really hard to spot a wrong connection between them by reading the source code.</p>
   <p id="tp-24">The visualization is immensely better in pinpointing a mistake.</p>
   <p id="tp-25">Secondly, it allows you to understand the level of a redundancy of your graph. You might be creating too many gain nodes for no reason. It is very common technique using several gain nodes to wrap a subgraph.</p>
@@ -195,10 +195,10 @@
 
 </div><div id="ts-12"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#12" class="slide">Slide 12 of 21</i-slide>
 <div>
-  <p id="tp-27">Lastly, you can use a Chrome's Tracing tool. This is a bit more involved compared to the previous options, but it is comprehensive and it's full of insights.</p>
-  <p id="tp-28">You can use this by going to chrome://tracing. I suggest reading the article that I wrote to explain how to use it for a audio application. You can just Google Profiling web audio apps."</p>
-  <p id="tp-29">This tool is also important for two reasons. First, this shows exactly when things went down and how they happened. You will be able to see when an audio stream glitches like buffer underruns, and make an informed guess about why.</p>
-  <p id="tp-30">Secondly, this is incredibly useful when you communicate with Chromium engineers. It is very likely that we don't have the exact same setup with you, so some reproduction of the issue might be impossible. So, when fixing bugs, exchanging a trace file with us really helps the communication.</p>
+  <p id="tp-27">Lastly, you can use Chrome's Tracing tool. This is a bit more involved compared to the previous options, but it is comprehensive and it's full of insights.</p>
+  <p id="tp-28">You can use this by going to chrome://tracing. I suggest reading the article that I wrote to explain how to use it for a audio application. You can just Google Profiling Web Audio apps."</p>
+  <p id="tp-29">This tool is also important for two reasons. First, this shows exactly when things went down and how they happened. You will be able to see when an audio stream glitches, like buffer underruns, and make an informed guess about why.</p>
+  <p id="tp-30">Secondly, this is incredibly useful when you communicate with Chromium engineers. It is very likely that we don't have the exact same setup as you, so some reproduction of the issue might be impossible. So, when fixing bugs, exchanging a trace file with us really helps the communication.</p>
 </div>
 
 </div><div id="ts-13"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#13" class="slide">Slide 13 of 21</i-slide>
@@ -211,40 +211,40 @@
   <p id="tp-32">As you're building a client side application, like an instrument or an audio recorder, editor, or a DAW, soon you will realize that the lack of access to audio device is a big gap between the web and the native platform.</p>
   <p id="tp-33">It means that device related settings, such as number of channels, sample rate, and buffer size are not readily available for your application.</p>
   <p id="tp-34">We, browser implementers, actually are aware of that that this is a huge pain point for developers, but it is not without a reason.</p>
-  <p id="tp-35">This device related information can be exploited by advertisers or attackers to infer the user's identity. This technique is called fingerprinting and it is one of the reason that we cannot have nice things on the web.</p>
+  <p id="tp-35">This device related information can be exploited by advertisers or attackers to infer the user's identity. This technique is called fingerprinting and it is one of the reasons that we cannot have nice things on the web.</p>
   <p id="tp-36">There are of course, countermeasures to this type of exploitation, a constraint-based API pattern for example. The app can make an inquiry and the platform will accept or reject it depending on the current client's capability.</p>
   <p id="tp-37">It's like asking, Hey, my app needs four channels at 48k and lowest possible latency. And the platform will say yes or no.</p>
-  <p id="tp-38">That way, it is much harder to sneak in with a drive-by fingerprinting and at the same time, we don't lose much of API usability.</p>
-  <p id="tp-39">Protecting user privacy was considered a hassle and it was definitely a limiting factor of a web platform, but I believe so-called privacy over API design is gradually becoming a norm, even on the native platforms.</p>
+  <p id="tp-38">That way, it is much harder to sneak in with drive-by fingerprinting and at the same time, we don't lose much API usability.</p>
+  <p id="tp-39">Protecting user privacy was considered a hassle and it was definitely a limiting factor of the web platform, but I believe so-called privacy over API design is gradually becoming a norm, even on the native platforms.</p>
   <p id="tp-40">These days, you will find similar protection mechanisms like a system-wide permission UI for microphone access in other operating system like MacOS or Windows.</p>
 </div>
 
 </div><div id="ts-15"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#15" class="slide">Slide 15 of 21</i-slide>
 <div>
-  <p id="tp-41">Now let's talk a little bit about latency. I'm well aware that this is a thorny issue when it comes to web platform and at least for Chrome Web Audio, we are not particularly doing well in audio latency department.</p>
+  <p id="tp-41">Now let's talk a little bit about latency. I'm well aware that this is a thorny issue when it comes to the web platform and at least for Chrome Web Audio, we are not particularly doing well in audio latency department.</p>
   <p id="tp-42">For audio production apps, the latency is important at least for two reasons. First, the minimum latency possible matters when you're recording or monitoring, but also accurate latency reporting from the platform is critical for compensating audio after the fact.</p>
   <p id="tp-43">But it's a tricky problem for browsers. The browser needs to support a variety of configurations on many different platforms. It means that we are spreading thin and might be missing some obvious platform specific optimizations.</p>
   <p id="tp-44">When seasoned audio developers jump in Chrome's audio infrastructure, point out some problems, we are always grateful for that and that happened actually several times in the past.</p>
-  <p id="tp-45">Also, web audio is not the only audio API on the platform. We're about to see a media element. In Chrome, they all also share the same audio infrastructure with web audio. This makes it hard to bring a big change that only benefits web audio and not others.</p>
-  <p id="tp-46">RTC and media usually focus on the resilience, which means more buffering, but web audio cares more about the low-latency and interactivity, which means less buffering. This conflict makes it hard to apply the aggressive optimization that only benefits web audio.</p>
+  <p id="tp-45">Also, Web Audio is not the only audio API on the platform. WebRTC and the media element, in Chrome, they also share the same audio infrastructure with Web Audio. This makes it hard to bring a big change that only benefits Web Audio and not others.</p>
+  <p id="tp-46">RTC and media usually focus on the resilience, which means more buffering, but Web Audio cares more about low-latency and interactivity, which means less buffering. This conflict makes it hard to apply the aggressive optimization that only benefits Web Audio.</p>
 </div>
 
 </div><div id="ts-16"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#16" class="slide">Slide 16 of 21</i-slide>
 <div>
   <p id="tp-47">What's the reality today?</p>
-  <p id="tp-48">For web audio, you have to usually get your media for microphone input and the output simply goes to the system default audio device.</p>
-  <p id="tp-49">But what if you want to use an audio device other than a default one? The only known solution is to use the audio element. By streaming the web audio output to an audio element with the selected device.</p>
+  <p id="tp-48">For web audio, you have to use getUserMedia for microphone input and the output simply goes to the system default audio device.</p>
+  <p id="tp-49">But what if you want to use an audio device other than the default one? The only known solution is to use the audio element. By streaming the Web Audio output to an audio element with the selected device.</p>
   <p id="tp-50">Here, streaming usually means there are some buffering going on somewhere down there. That can't be good for latency.</p>
 </div>
 
 </div><div id="ts-17"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#17" class="slide">Slide 17 of 21</i-slide>
 <div>
-  <p id="tp-51">What can we do about it? The Audio Working Group is currently working to create a new API that allows you to select the audio output device for a audio context. Theoretically, this will guarantee the code path that minimizes the output latency.</p>
+  <p id="tp-51">What can we do about it? The Audio Working Group is currently working to create a new API that allows you to select the audio output device for an audio context. Theoretically, this will guarantee the code path that minimizes the output latency.</p>
 </div>
 
 </div><div id="ts-18"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#18" class="slide">Slide 18 of 21</i-slide>
 <div>
-  <p id="tp-52">Also, one can dream about creating new API for input device selection as well. I'm curious how many people would want that. Please let me know what you think.</p>
+  <p id="tp-52">Also, one can dream about creating a new API for input device selection as well. I'm curious how many people would want that. Please let me know what you think.</p>
 </div>
 
 </div><div id="ts-19"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#19" class="slide">Slide 19 of 21</i-slide>
@@ -254,14 +254,14 @@
 
 </div><div id="ts-20"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#20" class="slide">Slide 20 of 21</i-slide>
 <div>
-  <p id="tp-54">We talked about the design and the architecture of Web Audio API and also I introduced the Web Audio perf ToolKit from Chrome, and also we discussed the problems in device access and latency.</p>
+  <p id="tp-54">We talked about the design and the architecture of the Web Audio API and also I introduced the Web Audio perf toolkit from Chrome, and also we discussed the problems in device access and latency.</p>
   <p id="tp-55">By all means, this is just a conversation starter, not a comprehensive guideline.</p>
 </div>
 
 </div><div id="ts-21"><i-slide src="slides/hongchan-choi-building-audio-apps.pdf#21" class="slide">Slide 21 of 21</i-slide>
 <div>
   <p id="tp-56">With that, I would like to invite you to a survey, so we, browser implementers, can understand your needs better. Here's a link.</p>
-  <p id="tp-57">Lastly, my chrome tech lead hat on, building a healthy ecosystem for web audio is my job and I'm open to have a chat with anyone who is interested in partnership with my team.</p>
+  <p id="tp-57">Lastly, with my Chrome tech lead hat on, building a healthy ecosystem for Web Audio is my job and I'm open to have a chat with anyone who is interested in partnership with my team.</p>
   <p id="tp-58">Please feel free to email me or DM me on Twitter. Thank you for watching. Be safe and stay healthy.</p>
 </div>
 

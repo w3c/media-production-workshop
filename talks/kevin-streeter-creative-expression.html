@@ -129,7 +129,7 @@
           <div id="slides" class="fade-in" role="region" aria-live="off" aria-label="Slide container">
             <div id="ts-1"><i-slide src="slides/kevin-streeter-creative-expression.pdf#1" class="slide">Slide 1 of 8</i-slide>
 <div>
-  <p id="tp-1">Hello everyone. My name is Kevin Streeter, and I'm here to talk about some of the challenges that exist to bringing desktop class creative applications to the web. In this talk, we'll begin with a broad summary of the many technical areas we need to work through to create powerful creative tools. Then we will dive into a few selected topics to get a better feel for the kind of capabilities we need from the web to make it all possible. Let's get started.</p>
+  <p id="tp-1">Hello everyone. My name is Kevin Streeter, and I'm here to talk about some of the challenges that exist bringing desktop class creative applications to the web. In this talk, we'll begin with a broad summary of the many technical areas we need to work through to create powerful creative tools. Then we will dive into a few selected topics to get a better feel for the kind of capabilities we need from the web to make it all possible. Let's get started.</p>
 </div>
 
 </div><div id="ts-2"><i-slide src="slides/kevin-streeter-creative-expression.pdf#2" class="slide">Slide 2 of 8</i-slide>
@@ -149,11 +149,11 @@
 
 </div><div id="ts-3"><i-slide src="slides/kevin-streeter-creative-expression.pdf#3" class="slide">Slide 3 of 8</i-slide>
 <div>
-  <p id="tp-13"> The first area that we're gonna dive deeper into is the use of WebAssembly.</p>
-  <p id="tp-14">Creative media tools tend to use a mix of new and existing media processing code. The existing code is typically written in C++. This code tends to be a mix of sort of compute intensive and memory intensive operations. Importantly, not all of this code can simply be ported to a GPU.</p>
+  <p id="tp-13"> The first area that we're going to dive deeper into is the use of WebAssembly.</p>
+  <p id="tp-14">Creative media tools tend to use a mix of new and existing media processing code. The existing code is typically written in C++. This code tends to be a mix of compute intensive and memory intensive operations. Importantly, not all of this code can simply be ported to a GPU.</p>
   <p id="tp-15">Sometimes that's because we haven't really found a good GPU-based solution for the operation, but frequently it's also because we have working code and we'd really like to continue to use it.</p>
   <p id="tp-16">These code bases have been heavily optimized over time, and they've been optimized in a couple of different ways. They've been optimized to take advantage of 64-bit processing, and they've also been optimized to take advantage of SIMD instruction sets that are present on most desktop class hardware.</p>
-  <p id="tp-17">If we want to do these types of things on the web, we've got a few challenges to that. One is that in browser support for WebAssembly today is all 32 bit. That not only limits the processing capabilities, but it also limits the total amount of memory that we have access to.</p>
+  <p id="tp-17">If we want to do these types of things on the web, we've got a few challenges today. One is that in-browser support for WebAssembly today is all 32-bit. That not only limits the processing capabilities, but it also limits the total amount of memory that we have access to.</p>
   <p id="tp-18">SIMD is not currently supported in most browsers. There are some proposals around SIMD operations, and there are support for that in some browsers, but it's still very early in terms of availability of that capability.</p>
   <p id="tp-19">One important aspect of this is that the SIMD proposals that are currently being investigated really do emphasize portability over performance. And what this means is that we no longer really have access to the lowest level of instruction sets, and that does have an impact on overall performance.</p>
 </div>
@@ -182,11 +182,11 @@
 </div><div id="ts-6"><i-slide src="slides/kevin-streeter-creative-expression.pdf#6" class="slide">Slide 6 of 8</i-slide>
 <div>
   <p id="tp-33"> The last topic I'd like to dive deeper on is hardware encoding and decoding of media.</p>
-  <p id="tp-34">Pro media production tools often use more specialized media formats than in a typical consumer application. For example, a photography tool will use formats like TIFF, JPEG 2000 in a variety of different raw image formats. Similarly, video tools will use things like REDCODE, ARRIRAW, or ProRes.</p>
+  <p id="tp-34">Pro media production tools often use more specialized media formats than in a typical consumer application. For example, a photography tool will use formats like TIFF, JPEG 2000, and a variety of different raw image formats. Similarly, video tools will use things like REDCODE, ARRIRAW, or ProRes.</p>
   <p id="tp-35">Now for imaging applications, we can get away with using WebAssembly to do encoding and decoding, especially if we've tackled some of the performance issues that we spoke about earlier in the talk. But video is much harder since maintaining good frame rates during playback, scrubbing, and other aspects of authoring are really, really important.</p>
   <p id="tp-36">Now today, the ability to get hardware accelerated video is present in the web through the video element, and soon we'll have access through an API such as WebCodecs. But a problem with these APIs is that they only work with mainstream consumer-oriented formats like AVC and VP8 and VP9.</p>
   <p id="tp-37">Now, unfortunately there is an unavoidable challenge with media codecs, is that many of them are encumbered by intellectual property issues, making it much harder to ensure they are available on all devices all the time.</p>
-  <p id="tp-38">So what we may need here is some way to access plugable or modular hardware acceleration capabilities, so when this capability is present on a device, the application can get access to it.</p>
+  <p id="tp-38">So what we may need here is some way to access pluggable or modular hardware acceleration capabilities, so when this capability is present on a device, the application can get access to it.</p>
 </div>
 
 </div><div id="ts-7"><i-slide src="slides/kevin-streeter-creative-expression.pdf#7" class="slide">Slide 7 of 8</i-slide>
