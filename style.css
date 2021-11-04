@@ -1150,12 +1150,14 @@ div.talks .speaker span {
 #slides button {
   background: hsla(204,0%,86%,1.0);
   border: 1px outset hsla(204,0%,86%,1.0);
+  max-width: 13em;
   color: inherit;
   font-weight: normal !important;
   min-height: 2.5em;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  margin-top: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
 }
 
 .buttons > * {

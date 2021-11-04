@@ -969,15 +969,16 @@
     button.classList.add("play-here");
     button.setAttribute("lang", "en-us"); // It may be inside non-English
     button.setAttribute("dir", "ltr");
-    button.setAttribute("title", "Start playing at " + slidenr);
+    button.setAttribute("title", "Play talk at " + slidenr.toLowerCase());
     button.setAttribute("data-slide", i);
     button.addEventListener("click", play_here, true);
     div.insertBefore(button, div.firstChild);
-    button.appendChild(document.createTextNode("Play "));
+    button.appendChild(document.createTextNode(`Play talk at ${slidenr.toLowerCase()} `));
     let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "-10 0 1162 1152");
-    svg.setAttribute("width", "11.62");
-    svg.setAttribute("height", "11.52")
+    svg.setAttribute("width", "15");
+    svg.setAttribute("height", "15");
+    svg.setAttribute("style", "margin-bottom: 4px");
     svg.classList.add("icon");
     button.appendChild(svg);
     let desc = document.createElementNS("http://www.w3.org/2000/svg", "desc");
