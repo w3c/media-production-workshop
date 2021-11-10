@@ -1,0 +1,614 @@
+WEBVTT
+
+1
+00:06.300 --> 00:10.200
+Hello, I'm Oleg Sidorkin.
+
+2
+00:10.200 --> 00:13.540
+I'm a Principal Software Architect at Bluescape.
+
+4-p
+00:13.540 --> 00:17.740
+I'm also one of the developers of co-browsing technology
+
+5
+00:17.740 --> 00:23.140
+and that's what I'm going to be talking about today.
+
+6
+00:23.140 --> 00:26.940
+The pandemic and the shift to remote work has challenged
+
+7
+00:26.940 --> 00:30.660
+the collaboration work landscape all together.
+
+8
+00:30.660 --> 00:34.600
+When previously gathering a team in one room
+
+9
+00:34.600 --> 00:37.340
+behind a high definition screen was a no-brainer,
+
+10
+00:37.340 --> 00:38.900
+today it has become a challenge
+
+11
+00:38.900 --> 00:42.420
+and probably not coming back anytime soon.
+
+12
+00:42.420 --> 00:46.380
+Classic video conferencing and assets sharing tools
+
+13
+00:46.380 --> 00:49.100
+are not adapted for group work when it comes to
+
+14
+00:49.100 --> 00:54.900
+high fidelity content such as art, animations, and video.
+
+16-p
+00:54.900 --> 00:58.660
+We at Bluescape created a novel approach
+
+17
+00:58.660 --> 01:01.540
+where virtually any web site or web enabled tool
+
+18
+01:01.540 --> 01:04.940
+can gain additional functionality for live co-experience
+
+19
+01:04.940 --> 01:08.740
+in viewing, commenting and editing creative content.
+
+20
+01:08.740 --> 01:12.540
+When a user or a team starts a co-browsing session,
+
+21
+01:12.540 --> 01:16.580
+the desired web site is loaded in the cloud
+
+22
+01:16.580 --> 01:20.200
+while exact replicas and all incremental changes
+
+23
+01:20.200 --> 01:22.500
+are broadcasted to all connected clients,
+
+24
+01:22.500 --> 01:26.620
+giving them the same quality, the same latency,
+
+25
+01:26.620 --> 01:29.200
+and about the same experience as they would browse
+
+26
+01:29.200 --> 01:30.540
+the content on their local device
+
+27
+01:30.540 --> 01:33.980
+or behind the same screen.
+
+29-p
+01:33.980 --> 01:36.780
+On the server side, we use Chromium as a headless
+
+30
+01:36.780 --> 01:40.340
+web browser thanks to its open source nature and
+
+31
+01:40.340 --> 01:44.340
+availability of a mature Chrome DevTools Protocol (CDP).
+
+32
+01:44.340 --> 01:47.380
+Another point to consider was 65% browser
+
+33
+01:47.380 --> 01:50.900
+market share worldwide earned by Chrome.
+
+34
+01:50.900 --> 01:54.580
+We selected old fashioned WebSockets as a low latency
+
+35
+01:54.580 --> 01:56.820
+communication protocol that guarantees
+
+36
+01:56.820 --> 01:59.100
+in-order messages delivery.
+
+37
+01:59.100 --> 02:02.420
+The challenges start when we try to capture
+
+38
+02:02.420 --> 02:06.260
+and deliver a live and exact replica of a web page
+
+39
+02:06.260 --> 02:06.940
+to the remote client.
+
+41-p
+02:08.820 --> 02:12.500
+W3C DOM4 introduced MutationObserver deprecating
+
+42
+02:12.500 --> 02:15.940
+Mutation Events. MutationObserver is a great way to
+
+43
+02:15.940 --> 02:18.460
+get notified about changes in the DOM,
+
+44
+02:18.460 --> 02:20.420
+but it doesn't provide enough information
+
+45
+02:20.420 --> 02:22.540
+to understand what was the exact change
+
+46
+02:22.540 --> 02:24.820
+and to form an incremental DOM update
+
+47
+02:24.820 --> 02:27.620
+to be broadcasted to connected clients.
+
+48
+02:27.620 --> 02:32.420
+We ended up with injected JavaScript code
+
+49
+02:32.420 --> 02:36.600
+that translates browser DOM into a virtual DOM
+
+50
+02:36.600 --> 02:38.500
+and computes the difference between the previous
+
+51
+02:38.500 --> 02:39.940
+and the new version of the virtual DOM.
+
+52
+02:39.940 --> 02:45.980
+To keep cost of computation at bay,
+
+53
+02:45.980 --> 02:49.860
+we used persistent data structures and hints
+
+54
+02:49.860 --> 02:54.380
+from MutationObserver about each area that were affected.
+
+55
+02:54.380 --> 02:57.980
+The immutability of virtual DOM allowed us to
+
+56
+02:57.980 --> 03:01.600
+leverage shallow comparison via triple equal
+
+57
+03:01.600 --> 03:03.860
+JavaScript operator so we can skip analysis
+
+58
+03:03.860 --> 03:06.460
+of entire sub trees if we know that
+
+59
+03:06.460 --> 03:09.780
+they will not be affected for sure.
+
+61-p
+03:09.780 --> 03:16.260
+It works well for almost all DOM elements,
+
+62
+03:16.260 --> 03:19.900
+but there are some exceptions to take care of.
+
+63
+03:19.900 --> 03:21.820
+MutationObserver doesn't sense changes in
+
+64
+03:21.820 --> 03:24.740
+canvas elements and information extraction from
+
+65
+03:24.740 --> 03:27.900
+canvas context poses its own challenge.
+
+66
+03:27.900 --> 03:31.980
+We use mixed approach. For less dynamic canvases,
+
+67
+03:31.980 --> 03:37.260
+like charts, we extract content as data URL
+
+68
+03:37.260 --> 03:40.860
+that becomes a special attribute in virtual DOM
+
+69
+03:40.860 --> 03:43.140
+so the same synchronization logic can be used
+
+70
+03:43.140 --> 03:46.200
+as for regular elements.
+
+71
+03:46.200 --> 03:48.580
+For canvases with highly dynamic content
+
+72
+03:48.580 --> 03:51.420
+and specifically for WebGL ones,
+
+73
+03:51.420 --> 03:53.140
+we have an experimental approach based on
+
+74
+03:53.140 --> 03:55.940
+captureStream API and WebRTC video streaming.
+
+76-p
+03:57.600 --> 04:01.200
+The document attached MutationObserver
+
+77
+04:01.200 --> 04:03.980
+doesn't sense changes in Shadow DOM
+
+78
+04:03.980 --> 04:06.540
+so every such shadowRoot should be observed individually,
+
+79
+04:06.540 --> 04:08.420
+which adds additional logistics to
+
+80
+04:08.420 --> 04:10.100
+the monitoring subsystem but it's solvable.
+
+81
+04:10.100 --> 04:16.100
+However, additionally, Shadow DOM trees created
+
+82
+04:16.100 --> 04:20.500
+in closed mode become invisible for JavaScript.
+
+83
+04:20.500 --> 04:22.780
+In this case we either should give up
+
+84
+04:22.780 --> 04:26.780
+or we can, and what we do, we monkey-patch
+
+85
+04:26.780 --> 04:29.940
+attachShadow method of the Element to keep them open.
+
+86
+04:29.940 --> 04:36.220
+It might contradict certain web site logic but that works.
+
+88-p
+04:36.260 --> 04:39.700
+When we serve content of a web page to
+
+89
+04:39.700 --> 04:43.180
+all connected clients,
+
+90
+04:43.180 --> 04:45.500
+we have to introduce certain modifications to it.
+
+91
+04:45.500 --> 04:48.900
+We strip out all JavaScript code,
+
+92
+04:48.900 --> 04:52.140
+effectively making the web page passive and embeddable,
+
+93
+04:52.140 --> 04:57.500
+so it even can bypass the iframe embed implementations.
+
+94
+04:57.500 --> 05:00.600
+All JavaScript logic is executed
+
+95
+05:00.600 --> 05:01.620
+in the cloud in headless browser.
+
+96
+05:01.620 --> 05:05.660
+We patch links to external assets
+
+97
+05:05.660 --> 05:08.340
+so all of them are served from the cloud as well.
+
+98
+05:08.340 --> 05:10.700
+No direct access.
+
+99
+05:10.700 --> 05:12.540
+Those are target web sites.
+
+100
+05:12.540 --> 05:16.140
+We infuse event handlers to intercept
+
+101
+05:16.140 --> 05:17.740
+clients interactions in the page
+
+102
+05:17.740 --> 05:20.780
+and reroute them to the cloud instance of the web site.
+
+103
+05:20.780 --> 05:25.220
+Such interception allows us to introduce true co-browsing
+
+104
+05:25.220 --> 05:28.540
+experience when the single instance of the web site
+
+105
+05:28.540 --> 05:32.180
+can be effectively controlled and viewed
+
+106
+05:32.180 --> 05:34.340
+by multiple distributed clients.
+
+108-p
+05:34.340 --> 05:38.380
+And there are more challenges to come.
+
+110-p
+05:38.380 --> 05:43.380
+The event handlers distinguish “trusted” events
+
+111
+05:43.380 --> 05:44.740
+generated by user action
+
+112
+05:44.740 --> 05:47.780
+and synthetic events generated or modified
+
+113
+05:47.780 --> 05:53.140
+by script or dispatched via dispatchEvent API.
+
+114
+05:53.140 --> 05:56.860
+This feature is effectively employed by certain web sites
+
+115
+05:56.860 --> 05:58.860
+to ensure genuinity of the user input.
+
+116
+05:58.860 --> 06:02.140
+The workaround we found so far is to dispatch
+
+117
+06:02.140 --> 06:05.620
+such events through Chrome DevTools protocol.
+
+118
+06:05.620 --> 06:11.500
+And in this case, they become trusted events.
+
+119-p
+06:11.500 --> 06:16.100
+Patching of external assets becomes tricky
+
+120
+06:16.100 --> 06:19.220
+when it comes to malformed content.
+
+121
+06:19.220 --> 06:22.540
+For example, a browser might ignore a set of errors
+
+122
+06:22.540 --> 06:26.220
+in CSS file and still displays the valid part
+
+123
+06:26.220 --> 06:29.180
+while the most of CSS parsing libraries
+
+124
+06:29.180 --> 06:32.180
+in node.js ecosystem will fail to process it.
+
+125
+06:32.180 --> 06:35.340
+The current solution that we use is
+
+126
+06:35.340 --> 06:40.460
+to mimic the browser behavior as close as possible,
+
+127
+06:40.460 --> 06:44.540
+effectively taking such logic,
+
+128
+06:44.540 --> 06:48.100
+such CSS code handling from browser's code base,
+
+129
+06:48.100 --> 06:49.580
+thanks to its open source nature.
+
+131-p
+06:49.580 --> 06:55.420
+We also found that page synchronization logic is
+
+132
+06:55.420 --> 06:57.740
+sensitive to intrusive browser extensions,
+
+133
+06:57.740 --> 07:03.600
+that can be enabled on the client side.
+
+134
+07:03.600 --> 07:05.540
+Some DOM changes are positional
+
+135
+07:05.540 --> 07:08.500
+and if an extension altered browser DOM
+
+136
+07:08.500 --> 07:11.180
+in an unexpected way, the sync protocol
+
+137
+07:11.180 --> 07:12.540
+might get confused.
+
+138
+07:12.540 --> 07:17.300
+As a partial mitigation of this issue,
+
+139
+07:17.300 --> 07:22.660
+we introduced unique identifiers to key DOM elements.
+
+140
+07:22.660 --> 07:27.500
+JavaScript also doesn't expose object pointers and
+
+141
+07:27.500 --> 07:31.380
+any kind of object identity, so we used a tree,
+
+142
+07:31.380 --> 07:34.900
+we leveraged a distinguish property of a Map container
+
+143
+07:34.900 --> 07:40.700
+where key can be any value including DOM element.
+
+144
+07:40.700 --> 07:43.700
+Maintaining such a map aside allowed us to introduce
+
+145
+07:43.700 --> 07:46.300
+unique identitiers and object pointers for DOM elements,
+
+146
+07:46.300 --> 07:50.100
+and keep the original DOM intact
+
+147
+07:50.100 --> 07:56.900
+without introducing interference with Web site logic.
+
+149-p
+07:56.900 --> 08:02.740
+Implementing co-browsers, we faced many challenges,
+
+150
+08:02.740 --> 08:06.200
+and I described just maybe a quarter of them.
+
+151
+08:06.200 --> 08:11.100
+A significant part of them is related to limitations
+
+152
+08:11.100 --> 08:14.940
+or design decisions in corresponding web technologies.
+
+153
+08:14.940 --> 08:17.780
+And it's understandable because what we're doing is not
+
+154
+08:17.780 --> 08:20.580
+what you are typically doing.
+
+155
+08:20.580 --> 08:23.380
+We are trying to implement completely remote
+
+156
+08:23.380 --> 08:24.420
+browsing experience.
+
+157
+08:24.420 --> 08:28.700
+For most of such issues, we managed either
+
+158
+08:28.700 --> 08:32.740
+to find workaround or to introduce certain hacks
+
+159
+08:32.740 --> 08:35.940
+leveraging dynamic nature of the web stack.
+
+160
+08:35.940 --> 08:40.620
+So when it works, it works perfect, it works flawlessly.
+
+161
+08:40.620 --> 08:45.500
+When it doesn't, finding solution is tricky,
+
+162
+08:45.500 --> 08:48.540
+it feels like walking through a minefield.
+
+163
+08:48.540 --> 08:51.860
+But at the end, it's doable.
+
+165-p
+08:51.860 --> 08:57.940
+Thank you.
+
