@@ -733,11 +733,7 @@ details[open] summary {
 }
 
 cite {
-  display: inline-block;
-  margin-left: 2em;
-  padding-left: 1em;
-  margin-right: 1em;
-  border-left: thin solid #005a9c;
+  font-weight: bold;
 }
 
 .phone {
@@ -1305,4 +1301,12 @@ body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
 
 .sync .related {
   display: none;
+}
+
+#toc ul {
+  margin-bottom: 0;
+}
+
+.back-to-toc {
+  text-align: right;
 }
