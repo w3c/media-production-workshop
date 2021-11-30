@@ -257,6 +257,16 @@
               <cite>Chris Cunningham:</cite> I agree with Paul. I just want to say, in terms of the browser, in Chrome, we do copy pretty liberally. Definitely in practice, Paul is correct, the copies, they're not a performance killer.
             </p>
 
+            <p>
+              Further reading:
+            </p>
+            <ul>
+              <li><a href="https://github.com/WICG/reducing-memory-copies/issues/1">Copies between JS and WASM in WebCodecs</a></li>
+              <li><a href="https://github.com/w3c/webcodecs/issues/104">Decode input: data is copied</a></li>
+              <li><a href="https://github.com/w3c/webcodecs/issues/287">VideoFrame and AudioData copyTo: no way to "steal" the underlying memory yet</a></li>
+              <li><a href="https://github.com/w3c/webcodecs/issues/212">Memory cycling / allocator pressure</a></li>
+            </ul>
+
             <p role="navigation" class="back-to-toc">
               <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
             </p>
@@ -544,10 +554,10 @@
           </section>
 
           <section id="webaudio-outputLatency">
-            <h4>Measuring the output latency</h4>
+            <h4>Measuring the intrinsic and output latency</h4>
 
             <p>
-              Related GitHub issue: <a href="https://github.com/w3c/media-production-workshop/issues/31">issue #31</a>.
+              Related GitHub issues: <a href="https://github.com/w3c/media-production-workshop/issues/31">issue #31</a> and <a href="https://github.com/WebAudio/web-audio-api/issues/469">Web audio issue #469</a>.
             </p>
 
             <p>
@@ -579,14 +589,14 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> It is obvious with exactly the same audio that you're facing. For now I have a page up that lists the delay of the notes and they are things that are variable.  For example, if you do the web shaping with over sampling, the re-sample that's being used, it is the same.
+              <cite>Paul Adenot:</cite> It is obvious with exactly the same audio that you're facing. For now I have a page up that lists the delay of the nodes and there are things that are variable. For example, if you do the web shaping with over sampling, the re-sample that's being used, it is the same.
               <br/>... The filter is the same, it is the variable with web browsers to be tested.
-              <br/>... Generally this is exactly the same, they're exactly the same.  So most affects, the compressor, it is exactly the same although it is not the best.
-              <br/>... You have a fixed look ahead.  What else. Generally it is fairly consistent. 
+              <br/>... Generally this is exactly the same, they're exactly the same. For most effects, the compressor, it is exactly the same although it is not the best.
+              <br/>... You have a fixed look ahead. Generally it is fairly consistent.
             </p>
 
             <p>
-              <cite>Charles Van Winkle:</cite>  Thank you.
+              <cite>Charles Van Winkle:</cite> Thank you.
             </p>
 
             <p>
@@ -602,7 +612,7 @@
             </p>
 
             <p>
-              <cite>Hongchan Choi:</cite> Right now we don't expose the performance or the high resolution sample on the audio, but I think there is some discussion on that. In the meantime, the shape of the new render capacity API is almost complete.
+              <cite>Hongchan Choi:</cite> Right now we don't expose the performance or the high resolution sample on the audio, but I think there is some discussion on that. In the meantime, the <a href="https://github.com/WebAudio/web-audio-api/issues/2444#issuecomment-896338875">shape of the new render capacity API is almost complete</a>.
               <br/>... I think we all agree on the API shape, it is adding text and making a first implementation of chrome with an origin trial so you could test it out. We're progressing there.
             </p>
 
@@ -716,7 +726,7 @@
 
             <p>
               <cite>Hongchan Choi:</cite> I have a similar experience to what Paul just described basically. I have good news and bad news. For <code>MediaStreamTrack</code>, the latency in Chrome, I don't think it is working correctly. The value you get from the API is not really accurate last time I checked.
-              <br/>... The good news, it is we just sent out intent to ship outputLatency of the audio context in Chrome and we have a working prototype, and we still have to go through the launch review process to ship the functionty to you.
+              <br/>... The good news, it is we just sent out <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/dTQniJNVVMY">intent to ship outputLatency on the audio context in Chrome</a> and we have a working prototype, and we still have to go through the launch review process to ship the functionty to you.
             </p>
 
             <p>
