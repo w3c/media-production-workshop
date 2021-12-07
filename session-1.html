@@ -81,9 +81,9 @@
               <a href="#webaudio">Web Audio API</a>
               <ul>
                 <li><a href="#webaudio-decodeAudioData">Will decodeAudioData be deprecated?</a></li>
-                <li><a href="#webaudio-outputLatency">Measuring the output latency</a></li>
+                <li><a href="#webaudio-outputLatency">Measuring the intrinsinc and output latency</a></li>
                 <li><a href="#webaudio-worker">AudioContext in workers</a></li>
-                <li><a href="#webaudio-synth-object">Support for synthezied speech and object-based audio</a></li>
+                <li><a href="#webaudio-synth-object">Support for synthesized speech and object-based audio</a></li>
                 <li><a href="#webaudio-formats">DSP languages support</a></li>
                 <li><a href="#webaudio-inputLatency">Measuring the input and round-trip latency</a></li>
                 <li><a href="#webaudio-vbr">Seeking and variable bitrate</a></li>
@@ -376,7 +376,7 @@
             <p>
               <cite>Paul Adenot:</cite> We're well aware.  Any web browser in production today includes various lists of things that can and can be used based on the crash reports and the security testing.
               <br/>... It is not really a blanket, here is the list of stuff that can be decoded on this machine.
-              <br/>... Not because of that, but it is the problem, that the content, nobody could play on the web, right. It is also a problem. Something to be waited and could be done carefully.
+              <br/>... Not because of that, but it is the problem, that the content, nobody could play on the web, right. It is also a problem. Something to be weighted. It could still be done carefully.
             </p>
 
             <p>
@@ -656,14 +656,14 @@
           </section>
 
           <section id="webaudio-synth-object">
-            <h4>Support for synthezied speech and object-based audio</h4>
+            <h4>Support for synthesized speech and object-based audio</h4>
 
             <p>
               <cite>Kazuyuki Ashimura:</cite> I was just wondering if we can think about synthesized audio and also object audio, other kinds of elements and instances.
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> For synthesized speech, there are provisions to do it. The problem is that it relies on systems that are not well suited without processing.
+              <cite>Paul Adenot:</cite> For synthesized speech, there are provisions to do it. The problem is that it relies on systems that are not well suited for processing.
               <br/>... Sometimes it is remote, it necessitates round trips. It could also be directly from the system and goes directly to the speaker of the headset and we don't have any control on the waveform. We don't even see the samples from this.
               <br/>... It is unclear to us how we can do something considering this is the case for now in the current systems and implementations.
               <br/>... It would be great actually, but unfortunately I don't have a better answer for now.
@@ -815,7 +815,7 @@
           </section>
         </section>
 
-        <section id="sync">
+        <section id="synchronization">
           <h3>Media Synchronization</h3>
 
           <p>
