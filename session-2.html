@@ -101,7 +101,7 @@
             <cite>Chris Needham:</cite> In preparation for the live discussion sessions, we've been through all of the talks that were submitted, and identified some of the requests or questions or standardization opportunities that have been identified.
             <br/>... We can, perhaps, start by looking at some of those topics.
             <br/>... Feel free to jump in with your own thoughts and questions as we go along.
-            <br/>... Today we thought we'd structure the meeting into three parts. Spend some time initially looking at WebRTC and move on to WebAssemby and file system integration points.
+            <br/>... Today we thought we'd structure the meeting into three parts. We'll spend some time initially looking at WebRTC and move on to WebAssembly and file system integration points.
           </p>
           <p role="navigation" class="back-to-toc">
             <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
@@ -127,7 +127,7 @@
             <p>
               <cite>Sergio Garcia Murillo:</cite> Yes, hello. We are standardizing WHIP in the IETF.
               <br/>... In WebRTC, on purpose, we have not specified a signaling protocol because we envision use cases in which WebRTC could be used would be so different that it was not feasible to come up with a protocol that would feed all the use cases.
-              <br/>... So we just leave the door open and anyone can implement its own protocol.
+              <br/>... So we just leave the door open and anyone can implement their own protocol.
               <br/>... Everyone has implemented their own protocols, for example in tools such as GStreamer because there is no signaling protocol for connecting to all the WebRTC services.
               <br/>... So the situation is that there is no WebRTC support for all services. We have to rely, for example, specifically on multiple services. Or you have to rely on doing a protocol at the application level, which introduces quite a lot of delay when you are using WebRTC, certainly what you want to avoid.
               <br/>... What has been implemented in the IETF is just a very simple SRT protocol that will allow to have these tools that are in use in the streaming industry. Also super important in WebRTC.
@@ -141,24 +141,24 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Is there any response to what you've outlined so far in terms of, like, the ingest protocol, in particular? I think there are two parts to what you're saying. There's, like, ingest protocol and then the browser support that's more suited to production use cases.
+              <cite>Chris Needham:</cite> Is there any response to what you've outlined so far, in terms of the ingest protocol in particular? I think there are two parts to what you're saying. There's the ingest protocol and then browser support that's more suited to production use cases.
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> I think that WHIP is not something that we need to do anything there in WebRTC. To support it. I mean, the protocol is designed to support WebRTC APIs.
-              <br/>... I think what is the interesting thing with these is the purpose of the protocol, itself, is to be able to have much wider set of tools that we can use with WebRTC.
-              <br/>... Not only use of WebRTC with webcams but to have tools that are used in professional workflows. For example, use of codecs with much better power to support different, new codecs at very high frame bitrates.
+              <cite>Sergio Garcia Murillo:</cite> I think that WHIP is not something that we need to do anything there in WebRTC to support it. I mean, the protocol is designed to support WebRTC APIs.
+              <br/>... I think the interesting thing with this is the purpose of the protocol itself, not only use of WebRTC with webcams, but to be able to have a much wider set of tools that we can use with WebRTC for professional workflows.
+              <br/>... For example, use of codecs with much better quality, the power to support different, new codecs at very high frame rates or bitrates.
               <br/>... This will also be available for WebRTC. And very specifically I think that the process will need to catch up to be able to provide encoding support. Currently we don't support. It's not a matter of APIs, none of the process support 10 bits for input. But, for example, Chrome supports it for decoding. So you're able to decode it but you're not able to encode it. That's not supported. Not available in the browser to just use it.
-              <br/>... For example, multi OPUS implementation is something that has been implemented in a way by Chrome. Again, this is hidden but working. In a professional workflow, you will probably want to use multi-channel audio.
+              <br/>... For example, multiopus implementation is something that has been implemented in a way by Chrome. Again, this is hidden but working. In a professional workflow, you will probably want to use multi-channel audio.
               <br/>... Required if you want to use WebRTC for professional media.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Right. So low latency, high quality media. Any thoughts or questions from others in response to that? 
+              <cite>Chris Needham:</cite> Right. So low latency, high quality media. Any thoughts or questions from others in response to that?
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Maybe going back to the beginning. WebRTC was designed for realtime communication. That's in the name. Right? It sounds like yours and others are using WebRTC in order to get access to input devices to capture devices. Is that right? Is that fair to say? 
+              <cite>Pierre-Anthony Lemieux:</cite> Maybe going back to the beginning. WebRTC was designed for realtime communication. That's in the name, right? It sounds like you and others are using WebRTC in order to get access to input devices to capture devices. Is that right? Is that fair to say?
             </p>
 
             <p>
@@ -172,11 +172,11 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Basically, to summarize, WebRTC was designed for realtime communication. But more consumer or lower webcam type communications. Lower quality video. This breaks when it comes to using it in professional application or, for instance, you mean like for dailies, right?
+              <cite>Pierre-Anthony Lemieux:</cite> Basically, to summarize, WebRTC was designed for realtime communication. But more consumer or webcam type communications, lower quality video. This breaks when it comes to using it in professional application or, for instance, you mean like for dailies, right?
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> I will rather say not sufficient, because people are using it. It would be better if we can provide a much better quality than the one we are using. 
+              <cite>Sergio Garcia Murillo:</cite> I will rather say not sufficient, because people are using it. It would be better if we can provide a much better quality than the one we are using.
               <br/>... Quality is never enough.
             </p>
 
@@ -185,7 +185,7 @@
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> SRT protocol is proprietary and was submitted to IETF as informational. RUSH is not something that's been discussed in the WebRTC and IETF. It is not specifically for WebRTC. Could be used for low latency streaming. Also it's very preliminary proposal. So it will still have to evolve. With WebCodecs and WebRTC. 
+              <cite>Sergio Garcia Murillo:</cite> SRT protocol is proprietary and was submitted to IETF as informational. RUSH is not something that's been discussed in the WebRTC and IETF. It is not specifically for WebRTC. Could be used for low latency streaming. Also it's very preliminary proposal. So it will still have to evolve. With WebCodecs and WebRTC.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -201,31 +201,31 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Multichannel audio. Higher quality video. Any other requests? 
+              <cite>Pierre-Anthony Lemieux:</cite> Multichannel audio. Higher quality video. Any other requests?
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> The topics I highlighted in the presentation, for example, is support for Web Realtime Subtitling. To be able to provide in realtime.
+              <cite>Sergio Garcia Murillo:</cite> The topics I highlighted in the presentation, for example, is support for real time subtitling on the web.
               <br/>... And there was also how to coordinate the data with media content. It can be done by some WebRTC extensions that are already available but the APIs are not implemented in much of the browsers and you can only use Chrome in practice, sometimes behind a flag.
-              <br/>... In the end, you can only use Chrome and not the other browsers because they don't support this. There are features that will allow you to have the experience that you require in this professional work flows.
-              <br/>... Also, there is no planned support for alpha video in WebRTC. But it is a feature that is being considered for WebCodecs. So I think it is important that the feature that are going to be available for WebCodecs are also supported in WebRTC. In terms of quality and codecs and feature.
+              <br/>... In the end, you can only use Chrome and not the other browsers because they don't support this. There are features that will allow you to have the experience that you require in this professional workflows.
+              <br/>... Also, there is no planned support for alpha video in WebRTC. But it is a feature that is being considered for WebCodecs. So I think it is important that the features that are going to be available for WebCodecs are also supported in WebRTC in terms of quality and codecs and features.
             </p>
 
             <p>
-              <cite>Harald Alvestrand:</cite> Just commenting the codecs for web audio and codecs for WebRTC are the same code under the hoods. It's just a matter of exposing the right control surfaces. Otherwise, a small difference.
+              <cite>Harald Alvestrand:</cite> The codecs for web audio and codecs for WebRTC are the same code under the hood. It's just a matter of exposing the right control surfaces. Otherwise, a small difference.
             </p>
 
             <p>
-              <cite>François Daoust:</cite> If I try to summarize, what I'm hearing is that it's more a problem of implementation, implementation supports in terms of codecs. In terms of standardazitaion, are there things that media companies can help push?
+              <cite>François Daoust:</cite> If I try to summarize, what I'm hearing is that it's more a problem of implementation support in terms of codecs. In terms of standardazitaion, are there things that media companies can help push?
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> I think the only thing we could probably push is support for realtime captioning in WebRTC. I don't know the specs. I'm not sure if there's anything we can support realtime.
+              <cite>Sergio Garcia Murillo:</cite> I think the only thing we could probably push is support for real time captioning in WebRTC. I don't know the specs. I'm not sure if there's anything we can do there to support real time.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> That's an interesting one. We have been having discussions recently with the WebVTT editors. We were looking at WebVTT for realtime timed metadata use cases. Live captioning has been recognized as a thing to look at in WebVTT. But we haven't really got that started yet. We don't really have much to say about it. It certainly has been recognized. You can give your input there.
-              <br/>... We can follow that up. 
+              <cite>Chris Needham:</cite> That's an interesting one. We have been having discussions recently with the WebVTT editors. We were looking at WebVTT for real time timed metadata use cases. Live captioning has been recognized as a thing to look at in WebVTT. But we haven't really got that started yet so I don't have much to say about it. It certainly has been recognized. You can give your input there.
+              <br/>... We can follow that up.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -237,13 +237,13 @@
             <h4>Jitter buffer control</h4>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> I think one other thing that is both implementation and spec is being able to control the jitter buffer for audio playback for music and realtime music scenarios. Specifically, implementations of the jitter buffer may changes the bits and disturb the audio. It's okay if you are doing a voice conference or things like that. But for music, it could cause problems. 
-              <br/>... An API for being able to control the behavior of the jitter buffer and provide a hint to the implementation that what you want to play is music. And apply a different policy to not do any stretching of the audio, distortions. Just apply a different policy for packet loss. 
+              <cite>Sergio Garcia Murillo:</cite> I think one other thing that is both an implementation and a spec issue is being able to surface an API control to say whether the audio playback is for music. Specifically, implementations of the jitter buffer may change the bits and disturb the audio. It's okay if you are doing a voice conference or things like that. But for music, it could cause problems.
+              <br/>... An API for being able to control the behavior of the jitter buffer and provide a hint to the implementation that what you want to play is music. And apply a different policy to not do any kind of stretching of the audio, which causes distortions. Just apply a different policy for packet loss.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Makes sense. 
-              <br/>... I'd like to come to Harald then I'd like to bring in Sacha to talk about your particular use case. Harald? 
+              <cite>Chris Needham:</cite> Makes sense.
+              <br/>... I'd like to come to Harald then I'd like to bring in Sacha to talk about your particular use case. Harald?
             </p>
 
             <p>
@@ -252,21 +252,21 @@
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> Yes, different policies depending on if it is voice. For Music, buffer could be small. I'm not an audio expert.
-              <br/>... Buffer controls, are they standard or are they more a Chrome property thing?
+              <cite>Sergio Garcia Murillo:</cite> Yes, different policies depending on if it is voice. For music, the buffer could be small. I'm not an audio expert.
+              <br/>... Buffer controls, are they standard or are they more a Chrome proprietary thing?
             </p>
 
             <p>
               <cite>Harald Alvestrand:</cite> We did make them part of the standard. It's a constraint.
-              <br/>... It's probably in the extensions document. Need to know where to look in order to find it. 
+              <br/>... It's probably in the <a href="https://w3c.github.io/webrtc-extensions">WebRTC Extensions</a> document. Need to know where to look in order to find it.
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> Sometimes they are hidden. Sometimes they are experimental. They are not implemented.
+              <cite>Sergio Garcia Murillo:</cite> Sometimes they are hidden. Sometimes they are experimental or they are not implemented.
             </p>
 
             <p>
-              <cite>Harald Alvestrand:</cite> The extensions are WebRTC specs. There are other things that are not WebRTC specs. They're generally not available on the API. They're trying to extend it. 
+              <cite>Harald Alvestrand:</cite> The extensions are WebRTC specs. There are other things that are not WebRTC specs. They're generally not available on the API. They're trying to extend it.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -281,28 +281,26 @@
               Related GitHub issue: <a href="https://github.com/w3c/media-production-workshop/issues/25">issue #25</a>.
             </p>
 
-
             <p>
-              <cite>Kazuyuki Ashimura:</cite> I was wondering about possible use cases as to WebRTC for media handling, for example. Object audio is getting more and more popular. Like on Netflix. Is there any concrete method or possibility for handling object audio à la Dolby?
-              <br/>... That is my first question.
+              <cite>Kazuyuki Ashimura:</cite> I was wondering about possible use cases as to WebRTC for media handling, For example, object based audio is getting more and more popular. Like on Netflix. Is there any concrete method or possibility for handling object based audio such as Dolby Atmos?
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> So, Kaz, also when you mean object audio, you mean for professional applications, right? Because I think Dolby is a brand name that means different things depending on where folks are in the entertainment chain. For instance, for consumer application, it's a very, very different system than for professional applications. Did you have in mind professional applications? Or all? 
+              <cite>Pierre-Anthony Lemieux:</cite> Do you mean object based audio for professional applications? Because I think Dolby Atmos is a brand name that means different things depending on where folks are in the entertainment chain. For instance, for consumer applications, it's a very, very different system than for professional applications. Did you have in mind professional applications? Or all?
             </p>
 
             <p>
-              <cite>Kazuyuki Ashimura:</cite> Professional media production, yes. Maybe various codecs should be considered and included in the possible implementation. And object based audio is one of those possibilities. I know the basic framework for video streams, or streaming data. And I was just wondering how to integrate these kinds of standards with WebRTC for web based video streaming mechanisms.
+              <cite>Kazuyuki Ashimura:</cite> Professional media production, yes. Maybe various codecs should be considered and included in the possible implementation. And object based audio is one of those possibilities. I know we have the basic framework for video streams or streaming data. And I was just wondering how to integrate these kinds of standards with WebRTC for web based video streaming mechanisms.
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> And so, Chris Needham, have those topics come up at all in the Media &amp; Entertainment Interest Group? Is that the right place? 
+              <cite>Pierre-Anthony Lemieux:</cite> And so, Chris Needham, have those topics come up at all in the Media &amp; Entertainment Interest Group? Is that the right place?
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> That is absolutely the right place. And it hasn't yet. 
-              <br/>... Certainly object based is something the media industry is very interested in. And there are really two aspects to this. One is, like, the consumer playback side. And the other is the content offering side. So on the offering side, you would imagine that web audio is very significant in that space. But then the question would be how do you then encode into an object based representation. 
-              <br/>... Absolutely. Yes. It hasn't really been discussed so far. We know that, like, Dolby, some of the newer codecs, have more audio channels, increasing the interest from a playback consumer perspective.
+              <cite>Chris Needham:</cite> That is absolutely the right place. And it hasn't yet.
+              <br/>... Certainly object based is something the media industry is very interested in. And there are really two aspects to this. One is the consumer playback side. And the other is the content authoring side. On the authoring side you would imagine that Web Audio is very significant. But then the question would be how do you then encode into an object based representation?
+              <br/>... It hasn't really been discussed so far. We know that for some of the newer codecs such as Dolby AC-4 or MPEG-H there's increasing interest from a playback or consumer perspective.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -318,16 +316,16 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Direction information in VR? That's not my area of knowledge. I don't know if anybody else can speak to that. 
+              <cite>Chris Needham:</cite> Direction information in VR? That's not my area of knowledge. I don't know if anybody else can speak to that.
             </p>
 
             <p>
-              <cite>Kazuyuki Ashimura:</cite> For example, several times we have mentioned metadata, attached to video streaming data. I was wondering about the WebRTC part as well. 
+              <cite>Kazuyuki Ashimura:</cite> For example, several times we have mentioned metadata attached to video streaming data. I was wondering about the WebRTC part as well.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> The general question there is how do we synchronize metadata with a WebRTC stream. Then the metadata could be for any particular purpose. So my understanding there is that I don't know that there is.
-              <br/>... You have the RTC audio and video streams and have a data channel. You can send information over the data channel. Whether you achieved synchronization through that mechanism is something that I don't know. I'm not an expert.
+              <cite>Chris Needham:</cite> The general question there is how do we synchronize metadata with a WebRTC stream? Then the metadata could be for any particular purpose. So my understanding there is that you have the WebRTC audio and video streams and a data channel.
+              <br/>... You can send information over the data channel. Whether you can achieve synchronization through that mechanism is something that I don't know, I'm not an expert.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -347,10 +345,10 @@
             </p>
 
             <p>
-              <cite>Sacha Guddoy:</cite> As you mentioned, use case is live vision mixing where you have potentially multiple cameras feeding individual WebRTC feeds into an interface. And a live environment, so, for example, a football match. And you'll be using our web application to cut between those different cameras. So being as close to frame accurate as possible, if not perfectly frame accurate. 
+              <cite>Sacha Guddoy:</cite> As you mentioned, use case is live vision mixing where you have potentially multiple cameras feeding individual WebRTC feeds into an interface. And it's a live environment, for example, a football match. And you'll be using our web application to cut between those different cameras. So we want to be as close to frame accurate as possible, if not perfectly frame accurate.
               <br/>... We need some amount of control over when each frame is actually presented to the user and make sure those are synchronized between different sources.
-              <br/>... A specification for latency was posted on the issue, which is interesting. So that would definitely allow us to have more control of that on the client side. Also I think production cameras embed special high resolution timestamps. I'm not sure what support for that there is in the browser.
-              <br/>... I know there's some synchronization using media stream tracks. I'm not really clear on what information that uses or how much control we have over that. 
+              <br/>... A specification for latency was posted on the issue, which is interesting. That would definitely allow us to have more control of that on the client side. Also I think production cameras embed special high resolution timestamps. I'm not sure what support for that there is in the browser.
+              <br/>... I know there's some synchronization using media stream tracks. I'm not really clear on what information that uses or how much control we have over that.
             </p>
 
             <p>
@@ -360,28 +358,31 @@
             </p>
 
             <p>
-              <cite>Harald Alvestrand:</cite> Yes, exactly. Of course, it depends on how well you're tracking times. If you don't have very synchronized tracks on the cameras. You have to have some nullification to remain synchronous.
+              <cite>Harald Alvestrand:</cite> Of course, it depends on how well you're tracking times. If you don't have very synchronized tracks on the cameras. You have to have some nullification to remain synchronous.
               <br/>... Timestamps are one of the things that new engineers always think that they can use to solve synchronization. And when they have worked with network delays and slippery clocks and all that for a while, they seem to realize that it's not that simple.
-              <br/>... Of course, when we started off in WebRTC we said: if you want two things to be synchronized, just put them inside the same stream. That's easy, right? Turns out to be not so much easy that way. If you put them inside the same stream, you're trying to make them synchronous. But not very hard.
+              <br/>... Of course, when we started off in WebRTC we said: if you want two things to be synchronized, just put them inside the same stream. That's easy, right? It turns out to be not so easy that way. If you put them inside the same stream, you're trying to make them synchronous. But not very hard.
               <br/>... I'd very much like to have more conversation about exactly what is needed and what the context is in which you want to see this.
-              <br/>... I mean, how synchronous is synchronous? How much slippage and adjustment can you do? You know, within your tolerances. Timestamps are a fascinating subject and should use them for lots of things. But they're not simple.
-              <br/>... Sacha, what are your thoughts in terms of the synchronization accuracy that you're looking at?
+              <br/>... I mean, how synchronous is synchronous? How much slippage and adjustment can you do, within your tolerances? Timestamps are a fascinating subject and we should use them for lots of things, but they're not simple.
             </p>
 
             <p>
-              <cite>Sacha Guddoy:</cite> In terms of what we'd like to achieve: as close to frame accurate as possible. I understand that frame accuracy is probably not going to be realistic. You know, for all the reasons that were just explained. Clocks drifting. Network latency. I'd just like to understand how close can we get? Is there improvement that can be done there? Are there ways to expose more control over that? 
+              <cite>Chris Needham:</cite> Sacha, what are your thoughts on the synchronization accuracy that you're looking at?
             </p>
 
             <p>
-              <cite>Harald Alvestrand:</cite> The new interface that we've been discussing for the last year in WebRTC, I call it "breakout box". Which would actually expose each frame, including timestamps. Timestamps as accurate as we can make them, depending on what's available.
+              <cite>Sacha Guddoy:</cite> In terms of what we'd like to achieve: as close to frame accurate as possible. I understand that frame accuracy is probably not going to be realistic. You know, for all the reasons that were just explained, such as clocks drifting and network latency. I'd just like to understand how close can we get? Is there improvement that can be done there? Are there ways to expose more control over that?
+            </p>
+
+            <p>
+              <cite>Harald Alvestrand:</cite> The new interface that we've been discussing for the last year in WebRTC, I call it <a href="https://alvestrand.github.io/mediacapture-transform/">"breakout box"</a>. It would actually expose each frame, including timestamps. Timestamps as accurate as we can make them, depending on what's available.
               <br/>... The application could actually decide, okay, this is a track that has to be smoothed. This is a track where we can drop a frame or duplicate a frame in order to make things right.
-              <br/>... In a lot of places where I think the right thing to do is expose more information to the user about what frames there are. And what timing information we have about those frames. And then let the application decide what to do about it. Including dropping frames, inserting frames. And making other fun games.
+              <br/>... In a lot of places where I think the right thing to do is expose more information to the user about what frames there are. And what timing information we have about those frames. And then let the application decide what to do about it. Including dropping frames, inserting frames.
               <br/>... Audio is really hard for synchronization. Because it's got hard realtime requirements. With video, you have a little more leeway to play with.
             </p>
 
             <p>
-              <cite>Sergio Garcia Murillo:</cite> Yeah, I want to mention that, on top of what Harald has said, you can use the absolute scheduled time extension. It is also a WebRTC extension API to provide the timestamps on each frame. And it will be available in the receiving end. Then you can play frames with a delay. To just try to synchronize both tracks based on the scheduled time of both tracks.
-              <br/>... Obviously, first, you need to have synchronization of the clocks of both tracks. Because if you stream from two different laptops or something like that, the clock matching will be slightly different even if you're able to synchronize it. Not going to be millisecond accuracy.
+              <cite>Sergio Garcia Murillo:</cite> I want to mention that, on top of what Harald has said, you can use the <a href="https://w3c.github.io/webrtc-extensions/">absolute scheduled time extension</a>. It is also a WebRTC extension API to provide the timestamps on each frame. And it will be available in the receiving end. Then you can play frames with a delay. To just try to synchronize both tracks based on the scheduled time of both tracks.
+              <br/>... Obviously, first, you need to have synchronization of the clocks of both tracks. Because if you stream from two different laptops or something like that, the clock matching will be slightly different even if you're able to synchronize it. It's not going to be millisecond accuracy.
               <br/>... Chances are you will hit the buffer. So you can take out a bit of time for that. I think that you could try to play with it. It will not give you frame accuracy. But really something that could be accessible depending on the use cases.
             </p>
 
@@ -399,24 +400,25 @@
 
             <p>
               <cite>Chris Needham:</cite> It's been a great discussion around use of WebRTC. I wish we had a bit more time to continue this. There are other aspects I think that we could get into.
-              <br/>... I'd like to switch topic to WebAssemby if that's okay with everybody.
-              <br/>... There were a couple of topics and a couple of our presenters mentioned use of WebAssemby and in our previous call yesterday we talked about people implementing or compiling parts of FFmpeg and about some of the integration points with the WebCodecs API for doing that.
-              <br/>... Kevin, we captured a couple of issues that you raised around your use of WebAssemby. So would you like to put your thoughts or questions? We have a couple people here, Luke in particular who's an expert in WebAssemby. I'm hoping you can help us with these questions.
+              <br/>... I'd like to switch topic to WebAssembly if that's okay with everybody.
+              <br/>... A couple of our presenters mentioned use of WebAssembly and in our <a href="session-1.html">previous call</a> we talked about people implementing or compiling parts of FFmpeg and about some of the integration points with the WebCodecs API for doing that.
+              <br/>... Kevin, we captured a couple of issues that you raised around your use of WebAssembly. So would you like to put your thoughts or questions? We have a couple people here, Luke in particular who's an expert in WebAssembly. I'm hoping you can help us with these questions.
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> I can kick it off. If folks caught my talk, we, at Adobe, have spent quite a bit of time trying to move as much of the creative expressive capacity that we have in our desktop applications into the web environment. And there are a few issues that we've encountered during that process. And most of them are some variations on the idea that we have a long history of building out and optimizing code on traditional desktop platforms. And there are a few areas that we take quite a bit of advantage of as we optimize things.
-              <br/>... One is definitely around 64-bit support. We've optimized in a couple different directions there. Right. You know, one is just around heap management. And the benefits of a 64-bit address space in terms of things like fragmentation and taking advantage of using as much memory as possible. Particularly, for intermediate results. And for reducing total amount of I/O. Then also because we tend to do a lot of pixel processing, there are ways to take advantage of the wider bit space to make that run faster. And so definitely as we moved some of those code modules, we felt the pain of not having full 64-bit support.
-              <br/>... One of the other areas that we've done a lot of optimization and tried to take full advantage of current desktop class hardware, is around things like vectorization and SIMD support. Today we optimize around all the major platforms. We try to take advantage of all the latest instruction sets. And we do that regularly. We're always optimizing. And while it's good that there has been some good work happening in WebAssemby around SIMD support. And we do take advantage of that, for example, on Chrome. I personally spent some time optimizing video codecs to run WebAssemby. We're definitely seeing like the difference between a fully hardware optimized fully taking advantage of the instruction sets. Software in coding. Video. Versus WebAssemby. With basics in the support turned on. You're definitely talking about 4X, 5X, performance difference right now. Again you start to feel the pain. That's a difference that the user is going to notice.
-              <br/>... And then finally one of the things around WebAssemby that we noticed is because not all the web APIs are WebAssemby knowledgeable, they aren't fully integrated. Tou definitely have circumstances where, for example, you have to do copies across of the VM boundary. Because you're not able to do things like, for example, ask an API to allocate things in WebAssemby heap versus on the JavaScript side or WebAssemby compatible memory. On the imaging side, that is bad because we're not allocating and reallocating memory as often. In video processing, that's something that's noticeable because the total amount of memory that we're allocating and the amount of reallocation and adjustment that we're making, those things start to matter.
+              <cite>Kevin Streeter:</cite> I can kick it off. If folks caught my talk, we at Adobe have spent quite a bit of time trying to move as much of the creative expressive capacity that we have in our desktop applications into the web environment. And there are a few issues that we've encountered during that process. And most of them are some variations on the idea that we have a long history of building out and optimizing code on traditional desktop platforms. And there are a few areas that we take quite a bit of advantage of as we optimize things.
+              <br/>... One is definitely around 64-bit support. We've optimized in a couple different directions there. One is around heap management and the benefits of a 64-bit address space in terms of things like fragmentation and taking advantage of using as much memory as possible. Particularly, for intermediate results, and for reducing total amount of I/O. Then also because we tend to do a lot of pixel processing, there are ways to take advantage of the wider bit space to make that run faster. And so definitely as we moved some of those code modules, we felt the pain of not having full 64-bit support.
+              <br/>... One of the other areas that we've done a lot of optimization and tried to take full advantage of current desktop class hardware, is around things like vectorization and SIMD support. Today we optimize around all the major platforms. We try to take advantage of all the latest instruction sets. And we do that regularly. We're always optimizing. And while it's good that there has been some good work happening in WebAssembly around SIMD support, and we do take advantage of that, for example, on Chrome, there's clearly a way to go there.
+              <br/>... I personally spent some time optimizing video codecs to run in WebAssembly. We're definitely seeing the difference between a fully hardware optimized fully taking advantage of the instruction sets for software encoding of Video. With basic support turned on you're definitely talking about 4X, 5X, performance difference right now. Again you start to feel the pain. That's a difference that the user is going to notice.
+              <br/>... And then finally one of the things around WebAssembly that we noticed is because not all the web APIs are WebAssembly knowledgeable, they aren't fully integrated. You definitely have circumstances where, for example, you have to do copies across across the VM boundary. Because you're not able to do things like, for example, ask an API to allocate things in the WebAssembly heap versus on the JavaScript side or WebAssembly compatible memory. On the imaging side, that is bad because we're not allocating and reallocating memory as often. In video processing, that's something that's noticeable because the total amount of memory that we're allocating and the amount of reallocation and adjustment that we're making, those things start to matter.
               <br/>... I think that's probably a good summary. Now if folks have any response to that or have had similar experiences?
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> My personal experience with WASM is that it was definitely better than nothing. But I set my expectations really low. I've just been using WASM to decode JPEG 2000 in browser. This professional codec is not supported in WebCodecs and MSE. Since my expectations were set very low, I've been pleasantly surprised that it actually works. I think to me the big question is what is the long term roadmap?
-              <br/>... Is WASM just a halfway house, a minimal thing? And then once things get widely deployed, there's strong interest, it moves to a native implementation behind an API.
-              <br/>... Or is WASM really ultimately intended to be a high performance virtual machine, right, where you rarely need to have native implementations behind APIs because you can always implement it in WASM.
-              <br/>... I'm curious what's the long term plan on the web. 
+              <cite>Pierre-Anthony Lemieux:</cite> My personal experience with WASM is that it was definitely better than nothing. But I set my expectations really low. I've just been using WASM to decode JPEG 2000 in the browser. This professional codec is not supported in WebCodecs and MSE. Since my expectations were set very low, I've been pleasantly surprised that it actually works.
+              <br/>... I think to me the big question is what is the long term roadmap? Is WASM just a halfway house, a minimal thing? And then once things get widely deployed, there's strong interest, it moves to a native implementation behind an API.
+              <br/>... Or is WASM really ultimately intended to be a high performance virtual machine, where you rarely need to have native implementations behind APIs because you can always implement it in WASM?
+              <br/>... I'm curious what's the long term plan on the web.
             </p>
 
             <p>
@@ -435,15 +437,15 @@
 
             <p>
               <cite>Luke Wagner:</cite> Just to speak to the high level question, it is the goal for it to be ultimately a high performance VM. That is definitely the goal.
-              <br/>... Codecs which hit on vectorization hardware is a sore spot of it all because it relies on instructions more variable across different CPUs.
-              <br/>... The early WASM SIMD represented the largest intersection that the group could find that was portably fast across the variety of desktop CPUs. So that's what was in the initial batch of SIMD. Of course, it's a small subset of all the different things you can use to great advantage especially in, like, codecs scenarios. 
+              <br/>... Codecs which hit on vectorization hardware is a sore spot because it relies on instructions more variable across different CPUs.
+              <br/>... The early WASM SIMD represented the largest intersection that the group could find that was portably fast across the variety of desktop CPUs. So that's what was in the initial batch of SIMD. Of course, it's a small subset of all the different things you can use to great advantage especially in codecs scenarios.
               <br/>... The next round of work on SIMD is starting to relax the restrictions and find the maximal intersection that is portably fast. Two dimensions to consider.
-              <br/>... One, instructions that might be only fast on some platforms. How can we expose that so the code can branch to use them if these instructions are fast, and take another branch otherwise. Hopefully if you express the testing right, then more branches can be made interoperable. Hopefully that converges toward this growing intersection. That's one direction.
-              <br/>... The other direction is that, sometimes, to get portable performance, we have to relax this intense requirement of determinism that we have. We want all the instructions to be fully deterministic and some things are suddenly nondeterministic. I'm thinking about FMA. A few other things in that category. That's this relaxed, I believe, SIMD proposal.
-              <br/>... Actually, a third direction is saying: okay we picked 128 bits because that's the most portably fast. In lots of places, that didn't have the weird cliffy behaviors and wider instruction vector sizes. But we want to take advantage of this hardware. What's the best way to do that? I think the third dimension people are looking at is this long SIMD where you're not fixing a particular vector size. You're doing streaming operations. That way, you let the compiler and engine take advantage of what it knows. The fullness of what it has.
+              <br/>... One, instructions that might only be fast on some platforms. How can we expose that so the code can branch to use them if these instructions are fast, and take another branch otherwise?  Hopefully if you express the testing right, then more branches can be made interoperable. Hopefully that converges toward this growing intersection. That's one direction.
+              <br/>... The other direction is that, sometimes, to get portable performance, we have to relax this intense requirement of determinism that we have. We want all the instructions to be fully deterministic and some things are suddenly nondeterministic. I'm thinking about FMA. A few other things in that category is this relaxed, I believe, SIMD proposal.
+              <br/>... Actually, a third direction is saying: okay we picked 128 bits because that's the most portably fast. In lots of places, that didn't have the weird cliffy behaviors and wider instruction vector sizes. But we want to take advantage of this hardware. What's the best way to do that? I think the third dimension people are looking at is this long SIMD where you're not fixing a particular vector size. You're doing streaming operations. That way, you let the compiler and engine take advantage of what it knows, the fullness of what it has.
               <br/>... Those three dimensions will hopefully start to take advantage of all this latent vector hardware that's sitting in our CPUs we're not taking advantage of and codecs hits so badly.
               <br/>... There are a lot of things we theoretically could do if you show us the workload. I would encourage anyone who has a particular workload, particularly realistic ones linked to particular products with user visible features that need to be fast. Show up to the <a href="https://github.com/WebAssembly/simd">SIMD group</a> which I think <a href="https://github.com/WebAssembly/meetings/tree/main/simd/2021">meets maybe biweekly</a>. There are public meetings and agendas and notes you can join. Put that out there. I think that group is really motivated by concrete workloads.
-              <br/>... Aside from the vector hardware, I think the situation is often a lot better. You'll find that WASM, when you're not hitting a micro benchmark that's relying on some very specific compiler optimization, often will be in the 20% native range. 20% to 30%. There's, of course, a lot of compiler quality work to be done on the backends where allocation matters greatly. Especially, for small loops. There are still improvements I expect over time on these WASM engine backends. The story is a lot better than with codecs, where you're hitting the worse parts of it. I do expect that to get better over time.
+              <br/>... Aside from the vector hardware, I think the situation is often a lot better. You'll find that WASM, when you're not hitting a micro benchmark that's relying on some very specific compiler optimization, often will be in the 20% native range, 20% to 30%. There's, of course, a lot of compiler quality work to be done on the backends where allocation matters greatly. Especially, for small loops. There are still improvements I expect over time on these WASM engine backends. The story is a lot better than with codecs, where you're hitting the worse parts of it. I do expect that to get better over time.
               <br/>... 64-bit memory, if I understand right, is experimentally or fully implemented in Firefox and Chrome. Not sure what Safari status is. I expect that's on a full path to become a straight up working feature within some amount of time. That's the least speculative of them all.
             </p>
 
@@ -460,51 +462,51 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Yes, something that Paul mentioned in our meeting yesterday. Are you aware of the <a href="https://github.com/WICG/reducing-memory-copies/issues/">WICG repo on reducing memory copies</a>? Is there a connection with the WebAssemby efforts and group on that particular topic? 
+              <cite>Chris Needham:</cite> Yes, something that Paul mentioned in our meeting yesterday. Are you aware of the <a href="https://github.com/WICG/reducing-memory-copies/issues/">WICG repo on reducing memory copies</a>? Is there a connection with the WebAssembly efforts and group on that particular topic?
             </p>
 
             <p>
-              <cite>Luke Wagner:</cite> That was a great question I was going through. I think I was in some of the original discussions two years back or whatever. That's a hard issue because you have this basic constraint. You have a blob of memory. It's outside of WASM's linear memory. You're like how do I give that to WASM?
-              <br/>... If you just give it a reference to that blob, normal WASM code at least compiled from, like, C C++ cannot use these pointers. And pointers are all implicitly relative to your memory. If I give you a thing outside your memory, you have to radically change the code and extend the compiler to create loads and stores that do not default to the memory, that are to this other thing.
-              <br/>... That was in the issue. The comment I had, if you're willing to change the code significantly because the commenter sounded like they were willing to do whatever it takes. With that, you could imagine extensions to the C language. With magic attributes and all that. There's an address space modifier you can put on pointers. I think that would be the direction you would go. You could change the code radically to defer to non default memories and directly access these things. That's one direction. Of course, it involves a lot of code changes.
-              <br/>... There is a new direction I'm hopeful about. To motivate that. What people have been looking at for a long time since the beginning, is can we have Mmap? Given some resource, can we Mmap it into the literal memory? Virtual commit or something under the hood. The problem if you do a simple shared memory mapping, as soon as you can Mmap a thing in multiple places, you have multiple places that are able to see each other's updates if it's shared mapping. You get terrible memory, tearing. It's highly OS dependent. For it to work, all sorts of OS criteria have to line up. It has to be perfectly page aligned. So if the semantics is shared memory, then it's really hard to implement and fraught with peril.
-              <br/>... But if it's a private mapping, then I think all those problems get much better. Just do a copy in a special way at a special time, such that under the hood the implementation can use Mmap, if it's available, if it's possible, if things line up and to the extent that it makes sense. The semantics of copy can be much cleaner. And much more widely implementable and portable. So what we need here is, for operations that are specified as a copy, that we carefully work when these copies happen. Such that the browser or engine can implement it as an Mmap under the hood.
-              <br/>... Incidentally, this is not a new observation. Back in the Firefox OS days, they were working on doing computer AR workloads using WebRTC. They were working on this trying to do this on wimpy chips. A scheme was roughly this. It was copies. It wasn't files. It was GPU memory descriptors that were mapped in. The ArrayBuffer at the time. They basically got it working in a rough way. There's some proof concept that this can work. If you look up Mozilla FoxEye, you can see what they sketched out (see <a href="https://wiki.mozilla.org/Firefox_OS/MappedArrayBuffer">MappedArrayBuffer</a>). I don't think it's perfect. In this, I have hope in that direction. Happy to talk about that. 
+              <cite>Luke Wagner:</cite> That's a great question. I was going to mention that. I think I was in some of the original discussions two years back or whatever. That's a hard issue because you have this basic constraint. You have a blob of memory. It's outside of WASM's linear memory. You're like, how do I give that to WASM?
+              <br/>... If you just give it a reference to that blob, normal WASM code, at least compiled from C or C++ has pointers. And pointers are all implicitly relative to your memory. If I give you a thing outside your memory, you have to radically change the code and extend the compiler to create loads and stores that do not default to the memory, that are to this other thing.
+              <br/>... That was in the issue, the comment I had, if you're willing to change the code significantly because the commenter sounded like they were willing to do whatever it takes. With that, you could imagine extensions to the C language. With magic attributes and all that. There's an address space modifier you can put on pointers. I think that would be the direction you would go. You could change the code radically to defer to non default memories and directly access these things. That's one direction. Of course, it involves a lot of code changes.
+              <br/>... There is a new direction I'm hopeful about. What people have been looking at for a long time since the beginning, is can we have mmap? Given some resource, can we mmap it into the virtual memory? Virtual commit or something under the hood. The problem if you do a simple shared memory mapping, as soon as you can mmap a thing in multiple places, you have multiple places that are able to see each other's updates if it's a shared mapping. You get terrible memory tearing. It's highly OS dependent. For it to work, all sorts of OS criteria have to line up. It has to be perfectly page aligned. So if the semantics is shared memory, then it's really hard to implement and fraught with peril.
+              <br/>... But if it's a private mapping, then I think all those problems get much better. What I hope to have for this, just do a copy in a special way at a special time, such that under the hood the implementation can use mmap, if it's available, if it's possible, if things line up to the extent that it makes sense. The semantics of copy can be much cleaner. And much more widely implementable and portable. So what we need here is, for operations that are specified as a copy, that we carefully work when these copies happen. Such that the browser or engine can implement it as an mmap under the hood.
+              <br/>... Incidentally, this is not a new observation. Back in the Firefox OS days, they were working on doing computer AR workloads using WebRTC. They were working on this trying to do this on wimpy chips. A scheme was roughly this. It was copies. It wasn't files. It was GPU memory descriptors that were mapped in, with ArrayBuffer at the time. They basically got it working in a rough way. There's some proof concept that this can work. If you look up Mozilla Firefox OS, you can see what they sketched out (see <a href="https://wiki.mozilla.org/Firefox_OS/MappedArrayBuffer">MappedArrayBuffer</a>). I don't think it's perfect. In this, I have hope in that direction. Happy to talk about that.
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> It sounds like that would be a universal solution, versus having to go and extend all the of the existing web platform APIs to have some sort allocation configuration that understood WASM. So that would be fantastic. 
+              <cite>Kevin Streeter:</cite> It sounds like that would be a universal solution, versus having to go and extend all the of the existing web platform APIs to have some sort allocation configuration that understood WASM. So that would be fantastic.
             </p>
 
             <p>
-              <cite>Luke Wagner:</cite> I do think it might involve touching a lot of APIs. It doesn't have to be WASM specific which I think is okay. In particular, I think we can make this work for an ArrayBuffer. Not just the WASM memories. If we can then that would be a great fit for this and hybrid scenarios.
+              <cite>Luke Wagner:</cite> I do think it might involve touching a lot of APIs. It doesn't have to be WASM specific which I think is okay. In particular, I think we can make this work for an ArrayBuffer. Not just the WASM memory. If we can then that would be a great fit for this and hybrid scenarios.
               <br/>... To go into a little more detail, it's possible we could do this for some generic utilities like streams, and that could be the way that a lot of APIs take advantage of this. They produce a stream and streams have this feature. The feature could be: "I'd like to read this stream or source of data into this region of memory. I'm going to register it ahead of time. Here's a view. Now I'm going to say this is where I want you to write it. I'm going to return to the loop."
-              <br/>... Now at the engine's convenience, it can go do the Mmap and have that in there. The tricky thing while it's mapped, it doesn't semantically do a copy. When you do the Mmap it says when you access these pages, pull it from the underlying file and copy them in. If the file is being modified as the same time you're reading it, what you see is going to be a tear after what was in later memory. If you want the semantics of the property, need the property that the backing thing is not modified while you're accessing it, once you do this copy, the backing thing needs to say it is unmodified.
-              <br/>... What happens for frame-based things. I want to copy the new components of the frame in. What you need to design, you're like every frame, copy it here. You do this map. And everything stays immutable. I return from the event loop. You do basically semantically need another backing. You cleared out any stale stuff that was in memory. It seems like that might be implementable. But hard. I mean, it's not an easy solution. At least practical?
+              <br/>... Now at the engine's convenience, it can go do the mmap and have that in there. The tricky thing while it's mapped, it doesn't semantically do a copy. When you do the mmap it says when you access these pages, pull it from the underlying file and copy them in. If the file is being modified as the same time you're reading it, what you see is going to be a tear after what was in later memory. If you want the semantics of the property, need the property that the backing thing is not modified while you're accessing it, once you do this copy, the backing thing needs to say it is unmodified.
+              <br/>... What happens for frame-based things. I want to copy the new components of the frame in. What you need to design: every frame, copy it here. You do this map. And everything stays immutable. I return from the event loop. You do basically semantically need another backing. You cleared out any stale stuff that was in memory. It seems like that might be implementable. But hard. I mean, it's not an easy solution. At least practical?
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> I think this was the exact topic that's just been discussed. And the other approach, of course, is just to look, what are the most expensive copies out there? Certainly, professional media applications. You know, video buffers are the big one. We're talking UHD. So that's 3840 x 2160 pixels. 2 bytes of pixel. And 24 frames per second. So these are gigabits per second. 
-              <br/>... I loved the idea of having a generic way to accelerate in WASM. And JS. But if we are trying to do low hanging fruit for media application, definitely, for instance, copy to and from Canvas, certainly would be a problem or might be a low hanging fruit. 
+              <cite>Pierre-Anthony Lemieux:</cite> I think this was the exact topic that's just been discussed. And the other approach, of course, is just to look, what are the most expensive copies out there? Certainly, with professional media applications, video buffers are the big one. We're talking UHD. So that's 3840 x 2160 pixels. 2 bytes per pixel. And 24 frames per second. So these are gigabits per second.
+              <br/>... I loved the idea of having a generic way to accelerate in WASM. And JS. But if we are trying to do low hanging fruit for media application, definitely, for instance, copy to and from Canvas, certainly would be a problem or might be a low hanging fruit.
             </p>
 
             <p>
               <cite>Luke Wagner:</cite> There was one other idea in that thread, and this is not a general solution. If you have a situation where there was already a copy that was going to happen between the internal representation and what was supposed to be semantically visible, like the bits you want WASM to see, if that already needed a transform, if you can somehow delay that copy so it's fused with the copy in memory, you're going to do a copy, anyway. I might as well make that the copy in the linear memory.
-              <br/>... Sounds like that didn't apply in the scenario they were looking at. The implementation representation was going to line up with the bits that WASM wanted to see. But I don't know in various other video context, that might be the case.
-              <br/>... Trying to delay the copy of somehow make WASM expose this is what you copy to early enough that you basically can fuse the copy.
+              <br/>... Sounds like that didn't apply in the scenario they were looking at. The implementation representation was going to line up with the bits that WASM wanted to see. But I don't know in various other video contexts, that might be the case.
+              <br/>... Trying to delay the copy or somehow make WASM expose this is what you copy to early enough that you basically can fuse the copy.
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> I think that does apply to some of the stuff we were trying to do. We were specifically working with various WebCodecs scenarios. And in some cases what we would want to do is bring things out of WebCodecs and into WASM. And that would involve a transform. Zt least one transform. You could be decoding. Typically, the decoded frame format, you're going to have to convert it into some other pixel format. 
-              <br/>... If you could wrap one or both of those into a step that also broadens to WASM, it would actually solve the problem. 
+              <cite>Kevin Streeter:</cite> I think that does apply to some of the stuff we were trying to do. We were specifically working with various WebCodecs scenarios. And in some cases what we would want to do is bring things out of WebCodecs and into WASM. And that would involve at least one transform. You could be decoding. Typically, the decoded frame format, you're going to have to convert it into some other pixel format.
+              <br/>... If you could wrap one or both of those into a step that also broadens to WASM, it would actually solve the problem.
             </p>
 
             <p>
-              <cite>Luke Wagner:</cite> This came up talking with audio. The problem I'm seeing is that I register a view. Here's where I want you to write. Not yet but when you're ready. Then that that registration stays active for multiple sequences of audio frames or video frames. If anything changes, I need to resize the view. The number of channels. Number of this, that or the other. I get a callback that says, hey, can you update your mapping? I need more space or less space. In general, the host has already this pointed into linear memory. It's got a pointer it can write directly to the place where it was going to do the copy, anyway. 
+              <cite>Luke Wagner:</cite> This came up talking with audio. The problem I'm seeing is that I register a view. Here's where I want you to write. Not yet but when you're ready. Then that that registration stays active for multiple sequences of audio frames or video frames. If anything changes, I need to resize the view. The number of channels. Number of this, that or the other. I get a callback that says, hey, can you update your mapping? I need more space or less space. In general, the host has already this pointed into linear memory. It's got a pointer it can write directly to the place where it was going to do the copy anyway.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Thank you. We need to do another time check, I'm afraid. This is excellent discussion. Thank you, Luke, for joining us, too.
+              <cite>Chris Needham:</cite> Thank you. We need to do another time check, I'm afraid. This is an excellent discussion. Thank you, Luke, for joining us, too.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -516,41 +518,41 @@
         <section id="file">
           <h3>File system integration</h3>
           <p>
-            <cite>Chris Needham:</cite> Let's move on to our final topic of the session today. And perhaps actually we'll stay with you, Kevin. Because we want to move on to talking about the file system integration. So as we know in media applications, we're dealing with accessing very large files with different video and audio assets that need to come together in a production setting.
+            <cite>Chris Needham:</cite> Let's move on to our final topic of the session today. And perhaps actually we'll stay with you, Kevin. Because we want to talk about file system integration. So as we know in media applications, we're dealing with accessing very large files with different video and audio assets that need to come together in a production setting.
             <br/>... If you'd like to maybe just describe a couple of the issues that you're facing in terms of file management. I'm not sure that Steve is on the call. But I can, perhaps, channel some of his questions that he mentioned in his talk.
           </p>
 
           <p>
             <cite>Kevin Streeter:</cite> Absolutely. Again, a lot of this comes from the domain of trying to build some of the same types of capabilities we'd have in a desktop platform and bringing it to the web. And with media there are two things that we want to be able to do. One is, if you're building a web application, it's very likely a collaborative application, where you want to have multiple users who are able to contribute or at least view this content.
-            <br/>... And so even contributing content into the project or the document requires you to upload an entire file. In order to deliver it to all your contributors.  That obviously is a problem both from the contributor's perspective who have to do the upload. And you want to have some ability to, for example, start to get to work. Like maybe actually see pieces of this content available within your work space, while it's uploading.
+            <br/>... And so even contributing content into the project or the document requires you to upload an entire file in order to deliver it to all your contributors.  That obviously is a problem both from the contributor's perspective who have to do the upload. And you want to have some ability to, for example, start to get to work. Like maybe actually see pieces of this content available within your workspace, while it's uploading.
             <br/>... But then on the download side we need to be able to bring it down and in many cases cache it locally so that if you do have an interruption in service or you close your browser or something, you don't have to necessarily start the whole process all over again.
-            <br/>... And using more of the classic web APIs for file management. All this is a painful process. And your ability to, for example, generate intermediate working space, like cache capabilities, is pretty limited. There are some good proposals and working APIs now, things like file access API, or the origin private file system, that actually help that quite a bit. For example, origin private file system is actually really good for building cache or using scratch space. And having some place to put media as you're pulling it down.
-            <br/>... But one problem we still have is it does involve copying things. For example, if I have media, maybe a big video file that I have on my local hard disk in my file system, then at least right now there isn't an easy way to pull that in entirely to my file system without incurring the entire copy. As the size of things starts to increase and you're talking about potentially professional video 4K, raw formats, these things make a big difference.
-            <br/>... While folks are thinking there, one other comment I'll make in one area that we really tend to try to optimize really highly around, is limiting the total amount of IO. Across all of the file access APIs, the ability to have a lot of control over what you're actually bringing in. Being able to say: when I'm reading bytes out of this thing, I want these bytes put into this place. And to avoid any situation where either an entire file is being brought resonant when you have an interaction or there's an ambiguity.
+            <br/>... And using more of the classic web APIs for file management. All this is a painful process. And your ability to, for example, generate intermediate working space, like cache capabilities, is pretty limited. There are some good proposals and working APIs now, things like the <a href="https://wicg.github.io/file-system-access/">File System Access API</a>, or the Origin Private File System, that actually help that quite a bit. For example, Origin Private File System is actually really good for building a cache or using scratch space, and having some place to put media as you're pulling it down.
+            <br/>... But one problem we still have is it does involve copying things. For example, if I have media, maybe a big video file that I have on my local hard disk in my file system, then at least right now there isn't an easy way to pull that in entirely to my file system without incurring an entire copy. As the size of things starts to increase and you're talking about potentially professional video 4K, raw formats, these things make a big difference.
+            <br/>... While folks are thinking there, one other comment I'll make in one area that we really tend to try to optimize really highly around, is limiting the total amount of I/O. Across all of the file access APIs, the ability to have a lot of control over what you're actually bringing in. Being able to say: when I'm reading bytes out of this thing, I want these bytes put into this place. And to avoid any situation where either an entire file is being brought resonant when you have an interaction or there's an ambiguity.
             <br/>... For example, if the file system implementation is actually preloading things aggressively, that's actually not the behavior that we would want. Because we want to have control over how much is preloaded. And under which circumstances things get cached and when they don't.
           </p>
 
           <p>
-            <cite>Marijn Kruisselbrink:</cite> Already briefly mentioned, the file system handle API is largely designed to work better with large files and be able to read and write to them with minimal overhead. Currently, that's limited to the origin private file system. That doesn't really help you if you want to bring in external data. Still have to get the data in there.
-            <br/>... I think we'd like to loosen some of these restrictions. Certainly for reading, I see no problem loosening the restrictions. Writing to files outside the private system is a bit more of a tricky case because there's always the balance between having websites easily expose data to the outside world and whatever checks we want to do on the data before it's exposed.
+            <cite>Marijn Kruisselbrink:</cite> Already briefly mentioned, the File System Access API is largely designed to work better with large files and be able to read and write to them with minimal overhead. Currently, that's limited to the Origin Private File System. That doesn't really help you if you want to bring in external data, you still have to get the data in there.
+            <br/>... I think we'd like to loosen some of these restrictions. Certainly for reading, I see no problem loosening the restrictions. Writing to files outside the private file system is a bit more of a tricky case because there's always the balance between having websites easily expose data to the outside world and whatever checks we want to do on the data before it's exposed.
           </p>
 
           <p>
-            <cite>Kevin Streeter:</cite> In some cases, we work around these issues. To do a final render or final export of content, that actually ends up happening on the server right now, anyway. I think I mentioned some of that in our last session. And so we're having to download things, anyway. Obviously, there are ways to download things and let the user decide where to put them in their local file system, but I think the goal would be to do those kinds of final exports right there in the client environment. That's where being able to break out and efficiently be able to write things out into some area that the user has allowed, would definitely be helpful. 
+            <cite>Kevin Streeter:</cite> In some cases, we work around these issues. To do a final render or final export of content, that actually ends up happening on the server right now anyway. I think I mentioned some of that in our last session. And so we're having to download things anyway. Obviously, there are ways to download things and let the user decide where to put them in their local file system, but I think the goal would be to do those kinds of final exports right there in the client environment. That's where being able to break out and efficiently be able to write things out into some area that the user has allowed, would definitely be helpful.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> That's something that I've heard that one of my colleagues at BBC is doing. We built an application that is browser based, it lets you pull in a video from your local file system and add overlays by processing frames into a Canvas and use WebCodecs to re-encode. All of this can happen locally through having the file system access.
-            <br/>... It really opens up new possibilities for creating and producing media. It's interesting. 
-            With the Origin Private File System, this is new to me. I was not familiar with this. What are the constraints around the amount of storage you can use? 
+            <cite>Chris Needham:</cite> That's something that I've heard that one of my colleagues at BBC is doing. We built an application that is browser based, it lets you pull in a video from your local file system and add overlays by processing frames into a Canvas and use WebCodecs to re-encode. All of this can happen locally through having the File System Access API.
+            <br/>... It really opens up new possibilities for creating and producing media. It's interesting.
+            With the Origin Private File System, this is new to me. I was not familiar with this. What are the constraints around the amount of storage you can use?
           </p>
 
           <p>
-            <cite>Marijn Kruisselbrink:</cite> In Chrome, specifically, we let any Origin user sync up to 60% of their disk. In practice, it doesn't seem to be a problem. Others are much more limiting in how much they let you store. I'm not sure if they're doing anything different for Origin Private File System compared to other storage APIs.
+            <cite>Marijn Kruisselbrink:</cite> In Chrome, specifically, we let any origin user sync up to 60% of their disk. In practice, it doesn't seem to be a problem. Other browsers are much more limiting in how much they let you store. I'm not sure if they're doing anything different for Origin Private File System compared to other storage APIs.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> And for where we have specific use cases that we'd like to consider, what's the best way for us to input those and follow up with you? 
+            <cite>Chris Needham:</cite> And for where we have specific use cases that we'd like to consider, what's the best way for us to input those and follow up with you?
           </p>
 
           <p>
@@ -558,44 +560,44 @@
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> And do you have a standardization venue in mind? Like, once you get through the incubation stage. 
+            <cite>Chris Needham:</cite> And do you have a standardization venue in mind? Like, once you get through the incubation stage.
           </p>
 
           <p>
-            <cite>Marijn Kruisselbrink:</cite> The Origin Private System will possible graduate soon. The rest depends on other browser vendors interest.
+            <cite>Marijn Kruisselbrink:</cite> The Origin Private File System will possibly graduate to WHATWG soon. The rest depends on other browser vendors interest.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> Are there any other thoughts from others on the call around this? Pierre? 
+            <cite>Chris Needham:</cite> Are there any other thoughts from others on the call around this? Pierre?
           </p>
 
           <p>
-            <cite>Pierre-Anthony Lemieux:</cite> I don't have a thought about this. Although, it's been really instructive. Something that maybe we ought to capture so that we don't forget is maybe we ought to have a single place where we provide links to places where people should file issues. A talked a lot about how to communicate with these various groups. And it might be good to share more broadly a place where we list all of them. 
+            <cite>Pierre-Anthony Lemieux:</cite> I don't have a thought about this. Although, it's been really instructive. Something that maybe we ought to capture so that we don't forget, is maybe we ought to have a single place where we provide links to places where people should file issues. We talked a lot about how to communicate with these various groups. And it might be good to share more broadly a place where we list all of them.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> Absolutely. Let's work on that. And we'll circulate that to everybody who's participated. And I think we'll also talk about some of that on Friday in the Friday session as well. 
+            <cite>Chris Needham:</cite> Absolutely. Let's work on that. And we'll circulate that to everybody who's participated. And I think we'll also talk about some of that in the Friday session as well.
           </p>
 
           <p>
-            <cite>Pierre-Anthony Lemieux:</cite> Maybe we can start putting that list together in time for Friday. 
+            <cite>Pierre-Anthony Lemieux:</cite> Maybe we can start putting that list together in time for Friday.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> That's a good idea. There are so many different places. Lots of different groups within W3C. We've really not talked about that in any detail. 
+            <cite>Chris Needham:</cite> That's a good idea. There are so many different places. Lots of different groups within W3C. We've really not talked about that in any detail.
           </p>
 
           <p>
-            <cite>Pierre-Anthony Lemieux:</cite> I've seen some specs on some private repos, forks. I think it would be great to have a single place for all this. 
+            <cite>Pierre-Anthony Lemieux:</cite> I've seen some specs on some private repos, forks. I think it would be great to have a single place for all this.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> Absolutely. I agree. We will prepare that and share it with everybody.
+            <cite>Chris Needham:</cite> I agree. We will prepare that and share it with everybody.
             <br/>... That's our allocated time. We've come to the end of this session.
             <br/>... I want to thank all of you for really an excellent discussion that we've had across all of these three topics.
             <br/>... I want to apologize if we didn't get to a particular topic that you were interested in that you wanted us to cover. Again, I think we'll come back to that on Friday about the next steps for furthering some of these conversations.
             <br/>... I'm hoping that these workshop sessions then lead to further activities that we can participate in.
-            <br/>... Next session is Friday at 1500 UTC.
+            <br/>... Next session is Friday at 15:00 UTC.
           </p>
 
           <p role="navigation" class="back-to-toc">
