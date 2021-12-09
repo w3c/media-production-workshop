@@ -139,42 +139,46 @@
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> There are a few different ways that is typically done, seems you get the very granular slow fast behaviors, that internally that's making assumptions on the quantization levels and in some respects the amount of work put in, for example, for optimizing motion vectors and finding patterns.
-              <br/>... And then others have a more direct kind of application where you can more or less put in a direct numeric value for representing sort of that rate distortion balance and you have the implementation of the Codecs to honor that.
-              <br/>... The former is very easy to use, if you don't have a really deep understanding of how the Codec works, you get more or less reasonable results and the latter, you have a deeper understanding of how the codec operates and you have a lot more control.
+              <cite>Kevin Streeter:</cite> There are a few different ways that is typically done, sometimes you get the very granular slow/fast behaviors, that internally that's making assumptions on the quantization levels and in some respects the amount of work put in, for example, for optimizing motion vectors and finding patterns.
+              <br/>... And then others have a more direct kind of application where you can more or less put in a direct numeric value for representing sort of that rate distortion balance and you have the implementation of WebCodecs honor that.
+              <br/>... The former is very easy to use, if you don't have a really deep understanding of how the codec works, you get more or less reasonable results but variations on different content, and the latter you have a deeper understanding of how the codec operates and you have a lot more control.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> That sounds great. So I can follow up after the call and read more, for the latter example, is there a tag for instance or a specific API you're thinking of.
-              <br/>... For example, a case where you have the ability to just use the high level API into the tool to control how much the presets need to be tweaked, but then you also can sort of tunnel through parameters directly to the Codec library. Whichever one you're using and, you know, most Codecs have a next level of control over how the encoding process operates.
-              <br/>... That is great. I have not done a full investigation. The challenge with codec if that you need to have a unifying layer on top of the libraries.
+              <cite>Chris Cunningham:</cite> That sounds great. So I can follow up after the call and read more, for the latter example, is there a tag for instance or a specific API you're thinking of?
+              <br/>... For example, a case where you have the ability to just use the high level API into the tool to control how much the presets need to be tweaked, but then you also can also tunnel through parameters directly to the codec library, whichever one you're using. Most Codecs have a next level of control over how the encoding process operates.
+              <br/>... I have not done a full investigation. The challenge with WebCodecs is that you need to have a unifying layer on top of the libraries.
               <br/>... What you're describing sounds doable and you should expect we'll get to it.
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> To get the control, you have to really understand what's happening under the hood and that's exposing sort of details of the implementation, so that's a hard balance.
-              <br/>... Some of this depends on what you're doing. At least on the work we're doing right now, what's happening with the browser, its a preview type of operation, you're offering something, kind of seeing how it will look, and we're not really relying on that for the final export.
-              <bR/>... Like a final export would be something that would happen on a server someplace with encoders that we control. But we would like to be able to later port that in the browser, that would be great, not having to do a round trip to the server to do that kind of thing. That's really where having the deeper control over the encoding process matter, people care at that point where every pixel is.
+              <cite>Kevin Streeter:</cite> To get the control, you have to really understand what's happening under the hood and that's exposing details of the implementation, so that's a hard balance.
+              <br/>... Some of this depends on what you're doing. At least on the work we're doing right now, what's happening with the browser, it's a preview type of operation, you're offering something to see how it will look, and we're not really relying on that for the final export.
+              <bR/>... A final export would be something that would happen on a server someplace with encoders that we control. But we would like to be able to later port that in the browser, that would be great, not having to do a round trip to the server to do that kind of thing. That's really where having the deeper control over the encoding process matter, people care at that point where every pixel is.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> Makes a lot of sense. When you think of the challenges between different platforms, let's say I can give you what you're asking for on Windows, I couldn't on Android. How would you like to see that distinction surfaced with the API? We have done some knobs as more of a hint. There is a knob for instance that says "prefer quality over latency". That's a hint to the extent that if the encoder can't do it, we do our best.
-              <br/>... Then there are also knobs that prefer hardware acceleration that is at least in Chrome more of a guarantee, if we can't give you this, we fail. We fail to configure the encoder entirely. How do you reason about these particular settings?
+              <cite>Chris Cunningham:</cite> Makes a lot of sense. When you think of the challenges between different platforms, let's say I can give you what you're asking for on Windows but I couldn't on Android. How would you like to see that distinction surfaced with the API? We have done some knobs as more of a hint. There is a knob for instance that says "prefer quality over latency". That's a hint to the extent that if the encoder can't do it, we do our best.
+              <br/>... Then there are also knobs that prefer hardware acceleration that is at least in Chrome more of a guarantee, if we can't give you this, we fail to configure the encoder entirely. How do you reason about these particular settings?
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> I think both it as a hint or a requirement and failing could work.
+              <cite>Kevin Streeter:</cite> I think both treating it as a hint or a requirement and failing could work.
               <br/>... If a hint, you would still want to know whether the hint was honored. You want some way to be able to introspect or test that you're getting the behavior that you want.
-              <br/>... In particular, you don't want it to change version over version of a browser. You don't want it to be something that didn't used to work so you have some code in there managing that and suddenly the behavior changes and things break. You want to know if it is active or not.
+              <br/>... In particular, you don't want it to change version over version of a browser. You don't want it to be something that didn't used to work, so you have some code in there managing that, and suddenly the behavior changes and things break. You want to know if it is active or not.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> Got it. That's probably all my questions, makes a lot of sense. All that is left is the homework... Any more thoughts from anyone else on this particular aspect?
+              <cite>Chris Cunningham:</cite> Got it. That's probably all my questions, makes a lot of sense. All that is left is the homework.
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Just kind of a meta question that I'm sure we'll ask a number of times over the next three days, what is the best way for folks to provide feedback on that kind of issue? Really pragmatic, for instance, what kind of knob should the API expose?
-              <br/>... Call directly to you? Is it on the through GitHub, what's the right way for the community to provide feedback?
+              <cite>Chris Needham:</cite> Any more thoughts from anyone else on this particular aspect?
+            </p>
+
+            <p>
+              <cite>Pierre-Anthony Lemieux:</cite> Just kind of a meta question that I'm sure we'll ask a number of times over the next three days. What is the best way for folks to provide feedback on that kind of issue? Really pragmatically, for instance, what kind of knobs should the API expose?
+              <br/>... Call directly to you? Is it on the WebCodecs GitHub, what's the right way for the community to provide feedback?
             </p>
 
             <p>
@@ -194,15 +198,15 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> We have a bunch of questions online so maybe we start with the first one. I know WebCodecs has no (de-)muxing capabilities. I wonder if there is an open-source library that fills that gap in user land. Who wants to take that on? Somebody says, well, WebCodecs is great, it allows me to decode the bit stream but how do I get to the bit stream? What's the right approach to that?
+              <cite>Pierre-Anthony Lemieux:</cite> We have a bunch of questions online so maybe we start with the first one. I know WebCodecs has no (de-)muxing capabilities. I wonder if there is an open-source library that fills that gap in user land. Who wants to take that on? Somebody says, well, WebCodecs is great, it allows me to decode the bitstream but how do I get to the bitstream? What's the right approach to that?
             </p>
 
             <p>
               <cite>Chris Cunningham:</cite> I can take a quick shot. We have the Swiss army knife, FFmpeg, and we have seen that configured with WASM and you have everything.
               <br/>... That's an involved process if you have not done that. I know there are a lot of builds and different things available now. But I recognize that is an adventure to say the least.
               <br/>... This is on the agenda for this quarter, to experiment with this more myself. If I can find this elegant approach; I can fix this in one pass; if it is super painful; if it doesn't meet the means of a large group of user; whatever, I'm open to considering other plans!
-              <br/>... In JavaScript, there is the MP4Box.js, a great library, and we have written demos with that library and there are a handful of other libraries lesser well known, we have another example on the WebCodecs GitHub, and there are a dozen or so libraries in similar situations that are not well supported.
-              <br/>... That's not a super satisfying answer for folks that need to get something done. 
+              <br/>... In JavaScript, there is the MP4Box.js, a great library, and we have written demos with that library and there are a handful of other libraries less well known. We have another example on the WebCodecs GitHub, and there are a dozen or so libraries in similar situations that are not well supported.
+              <br/>... That's not a super satisfying answer for folks that need to get something done.
             </p>
 
             <p>
@@ -220,9 +224,13 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> A quick one, I'm Paul from Mozilla and we have been moving demuxing from native code and then running them in WASM in Firefox and for now, the performance differences, it has been in the noise, so if performance is a concern for you, I would try it anyway, even for big workloads, we have not been able to notince any problem. Differences are not that big.
-              <br/>...  In terms of an open-source library, I was looking at replacing web audio's <code>decodeAudioData</code> with WebCodecs. The <code>decodeAudioData</code>, like it does everything. Moving that to the application layer, I have to ship that for every format I want to support.  To support all of the different audio formats that people may choose to use.
-              <br/>... That's concern, you take the most expensive part of the process, and more importantly, you have the hardware decoders and encoders to be used with a high degree of flexibility and this was left for after because it felt like doing everything as once would be a bit complicated.
+              <cite>Paul Adenot:</cite> A quick one, I'm Paul from Mozilla and we have been moving demuxing from native code and then running them in WASM in Firefox and for now, the performance difference has been in the noise, so if performance is a concern for you, I would try it anyway, even for big workloads we have not been able to notice any problem. Differences are not that big.
+            </p>
+            <p>
+              <cite>Chris Needham:</cite> In terms of an open-source library that I have developed, I was looking at replacing web audio's <code>decodeAudioData</code> with WebCodecs. <code>decodeAudioData</code> does everything, so moving that to the application layer, I have to ship a library for every format I want to support, for all of the different audio formats that people may choose to use.
+            </p>
+            <p>
+              <cite>Paul Adenot:</cite> That's the concern, you take the most expensive part of the process, and more importantly, you have the hardware decoders and encoders to be used with a high degree of flexibility and this was left for after because it felt like doing everything as once would be a bit complicated.
               <br/>... I think Chris mentioned already that it is not excluded forever.
               <br/>... Let's see how this fairs and let's reconsider if need be.
             </p>
@@ -244,11 +252,11 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Does (de-)muxing require memory copy, and can we avoid that? Is it simply that the overhead is meaningless?
+              <cite>Pierre-Anthony Lemieux:</cite> James Pearce asked: Does a Web Assembly demuxer require a memory copy from an ArrayBuffer in JavaScript land to the Web Assembly heap, and can we avoid that? Is it simply that the overhead is meaningless?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> For now it does require a memory copy, but there are a few different solutions in the work, and the important thing to note here is that it is on the encoded packets. It is less of a problem really. It is much, much smaller memory footprints.
+              <cite>Paul Adenot:</cite> For now it does require a memory copy, but there are a few different solutions in the works. The important thing to note here is that it is on the encoded packets, so it is less of a problem really. It is much, much smaller memory footprints.
               <br/>... There are different discussions happening to skip copies via a new API on the codec side of things or in the spec where you're able to have the memory and you free some memory that you're using and you will be able to do the zero copy stuff. For now, there is nothing finished or designed that's complete where everybody agrees. It is in the works.
               <br/>... I have talked about this in the talk, but there are a number of links you can follow from the slides to the various efforts and issues. Not only for WebCodecs but for Web Audio and other things too.
             </p>
@@ -280,18 +288,18 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Okay. Next, going back to quality, we touched on that a little bit, you know, we talked about a quality knob but, you know, what's a quality knob? Is it QP? Is it bitrate, variable bitrate, any thoughts on what a quality knob will look like, it is completely TBD and community input being sought?
+              <cite>Pierre-Anthony Lemieux:</cite> Okay. Next, going back to quality, we touched on that a little bit, we talked about a quality knob but, what's a quality knob? Is it QP? Is it bitrate, variable bitrate, any thoughts on what a quality knob will look like, it is completely TBD and community input being sought?
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> Definitely input, it is a wide open question for anybody who has a favorite quality.
-              <br/>... This is covered to some extent in the first question with Kevin. If folks have additional ideas, different knobs from what was suggested, we're definitely listing.
+              <cite>Chris Cunningham:</cite> Definitely input is needed, it is a wide open question for anybody who has a favorite quality knob.
+              <br/>... This is covered to some extent in the first question with Kevin. If folks have additional ideas, different knobs from what was suggested, we're definitely listening.
             </p>
 
             <p>
-              <cite>Kevin Streeter:</cite> I feel it is also about understanding what the problem is. There are two modalities that we work in, right.
+              <cite>Kevin Streeter:</cite> I feel it is also about understanding what the problem is. There are two modalities that we work in.
               <br/>... One is where interactive performance matters and so what you're usually doing is saying: I'm willing to wait this amount of time for a frame or some number of frames; how do I configure the encoder to give me the best quality that fits me within that time scale?
-              <br/>... The other modality is: I'm willing to wait a long time, how do I configure this encoder to give me the best possible quality and those are the two use cases that we probably want to consider.
+              <br/>... The other modality is: I'm willing to wait a long time, how do I configure this encoder to give me the best possible quality? Those are the two use cases that we probably want to consider.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -307,14 +315,14 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> We have a couple of question, more general codec questions in the Slido.
-  So the first one being, apart from decoding the current browser compatible formats like, what codecs are or will be supported in the near future. This is kind of interesting in the professional kind of editing professional production sense, there are certain codecs that are quite specific to that use case that are not used for general distribution and play back.
-              <br/>... Do you have any thoughts or indications on the different codec that browsers are looking to support through WebCodecs?
+              <cite>Chris Needham:</cite> We have a couple more general codec questions in the Slido.
+  The first one being, apart from decoding the current browser compatible formats, what codecs are or will be supported in the near future? This is interesting in the professional production sense, there are certain codecs that are quite specific to that use case that are not used for general distribution and playback.
+              <br/>... Do you have any thoughts or indications on the different codecs that browsers are looking to support through WebCodecs?
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> From the chrome side, the history of codec support, it is a mix of market demand, browsers position on licensing and open source codecs and what I think is best for the web platform. With WebCodecs basically none of that has changed.
-              <br/>... What may have changed is demand for codec that we hadn't seen for the video tag generally. Definitely I'm interested to hear about that and keep an eye on it and compile the requests and at this point you should expect basically parity with what was already in the video tag for that browser, what was already part of the RTC or the media recorder for the browser. We'll go from there.
+              <cite>Chris Cunningham:</cite> From the Chrome side, the history of codec support is a mix of market demand, the browser's position on licensing and open source codecs, and what we think is best for the web platform. With WebCodecs basically none of that has changed.
+              <br/>... What may have changed is demand for codecs that we hadn't seen for the video tag generally. Definitely I'm interested to hear about that and keep an eye on it and compile the requests. At this point you should expect basically parity with what was already in the video tag for that browser, what was already part of WebRTC or MediaRecorder in the browser. We'll go from there.
             </p>
 
             <p>
@@ -330,11 +338,11 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> JPEG 2000 is royalty free. It could be a different issue for ProRes, but JPEG 2,000, and there are a bunch of others. One question, what is the right place to have that discussion?
+              <cite>Pierre-Anthony Lemieux:</cite> JPEG 2000 is royalty free. It could be a different issue for ProRes, but JPEG 2000, and there are a bunch of others. One question, what is the right place to have that discussion?
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> One of the presentation videos mentioned, is there a way to enable some kind of plug in architecture or something that would provide access to the codec. If the system has such a codec available, then it could be discovered and exposed.
+              <cite>Chris Needham:</cite> One of the presentation videos mentioned, is there a way to enable some kind of plug in architecture that if the system has such a codec available, then it could be discovered and exposed.
             </p>
 
             <p>
@@ -349,7 +357,7 @@
 
             <p>
               <cite>Paul Adenot:</cite> For sure.
-              <br/>... We have two layers that we can expose nodes on. We have the global layer and we have the bitrate layer for example and then we can add specific outputs if it is in the formats.
+              <br/>... We have two layers that we can expose knobs on. We have the global layer and we have the bitrate layer for example and then we can add specific outputs if it is in the formats.
               <br/>... For each codec, you have the special things, just that logic underpinning.
             </p>
 
@@ -358,7 +366,7 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> Technically, yes.  I don't remember, Chris, do you remember if we have some of those?  I mean, we have the format of the bit stream itself?
+              <cite>Paul Adenot:</cite> Technically, yes.  I don't remember, Chris, do you remember if we have some of those?  I mean, we have the format of the bitstream itself?
             </p>
 
             <p>
@@ -366,22 +374,17 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> For opus as well I think.  We don't have anything specifically related to quality yet, I don't think.
+              <cite>Paul Adenot:</cite> For Opus as well I think.  We don't have anything specifically related to quality yet, I don't think.
             </p>
 
             <p>
-              <cite>James Pearce:</cite> I was going to make the point about the idea of being able to access and install software, Codecs, being a potential security risk. It goes back to the days of ActiveX or something like that where you are running potentially unknown code in the browser. That's the point I want to make.
+              <cite>James Pearce:</cite> The idea of being able to access and install software, codecs, is a potential security risk. It goes back to the days of ActiveX or something like that where you are running potentially unknown code in the browser.
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> We're well aware.  Any web browser in production today includes various lists of things that can and can be used based on the crash reports and the security testing.
+              <cite>Paul Adenot:</cite> We're well aware.  Any web browser in production today includes various lists of things that can and cannot be used based on the crash reports and the security testing.
               <br/>... It is not really a blanket, here is the list of stuff that can be decoded on this machine.
               <br/>... Not because of that, but it is the problem, that the content, nobody could play on the web, right. It is also a problem. Something to be weighted. It could still be done carefully.
-            </p>
-
-            <p>
-              <cite>Chris Needham:</cite> That's an interesting consideration.
-              <br/>... I'm just thinking about the time that we have available and we should move towards talking about web audio.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -401,10 +404,9 @@
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> There isn't a provision for this currently. At least none that I'm aware of. I don't know SEI enough to know how it is typically done.
-              <br/>... I guess for instance if you typically pass the messages to FFmpeg just to say in the bit stream, you know, right alongside your framed data.
-              <br/>... That's already possible today.
-              <br/>... If it is more typical to have a higher level, you know, SEI parameter to the codec that's obviously something we don't have.
+              <cite>Chris Cunningham:</cite> There isn't a provision for this currently, at least none that I'm aware of. I don't know SEI enough to know how it is typically done.
+              <br/>... I guess for instance if you typically pass the messages to FFmpeg in the bitstream, right alongside your framed data, that's already possible today.
+              <br/>... If it is more typical to have a higher level SEI parameter to the codec, that's obviously something we don't have.
               <br/>... I guess a question back to the folks that used this sort of mechanism, how is it typically working?
             </p>
 
@@ -414,39 +416,39 @@
 
             <p>
               <cite>Pierre-Anthony Lemieux:</cite> I didn't ask the question, but I'm going to try to channel the person who asked it.
-              <br/>... The issue to date, it doesn't work very well, right? That's been a perennial issue of trying to extract the metadata from the bit stream, when it's not present at the container level.
-              <br/>... Assuming that there is some data that's identified, that's within the bit stream that's useful to expose, could that be exposed by WebCodecs or is there a fundamental architecture issue that we have?
+              <br/>... The issue to date, it doesn't work very well, right? That's been a perennial issue of trying to extract the metadata from the bitstream, when it's not present at the container level.
+              <br/>... Assuming that there is some data that's identified, that's within the bitstream that's useful to expose, could that be exposed by WebCodecs or is there a fundamental architecture issue that we have?
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> I think I get it that the desire is not to configure the codec, it is in the bit stream and you want to get the codec to tell you what it finds. Is that right?
+              <cite>Chris Cunningham:</cite> I think I get it, the desire is not to configure the codec, rather it is in the bitstream and you want to get the codec to tell you what it finds. Is that right?
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Exactly. That's how I interpreted the question. There is some metadata deep down in the bit stream and sure the application could parse the bit stream, extract that and pass it again to WebCodecs to be decoded but the question is, could WebCodecs just expose that information directly? I think that's the question.
+              <cite>Pierre-Anthony Lemieux:</cite> Exactly. That's how I interpreted the question. There is some metadata deep down in the bitstream, and sure the application could parse the bitstream, extract that and pass it again to WebCodecs to be decoded but the question is, could WebCodecs just expose that information directly? I think that's the question.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> I don't have any philosophical reasons not to do that, it sounds like a useful thing. It will depend on the libraries of course and maybe the folks who asked the question are familiar with the native side or FFmpeg,  what we could do is bounded by what they do already.
+              <cite>Chris Cunningham:</cite> I don't have any philosophical reasons not to do that, it sounds like a useful thing. It will depend on the libraries of course and maybe the folks who asked the question are familiar with the native side or FFmpeg. What we could do is bounded by what they do already.
               <br/>... It is already broadly supported and in a uniform manner and I think it is very kind of low hanging fruit. I'm not sure whether that's actually true.
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> Something related, as it is in codec, there is also a way to do image decoding and there are talks with exposing the image. If you find something in bit stream, it could be exposed, if it is structural enough and it could be exposed in a simple way.
+              <cite>Paul Adenot:</cite> Something related, in WebCodecs there is also a way to do image decoding and there are talks with exposing the EXIF metadata. If you find something in bitstream, it could be exposed, if it is structural enough and it could be exposed in a simple way.
               <br/>... Then we have to discuss with the people that need this to make sure that it is useful or we could check actually. It would have to be in the codec for this to be useful. Otherwise it is out of scope as discussed previously.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> I think we have an <a href="https://github.com/w3c/webcodecs/issues/198">issue in the GitHub</a> requesting certain information, just jog my memory, and this would be a great moment where folks that are interested in it, who clearly are more knowledgeable than me on what they're interested in, should head over to GitHub, maybe find that issue, file a new issue, and we can compile the use cases and consider a possible structure for the data.
+              <cite>Chris Cunningham:</cite> I think we have an <a href="https://github.com/w3c/webcodecs/issues/198">issue in the GitHub</a> requesting certain information, just jog my memory, and this would be a great moment where folks that are interested in it, who clearly are more knowledgeable than me on what they're interested in, should head over to GitHub, maybe find that issue, or file a new issue, and we can compile the use cases and consider a possible structure for the data.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> A use case that came up in the discussions around HDR in the metadata, the illuminating information and so on that may be present in the bitstream. It is one of the things that came in our HDR color discussions.
+              <cite>Chris Needham:</cite> A use case that came up in the discussions around HDR is the metadata, the luminance information and so on that may be present in the bitstream.
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> Just before jumping to web audio. It comes naturally for the web community to go and make requests on GitHub. I think that's a pretty unusual process I think for the professional media production community.
-              <br/>... Really, this is a point to emphasize. If you have a request for a feature in the WebCodecs API, the right place to do it, certainly to start the discussion, is by filing an issue and providing sample bit streams, for instance, if you're really liking WebCodecs to expose a certain parameter in the bitstream, maybe you open an issue on the WebCodecs repo with a sample bitstream and what the API should look like. Is that a fair statement, is that the right mode for folks to provide feedback?
+              <cite>Pierre-Anthony Lemieux:</cite> It comes naturally for the web community to go and make requests on GitHub. I think that's a pretty unusual process for the professional media production community.
+              <br/>... Really, this is a point to emphasize. If you have a request for a feature in the WebCodecs API, the right place to do it, certainly to start the discussion, is by filing an issue and providing sample bitstreams. For instance, if you'd really like WebCodecs to expose a certain parameter in the bitstream, maybe open an issue on the WebCodecs repo with a sample bitstream and what the API should look like. Is that a fair statement, is that the right mode for folks to provide feedback?
             </p>
 
             <p>
@@ -454,12 +456,11 @@
             </p>
 
             <p>
-              <cite>Pierre-Anthony Lemieux:</cite> If there is any folk on this particular meeting, for instance, that may not be really used to that type of work, feel free to contact Chris, myself, to guide you. We can also have some pre-discussion, for instance in the <a href="https://www.w3.org/2011/webtv/">Media &amp; Entertainment Interest Group</a> or in one of the Community Groups such as the <a href="https://www.w3.org/Community/colorweb/">Color on the Web Community Group</a> for instance, if it is color related. Ultimately, issues get solved on the web by filing issues on GitHub or in some issue tracker with an example and some suggestions.
+              <cite>Pierre-Anthony Lemieux:</cite> If there is any folk on this particular meeting, for instance, that may not be really used to that type of work, feel free to contact Chris or myself to guide you. We can also have some pre-discussion, for instance in the <a href="https://www.w3.org/2011/webtv/">Media &amp; Entertainment Interest Group</a> or in one of the Community Groups such as the <a href="https://www.w3.org/Community/colorweb/">Color on the Web Community Group</a> if it is color related. Ultimately, issues get solved on the web by filing issues on GitHub or in some issue tracker with an example and some suggestions.
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Absolutely. I think in our wrap up session on Friday we will kind of talk about the different groups that W3C has where, if we want conversations, like before, before filing issues to happen, then there are various places that we can discuss as well.
-              <br/>... There's one final thing on WebCodecs before we move on.
+              <cite>Chris Needham:</cite> Absolutely. I think in our wrap up session on Friday we will talk about the different groups that W3C has where, if we want to have conversations before filing issues, then there are various places that we can discuss as well.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -471,7 +472,7 @@
             <h4>Priming in the video domain and pre-charge in the audio domain</h4>
 
             <p>
-              <cite>Chris Needham:</cite> Any work plans to support codecs that support priming in the video domain and pre-charge in the audio domain.
+              <cite>Chris Needham:</cite> Is any work planed to support codecs that support priming in the video domain and pre-charge in the audio domain?
             </p>
 
             <p>
@@ -488,24 +489,24 @@
             <h4>Getting a decoded video frame from a video element</h4>
 
             <p>
-              <cite>Chris Needham:</cite> Okay.  And you asked the question about video elements integration, is it possible to get a decoded video frame from a video element that we can do some processing on it.
+              <cite>Chris Needham:</cite> Yuhao Fu asked a question about video element integration, is it possible to get a decoded video frame from a video element so that we can do some processing on it?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> There is a way that's not quite standard yet, although it is somehow shaped already in <a href="https://alvestrand.github.io/mediacapture-transform/">MediaStreamTrack Insertable Media Processing using Streams</a>. It is where you do the HTML element, the capture stream that gives you that stream and then you construct the <code>MediaStreamTrackGenerator</code> from that and that gets you a stream as a WHATWG stream and it is consumed with this and you get the frames.
-              <br/>... There are lots of discussions here for a moment. It was designed more for WebRTC use cases so we'll see how it fares when it is really included. For example, what happens if the processing takes longer than the interval between frames.
+              <cite>Paul Adenot:</cite> There is a way that's not quite standard yet, although it is somehow shaped already in <a href="https://alvestrand.github.io/mediacapture-transform/">MediaStreamTrack Insertable Media Processing using Streams</a>. It is where you use the HTML video element <code>captureStream</code> method. That gives you a stream and then you construct the <code>MediaStreamTrackGenerator</code> from that and that gets you WHATWG Stream and with this you can consume the frames.
+              <br/>... There are lots of discussions here at the moment. It was designed more for WebRTC use cases so we'll see how it fares when it is really fine. For example, what happens if the processing takes longer than the interval between frames?
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> Is there anything we can look at that captures that? That discussion or some example?
+              <cite>Chris Needham:</cite> Is there anything we can look at that captures the discussion or some example?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> See <a href="https://alvestrand.github.io/mediacapture-transform/">MediaStreamTrack Insertable Media Processing using Streams</a>.
+              <cite>Paul Adenot:</cite> See <a href="https://alvestrand.github.io/mediacapture-transform/#generator">MediaStreamTrack Insertable Media Processing using Streams</a>.
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> The same point, on GitHub, I forget the name but it takes camera frames and then codes them using VP8 or VP9 and puts that in that file and uses the API that Paul just mentioned, the <code>MediaStreamTrackProcessor</code> to grab the frames from a user media stream. It is not exactly the same, you don't have a video element as the source, but it is mostly the same with that one exception.
+              <cite>Chris Cunningham:</cite> The same point, we have an <a href="https://github.com/w3c/webcodecs/tree/main/samples/capture-to-file">example</a> on GitHub. It takes camera frames and then encodes them using VP8 or VP9 and puts that in a file and uses the API that Paul just mentioned, the <code>MediaStreamTrackProcessor</code> to grab the frames from a user media stream. It is not exactly the same, you don't have a video element as the source, but it is mostly the same with that one exception.
             </p>
 
             <p>
@@ -513,8 +514,8 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> See the above spec. You will see, it is an unofficial draft. You will see the face, it gets mainstream. There are two objects, the track processor and the generator for the two directions.
-              <br/>... A thing we mentioned, if you want, you may have a video element that's paused. It is not paused, video elements are sourced and the video frame constructer accepts the source as an input and you can create the video frames passing in the video element and that will grab whatever frame is currently presented. Recognizing that's a little bit hard to synchronize and that's hard with the actively playing video element. 
+              <cite>Paul Adenot:</cite> See the above spec. You will see, it is an unofficial draft. You create the <code>MediaStream</code>. There are two objects, the <code>MediaStreamTrackProcessor</code> and the <code>MediaStreamTrackGenerator</code> for the two directions.
+              <br/>... A thing we mentioned, if you want, you may have a video element that's paused. When it is not paused, a video element is a media stream source and the <code>VideoFrame</code> constructor accepts the source as an input and you can create the video frames passing in the video element and that will grab whatever frame is currently presented. We recognize that's a little bit hard to synchronize with the actively playing video element.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -529,11 +530,11 @@
           <section id="webaudio-decodeAudioData">
             <h4>Will decodeAudioData be deprecated?</h4>
             <p>
-              <cite>Chris Needham:</cite> Thinking in the interest of time, we should move to some web audio topics. There were a couple of questions. With WebCodecs, will <code>decodeAudioData</code> be deprecated given now that we have the audio decoder for WebCodecs?
+              <cite>Chris Needham:</cite> In the interest of time, we should move to some Web Audio topics. There were a couple of questions. With WebCodecs, will <code>decodeAudioData</code> be deprecated given now that we have the <code>AudioDcoder</code> in WebCodecs?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> Generally, things are not deprecated on the web, so no I guess.  It will continue working but there are so many problems with the data and that people that want to do something with a higher degree of control, we prefer to do something even just with the sample. Generally, it is going to continue working.
+              <cite>Paul Adenot:</cite> Generally, things are not deprecated on the web, so no I guess.  It will continue working but there are so many problems with <code>decodeAudioData</code> that people that want to do something with a higher degree of control, we prefer to do something even just with the sample. Generally, it is going to continue working.
             </p>
 
             <p>
@@ -541,11 +542,8 @@
             </p>
 
             <p>
-              <cite>Chris Cunningham:</cite> I agree with Paul's views. Once the APIs are shipped, there is a long term commitment to supporting those.  I think it is just too late to remove the popular API at this point.
-            </p>
-
-            <p>
-              <cite>Chris Needham:</cite> The question came from the comment in the Slido. If that person would like to put your point of view, that would be welcome.
+              <cite>Chris Needham:</cite> I agree with Paul's views. Once the APIs are shipped, there is a long term commitment to supporting those.  I think it is just too late to remove the popular API at this point.
+              <br/>... The question came from someone in Slido. If you'd like to put your point of view, that would be welcome.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -561,14 +559,13 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> One of the big topics that came out through the video presentations that were submitted was around latency and web audio and realtime media application productions needing low latency so that you could for example record at the same time as your playing back and you're not terribly out of sync.
-              <br/>... Being able to measure the latency of our web audio node or a complete audio graph I guess.
-              <br/>... The specific question we have in the Slido is for a particular web audio node, is there a way to query the latency of that node?
+              <cite>Chris Needham:</cite> One of the big topics that came out through the video presentations that were submitted was around latency and Web Audio. Real time media production applications  need low latency so that you could, for example, record at the same time as you're playing back and not be terribly out of sync.
+              <br/>... A question is, are you able to query the latency of a Web Audio node or a complete audio graph?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> There is no way to do that. There is a way to compute it, the up pulse that includes this node with this specific process.
-              <br/>... For nodes, it depends on the parameter, the simplest being the delay, you can change the delay and it could depend on the delay as well.
+              <cite>Paul Adenot:</cite> There is no way to do that. There is a way to compute it, input an impulse to the node and measure the output.
+              <br/>... For audio nodes, it depends on the parameters, the simplest being the delay, you can change the delay and it could depend on the delay as well.
             </p>
 
             <p>
@@ -578,19 +575,21 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> You would have to be able to have a special sub graph and then you can do an addition because the web itself, it doesn't add the latency in the node, just some of the latency of the nodes, just the direct synchronous proking. If you build the replica of the processing graph and you have the impulse, then you have the latency granted and you disable the node that mutes or you have the outputs depending on the output. It would be really hard to do. It is probably possible to do it analytically most of the time.
+              <cite>Paul Adenot:</cite> You would have to be able to have a special subgraph and then you can do an addition because the Web Audio itself doesn't add the latency in the node, just some of the latency of the nodes, just the direct synchronous proking. If you build the replica of the processing graph and you have the impulse, then you have the latency granted and you disable the node that mutes or you have the outputs depending on the output. It would be really hard to do. It is probably possible to do it analytically most of the time.
             </p>
 
             <p>
               <cite>Charles Van Winkle:</cite> Any pass filter would smear the output of the impulse which would be a lot of DSP. The reason I'm asking is I'm trying to synchronize multiple streams of audio and some streams have a chain of nodes and another stream does not.
-              <br/>... A typical Digital Audio Workstation example. And I need to delay the play back of the stream that doesn't have the nodes so that when they come out of the respective chains and I mix them together they're timelined.
-              <br/>... That's something that is very optimal in plug ins on the desktop and that's something that most people won't notice right now, but at some point I will have a customer, a project where it becomes egregious.
-              <br/>... I say add the delay and build manually, moving the slider up but be nice to do that in a way that when I prefetch audio I could guarantee the time latency when it comes from the respective graphs. 
+              <br/>... A typical Digital Audio Workstation example. And I need to delay the playback of the stream that doesn't have the nodes so that when they come out of their respective chains and I mix them together they're timelined.
+              <br/>... That's something that is very optimal in plugins on the desktop and that's something that most people won't notice right now, but at some point I will have a customer, a project where it becomes egregious.
+              <br/>... I say add the delay and build manually, moving the slider up but it would be nice to do that in a way that when I prefetch audio I could guarantee the time latency when it comes from the respective graphs.
             </p>
 
             <p>
+              [[TODO: find link]]
+
               <cite>Paul Adenot:</cite> It is obvious with exactly the same audio that you're facing. For now I have a page up that lists the delay of the nodes and there are things that are variable. For example, if you do the web shaping with over sampling, the re-sample that's being used, it is the same.
-              <br/>... The filter is the same, it is the variable with web browsers to be tested.
+              <br/>... The filter is the same, it is the variabliliy with web browsers to be tested.
               <br/>... Generally this is exactly the same, they're exactly the same. For most effects, the compressor, it is exactly the same although it is not the best.
               <br/>... You have a fixed look ahead. Generally it is fairly consistent.
             </p>
@@ -600,7 +599,7 @@
             </p>
 
             <p>
-              <cite>Peter Salomonsen:</cite> One question there, regarding latency. If you are rendering audio in realtime, using the audio, how to detect if you're going beyond the rendering window timeframe, if you're spending too much time in your rendering code. Currently, I haven't seen anyway of doing that.
+              <cite>Peter Salomonsen:</cite> One question, regarding latency. If you are rendering audio in real time, using Web Audio, how to detect if you're going beyond the rendering window timeframe, if you're spending too much time in your rendering code? Currently, I haven't seen any way of doing that.
             </p>
 
             <p>
@@ -608,22 +607,22 @@
             </p>
 
             <p>
-              <cite>Peter Salomonsen:</cite> It is related.
+              <cite>Peter Salomonsen:</cite> Yes, although they are kind of related.
             </p>
 
             <p>
               <cite>Hongchan Choi:</cite> Right now we don't expose the performance or the high resolution sample on the audio, but I think there is some discussion on that. In the meantime, the <a href="https://github.com/WebAudio/web-audio-api/issues/2444#issuecomment-896338875">shape of the new render capacity API is almost complete</a>.
-              <br/>... I think we all agree on the API shape, it is adding text and making a first implementation of chrome with an origin trial so you could test it out. We're progressing there.
+              <br/>... I think we all agree on the API shape, we just need to add spec text and make a first implementation in Chrome with an origin trial so you could test it out. We're progressing there.
             </p>
 
             <p>
-              <cite>Peter Salomonsen:</cite> Is there an API for this?
+              <cite>Peter Salomonsen:</cite> So there is an API for this.
             </p>
 
             <p>
-              <cite>Hongchan Choi:</cite> You have the secure capacity of your render thread.
+              <cite>Hongchan Choi:</cite> It will show the capacity of your render thread.
               <br/>... If you miss anything, if you try to do too much on the audio processer, basically it will show the number.
-              <br/>... Now I have the run and the audio processor and any part of a web audio graph so you can do something with it. 
+              <br/>... Now I have it running and the audio processor and any part of a Web Audio graph so you can do something with it.
             </p>
 
             <p>
@@ -643,11 +642,11 @@
             </p>
 
             <p>
-              <cite>Chris Needham:</cite> There is a general question from James around plans for web audio in a worker context.
+              <cite>Chris Needham:</cite> There is a general question from James around plans for Web Audio in a Worker context.
             </p>
 
             <p>
-              <cite>Hongchan Choi:</cite> This was actually decided, myself and other audio working members, we agree on the need to support the audio context in worker.  That's the decision that's made. I think the rest of the work is basically implementing the functionality.
+              <cite>Hongchan Choi:</cite> This was actually decided, myself and other Audio Working Group members, we agree on the need to support AudioContext in Worker. I think the rest of the work is basically implementing the functionality.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -663,8 +662,8 @@
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> For synthesized speech, there are provisions to do it. The problem is that it relies on systems that are not well suited for processing.
-              <br/>... Sometimes it is remote, it necessitates round trips. It could also be directly from the system and goes directly to the speaker of the headset and we don't have any control on the waveform. We don't even see the samples from this.
+              <cite>Paul Adenot:</cite> For synthesized speech, there are no provisions to do it. The problem is that it relies on systems that are not well suited to real time processing.
+              <br/>... Sometimes it is remote, it necessitates server round trips. It could also be directly from the system and goes directly to the speaker or the headset and we don't have any control over the waveform. We don't even see the samples from this.
               <br/>... It is unclear to us how we can do something considering this is the case for now in the current systems and implementations.
               <br/>... It would be great actually, but unfortunately I don't have a better answer for now.
             </p>
@@ -686,15 +685,15 @@
             </p>
 
             <p>
-              <cite>James Pearce:</cite> Just to give context, what we're building, it is an editor that runs in proxy mode, and then it is rendered on a native code. A nice thing about WebGL, the shaders are standardized and we pass that to the native renderer.
-              <br/>... Is there a way of doing that with audio?  Some kind of a DSP code that we may be able to give to the web audio API and then share that with native code somehow?  It was more kind of a thought I had as we were talking.
+              <cite>James Pearce:</cite> Just to give context, what we're building is a proxy-based editor. Rendering is done on the server using native code. A nice thing about WebGL is that the shaders are standardized and we pass that to the native renderer, so it's consistent between browser and native.
+              <br/>... Is there a way of doing that with audio?  Some kind of DSP code that we may be able to give to the Web Audio API and then share that with native code somehow?  It was just a thought I had as we were talking.
             </p>
 
             <p>
               <cite>Paul Adenot:</cite> Generally you can write the processing code in any language, really.
               <br/>... C++, FAUST, etc.
               <br/>... People have implemented, I think, FAUST, PureData as well, and there have been other things.
-              <br/>... You have a bunch of those for compatibility, maybe from different standards, that kind of thing, then the compatibility story would be via plug-ins. what would you plug in this? The modules which are the standardized way to package the effects so that it is suitable via the URL.
+              <br/>... You have a bunch of those for compatibility, maybe from different standards, that kind of thing, then the compatibility story would be via plug-ins. What would you plug in this? The modules which are the standardized way to package the effects so that it is suitable via the URL.
               <br/>... Then you point at this URL and you insert that and it contains all of the resources, all of the assets.
             </p>
 
@@ -711,12 +710,12 @@
             </p>
 
             <p>
-              <cite>Andrew MacPherson:</cite> I work for Spotify, someone wants to record something that they played back, or they want to record the new instrument and we have to sync that up for them, we have to know something about the audio latency, there is audio context on the media stream as well.
-              <br/>... We wonder, is there anything missing spec wise to enable to us get a full round trip picture that you could with any kind of standard where they could give you a good idea of the latency without a measurement?
+              <cite>Andrew MacPherson:</cite> I work for Spotify, someone wants to record something while the audio plays back, or they want to record a new instrument and we have to sync that up for them, we have to know something about the audio latency.
+              <br/>... We wonder, is there anything missing spec-wise to enable to us get a full round trip picture to give you a good idea of the latency without a measurement?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> Spec wise, nothing is miss. There is no web browser looking at the inputs and impacts as far as I know.
+              <cite>Paul Adenot:</cite> Spec-wise, nothing is missing. There is no web browser looking at the inputs and impacts as far as I know.
               <br/>... Even if that is the case, the more I look into it, the more I find that getting the reliability output figure is really, really hard.
               <br/>... I constantly grab a new machine, and it is gone, weird things after the call back, directly in the system or the kernel, that is not being reported by the system API, it should be, but it isn't. And that messes everything up.
               <br/>... For now, it messes up the consideration but for a digital audio workstation, it messes it up as well.
@@ -726,7 +725,7 @@
 
             <p>
               <cite>Hongchan Choi:</cite> I have a similar experience to what Paul just described basically. I have good news and bad news. For <code>MediaStreamTrack</code>, the latency in Chrome, I don't think it is working correctly. The value you get from the API is not really accurate last time I checked.
-              <br/>... The good news, it is we just sent out <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/dTQniJNVVMY">intent to ship outputLatency on the audio context in Chrome</a> and we have a working prototype, and we still have to go through the launch review process to ship the functionty to you.
+              <br/>... The good news, it is we just sent out <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/dTQniJNVVMY">intent to ship <code>outputLatency</code> on the <code>AudioContext</code> in Chrome</a>. We have a working prototype but we still have to go through the launch review process to ship the functionality to you.
             </p>
 
             <p>
@@ -734,20 +733,20 @@
               <br/>... The reliability of the numbers could be a problem as Paul explained.
               For the most part, it is the main gap with native in the platform.
             </p>
-            
+
             <p>
-              <cite>Paul Adenot:</cite> For more provisional users they often know how to align things between the mic and the speakers, and it should be workable.
-              <br/>... For general usage, the problem is the accuracy. Frankly we have the numbers internally and we are just not exposing it.  
+              <cite>Paul Adenot:</cite> For more professional users they often know how to align things between the mic and the speakers, and it should be workable.
+              <br/>... For general usage, the problem is the accuracy. Frankly we have the numbers internally and we are just not exposing it.
             </p>
-          
+
             <p>
-              <cite>Ulf Hammarqvist:</cite> So just to add. I acknowledge that being really hard to get the numbers, so that's kind of two aspects to that, the detectability of it, it is carried on well as you initially would need know that the numbers are good or not.
-              <br/>... It pushes the problem back. I understand it is very hard and the other one, what do you think you can do about it? I know there's a problem in the whole industry in a sense.
+              <cite>Ulf Hammarqvist:</cite> So just to add, I acknowledge it being really hard to get the numbers, so there's kind of two aspects to that, the detectability of it, it is carried on well as you initially would need know that the numbers are good or not.
+              <br/>... It pushes the problem back. I understand it is very hard. And the other one, what do you think you can do about it? I know there's a problem in the whole industry in a sense.
               <br/>... How do you get to implement things behind the scenes, can you kind of put your worry behind certification programs or whatnot? I'm just dumping things here, but is there anything like that ever done?
             </p>
 
             <p>
-              <cite>Paul Adenot:</cite> On a more simple way, for windows in particular we have ways to disable those objects in the web browser, in Firefox, and I had it enabled for some time and the latency feels were much better and much more stable.
+              <cite>Paul Adenot:</cite> On a more simple way, for Windows in particular we have ways to disable those objects in the web browser, in Firefox, and I had it enabled for some time and the latency feels were much better and much more stable.
               <br/>... Unfortunately, what happens, some users require those effects to be on for the microphone to work correctly and so we can't enable it for everybody. At this point I don't know what to do.
               <br/>... Do we put an option or something? I just didn't want to break everybody.
             </p>
@@ -767,14 +766,14 @@
             <p>
               <cite>Nigel Megitt:</cite> Sort of related really. It is just thinking about the variable bitrate encoding and the need sometimes to seek to a specific moment in the decoded resource.
               <br/>... I wonder if anyone else has hit this problem. I have hit this problem explicitly trying to seek in an MP3 file.
-              <br/>... It could happen in video as well, exactly the same thing, on the WebCodecs API, it is all about the decode, it is all about the input chunks rather than the decoded output and I'm wondering if anybody has been thinking about that and how to get precise location of some kind of output samples when you're not really sure which import chunk they'll be in.
+              <br/>... It could happen in video as well, exactly the same thing, on the WebCodecs API, it is all about the decode, it is all about the input chunks rather than the decoded output and I'm wondering if anybody has been thinking about that and how to get precise location of the output samples when you're not really sure which input chunk they'll be in.
             </p>
 
             <p>
               <cite>Chris Cunningham:</cite> I think it has been a long time since I worked on this issue.
-              <br/>... I remember in Chrome, seeing a plugin about variable MP3s and I discovered that these MP3 files have a table of context better sometimes and it will tell you what byte offset corresponds to what timestamp.
+              <br/>... I remember in Chrome, seeing a bug about variable bitrate MP3s and I discovered that these MP3 files have a table of contents sometimes and it will tell you what byte offset corresponds to what timestamp.
               <br/>... That may or may not be helpful depending on the content.
-              <br/>... From a WebCodecs point of view, if you can solve that problem, you know, like using the table of context or whatever external mechanism, what WebCodecs is left to do, it is just to timestamp the chunk accordingly.
+              <br/>... From a WebCodecs point of view, if you can solve that problem using the table of contents or whatever external mechanism, what WebCodecs is left to do is just to timestamp the chunk accordingly.
               <br/>... Even if they are variable bitrate, if you know the timestamp at the start, you should know the timestamp in the next packet and so on, the codec should honor that timestamp.
               <br/>... Is it amidst the encoded audio data?
             </p>
@@ -784,29 +783,29 @@
               <br/>... If you want precision about the Table of Contents, it is actually due course. I definitely have seen that in the implementation.
               <br/>... If they go vaguely close based on the assumptions maybe about the encoded duration and encoded size and with the table of contents and they don't get accurately to the correct place and that has difficulties.
             </p>
-            
+
             <p>
-              <cite>Paul Adenot:</cite> It is really, really a hard problem without a container.
-              <br/>... We should be decoding the file and jumping in on the offset.
-              <br/>... Even for the media element itself, we do binary research and that is just not good enough.
+              <cite>Paul Adenot:</cite> It is a really, really hard problem without a container.
+              <br/>... We should be decoding the file and jumping in to the offset.
+              <br/>... Even for the media element itself, we do a binary search and that is just not good enough.
               <br/>... Depending on the flexibility of codec, it means that we can have assigned metadata, I know you have the major, for example, you have produced it and there is a way.
             </p>
 
             <p>
-              <cite>Nigel Megitt:</cite> It seems like the answer is you use WebCodecs to decode the whole thing until you're at the point you want and then seek in the decoded output.
+              <cite>Nigel Megitt:</cite> It seems like the answer is you use WebCodecs to decode the whole input until you're at the point you want and then seek in the decoded output.
             </p>
 
             <p>
               <cite>Chris Cunningham:</cite> Note, you can quickly discard things when you see you haven't reached your point.
-              <br/>... To keep the memory footprint low, just decode and discard, immediately when you find out that you have what you need, so it is a lot more efficient.
+              <br/>... To keep the memory footprint low, just decode and discard immediately, then you can find out that you have what you need, so it is a lot more efficient.
             </p>
 
             <p>
-              <cite>Charles Van Winkle:</cite> I was going to add that I don't think what you're asking for is actually possible in the generic sense even with MP3 and definitely not for other audio codec.
-              <br/>... I have tried that with the desktop API for Apple and Microsoft, you can set up their decoders and the demuxers to call back for the actual file reads such that they're calling you for the file reads, for the bitstream rates and even some of the APIs saying, you know, don't read the entire file or do fast seeking, there are either bugs or implementations, they have to go back, you seek out to a particular point and so applications like on the desktop, again, decode stuff all the way and even trying to do the byte offs and calculations.
-              <br/>MP3 is a streaming format and so they can be arbitrary data in the middle of the stream, technically possible, I have seen only a few files in the career and it could have some giant Blums marks in the middle, would it throw off the seat table?
-              <br/>... Also the streaming format, the format of the file could change midway through and usually that doesn't happen but again that's technically possible per the format and so I think in the general case there is no way we can do this.
-              <br/>... I have not seen it done in a general case for desktop technologies so having it on the web doesn't bring extra magic for us.
+              <cite>Charles Van Winkle:</cite> I was going to add that I don't think what you're asking for is actually possible in the generic sense even with MP3 and definitely not for other audio codecs.
+              <br/>... I have tried that with the desktop API for Apple and Microsoft, you can set up their decoders and the demuxers to call back for the actual file reads such that they're calling you for the file reads, for the bitstream rates and even some of the APIs saying, don't read the entire file or do fast seeking, there are either bugs or implementation issues, they have to go back, you seek to a particular point and so desktop applications, again, decode stuff all the way even trying to do the byte offset calculations.
+              <br/>MP3 is a streaming format and so there can be arbitrary data in the middle of the stream. It's technically possible, but I have seen only a few files in my career and it could have some giant ID3 markers in the middle, would it throw off the offset table?
+              <br/>... Also as a streaming format, the format of the file could change mid-way through. Usually that doesn't happen but again it's technically possible and so I think in the general case there is no way we can do this.
+              <br/>... I have not seen it done in the general case for desktop technologies so having it on the web doesn't bring extra magic for us.
             </p>
 
             <p role="navigation" class="back-to-toc">
@@ -823,40 +822,40 @@
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> So we're coming towards the end of our time for this meeting.
+            <cite>Chris Needham:</cite> We're coming towards the end of our time for this meeting.
             <br/>... There was one further topic on the agenda that we proposed which was around synchronization.
-            <br/>... This was referenced in Sasha's talk around synchronization of media play back with updates.
-            <br/>... Sasha, if you're there, if you would like to put a specific question about this?
+            <br/>... This was referenced in Sacha's talk around synchronization of media playback with updates to the DOM.
+            <br/>... Sacha, if you're there, would you like to put your specific question about this?
           </p>
 
           <p>
-            <cite>Sacha Guddoy:</cite> Thank you for that. This is related to what people are saying about latency, web audio, other processing methods and how UIs that reflect the state of media, how they sync to that latency.
-            <br/>... What may be interesting to explore is a mechanism of creating a hard synchronization between what's happening in the media and what's happening in other parts. So for example, we have some players that have a video player and an audio level display, so being able measure that audio, you have it match up exactly with when the audio is getting where the users speak, I think it would be really good. I don't know if that's essentially possible.
+            <cite>Sacha Guddoy:</cite> Thank you for that. This is related to what people are saying about latency, Web Audio, other processing methods and how UIs that reflect the state of media, how they sync to that latency.
+            <br/>... What may be interesting to explore is a mechanism of creating a hard synchronization between what's happening in the media and what's happening in the DOM. So for example, we have some players that have a video player and an audio level display, so being able measure that audio latency, you have it match up exactly with when the audio is getting to the user's speakers.  I think it would be really good. I don't know if that's essentially possible.
           </p>
 
           <p>
             <cite>Paul Adenot:</cite> It is possible when you get the latency for this particular case.
             <br/>... You need to artificially delay what you see.
-            <br/>... Let's say you have 50 milliseconds latency, you may need to draw what you measured to the screen 50 milliseconds later. It is an audio synchronization issue, done with the audio API.
-            <br/>... Essentially this is it. 
+            <br/>... Let's say you have 50 milliseconds latency, you may need to draw what you measured to the screen 50 milliseconds later. It is an audio synchronization issue with the Web Audio API.
+            <br/>... Essentially this is it.
             <br/>... I wrote <a href="https://blog.paul.cx/post/audio-video-synchronization-with-the-web-audio-api/" title="Audio/Video synchronization with the Web Audio API">a blog post about that</a> (23 July 2019), looking into what different OS do, what level of precision you can expect and what are the API, of course, how do we use them, should you carry them once or should you carry them every time you want to draw something?
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> But the output latency apply to the audio element? Is it purely for an audio context? 
+            <cite>Chris Needham:</cite> Does the output latency only apply to the AudioContext, or does it also apply to the audio or video element?
           </p>
 
           <p>
-            <cite>Paul Adenot:</cite> This particular audio context, and the audio frames sent to the output. The media elements clock include audio latency offsets built in because the purpose is not the same.
-            <br/>... If the current time is exactly 1.00 seconds, it is expected that you hear the sound, it is 1.00 second. The video frames that have been offset for you, that's much higher level constructs.
-            <br/>... There is also the case of the element into the audio context. That's also different. You have to offset at this point.
+            <cite>Paul Adenot:</cite> This particular for the AudioContext. The media elements' clock includes audio latency ofsets built in because the purpose is not the same.
+            <br/>... If the currentTime is exactly 1.00 seconds, it is expected that you hear the soundat that same time, 1.00 seconds. The video frames that have been offset for you, that's a much higher level construct.
+            <br/>... There is also the case of taking the output of the media element into an AudioContext. That's different, you have to offset at this point.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> Is that answer sort of reasonable?  Does it make sense or is there more to it?
+            <cite>Chris Needham:</cite> Does that answer make sense or is there more to it?
           </p>
           <p>
-            <cite>Sacha Guddoy:</cite> It definitely makes sense. The API that you need to do this, it was just talked about and are being shaped by Chrome in the future and should be covered there.
+            <cite>Sacha Guddoy:</cite> It definitely makes sense. The API that you need to do this, it was just talked about and is being shaped by Chrome in the future and should be covered there.
           </p>
 
           <p role="navigation" class="back-to-toc">
@@ -868,16 +867,16 @@
           <h3>Next session</h3>
           <p>
             <cite>Chris Needham:</cite> We have a couple of minutes left.
-            <br/>... I think Pierre Anthony Lemieux, Francois Daoust, do we need to spend this time and kind of wrap up the session?  What do you think?
+            <br/>... Pierre Anthony Lemieux, Francois Daoust, do we need to spend this time and wrap up the session?  What do you think?
           </p>
 
           <p>
-            <cite>Pierre-Anthony Lemieux:</cite> I personally have a hard stop. I imagine others do.  Maybe we should spent the last two minutes on thanking folks and talking about the next sessions and we can have carry over topics in follow up sessions if that makes sense.
+            <cite>Pierre-Anthony Lemieux:</cite> I personally have a hard stop. I imagine others do.  Maybe we should spent the last two minutes on thanking folks and talking about the next sessions and we can carry over topics in follow up sessions if that makes sense.
             <br/>... I think we have done a good job going over the questions we had.
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> I think so. We have three remaining questions and perhaps we can carry those through to the next session. 
+            <cite>Chris Needham:</cite> I think so. We have three remaining questions and perhaps we can carry those through to the next session.
           </p>
 
           <p>
@@ -885,8 +884,8 @@
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> That will be tomorrow at 2300UTC, so yeah. The focus is WEBRTC, WebAssembly and file system integration. We hope to have some of the relevant browser experts joining us for that.
-            <br/>... My apologies if we didn't get to the question today, we will    we will make a note of those and we'll cover them in the third session.  That's on Friday.
+            <cite>Chris Needham:</cite> That will be tomorrow at 23:00 UTC. The focus is WebRTC, Web Assembly and file system integration. We hope to have some of the relevant browser experts joining us for that.
+            <br/>... My apologies if we didn't get to the question today, we will make a note of those and we'll cover them in the third session.  That's on Friday.
           </p>
 
           <p>
@@ -894,10 +893,10 @@
           </p>
 
           <p>
-            <cite>Chris Needham:</cite> Yes. The final thing I would say on this, it is that all of the questions we have captured in GitHub, so please do take a look at the GitHub repo.  Your inputs, any and all of these particular topics would be very well welcome.
-            <br/>... All of the responses that go there, they're becoming part of the overall kind of workshop proceedings and so even if we don't get to cover it in the live session it is great that we have a record of the discussions that also are happening in the GitHub.
+            <cite>Chris Needham:</cite> Yes. The final thing I would say on this, it is that we have captured all of the questions in GitHub, so please do take a look at the GitHub repo.  Your inputs, on any of these particular topics would be very welcome.
+            <br/>... All of the responses that go there become part of the overall workshop proceedings and so even if we don't get to cover it in the live session it is great that we have a record of the discussions that also are happening in GitHub.
             <br/>... With that, we're out of time for today.
-            <br/>... I would like to thank you all for joining. It has been really, really good discussion and it is great as we said at the outset to bring the different communities, the production community and the web community together to look at this, we look forward to seeing you all again tomorrow.
+            <br/>... I would like to thank you all for joining. It has been a really really good discussion, and as we said at the outset, it is great to bring the different communities, the production community and the web community together to look at this.  We look forward to seeing you all again tomorrow.
           </p>
 
           <p>
