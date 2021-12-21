@@ -180,7 +180,7 @@
             Professional applications require additional capabilities, including precise timing, high-fidelity timed text, efficient media processing solutions, wide color gamut and high-dynamic range, etc. Exact capabilities depend on the architecture being considered:
           </p>
           <ol>
-            <li>In a <dfn id="proxy-based">proxy-based architecture</dfn>, production assets remain in the cloud. Client devices act as remote controllers for processing operations and operate on lower-resolutions versions of the media assets stored in the cloud. Since actual editing operations run in the cloud, accuracy requirements on client devices are less stringent in a proxy-based architecture.</li>
+            <li>In a <dfn id="proxy-based">proxy-based architecture</dfn>, production assets remain in the cloud. Client devices act as remote controllers for processing operations and operate on lower-resolution versions of the media assets stored in the cloud.</li>
             <li>In a <dfn id="no-proxy">no-proxy architecture</dfn>, processing of media assets happens on the client device, which needs to process the high-resolution media assets directly and accurately.</li>
           </ol>
 
@@ -259,7 +259,7 @@
             </p>
 
             <p>
-              Chris Needham wonders about <a href="session-1.html#webcodecs-precharge">encoding/decoding support for priming in the audio domain and pre-charging in the video domain</a> which some codecs need. Paul Adenot explains that WebCodecs is an interface to the underlying codecs. The encoder will take care of <b>audio priming</b> and <b>video pre-charging</b> as needed. Additional tests would help determine whether applications need to account for silent samples to synchronize audio playback with other content.
+              A workshop participant asks about <a href="session-1.html#webcodecs-precharge">encoding/decoding support for priming in the audio domain and pre-charging in the video domain</a> which some codecs need. Paul Adenot explains that WebCodecs is an interface to the underlying codecs. The encoder will take care of <b>audio priming</b> and <b>video pre-charging</b> as needed. Additional tests would help determine whether applications need to account for silent samples to synchronize audio playback with other content.
             </p>
 
             <p>
@@ -443,7 +443,7 @@
             </p>
 
             <p>
-              First missing feature is <b>64-bit support for heap management</b>. WebAssembly has built-in support for 64-bit numbers, which can be used to speed up pixel processing computations. However, <a href="https://github.com/webassembly/memory64#memory64-proposal-for-webassembly">64-bit memory addresses</a> are still being specified and not yet supported by browsers.
+              The first missing feature is <b>64-bit support for heap management</b>. WebAssembly has built-in support for 64-bit numbers, which can be used to speed up pixel processing computations. However, <a href="https://github.com/webassembly/memory64#memory64-proposal-for-webassembly">64-bit memory addresses</a> are still being specified and not yet supported by browsers.
             </p>
 
             <p>
@@ -457,7 +457,7 @@
             <p>
               Luke Wagner details solutions envisioned to <a href="session-2.html#webassembly-copies">reduce memory copies across boundaries</a>. In theory, changes to compilers could emerge that would allow applications to reference memory pages that are outside of WebAssembly's linear memory. In practice, this seems far-fetched given the amount of work needed. A more promising solution would be to refine operations that create copies such that, under the hoods, browsers may use memory-mapping (<code>mmap</code>) whenever possible. This approach may require updating lots of specifications and is hard to implement, but it would not need to be specific to WebAssembly. In situations where the data needs to be transformed, another approach would be to delay the copy so that the copy and transform operations get fused.
             </p>
-            
+
             <p>
               The Web Platform Incubator Group (WICG) hosts a coordination effort on <a href="https://github.com/WICG/reducing-memory-copies/issues/">reducing memory copies</a>. Interested parties are encouraged to join discussions in that repository.
             </p>
@@ -537,7 +537,7 @@
             </p>
 
             <p>
-              Metadata also needs to use <b>standardized vocabularies</b> so that media production workflows can be defined in more abstract transformation terms and be applied broadly to various source of inputs and outputs. Julian Fernandez-Campon shows how standardardized vocabularies can be used to introduce processing steps in workflows that can leverage a variety of tools and services. For media content, the SMPTE ST 2065 (ACES) standard seems like a good option. Other standards may be used. Should W3C develop a mapping vocabulary between existing standards?
+              Metadata also needs to use <b>standardized vocabularies</b> so that media production workflows can be defined in more abstract transformation terms and be applied broadly to various source of inputs and outputs. Julian Fernandez-Campon shows how standardardized vocabularies can be used to introduce processing steps in workflows that can leverage a variety of tools and services. For media content, the SMPTE ST 2065 (ACES) standard seems like a good option. Brendan Quinn points to the <a href="https://iptc.org/standards/video-metadata-hub/">IPTC Video Metadata Hub</a>. Other standards may be used. Should W3C develop a mapping vocabulary between existing standards?
             </p>
 
             <p role="navigation" class="back-to-toc">
