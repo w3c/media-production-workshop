@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Report on the W3C/SMPTE Joint Workshop on Professional Media Production on the Web</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="W3C/SMPTE Joint Workshop on Professional Media Production on the Web">
+    <meta property="og:description" content="The workshop connects the web platform and the professional media production communities and explores evolutions of the web platform to address professional media production requirements">
+    <meta property="og:image" content="https://www.w3.org/2021/03/media-production-workshop/media/social-banner.png">
+  </head>
+  <body>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE Joint Workshop on Professional Media Production on the Web
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>Timeline photo by <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> on <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>8-19 November 2021; online event</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li><a href="./">Call for Participation</a></li>
+          <li><a href="talks.html">Pre-recorded talks</a></li>
+          <li><a href="agenda.html">Live sessions</a></li>
+          <li><a class="active-tab">Report</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        Sponsor
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="report">
+        <h2><span class=todo>DRAFT Report</span></h2>
+
+        <p class=todo>This is a draft document published for discussion. This document may be updated at any time. It is inappropriate to cite this document as other than work in progress.</p>
+
+        <section id="toc">
+          <h3>Table of contents</h3>
+
+          <ul>
+            <li><a href="#summary">Executive summary</a></li>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#context">Setting the context</a></li>
+            <li><a href="#topics">Topics discussed during the live sessions</a>
+              <ul>
+                <li><a href="#webcodecs">WebCodecs</a></li>
+                <li><a href="#webaudio">Web Audio API</a></li>
+                <li><a href="#sync">Media synchronization</a></li>
+                <li><a href="#webrtc">WebRTC</a></li>
+                <li><a href="#webassembly">WebAssembly</a></li>
+                <li><a href="#file">File system integration</a></li>
+                <li><a href="#metadata">Metadata</a></li>
+                <li><a href="#accessibility">Accessibility</a></li>
+              </ul>
+            </li>
+            <li><a href="#other">Other topics</a></li>
+            <li><a href="#next">Next steps</a>
+              <ul>
+                <li><a href="#next-existing">Existing technologies</a></li>
+                <li><a href="#next-ongoing">Ongoing standardization efforts</a></li>
+                <li><a href="#next-tf">Towards a Media Production Task Force</a></li>
+              </ul>
+            </li>
+          </ul>
+          <p>See also:</p>
+          <ul>
+            <li>The <a href="session-1.html">minutes of the first live session</a> (WebCodecs, Web Audio API, Media synchronization)</li>
+            <li>The <a href="session-2.html">minutes of the second live session</a> (WebRTC, WebAssembly, File system integration)</li>
+            <li>The <a href="session-3.html">minutes of the third live session</a> (Metadata, Accessibility, Next steps)</li>
+            <li>The <a href="talks.html">pre-recorded presentations</a></li>
+            <li><a href="https://github.com/w3c/media-production-workshop/issues">Related GitHub issues</a></li>
+          </ul>
+        </section>
+
+        <section id="summary">
+          <h3>Executive summary</h3>
+
+          <p>
+            W3C and SMPTE organized a Workshop on Professional Media Production on the Web over the course of October and November 2021. This workshop connected the web platform and the professional media production communities and explored evolutions of the web platform to address professional media production requirements.
+          </p>
+
+          <p>
+            This virtual workshop kicked off with the publication of <a href="speakers.html">24 workshop talks</a> in October 2021, covering a wide range of media production topics. These perspectives were carefully evaluated, leading to the creation of <a href="https://github.com/w3c/media-production-workshop/issues">about 40 GitHub issues</a>, discussed online early November. The workshop culminated in a series of <a href="agenda.html">3 live sessions</a> mid-November 2021 that convened more than 75 experts to exchange on specific media production needs for the web platform.
+          </p>
+
+          <p>
+            Main outcomes from workshop discussions are that:
+          </p>
+          <ol>
+            <li>
+              The web platform <a href="#next-existing">already provides building blocks</a> to enable core media production scenarios.
+            </li>
+            <li>
+              These building blocks are not powerful enough to create full-fledged experiences on client devices (see <a href="#proxy-based">proxy-based</a> and <a href="#no-proxy">no-proxy</a> architectures).
+            </li>
+            <li>
+              <a href="#next-ongoing">Ongoing standardization efforts</a> will bring advanced features and performance improvements that the media production industry needs. Most of the gaps raised during the workshop touch on API features in specifications that are already being developed. No new standardization opportunity has been identified at this stage.
+            </li>
+            <li>
+              Workshop discussions call for a more in-depth analysis of some of the topics. Also, <a href="#other">not all topics</a> could be discussed during the live sessions.
+            </li>
+            <li>
+              There needs to be some <a href="#next-tf">coordination effort</a> to make sure that media production needs are correctly captured and addressed in ongoing standardization activities.
+            </li>
+          </ol>
+
+          <p>
+            Workshop participants propose <b>the creation of a <a href="#next-tf">Media Production Task Force</a> within the Media &amp; Entertainment Interest Group</b>, scoped to professional media production using the web platform, and responsible for documenting use cases and needs specific to professional media production, quantifying performance issues, promoting proposals to working groups and implementers, and tracking standardization progress and implementations.
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="introduction">
+          <h3>Introduction</h3>
+          <p>
+            W3C and SMPTE hold workshops to discuss a specific space from various perspectives and identify needs that could warrant standardization efforts, and assess support and priorities among relevant communities. The Workshop on Professional Media Production on the Web took place in October and November 2021. Main goal of the workshop was to connect the web platform and the professional media production communities and explore evolutions of the web platform to address professional media production requirements. The workshop was held as a virtual event with a combination of <a href="speakers.html">pre-recorded talks</a>, <a href="https://github.com/w3c/media-production-workshop/issues">online discussions on GitHub</a>, and a series of <a href="sessions.html">3 live sessions</a> to dig into specific media production needs for the web platform.
+          </p>
+
+          <p>
+            This report summarizes <a href="#topics">topics discussed during the live sessions</a>, reviews <a href="#other">topics that could not be discussed</a> for lack of time, and proposes <a href="#next">next steps</a>.
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="context">
+          <h3>Setting the context</h3>
+
+          <aside class="box compact">
+            <p>Related talks:</p>
+            <ul>
+              <li>
+                <a href="talks/pierre-anthony-lemieux-media-production.html">Lossless UHD videos in a browser</a>
+                <br/>by Pierre-Anthony Lemieux
+              </li>
+              <li>
+                <a href="talks/steve-cronan-production-metaverse.html">The Production Metaverse</a>
+                <br/>by Steve Cronan
+              </li>
+              <li>
+                <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                <br/>by Kevin Streeter
+              </li>
+            </ul>
+          </aside>
+
+          <p>
+            The web has become a major platform for consuming media. Web technologies at the heart of this revolution (such as <a href="https://html.spec.whatwg.org/multipage/media.html#media-elements">media elements in HTML</a>, <a href="https://www.w3.org/TR/media-source/">Media Source Extensions</a>, <a href="https://www.w3.org/TR/webvtt/">WebVTT</a>, etc.) are progressively being extended or completed with additional technologies such as <a href="https://www.w3.org/TR/webcodecs/">WebCodecs</a> to provide web applications with finer-grained control over media experiences.
+          </p>
+
+          <p>
+            Meanwhile, storage and processing of movie and TV production assets has moved to the cloud. The web platform provides a natural environment to interact with these assets. Accordingly, there is a growing interest in building web applications that allow end-users to manipulate production assets, e.g. editing, quality checking, versioning, timed text authoring, etc.
+          </p>
+
+          <p>
+            Professional applications require additional capabilities, including precise timing, high-fidelity timed text, efficient media processing solutions, wide color gamut and high-dynamic range, etc. Exact capabilities depend on the architecture being considered:
+          </p>
+          <ol>
+            <li>In a <dfn id="proxy-based">proxy-based architecture</dfn>, production assets remain in the cloud. Client devices act as remote controllers for processing operations and operate on lower-resolutions versions of the media assets stored in the cloud. Since actual editing operations run in the cloud, accuracy requirements on client devices are less stringent in a proxy-based architecture.</li>
+            <li>In a <dfn id="no-proxy">no-proxy architecture</dfn>, processing of media assets happens on the client device, which needs to process the high-resolution media assets directly and accurately.</li>
+          </ol>
+
+          <p>
+            This workshop explored specific capability requirements for media production in both architectures and evolutions of the web platform to address them.
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="topics">
+          <h3>Topics discussed during the live sessions</h3>
+
+          <section id="webcodecs">
+            <h4>WebCodecs</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/chris-cunningham-hello-webcodecs.html">Hello WebCodecs</a>
+                  <br/>by Chris Cunningham
+                </li>
+                <li>
+                  <a href="talks/chris-cunningham-webcodecs-videoencoderconfig.html">WebCodecs VideoEncoderConfig</a>
+                  <br/>by Steve Cronan
+                </li>
+                <li>
+                  <a href="talks/paul-adenot-webcodecs-performance.html">Memory access patterns in WebCodecs</a>
+                  <br/>by Paul Adenot
+                </li>
+                <li>
+                  <a href="talks/james-pearce-browser-hosted-video-editing.html">Browser Hosted Video Editing</a>
+                  <br/>by James Pearce
+                </li>
+                <li>
+                  <a href="talks/soeren-balko-clipchamp-webcodecs.html">Improving Clipchamp's in-browser video editing pipeline with WebCodecs</a>
+                  <br/>by Soeren Balko
+                </li>
+                <li>
+                  <a href="talks/qiang-fu-video-transcoding.html">Video Transcoding in Browser using WebAssembly/WebCodecs</a>
+                  <br/>by Qiang Fu
+                </li>
+                <li>
+                  <a href="talks/he-zhi-production-olympics.html">Live and post production for Sports Broadcasting</a>
+                  <br/>by He Zhi
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-1.html#webcodecs">Minutes of live session 1</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebcodecs">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              In his <a href="talks/chris-cunningham-hello-webcodecs.html">introductory talk on WebCodecs</a>, Chris Cunningham asks the media production community about <b>additional encoder options</b> that it may need. Workshop participants <a href="session-1.html#webcodecs-quality">suggest a <b>quality control knob</b></a> for applications to provide a hint to the browser that they would like to favor quality of the encoding over encoding latency. This seems doable provided that media production stakeholders clarify the exact API shape that they would like to get out of it.
+            </p>
+
+            <p>
+              WebCodecs gives applications decoding (and encoding) capabilities over the bitstream, but the bitstream is <b>only available after demuxing</b>, which WebCodecs leaves up to applications. A recurring ask from application developers is for a <a href="session-1.html#webcodecs-muxing">demuxing and muxing API</a>. The browser already handles these steps when applications use Media Source Extensions or the <code>decodeAudioData</code> method in the Web Audio API. Chris Cunningham notes that applications may leverage existing libraries such as <a href="https://gpac.github.io/mp4box.js/">MP4Box.js</a> or <a href="https://ffmpeg.org/">FFmpeg</a>. That said, these libraries are either too specific or too broad to handle usual cases, and their integration in applications is hard. Paul Adenot notes that Firefox demuxes content using WebAssembly code already, with no noticeable performance impact, and that memory copies are hardly a concern for encoded streams. All in all, this space still needs to be explored. A dedicated open source muxing/demuxing library, perhaps based on the <a href="https://ffmpeg.org/libavformat.html">libavformat library</a>, may be needed. Alternatively, WebCodecs could perhaps be extended with a demuxing/muxing API if the exploration reveals that demuxing/muxing at the application level is impractical.
+            </p>
+
+            <p>
+              <b>Professional codecs</b> used in media production workflows differ from those used in media distribution and include formats such as Adobe ProRes or JPEG 2000. <a href="session-1.html#webcodecs-codecs">Could browsers support media production codecs</a>? This seems hard to achieve. The list of codecs supported by a browser in WebCodecs will most likely match the list of codecs it supports for media playback, and there are many considerations that browsers take into account to support a codec format. Alternatively, browsers could perhaps expose hooks to available codecs on the system. At a minimum, for this to be envisioned, a common abstraction layer needs to exist across codec libraries. James Pearce and Paul Adenot also point out that running third-party code in browsers may introduce security risks.
+            </p>
+
+            <p>
+              Metadata may appear at different layers (see the <a href="#metadata">Metadata section below</a>). At the codec level, metadata may appear in <b>Supplemental Enhancement Information (SEI) messages</b>. <a href="session-1.html#webcodecs-sei">Could SEI messages be exposed by WebCodecs</a> instead of requiring applications to parse the bitstream? Exact use cases, such as access to closed captions and HDR parameters, need to be investigated. The Media &amp; Entertainment Interest Group organized a follow-up discussion in December to review a <a href="https://github.com/leonardoFu/video-sei-event/blob/main/explainer.md">proposal from Yuhao Fu</a> (ByteDance), and <a href="https://github.com/w3c/media-and-entertainment/issues/82">will follow up as part of its Media Timed Events Task Force</a>.
+            </p>
+
+            <p>
+              Some media files are encoded using <b>variable bitrate</b>. Nigel Megitt asks whether <a href="session-1.html#webaudio-vbr">seeking to a specific time</a> could be better supported in such cases. There is no magical solution in general at the codec level. Mechanisms that could improve seeking are typically found at the container level. For example, MP3 files may contain a table of context that applications could parse and use to locate the appropriate chunks right away.
+            </p>
+
+            <p>
+              Chris Needham wonders about <a href="session-1.html#webcodecs-precharge">encoding/decoding support for priming in the audio domain and pre-charging in the video domain</a> which some codecs need. Paul Adenot explains that WebCodecs is an interface to the underlying codecs. The encoder will take care of <b>audio priming</b> and <b>video pre-charging</b> as needed. Additional tests would help determine whether applications need to account for silent samples to synchronize audio playback with other content.
+            </p>
+
+            <p>
+              Yuhao Fu points out that it is sometimes useful to <a href="session-1.html#webcodecs-video">retrieve decoded frames from the video element itself</a>. Paul Adenot explains that, once standardized, the <a href="https://alvestrand.github.io/mediacapture-transform/">breakout box</a> proposal, recently adopted by the WebRTC Working Group shortly after the workshop, could be used to construct a <code>MediaStreamTrackGenerator</code> that would give applications access to decoded frames, from a <code>MediaStream</code> retrieved through the <code>HTMLMediaElement.captureStream()</code> method. Another option would be to <a href="https://github.com/WICG/video-rvfc/issues/66#issuecomment-703863724">extend the <code>video.requestVideoFrameCallback()</code> method</a> to also return a <code>VideoFrame</code> construct (defined in WebCodecs).
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webaudio">
+            <h4>Web Audio API</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/hongchan-choi-building-audio-apps.html">Thoughts and considerations on building audio apps on the web</a>
+                  <br/>by Hongchan Choi
+                </li>
+                <li>
+                  <a href="talks/peter-salomonsen-webassembly-music.html">WebAssembly Music - latency/stability across platforms</a>
+                  <br/>by Peter Salomonsen
+                </li>
+                <li>
+                  <a href="talks/ulf-hammarqvist-audio-latency.html">Audio latency in browser-based DAWs</a>
+                  <br/>by Ulf Hammarqvist
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-1.html#webaudio">Minutes of live session 1</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aaudio">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Once WebCodecs is widely supported, the <b><code>decodeAudioData</code> method</b> could in theory be deprecated. That said, the <code>decodeAudioData</code> method has built-in support for demuxing which is convenient in a number of scenarios that need to access decoded audio samples and methods don't usually disappear from the web platform once they are widely deployed and used. The method should remain part of the web platform for the foreseeable future.
+            </p>
+
+            <p>
+              <b>Audio accuracy</b> is critical in professional audio workflows managed by Digital Audio Workstations (DAW), for instance to align content being recorded with content being played back and visualizations rendered on screen. This is easier said than done in the generic case as it supposes that the <a href="session-1.html#webaudio-inputLatency">input latency</a>, the <a href="session-1.html#webaudio-outputLatency">intrinsic latency of audio nodes and the output latency</a> are all known. Relevant hooks are already specified but not supported on all browsers. Hongchan Choi shares <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/dTQniJNVVMY">Chrome's intent to ship support for <code>outputLatency</code></a> and the <a href="https://github.com/WebAudio/web-audio-api/issues/2444#issuecomment-896338875">shape of a render capacity API</a> that should soon be added to the Web Audio API. That said, Paul Adenot points out that a recurring issue is that numbers reported by the system for input/output devices are often not reliable, making it hard to expose meaningful measures in browsers.
+            </p>
+
+            <p>
+              The Audio Working Group has agreed to <b>expose <code>AudioContext</code> in workers</b>, which would allow DAWs to avoid tying audio processing to the main <abbr title="User Interface">UI</abbr> thread. The onus is now on implementors to support this functionality.
+            </p>
+
+            <p>
+              Kazuyuki Ashimura <a href="session-1.html#webaudio-synth-object">wonders about support for <b>synthesized speech</b></a> in the Web Audio API. Paul Adenot explains that current systems are not well-suited for processing as browsers may not even see synthesized audio samples before they reach the speakers or headset. This could be discussed during a possible <a href="https://github.com/w3c/strategy/issues/221">workshop on voice interaction</a> in 2022.
+            </p>
+
+            <p>
+              James Pearce asks about <a href="session-1.html#webaudio-formats">DSP format support</a> for custom audio processing. Browsers do not have native support for specific <b>DSP formats</b> but the processing code may be written in any format in practice. Various libraries are available that handle FAUST, PureData or C++ for instance.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="sync">
+            <h4>Media synchronization</h4>
+
+            <aside class="box compact">
+              <p>Related talk:</p>
+              <ul>
+                <li>
+                  <a href="talks/sacha-guddoy-media-element-accuracy.html#ts-7">Media Element accuracy and synchronization with the DOM</a>
+                  <br/>by Hongchan Choi
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-1.html#synchronization">Minutes of live session 1</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Asynchronization">Relevant GitHub issues</a></li>
+                <li>
+                  <a href="https://blog.paul.cx/post/audio-video-synchronization-with-the-web-audio-api/">Audio/Video synchronization with the Web Audio API</a>
+                  <br/>by Paul Adenot (2019)
+                </li>
+              </ul>
+            </aside>
+
+            <p>
+              Sacha Guddoy describes use cases where a video player sits along an audio level display, and where <a href="session-1.html#synchronization">audio playback needs to be precisely synchronized</a> with video playback and DOM updates. Paul Adenot explains how the output latency exposed by the Web Audio API may be used to delay DOM updates and video frame rendering (through WebCodecs) to <b>synchronize video and audio playback</b>. The <a href="https://wicg.github.io/video-rvfc/"><code>HTMLMediaElement.requestVideoFrameCallback()</code></a> proposal could be used to simplify the synchronization logic in video-related cases.
+            </p>
+
+            <p>
+              Sacha Guddoy also explains how <b>multiple WebRTC streams</b> <a href="session-2.html#webrtc-synchronization">need to be synchronized in live vision mixing applications</a>, e.g. when multiple cameras are used. If the proposal gets more widely adopted &mdash;and provided camera clocks are also synchronized&mdash; the <a href="https://webrtc.googlesource.com/src/+/refs/heads/main/docs/native-code/rtp-hdrext/abs-capture-time">Absolute Capture Time extension</a> could be used to stamp RTP packets with a NTP timestamp. Coupled with Harald Alvestrand's <a href="https://alvestrand.github.io/mediacapture-transform/">breakout box model</a>, adopted by the WebRTC Working Group shortly after the workshop, this would allow applications to delay and synchronize rendering of media streams.
+            </p>
+
+            <p>
+              <b>General synchronization between audio/video and metadata</b> remains an open question. For instance, while media streams are synchronized in WebRTC, data channels are not synchronized with media streams. The ability to <a href="session-1.html#webcodecs-sei">expose SEI metadata</a> along with decoded frames in WebCodecs could provide useful synchronization hooks.
+            </p>
+
+            <p>
+              <b>Synchronization accuracy needs</b> depend on scenarios and influence the synchronization hooks to expose and/or use. Targeted accuracy levels need to be clarified on a case by case basis. Audio may have hard realtime requirements while some video synchronization scenarios may be content with ~100ms accuracy. Other video scenarios may require rough or precise frame accuracy levels.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webrtc">
+            <h4>WebRTC</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/sergio-garcia-murillo-whip.html">It's time to WHIP WebRTC into shape</a>
+                  <br/>by Sergio Garcia Murillo
+                </li>
+                <li>
+                  <a href="talks/sacha-guddoy-webrtc.html">WebRTC in live media production</a>
+                  <br/>by Sacha Guddoy
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-2.html#webrtc">Minutes of live session 2</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebrtc">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Sergio Garcia Murillo <a href="session-2.html#webrtc-signaling">introduces WHIP</a>, a proposal to converge on a <b>signaling protocol for WebRTC</b>. The protocol could be integrated in media production hardware to leverage WebRTC out-of-the-box. This would also create a virtuous circle to support and expose additional capabilities needed for media production. Standardization work on WHIP is ongoing at the IETF.
+            </p>
+
+            <p>
+              <a href="session-2.html#webrtc-advanced">Additional capabilities for media production</a> include support for <b>production quality codecs at higher frame rates</b>, support for <b>multi-channel audio</b> (surround) or <b>object-based audio</b>, support for <b>High-Dynamic Range</b> (HDR) and <b>Wide Color Gamut</b> (WCG) media encoding, or support for <b>video with transparency</b>.
+            </p>
+
+            <p>
+              Also, WebRTC has no proper support mechanism for <b>real-time captioning</b>. An <code>RTCDataChannel</code> may be used to stream cues but the data channel is not synchronized with audio/video tracks (see <a href="#sync">Media synchronization section</a> above). The Timed Text Working Group develops a <a href="https://w3c.github.io/tt-module-live/tt-live-1/spec/tt-live.html">TTML Live Extensions Module</a> for TTML content but there is no standardized way to stream <a href="https://www.w3.org/TR/webvtt/">WebVTT</a>. How can real-time captioning be integrated in WebRTC?
+            </p>
+
+            <p>
+              More advanced scenarios need <a href="session-2.html#webrtc-jitter">control over the jitter buffer</a>, for instance to <b>prevent audio distortion</b> when WebRTC is used in musical and other professional audio contexts.
+            </p>
+
+            <p>
+              With the exception of real-time captioning, WebRTC features are already defined in draft specifications (e.g. in the <a href="https://w3c.github.io/webrtc-extensions/">WebRTC Extensions</a>) or do not require major updates to existing specifications (e.g. support for codecs). The media production industry still needs to weigh in to prioritize features in implementations. More exploratory work is also needed to clarify requirements for some scenarios (e.g. <a href="session-2.html#webrtc-objectaudio">support for object-based audio</a>).
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webassembly">
+            <h4>WebAssembly</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/junyue-cao-non-linear-video-editor.html">A Non-linear Video Editor built with WebAssembly</a>
+                  <br/>by Junyue Cao
+                </li>
+                <li>
+                  <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                  <br/>by Kevin Streeter
+                </li>
+                <li>
+                  <a href="talks/paul-adenot-webcodecs-performance.html">Memory access patterns in Web Codecs</a>
+                  <br/>by Paul Adenot
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-2.html#webassembly">Minutes of live session 2</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebassembly">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Kevin Streeter explains how WebAssembly (WASM) can be used <a href="session-2.html#webassembly-needs">to port authoring applications from the desktop to the web</a>. Lots of optimizations have been integrated into native applications over time. Some of these optimizations get lost in the web version due to missing features in WebAssembly, sometimes resulting in workflows that may run 4 to 5 times slower than on native.
+            </p>
+
+            <p>
+              First missing feature is <b>64-bit support for heap management</b>. WebAssembly has built-in support for 64-bit numbers, which can be used to speed up pixel processing computations. However, <a href="https://github.com/webassembly/memory64#memory64-proposal-for-webassembly">64-bit memory addresses</a> are still being specified and not yet supported by browsers.
+            </p>
+
+            <p>
+              Another missing feature is <b>advanced SIMD support</b>. Luke Wagner explains that the initial batch of SIMD support in WebAssembly was the largest intersection that the group could find that was portably fast across a variety of desktop CPUs. The <a href="https://github.com/WebAssembly/simd">SIMD sub-group</a> of the Web Assembly Group meets bi-weekly to develop the next generation of SIMD instructions in WebAssembly, covering three main dimensions: supporting instructions that are platform-specific, allowing instructions that are non-deterministic, and relaxing the vector size. The SIMD sub-group welcomes practical WebAssembly workloads to guide its work.
+            </p>
+
+            <p>
+              Last but not least, on the web, media production applications will never be pure WebAssembly applications. They will also leverage GPU computations through WebGL or WebGPU, Web APIs that run on the CPU, and multi-threaded operations through Workers. <b>Memory copies</b> are typically needed whenever memory boundaries get crossed, and media production workflows manipulate a lot of memory, especially when decoded video frames get processed.
+            </p>
+
+            <p>
+              Luke Wagner details solutions envisioned to <a href="session-2.html#webassembly-copies">reduce memory copies across boundaries</a>. In theory, changes to compilers could emerge that would allow applications to reference memory pages that are outside of WebAssembly's linear memory. In practice, this seems far-fetched given the amount of work needed. A more promising solution would be to refine operations that create copies such that, under the hoods, browsers may use memory-mapping (<code>mmap</code>) whenever possible. This approach may require updating lots of specifications and is hard to implement, but it would not need to be specific to WebAssembly. In situations where the data needs to be transformed, another approach would be to delay the copy so that the copy and transform operations get fused.
+            </p>
+            
+            <p>
+              The Web Platform Incubator Group (WICG) hosts a coordination effort on <a href="https://github.com/WICG/reducing-memory-copies/issues/">reducing memory copies</a>. Interested parties are encouraged to join discussions in that repository.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="file">
+            <h4>File system integration</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/steve-cronan-production-metaverse.html#tp-13">The Production Metaverse</a>
+                  <br/>by Steve Cronan
+                </li>
+                <li>
+                  <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                  <br/>by Kevin Streeter
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-2.html#file">Minutes of live session 2</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Astorage">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              As with WebAssembly, Kevin Streeter discusses common file system integration issues that emerge when native authoring applications get ported to the web. The problems boil down to the need to handle, process, and transport <b>very large file assets</b>, while optimizing the number of I/O operations to improve performances. Marijn Kruisselbrink presents the <a href="https://wicg.github.io/file-system-access/#sandboxed-filesystem">Origin Private File System</a>, defined in the File System Access API proposal. The API is designed to work better with large files and be able to read and write to them with minimal overhead. That said, a copy still needs to happen when external data needs to be imported into the Origin Private File System. Constraints could perhaps be loosened in read-only scenarios. Writing to files outside the Origin Private File System is more tricky.
+            </p>
+
+            <p>
+              The Origin Private File System may graduate to WHATWG soon. Support for this and additional features highly depends on browser vendors interest. The media production industry needs to weigh in to prioritize the feature in implementations.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="metadata">
+            <h4>Metadata</h4>
+
+            <aside class="box compact">
+              <p>Related talks:</p>
+              <ul>
+                <li>
+                  <a href="talks/bruce-devlin-metadata.html">Metadata in production workflows</a>
+                  <br/>by Bruce Devlin
+                </li>
+                <li>
+                  <a href="talks/julian-fernandez-campon-ipaas.html">The Power of an iPaaS for Media</a>
+                  <br/>by Julian Fernandez-Campon
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-3.html#metadata">Minutes of live session 3</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Ametadata">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Bruce Devlin <a href="session-3.html#metadata-preserve">outlines a core issue with metadata</a>: metadata that gets produced at the capture phase is easily lost in subsequent media processing steps. People often need to re-create it afterwards, which is at best inconvenient and costly. Metadata may also be lost during transport or out of reach from applications during playback. <b>How can metadata be preserved?</b>
+            </p>
+
+            <p>
+              Bruce Devlin categorizes metadata along two axes: the format axis (text or binary?), and the time axis (isochronous with each frame or more irregular or <em>lumpy</em> with embedded timing?). Solutions to manage and expose metadata may depend on where the metadata sits along these two axes, and what use cases are envisioned for that metadata. One use case example is adding <b>provenance and authencity information</b>, which the <a href="https://c2pa.org/">Coalition for Content Provenance and Authenticity</a> (C2PA) is currently exploring. The provenance information could be visualized during media playback or when the user presses pause. Synchronization between the metadata and the frame is primordial in such scenarios.
+            </p>
+
+            <p>
+              Standardization efforts could focus on defining APIs that <b>expose the different categories of metadata</b>. For instance, the <a href="https://wicg.github.io/datacue/">DataCue API</a> proposal could expose metadata at the container level. Support for <a href="https://github.com/w3c/webcodecs/issues/198">SEI metadata in WebCodecs</a> (<a href="session-1.html#webcodecs-sei">discussed during the workshop</a>) could expose metadata that sits at the codec level.
+            </p>
+
+            <p>
+              Metadata also needs to use <b>standardized vocabularies</b> so that media production workflows can be defined in more abstract transformation terms and be applied broadly to various source of inputs and outputs. Julian Fernandez-Campon shows how standardardized vocabularies can be used to introduce processing steps in workflows that can leverage a variety of tools and services. For media content, the SMPTE ST 2065 (ACES) standard seems like a good option. Other standards may be used. Should W3C develop a mapping vocabulary between existing standards?
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="accessibility">
+            <h4>Accessibility</h4>
+
+            <aside class="box compact">
+              <p>Related talk:</p>
+              <ul>
+                <li>
+                  <a href="talks/ed-gray-accessibility.html">Accessibility in creative tools discussion</a>
+                  <br/>by Ed Gray
+                </li>
+              </ul>
+              <p>See also:</p>
+              <ul>
+                <li><a href="session-3.html#accessibility">Minutes of live session 3</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Ametadata">Relevant GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Ed Gray reviews existing <b>accessibility guidelines</b>, notably the <a href="https://www.w3.org/TR/WCAG/">Web Content Accessibility Guidelines</a> (WCAG) and <a href="https://www.w3.org/TR/ATAG/">Authoring Tool Accessibility Guidelines</a> (ATAG), <b>communities of practice</b> like the <a href="https://www.accessibilityassociation.org/">International Association of Accessibility Professionals</a> (IAAP) and <a href="https://webaim.org/">Web Access In Mind</a> (WebAIM), and <b>self-reporting formats</b> for accessibility such as <a href="https://www.itic.org/policy/accessibility/vpat">Voluntary Product Accessibility Template</a>.
+            </p>
+
+            <p>
+              Accessibility in media authoring tools affects many layers, ranging from the contrast and keyboard navigation considerations to closed captions support and announcing when a camera is being plugged in. It is a never ending task, best addressed when companies invest in dedicated teams and when accessibility measures actually benefit everybody, as developed in the <a href="https://ncaonline.org/principles-of-universal-design/">Principles of Universal Design</a>.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+        </section>
+
+        <section id="other">
+          <h3>Other topics</h3>
+
+          <aside class="box compact">
+            <p>Related talks:</p>
+            <ul>
+              <li>
+                <a href="talks/patrick-brosset-eyedropper-api.html">The Eye Dropper API</a>
+                <br/>by Patrick Brosset
+              </li>
+              <li>
+                <a href="talks/oleg-sidorkin-distributed-content-review.html">Distributed multi-party media-rich content review</a>
+                <br/>by Oleg Sirdokin
+              </li>
+              <li>
+                <a href="talks/christoph-guttandin-all-that-can-be-done.html">Whatever can be done, will be done</a>
+                <br/>by Christoph Guttandin
+              </li>
+              <li>
+                <a href="talks/max-grosse-openexr.html">Reviewing Production OpenEXR files on the Web for ML</a>
+                <br/>by Max Grosse
+              </li>
+            </ul>
+            <p>See also:</p>
+            <ul>
+              <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture">Architectural issues on GitHub</a>
+              <li><a href="https://github.com/w3c/media-production-workshop/issues/36">GitHub issue on the EyeDropper API</a></li>
+            </ul>
+          </aside>
+
+          <p>
+            Pre-recorded talks raised other issues that have not been discussed during the live sessions, notably some of the <a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture">architectural issues</a> that invite people to take a step back and look at the broader picture:
+          </p>
+          <ul>
+            <li>All in all, media production applications need access to low-level features. Could such applications somehow be empowered through a <b>different trust model</b>? (see <a href="https://github.com/w3c/media-production-workshop/issues/58">issue #58</a>)</li>
+            <li>Various synchronization needs were raised and discussed during the live sessions. Should the web platform also expose more precise <b>frame identification primitives</b> than `currentTime`, e.g. using a rational number? (see <a href="https://github.com/w3c/media-production-workshop/issues/47">issue #47</a>)</li>
+            <li>In workers, can some of the APIs expose a <b>synchronous mode</b></a>, e.g. to ease integration with C++/WASM code running on a synchronous model?(see <a href="https://github.com/w3c/media-production-workshop/issues/45">issue #45</a>)</li>
+            <li>What changes may be needed for the web platform to be able to provide a <b>secure perimeter</b> for audio/video processing workflows that leverage a mix of technologies such as WebCodecs, WebAssembly, WebGPU and/or WebRTC? (see <a href="https://github.com/w3c/media-production-workshop/issues/26">issue #26</a>)</li>
+            <li>On top of exposing low-level primitives such as WebCodecs, should there be some standardization effort on a <b>higher level video editing API</b> that media production applications could leverage directly? Such an API could perhaps take the form of an open source library built on top of WebCodecs. (see <a href="https://github.com/w3c/media-production-workshop/issues/55">issue #55</a>)</li>
+            <li>Given the complexity of Web technologies and the size of professional media production applications codebases, could browser vendors converge on a mechanism, integrated in the release cycle of new versions, that would allow developers to <b>test their app in upcoming versions</b> and report bugs before these new versions get released? (see <a href="https://github.com/w3c/media-production-workshop/issues/57">issue #57</a>)</li>
+            <li>In a <a href="#proxy-based">proxy-based architecture</a>, the application could also run in the cloud, synchronized with the application running on client devices, making it possible to create multi-user <b>co-browsing experiences</b>. In his talk on <a href="talks/oleg-sidorkin-distributed-content-review.html">Distributed multi-party media-rich content review</a>, Oleg Sidorkin reviews some of the hurdles that such a context creates, including the difficulty to observe all events that need to be propagated on elements such as canvas and custom elements' shadow DOM trees.</li>
+          </ul>
+
+          <p>
+            In his talk, Patrick Brosset <a href="talks/patrick-brosset-eyedropper-api.html">introduces the EyeDropper API</a>, a proposal for providing access to a <b>browser supplied eyedropper</b>. James Pearce suggests to extend the API so that it <a href="https://github.com/w3c/media-production-workshop/issues/36">may be constrained to a particular DOM element</a> to enable scenarios where users need to pick up a color from within a particular video frame.
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="next">
+          <h3>Next steps</h3>
+
+          <section id="next-existing">
+            <h4>Existing technologies</h4>
+
+            <p>
+              A main takeaway from the workshop is that the web platform already provides <b>suitable building blocks</b> to enable core media production scenarios in a <a href="#proxy-based">proxy-based architecture</a>: media streaming and rendering technologies (e.g. the video element, canvas based rendering, MSE, the Web Audio API), transport technologies (Fetch, WebRTC), processing technologies (through JavaScript, WebAssembly, or WebGL) and storage technologies (File API, IndexedDB) are widely supported and used across authoring applications.
+            </p>
+
+            <p>
+              It seems clear, however, that the web platform cannot easily accommodate a <a href="#no-proxy">no-proxy architecture</a> today for professional media production scenarios. Technical gaps raised during the workshop are for the most part <b>performance issues</b>, meaning that the scenarios can be achieved in web applications but only to some extent. For instance, media authoring applications running on client devices may need to clamp the resolution of videos e.g. to <code>480x270</code> when they have to decode and process the video themselves, because they cannot leverage hardware decoders. They may also run into hard-to-solve synchronization issues, or may run poorly compared to native applications because they cannot easily leverage optimizations for processing media such as advanced SIMD instructions.
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="next-ongoing">
+            <h4>Ongoing standardization efforts</h4>
+
+            <p>
+              Workshop talks and discussions show that ongoing standardization efforts will bring advanced features and performance improvements that the media production industry needs. These include <b>low-level access to media</b> as exposed by WebCodecs, <b>better latency measurement</b> capabilities in the Web Audio API, <b>enhanced performances in WebAssembly</b> (advanced SIMD, 64-bit memory heap support), <b>smoother UIs</b> when APIs are all available in workers, and <b>production quality support</b> in WebRTC (multi-channel audio, higher frame rate codecs support).
+            </p>
+
+            <p>
+              These ongoing standardization efforts span multiple groups including the <a href="https://www.w3.org/groups/wg/media">Media Working Group</a> (e.g. WebCodecs, Media Capabilities), the <a href="https://www.w3.org/groups/wg/audio">Audio Working Group</a>, the <a href="https://www.w3.org/groups/wg/wasm">WebAssembly Working Group</a>, the <a href="https://www.w3.org/groups/wg/webrtc">WebRTC Working Group</a>, the <a href="https://www.w3.org/groups/wg/ag">Accessibility Guidelines Working Group</a> (WCAG), the <a href="https://www.w3.org/groups/wg/gpu">GPU for the Web Working Group</a> (WebGPU), the <a href="https://www.w3.org/groups/wg/timed-text">Timed Text Working Group</a>, or the <a href="https://www.w3.org/groups/cg/wicg">Web Platform Incubator Community Group</a> (WICG) for pre-standardization efforts (e.g. Origin Private File System).
+            </p>
+
+            <p>
+              These groups operate in public and happily take input on their deliverables, usually through issues raised on GitHub repositories. Such an individual approach works well to report specific needs and some workshop participants already provided feedback on WebCodecs or the Web Audio API.
+            </p>
+
+            <p>
+              An individual approach is not always enough. Groups may need more input to evaluate a feature to confirm that the need is widely shared across the industry, to evaluate whether leaving the feature up to applications can be a reasonable tradeoff between performance and interoperability, or to explore alternative designs. Also, some features only make sense when viewed from a broader media production perspective, which groups do not necessarily have.
+            </p>
+
+            <p>
+              To go beyond individual contributions, a <b>coordination effort</b> is needed. Coordination points already exist:
+            </p>
+
+            <ul>
+              <li>The <a href="https://github.com/WICG/reducing-memory-copies/">reducing memory copies</a> initiative in WICG coordinates discussions on mechanisms to reduce copies across memory boundaries.</li>
+              <li>The <a href="https://www.w3.org/groups/cg/colorweb">Color on the Web Community Group</a> coordinates efforts on HDR and WCG across the platform.</li>
+              <li>Within the Media &amp; Entertainment Interest Group, the <a href="https://www.w3.org/2011/webtv/wiki/Main_Page/Media_Timed_Events_TF">Media Timed Events Task Force</a> coordinates discussions on metadata exposure.</li>
+              <li>More broadly speaking, the <a href="https://www.w3.org/groups/ig/me">Media &amp; Entertainment Interest Group</a> acts as steering group for media standardization efforts within W3C</li>
+              <li>Similar efforts exist in W3C, SMPTE, or elsewhere, focused on a specific topic.</li>
+            </ul>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="next-tf">
+            <h4>Towards a Media Production Task Force</h4>
+
+            <p>
+              Coordination points mentioned above target topics that overlap with those raised during the workshop. There is, however, no coordination effort that looks at professional media production needs on the web as a whole. The workshop was a one-time coordination effort but it seems clear that a more in-depth analysis is needed for some of the discussions started during the workshop. Also, the workshop could not cover all relevant topics for lack of time.
+            </p>
+
+            <p>
+              Workshop participants propose that <b>a coordination effort on web-based professional media production</b> be created. The scope of this effort would match that of the workshop: professional media production using the web platform, including editing, quality control, grading/color correction, dailies, visual effects, sound, mastering, translation and servicing. Cloud-based processes and desktop applications that do not use the web platform would be out of scope. Similarly, applications that do not manipulate the content such as file sharing applications would be out of scope.
+            </p>
+
+            <p>
+              This coordination effort would be responsible for:
+            </p>
+            <ul>
+              <li>Connecting the web platform and the professional media production communities,</li>
+              <li>Documenting use cases and specific needs for professional media production,</li>
+              <li>Quantifying performance needs when feature can already be achieved using existing technologies at the application level,</li>
+              <li>Prioritizing and promote proposals to working groups and implementers,</li>
+              <li>Tracking progress and implementations.</li>
+            </ul>
+
+            <p>
+              Looking at specific topics raised during the workshop, this coordination effort could:
+            </p>
+            <ul>
+              <li>Run code experiments on muxing and demuxing at the application level to inform the possible creation of a (de-)muxing API in WebCodecs.</li>
+              <li>Clarify what a useful quality control tuning knob should look like in WebCodecs.</li>
+              <li>Gather media production use cases around metadata management, notably on SEI metadata and on the encoding side, to be fed into discussions of the Media Timed Events Task Force and Media Working Group.</li>
+              <li>Document needs for professional codecs and monitor support in implementations.</li>
+              <li>Document real-time captioning requirements for WebRTC, in collaboration with the WebRTC Working Group.</li>
+              <li>Explore synchronization needs and gaps, using code to quantify issues.</li>
+              <li>Gather typical memory workloads to analyse performance issues when memory boundaries (CPU, GPU, WASM) need to be crossed, and help relevant Working Groups adjust their APIs to avoid problematic copies.</li>
+              <li>Document file asset management issues that are specific to media production due to the size of the assets.</li>
+              <li>Make sure that the media production angle is considered in Color on the Web Community Group discussions.</li>
+              <li>Explore needs for standardized vocabularies in media production workflows.</li>
+              <li>Explore more specific needs such as pre-charging/priming, or the ability to get a decoded frame from a <code>&lt;video&gt;</code> element.</li>
+            </ul>
+
+            <p>
+              For better impact, this coordination effort should gravitate around the Working Groups that develop the APIs and main coordination points that already address topics of interest. It is proposed that <b>the W3C <a href="https://www.w3.org/groups/ig/me">Media &amp; Entertainment Interest Group</a> hosts this coordination effort</b>: it fits its mandate as steering group for media standardization efforts in W3C and the envisioned scope does not include development of technical solutions, which would rather find a natural home in the Working Groups responsible for the underlying standards (Media Working Group, Audio Working Group, etc.).
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+        </section>
+
+        <section id="thanks">
+          <h3>Thank you!</h3>
+          <p>
+            The organizers express deep gratitude to those who helped with the organization and execution of the workshop, starting with the members of the <a href="./#committee">Program Committee</a> and <a href="speakers.html">speakers</a> who provided initial support and helped shape the workshop. Huge kudos to Chris Needham and Pierre-Anthony Lemieux for chairing the workshop, and to Adobe for sponsoring. Many thanks to those who took an active role under the hood, notably events teams and BizDev teams at W3C and SMPTE, Marie-Claire Forgue for editing the videos after the workshop and all W3C/SMPTE team members who took part in the workshop one way or the other. Finally, a big thank you to workshop participants without whom the workshop wouldn't have been such a productive and inspiring event. Congratulations to all, first shot was good, more shots needed!
+          </p>
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="sponsors">
+          <h2>
+            Sponsor
+          </h2>
+          <p><a href="https://www.adobe.com/"><img src="media/adobe.png" alt="Adobe" width="70"></a></p>
+          <p class="small">Interested in sponsoring the workshop?<br/>Please check the <a href="sponsors.html">sponsorship package</a>.</p>
+        </section>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C is proud to be an open and inclusive organization, focused on
+        productive discussions and actions. Our <a href=
+        "https://www.w3.org/Consortium/cepc/">Code of Ethics and Professional
+        Conduct</a> ensures that all voices can be heard.
+      </p>
+      <p>Questions? Contact François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        Suggestions for improving this workshop page, such as fixing typos or
+        adding specific topics, can be made by opening a <a href=
+        "https://github.com/w3c/media-production-workshop/">pull request on
+        GitHub</a>, or by emailing François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
