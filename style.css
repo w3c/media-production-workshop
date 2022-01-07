@@ -1309,4 +1309,5 @@ body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
 
 .back-to-toc {
   text-align: right;
+  clear: both;
 }
