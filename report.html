@@ -233,7 +233,7 @@
             </aside>
 
             <p>
-              In his <a href="talks/chris-cunningham-hello-webcodecs.html">introductory talk on WebCodecs</a>, Chris Cunningham asks the media production community about <b>additional encoder options</b> that it may need. Workshop participants <a href="session-1.html#webcodecs-quality">suggest a <b>quality control knob</b></a> for applications to provide a hint to the browser that they would like to favor quality of the encoding over encoding latency. This seems doable provided that media production stakeholders clarify the exact API shape that they would like to get out of it.
+              In his <a href="talks/chris-cunningham-hello-webcodecs.html">introductory talk on WebCodecs</a>, Chris Cunningham asks the media production community about <b>additional encoder options</b> that it may need. Workshop participants <a href="session-1.html#webcodecs-quality">suggest a <b>quality control knob</b></a> for applications to provide a hint to the browser that they would like to favor quality of the encoding over encoding latency. This seems doable. <a href="https://github.com/w3c/webcodecs/issues/56">Discussion of possible API shapes</a> is ongoing. Stakeholders are encouraged to subscribe and contribute.
             </p>
 
             <p>
@@ -249,11 +249,11 @@
             </p>
 
             <p>
-              Some media files are encoded using <b>variable bitrate</b>. Nigel Megitt asks whether <a href="session-1.html#webaudio-vbr">seeking to a specific time</a> could be better supported in such cases. There is no magical solution in general at the codec level. Mechanisms that could improve seeking are typically found at the container level. For example, MP3 files may contain a table of context that applications could parse and use to locate the appropriate chunks right away.
+              Some media files are encoded using <b>variable bitrate</b>. Nigel Megitt asks whether <a href="session-1.html#webaudio-vbr">seeking to a specific time</a> could be better supported in such cases. There is no magical solution in general at the codec level. Mechanisms that could improve seeking are typically found at the container level. For example, MP3 files may contain a table of contents that applications could parse and use to locate the appropriate chunks right away.
             </p>
 
             <p>
-              A workshop participant asks about <a href="session-1.html#webcodecs-precharge">encoding/decoding support for priming in the audio domain and pre-charging in the video domain</a> which some codecs need. Paul Adenot explains that WebCodecs is an interface to the underlying codecs. The encoder will take care of <b>audio priming</b> and <b>video pre-charging</b> as needed. Additional tests would help determine whether applications need to account for silent samples to synchronize audio playback with other content.
+              A workshop participant asks about <a href="session-1.html#webcodecs-precharge">encoding/decoding support for audio samples and video frames that some codecs may require at the start of the media content to bootstrap the decoder</a>, sometimes referred to as <b>priming</b> (in the audio domain) or <b>pre-roll</b>. Such samples and frames need to be decoded but skipped during playback. Paul Adenot explains that WebCodecs acts as a pass-through to underlying codecs APIs and that applications need to know and handle pre-roll requirements of the codecs that they are using. Additional tests would help explore practical implications at the application level.
             </p>
 
             <p>
@@ -300,7 +300,7 @@
             </p>
 
             <p>
-              The Audio Working Group has agreed to <b>expose <code>AudioContext</code> in workers</b>, which would allow DAWs to avoid tying audio processing to the main <abbr title="User Interface">UI</abbr> thread. The onus is now on implementors to support this functionality.
+              The Audio Working Group has agreed to <b>expose <code>AudioContext</code> in workers</b>, which would allow DAWs to avoid tying audio processing to the main <abbr title="User Interface">UI</abbr> thread. Updates to the Web Audio API specification are ongoing.
             </p>
 
             <p>
@@ -705,7 +705,7 @@
             </p>
             <ul>
               <li>Run code experiments on muxing and demuxing at the application level to inform the possible creation of a (de-)muxing API in WebCodecs.</li>
-              <li>Clarify what a useful quality control tuning knob should look like in WebCodecs.</li>
+              <li>Evaluate the quality control tuning knob under discussion in WebCodecs.</li>
               <li>Gather media production use cases around metadata management, notably on SEI metadata and on the encoding side, to be fed into discussions of the Media Timed Events Task Force and Media Working Group.</li>
               <li>Document needs for professional codecs and monitor support in implementations.</li>
               <li>Document real-time captioning requirements for WebRTC, in collaboration with the WebRTC Working Group.</li>
