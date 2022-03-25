@@ -1311,3 +1311,7 @@ body:not(.sync) #buttonbar .button, body:not(.sync) #buttonbar button,
   text-align: right;
   clear: both;
 }
+
+header #translations {
+  float: right;
+}
