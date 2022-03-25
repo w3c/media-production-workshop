@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <title>W3C/SMPTE 专业媒体制作 Web 技术联合研讨会报告</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <meta name="twitter:site" content="@w3c">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:title" content="W3C/SMPTE Joint Workshop on Professional Media Production on the Web">
+    <meta property="og:description" content="The workshop connects the web platform and the professional media production communities and explores evolutions of the web platform to address professional media production requirements">
+    <meta property="og:image" content="https://www.w3.org/2021/03/media-production-workshop/media/social-banner.png">
+  </head>
+  <body>
+    <header class="header">
+      <div id="banner">
+        <div>
+          <p>
+            <a href="https://www.w3.org/"><img alt="W3C" src=
+            "media/w3c_home_nb-v.svg" height="48" width="72"></a>
+            <a href="https://www.smpte.org/"><img alt="SMPTE" src=
+            "media/smpte_logo.png" height="48"></a>
+          </p>
+          <div class="banner-title">
+            <h1>
+              W3C/SMPTE 专业媒体制作 Web 技术联合研讨会
+            </h1>
+          </div>
+          <p class="attribution">
+            <span>题图来源于 <a href="https://unsplash.com/@kineticbear?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jacob Miller</a> 发布在 <a href="https://unsplash.com/s/photos/timeline?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+          </p>
+          <p>2021年11月8-19日; 线上会议</p>
+        </div>
+      </div>
+      <nav class="menu" id="menu">
+        <ul>
+          <li><a href="./">征集参会者</a></li>
+          <li><a href="talks.html">预录报告</a></li>
+          <li><a href="agenda.html">线上讨论</a></li>
+          <li><a class="active-tab">总结报告</a></li>
+        </ul>
+      </nav>
+    </header>
+    <aside class="box" id="sponsoring">
+      <h2 class="footnote">
+        赞助方
+      </h2>
+      <p><a href="https://www.adobe.com/"><img src="media/adobe.png" alt="Adobe" width="70"></a></p>
+    </aside>
+    <main id="main" class="main">
+      <section id="report">
+        <h2>总结报告</h2>
+
+        <section id="toc">
+          <h3>内容列表</h3>
+
+          <ul>
+            <li><a href="#summary">执行摘要</a></li>
+            <li><a href="#introduction">引言</a></li>
+            <li><a href="#context">设定背景</a></li>
+            <li><a href="#topics">线上讨论主题</a>
+              <ul>
+                <li><a href="#webcodecs">WebCodecs</a></li>
+                <li><a href="#webaudio">Web音频API</a></li>
+                <li><a href="#sync">媒体同步</a></li>
+                <li><a href="#webrtc">WebRTC</a></li>
+                <li><a href="#webassembly">WebAssembly</a></li>
+                <li><a href="#file">文件系统集成</a></li>
+                <li><a href="#metadata">元数据</a></li>
+                <li><a href="#accessibility">无障碍</a></li>
+              </ul>
+            </li>
+            <li><a href="#other">其他主题</a></li>
+            <li><a href="#next">下一步计划</a>
+              <ul>
+                <li><a href="#next-existing">现有技术</a></li>
+                <li><a href="#next-ongoing">正在进行的标准化工作</a></li>
+                <li><a href="#next-tf">计划设立媒体制作特别任务组</a></li>
+              </ul>
+            </li>
+          </ul>
+          <p>进一步参阅:</p>
+          <ul>
+            <li><a href="session-1.html">线上讨论（第一部分）会议纪要</a> (WebCodecs、Web音频API、媒体同步)</li>
+            <li><a href="session-2.html">线上讨论（第二部分）会议纪要</a> (WebRTC、WebAssembly、文件系统集成)</li>
+            <li><a href="session-3.html">线上讨论（第三部分）会议纪要</a> (元数据、无障碍、下一步计划)</li>
+            <li><a href="talks.html">提前预录的讲者报告</a></li>
+            <li><a href="https://github.com/w3c/media-production-workshop/issues">GitHub上的相关讨论</a></li>
+          </ul>
+        </section>
+
+        <section id="summary">
+          <h3>执行摘要</h3>
+
+          <p>
+            2021年10月至11月期间，W3C 和 SMPTE 组织了一场专业媒体制作 Web 技术研讨会。该研讨会连接了 Web 平台社区和专业媒体制作社区，探索 Web 平台技术变革以满足专业媒体制作的需求。
+          </p>
+
+          <p>
+           此次线上研讨会以2021年10月发布的<a href="speakers.html">24个演讲</a>为开始，涵盖了众多与媒体制作有关的主题。这些观点经过仔细评估，最终形成了<a href="https://github.com/w3c/media-production-workshop/issues">大约40个GitHub Issue</a>，并在11月初进行了线上讨论。研讨会最终于2021年11月中旬接连举行了<a href="agenda.html">3次线上主题讨论</a>，汇集了超过75名业界专家，围绕Web平台的特定媒体制作需求展开交流，<a href="#other">部分话题</a>并没能参与到线上讨论中来。
+          </p>
+          
+          <p>
+            研讨会的主要结论包括：
+          </p>
+          <ol>
+            <li>
+              Web 平台<a href="#next-existing">已经提供了构建模块</a>来支持核心媒体制作场景。
+            </li>
+            <li>
+             这些构建模块不够强大，无法在客户端设备上提供完整的体验（参见<a href="#proxy-based">基于代理</a>的和<a href="#no-proxy">无代理</a>架构）。
+
+            </li>
+            <li>
+             研讨会上提出的大部分差距都涉及到<a href="#next-ongoing">已经在开发的</a>规范中的 API 功能。然而，为确保在当前的标准制定过程中，能够恰当地把握和满足媒体制作需求，<a href="#next-tf">进一步的协同工作</a>也是很有必要的。
+            </li>
+          </ol>
+
+          <p>
+          研讨会要求对一些主题进行更深入的分析，与会者提议成立一个<a href="#next-tf">媒体制作特别任务小组</a>，由 W3C 媒体和娱乐兴趣组负责。该特别任务组的工作范围将涵盖使用 Web 平台的专业媒体制作技术，记录专业媒体制作的具体用例和需求，量化性能问题，并向标准工作组和标准实现者输送提案，以及跟踪标准化进展和实施情况。
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="introduction">
+          <h3>引言</h3>
+          <p>
+           W3C 和 SMPTE 举办研讨会，目的是为了从不同的角度讨论某一特定领域，进而确定进行标准化工作的需求，并评估相关的社区支持和优先事项。专业媒体制作 Web 技术研讨会于2021年10-11月举行。该研讨会旨在连接 Web 平台社区和专业媒体制作社区，探索 Web 平台技术变革以满足专业媒体制作的需求。此次线上研讨会包含<a href="speakers.html">预录制演讲</a>、<a href="https://github.com/w3c/media-production-workshop/issues">GitHub 在线讨论</a>和<a href="sessions.html">3场线上主题讨论</a>，以深究 Web 平台的具体媒体制作需求。
+          </p>
+
+          <p>
+            本报告总结<a href="#topics">线上主题讨论的话题</a>，回顾因时间关系而<a href="#other">没有进行线上讨论的话题</a>，并提出下<a href="#next">一步计划</a>。
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="context">
+          <h3>设定背景</h3>
+
+          <aside class="box compact">
+            <p>相关演讲:</p>
+            <ul>
+              <li>
+                <a href="talks/pierre-anthony-lemieux-media-production.html">Lossless UHD videos in a browser</a>
+                <br/>讲者 Pierre-Anthony Lemieux
+              </li>
+              <li>
+                <a href="talks/steve-cronan-production-metaverse.html">The Production Metaverse</a>
+                <br/>讲者 Steve Cronan
+              </li>
+              <li>
+                <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                <br/>讲者 Kevin Streeter
+              </li>
+            </ul>
+          </aside>
+
+          <p>
+        Web 已经成为媒体消费的主要平台。处于这场变革核心的Web技术（如 <a href="https://html.spec.whatwg.org/multipage/media.html#media-elements">HTML 中的媒体元素</a>、<a href="https://www.w3.org/TR/media-source/">MSE</a>、<a href="https://www.w3.org/TR/webvtt/">WebVTT</a> 等）正逐步被扩展，或通过加入 <a href="https://www.w3.org/TR/webcodecs/">WebCodecs</a> 等其他技术来完善，来为 Web 应用提供对更精细的媒体体验控制。
+          </p>
+
+          <p>
+            同时，影视制作资产的存储和处理也已经转移至云端。Web平台提供了一个与这些资产交互的自然环境。因此，人们对构建 Web 应用越来越感兴趣，它们可以让终端用户操作制作资产，例如编辑、质量检查、版本管理、时序文本创作等。
+
+          </p>
+
+          <p>
+            专业应用需要额外的功能，包括精确计时、高保真时序文本、高效媒体处理解决方案、宽色域和高动态范围等。具体要用到哪些取决于所考虑的架构：
+          </p>
+          <ol>
+            <li>在<dfn id="proxy-based">基于代理的架构中</dfn>，制作资产仍留在云端。客户端设备充当处理操作的远程控制器，并对存储在云中的媒体资产的低分辨率版本进行操作。
+</li>
+            <li>在<dfn id="no-proxy">无代理架构中</dfn>，对媒体资产的处理在客户端进行，该客户端要能直接、准确地处理高分辨率的媒体资产。</li>
+          </ol>
+
+          <p>
+            本次研讨会探讨了媒体制作在 Web 平台的架构和发展过程中的特定功能需求，以寻求解决这些问题。
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="topics">
+          <h3>线上主题讨论的话题</h3>
+
+          <section id="webcodecs">
+            <h4>WebCodecs</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/chris-cunningham-hello-webcodecs.html">Hello WebCodecs</a>
+                  <br/>讲者 Chris Cunningham
+                </li>
+                <li>
+                  <a href="talks/chris-cunningham-webcodecs-videoencoderconfig.html">WebCodecs VideoEncoderConfig</a>
+                  <br/>讲者 Steve Cronan
+                </li>
+                <li>
+                  <a href="talks/paul-adenot-webcodecs-performance.html">Memory access patterns in WebCodecs</a>
+                  <br/>讲者 Paul Adenot
+                </li>
+                <li>
+                  <a href="talks/james-pearce-browser-hosted-video-editing.html">Browser Hosted Video Editing</a>
+                  <br/>讲者 James Pearce
+                </li>
+                <li>
+                  <a href="talks/soeren-balko-clipchamp-webcodecs.html">Improving Clipchamp's in-browser video editing pipeline with WebCodecs</a>
+                  <br/>讲者 Soeren Balko
+                </li>
+                <li>
+                  <a href="talks/qiang-fu-video-transcoding.html">Video Transcoding in Browser using WebAssembly/WebCodecs</a>
+                  <br/>讲者 Qiang Fu
+                </li>
+                <li>
+                  <a href="talks/he-zhi-production-olympics.html">Live and post production for Sports Broadcasting</a>
+                  <br/>讲者 He Zhi
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-1.html#webcodecs">线上讨论（第一部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebcodecs">相关 GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+            Chris Cunningham 在他<a href="talks/chris-cunningham-hello-webcodecs.html">关于 WebCodecs 的开场演讲</a>中，向媒体制作社区询问了可能需要的额外编码器选项。与会者<a href="session-1.html#webcodecs-quality">提议</a>增设一个<b>质量控制选项</b>，以便向浏览器表示 Web 应用是希望优先考虑编码质量还是编码延迟。这一提议应该可行。<a href="https://github.com/w3c/webcodecs/issues/56">关于 API 的可能形态</a>的讨论正在进行中，鼓励利益相关方关注其进展、提出贡献。
+            </p>
+
+            <p>
+              WebCodecs 为 Web 应用提供了对比特流进行解码（和编码）的能力，但比特流<b>只有在解复用后</b>才可用，WebCodecs 将这一问题留给 Web 应用来解决。Web 应用开发人员多次提出希望有一个用于<a href="session-1.html#webcodecs-muxing">解复用和复用的API</a>。在 Web 应用使用  或 Web音频 API 中的 <code>decodeAudioData</code> 方法时，浏览器已经处理了这些步骤。Chris Cunningham 指出，Web应用可以利用现有库，如 <a href="https://gpac.github.io/mp4box.js/">MP4Box.js</a> 或 <a href="https://ffmpeg.org/">FFmpeg</a>。话虽如此，但这些库要么太局限，要么太宽泛，无法适用通用情况，而且Web应用要想集成这些库也很困难。Paul Adenot 指出，Firefox 已经使用 WebAssembly 代码对媒体内容实现了解复用，过程中没有明显的性能影响，而且对于编码流来说，内存副本几乎不是问题。总而言之，这方面还有待探索。可能需要一个基于<a href="https://ffmpeg.org/libavformat.html"> libavformat 库</a>的专用开源复用/解复用库。另外，如果研究发现在应用层面上进行解复用/复用不具可行性，也许可以在 WebCodecs 的基础上扩展出复用/解复用 API。
+            </p>
+
+            <p>
+              媒体制作工作流程中使用的<b>专业编解码器</b>不同于媒体分发中使用的编解码器，包括 Adobe ProRes、JPEG 2000等格式。<a href="session-1.html#webcodecs-codecs">浏览器是否能够支持媒体制作编解码器</a>？这可能很难实现。浏览器在 WebCodecs 中支持的编解码器列表很可能与其支持的媒体播放编解码器列表相匹配，浏览器在支持编解码格式时需要考虑诸多方面。或者，浏览器也许可以暴露出系统中可用的编解码器的钩子（hook）。要实现这一点，至少需要一个跨编解码库的通用抽象层。James Pearce 和 Paul Adenot 还指出，在浏览器中运行第三方代码可能会引入安全风险。
+            </p>
+            元数据可能出现在不同的层（参见<a href="#metadata">下方元数据章节</a>）。在编解码层面，元数据可能出现在<b>补充增强信息（SEI）消息</b>中。<a href="session-1.html#webcodecs-sei">是否可以通过 WebCodecs 暴露 SEI 消息</a>，而不要求 Web 应用解析比特流？确切的用例（如获取闭合式字幕和HDR参数）需要进一步探索。W3C 媒体与娱乐兴趣组在12月组织了一次后续讨论，以评审<a href="https://github.com/leonardoFu/video-sei-event/blob/main/explainer.md">来自Yuhao Fu（字节跳动）的一项提议</a>，并将作为其<a href="https://github.com/w3c/media-and-entertainment/issues/82">媒体时序事件特别任务组的一部分进行后续讨论</a>。
+            </p>
+
+            <p>
+              某些媒体文件会使用<b>可变比特率</b>进行编码。Nigel Megitt 询问，在这种情况下，是否可以通过<a href="session-1.html#webaudio-vbr">查找特定的时间点</a>来获取更好的支持。在编解码器层面，通常没有神奇的解决方案。可以改进查找的机制通常要在容器层面寻找。例如，MP3 文件可能包含一个目录，Web应用可以解析该目录用于即时定位适当的文件块。
+            </p>
+
+            <p>
+              一位与会者问到<a href="session-1.html#webcodecs-precharge">关于某些编解码器为了引导解码器，在媒体内容开始时可能需要支持对音频样本和视频帧编码/解码</a>，这有时被称为<b>启动</b>（在音频领域中）或者<b>预播放</b>。这种样本和帧需要进行解码，但在播放过程中会跳过。Paul Adenot 解释说，WebCodecs 作为底层编解码器 API 的一个通道，Web 应用需要知道并处理它们正在使用的编解码器的预播放需求。要探索应用层面的实际影响，还需要进一步测试。
+            </p>
+
+            <p>
+              Yuhao Fu 指出，<a href="session-1.html#webcodecs-video">从视频元素本身检索解码帧</a>有时会很有用。Paul Adenot 解释说，一旦标准化，WebRTC 工作组最近在研讨会后不久采用的 <a href="https://alvestrand.github.io/mediacapture-transform/">breakout box</a> 提案就可以用来构造一个 <code>MediaStreamTrackGenerator</code>，它将使 Web 应用能够通过 <code>HTMLMediaElement.captureStream()</code> 方法检索的 <code>MediaStream</code> 访问解码后的帧。另一个选择是<a href="https://github.com/WICG/video-rvfc/issues/66#issuecomment-703863724">扩展<code>video.requestVideoFrameCallback()</code> 方法</a>，使其也返回 <code>VideoFrame</code> 构造对象（在 WebCodecs 中定义）。
+
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webaudio">
+            <h4>Web音频API</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/hongchan-choi-building-audio-apps.html">Thoughts and considerations on building audio apps on the web</a>
+                  <br/>讲者 Hongchan Choi
+                </li>
+                <li>
+                  <a href="talks/peter-salomonsen-webassembly-music.html">WebAssembly Music - latency/stability across platforms</a>
+                  <br/>讲者 Peter Salomonsen
+                </li>
+                <li>
+                  <a href="talks/ulf-hammarqvist-audio-latency.html">Audio latency in browser-based DAWs</a>
+                  <br/>讲者 Ulf Hammarqvist
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-1.html#webaudio">线上讨论（第一部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aaudio">相关 GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              一旦 WebCodecs 得到广泛支持，理论上来说，<b><code>decodeAudioData</code> 方法</b>就可以废弃了。不过，<code>decodeAudioData</code> 方法内置了对解复用的支持，这在许多需要访问解码音频样本的场景中很方便，而且广泛部署和使用的方法一般也不会从Web平台上消失。在可预见的将来，该方法仍应作为 Web 平台的一部分保留下来。
+            </p>
+
+            <p>
+              在由数字音频工作站（DAW）管理的专业音频工作流程中，<b>音频准确性</b>至关重要。例如，将正在录制的内容与正在播放的内容以及屏幕上渲染的可视化内容精准对齐。一般来说，这并不容易实现，因为它假定<a href="session-1.html#webaudio-inputLatency">输入延迟</a>、<a href="session-1.html#webaudio-outputLatency">音频节点的固有延迟和输出延迟</a>都是已知的。所有浏览器都暴露了相关的钩子，但并非所有浏览器都支持它们。Hongchan Choi 分享了 <a href="https://groups.google.com/a/chromium.org/g/blink-dev/c/dTQniJNVVMY">Chrome的设想即支持 <code>outputLatency</code></a> 和<a href="https://github.com/WebAudio/web-audio-api/issues/2444#issuecomment-896338875">渲染能力 API 的设计</a>，该 API 应该很快被会添加到Web音频API中。尽管如此，Paul Adenot 指出，其中存在着一个反复出现的问题，即系统从输入/输出设备读取的数据通常不可靠，这使得在浏览器中很难呈现有意义的度量。
+            </p>
+
+            <p>
+              W3C 音频工作组已经同意<b>在 Web Workers 中暴露 <code>AudioContext</code> 对象<b>，这使得数字音频工作站不必再将音频处理绑定到主 <abbr title="User Interface">UI</abbr> 线程上。Web音频API规范的更新正在进行中。
+            </p>
+
+            <p>
+              Kazuyuki Ashimura <a href="session-1.html#webaudio-synth-object">想知道 Web 音频 API 对<b>合成语音</b>的支持</a>。Paul Adenot 解释说，目前的系统不太适合这种处理，因为浏览器甚至可能在合成的音频样本通过扬声器或耳机播放之前，都无法获取它们。这个问题也许可以在2022年举办的<a href="https://github.com/w3c/strategy/issues/221">语音交互研讨会</a>上讨论。
+            </p>
+
+            <p>
+              James Pearce 问及 <a href="session-1.html#webaudio-formats">DSP 格式对自定义音频处理的支持</a>。浏览器没有对特定的 <b>DSP格式</b>的原生支持，但是处理音频的代码可以用任何格式编写。有各种库可以用于处理 FAUST，例如 PureData、C++。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="sync">
+            <h4>媒体同步</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/sacha-guddoy-media-element-accuracy.html#ts-7">Media Element accuracy and synchronization with the DOM</a>
+                  <br/>讲者 Hongchan Choi
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-1.html#synchronization">线上讨论（第一部分）摘要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Asynchronization">相关 GitHub issues</a></li>
+                <li>
+                  <a href="https://blog.paul.cx/post/audio-video-synchronization-with-the-web-audio-api/">Audio/Video synchronization with the Web Audio API</a>
+                  <br/>讲者 Paul Adenot (2019)
+                </li>
+              </ul>
+            </aside>
+
+            <p>
+              Sacha Guddoy 描述了一些媒体同步的用例，包括视频播放器<a href="session-1.html#synchronization">与音频电平并排放置</a>，以及音频播放需要与视频播放和 DOM 更新精确同步。Paul Adenot 解释了如何利用 Web Audio API 暴露的输出延迟来延迟 DOM 更新和视频帧呈现（通过WebCodecs），以<b>同步视频和音频播放</b>。<a href="https://wicg.github.io/video-rvfc/"><code>HTMLMediaElement.requestVideoFrameCallback()</code></a>提案可以用于简化视频相关用例中的同步逻辑。
+            </p>
+
+            <p>
+              Sacha Guddoy 还解释了<a href="session-2.html#webrtc-synchronization">如何在实时视觉混合应用中同步</a><b>多个 WebRTC 流</b>，例如使用多个摄像机。如果该建议得到更广泛的采用——且如果摄像机时钟也是同步的——则 <a href="https://webrtc.googlesource.com/src/+/refs/heads/main/docs/native-code/rtp-hdrext/abs-capture-time">Absolute Capture Time extension</a> 可以用来给 RTP 数据包加上 NTP 时间戳。再加上研讨会后不久 WebRTC 工作组采用的 Harald Alvestrand 的<a href="https://alvestrand.github.io/mediacapture-transform/">breakout box model</a>，Web 应用将能够延迟并同步渲染媒体流。
+            </p>
+
+            <p>
+              <b>音频/视频和元数据之间的一般同步问题</b>仍未能解决。例如，虽然媒体流在 WebRTC 是同步的，但数据信道与媒体流并不同步。在 WebCodecs 中<a href="session-1.html#webcodecs-sei">暴露 SEI 元数据</a>和解码帧的能力可以提供有用的同步钩子。
+
+            </p>
+
+            <p>
+              <b>同步精度需求</b>取决于使用场景，同时也会影响哪些同步钩子需要暴露和/或使用。目标精度水平需要在个案基础上加以明确。音频可能有严格的实时要求，而一些视频同步场景可能只需满足约100ms的精度。其他视频场景可能需要粗略或精确的帧精度水平。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webrtc">
+            <h4>WebRTC</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/sergio-garcia-murillo-whip.html">It's time to WHIP WebRTC into shape</a>
+                  <br/>讲者 Sergio Garcia Murillo
+                </li>
+                <li>
+                  <a href="talks/sacha-guddoy-webrtc.html">WebRTC in live media production</a>
+                  <br/>讲者 Sacha Guddoy
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-2.html#webrtc">线上讨论（第二部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebrtc">相关 GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+             Sergio Garcia Murillo <a href="session-2.html#webrtc-signaling">介绍了 WHIP</a>，这是一个聚合 <b>WebRTC 信令协议</b>的提案。该协议可以被集成到媒体制作硬件中，以发挥WebRTC的开箱即用特性。这也将创造一个良性循环，以支持和暴露媒体制作所需的额外能力。IETF正在进行WHIP的标准化工作。           
+            </p>
+
+            <p>
+            <b>video with transparency</b>.
+              <a href="session-2.html#webrtc-advanced">用于媒体制作的其他功能</a>包括<b>支持更高帧率的制作质量编解码器</b>，支持<b>多通道音频</b>（环绕）或 <b>基于对象的音频，支持<b>高动态范围（HDR）</b>和<b>宽色域（WCG）</b>媒体编码，或支持<b>含透明通道的视频</b>。
+            </p>
+
+            <p>
+              此外，WebRTC 对<b>实时字幕没</b>有适当的支持机制。<code>RTCDataChannel</code> 可用于串流文本，但数据信道与音频/视频轨道不同步（参见上文的<a href="#sync">媒体同步</a>章节）。W3C 时序文本工作组为 TTML 文本开发了一个 <a href="https://w3c.github.io/tt-module-live/tt-live-1/spec/tt-live.html">TTML 实时扩展模块</a>，但缺少标准的方法来串流 <a href="https://www.w3.org/TR/webvtt/">WebVTT</a>。如何才能在 WebRTC 中集成实时字幕？
+            </p>
+
+            <p>
+             更高级的场景需要<a href="session-2.html#webrtc-jitter">控制抖动缓冲区</a>，例如，当 WebRTC 用于音乐和其他专业音频环境时，可以<b>防止音频失真</b>。
+            </p>
+
+            <p>
+              除了实时字幕之外，WebRTC 的部分功能已经在规范草案（如<a href="https://w3c.github.io/webrtc-extensions/">WebRTC 扩展</a>草案）中进行了定义，而其他功能不需要对现有规范进行重大更新（例如对编解码器的支持）。媒体制作行业仍然需要在规范实现中权衡功能的优先级。某些场景（如<a href="session-2.html#webrtc-objectaudio">对基于对象的音频的支持</a>）仍需进一步探索以明确需求。
+            
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="webassembly">
+            <h4>WebAssembly</h4>
+
+            <aside class="box compact">
+              <p>相关:</p>
+              <ul>
+                <li>
+                  <a href="talks/junyue-cao-non-linear-video-editor.html">A Non-linear Video Editor built with WebAssembly</a>
+                  <br/>讲者 Junyue Cao
+                </li>
+                <li>
+                  <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                  <br/>讲者 Kevin Streeter
+                </li>
+                <li>
+                  <a href="talks/paul-adenot-webcodecs-performance.html">Memory access patterns in Web Codecs</a>
+                  <br/>讲者 Paul Adenot
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-2.html#webassembly">线上讨论（第二部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Awebassembly">相关 GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Kevin Streeter 解释了如何使用 WebAssembly（WASM）<a href="session-2.html#webassembly-needs">将创作类应用从桌面移植到 Web</a>。随着时间的推移，本地应用经历了大量的优化。由于 WebAssembly 在功能方面有所缺失，其中一些优化在 Web 版本中丢失，有时会导致工作流的运行速度可能比本地应用慢4到5倍。
+            </p>
+
+            <p>
+              第一个缺失的功能是<b>对堆管理的64位支持</b>。WebAssembly 内置了对64位数字的支持，可用于加快像素处理计算。但是，<a href="https://github.com/webassembly/memory64#memory64-proposal-for-webassembly">64位内存地址</a>仍在制定中，浏览器还不支持。
+
+            </p>
+
+            <p>
+              另一个缺失的功能是<b>高级 SIMD 支持</b>。Luke Wagner 解释说，WebAssembly 中<a href="https://github.com/WebAssembly/simd">最初的一批 SIMD 支持</a>是能够支持在各种桌面 CPU 上快速移植的前提下，该小组所能发现的范围最广的交集。Web Assembly 工作组的 SIMD 分组为了开发 WebAssembly 中的下一代 SIMD 指令，每两周召开一次会议，涵盖三个主要维度：支持特定于平台的指令、允许非确定性指令以及放宽向量大小。SIMD 分组欢迎有 WebAssembly 的实际工作负载来指导其工作。
+            </p>
+
+            <p>
+              最后，Web 媒体制作应用绝不会是纯粹的 WebAssembly 应用。它们还将通过 WebGL 或 WebGPU、运行在 CPU 上的 Web API 以及通过 Web Workers 的多线程操作来利用 GPU 计算。在跨越内存边界时，通常需要<b>内存副本</b>，而媒体制作工作流需要操作大量内存（尤其是在处理解码视频帧时）。
+            </p>
+
+            <p>
+              Luke Wagner 详细介绍了<a href="session-2.html#webassembly-copies">减少跨边界内存副本的解决方案</a>。理论上，可能会对编译器做出更改，允许 Web 应用引用 WebAssembly 线性内存之外的内存页。在实践中，考虑到所需的工作量，这又不太现实。更好的解决方案是改进创建副本的操作，这样浏览器会尽可能使用内存映射（<code>mmap</code>）。这种方法可能需要更新许多规范，并且很难实现，但它不需要特定于 WebAssembly。在需要转换数据的情况下，另一种方法是延迟拷贝，以便将复制和转换操作融合在一起。
+
+            </p>
+
+            <p>
+              Web 平台孵化社区组（WICG）负责<a href="https://github.com/WICG/reducing-memory-copies/issues/">减少内存副本</a>的协调工作。我们鼓励有兴趣的各方加入该存储库中的讨论。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="file">
+            <h4>文件系统集成</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/steve-cronan-production-metaverse.html#tp-13">The Production Metaverse</a>
+                  <br/>讲者 Steve Cronan
+                </li>
+                <li>
+                  <a href="talks/kevin-streeter-creative-expression.html">Bringing Desktop-Class Creative Expression to the Web</a>
+                  <br/>讲者 Kevin Streeter
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-2.html#file">在线讨论（第二部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Astorage">相关GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              与 WebAssembly 一样，Kevin Streeter 讨论了将本地创作类应用程序移植到Web时出现的常见文件系统集成问题。这些问题最终归结为需要接收、处理和传输<b>非常大的文件资源</b>，同时需要优化I/O操作的数量以提高性能。Marijn Kruisselbrink 介绍了在文件系统访问 API 提案中定义的域私有文件系统（<a href="https://wicg.github.io/file-system-access/#sandboxed-filesystem">Origin Private File System</a>）。该 API 旨在更好地处理大文件，并能够以最小的开销对其进行读写。也就是说，当需要将外部数据导入域私有文件系统时，仍然需要进行复制。在只读的情况中，也许可以适当放宽限制。写入域私有文件系统之外的文件则更加棘手。
+              
+            </p>
+
+            <p>
+              域私有文件系统可能很快就会交由 WHATWG 负责。对此类和其他功能的支持高度依赖于浏览器厂商的意愿。媒体制作行业应当在规范实现中优先考虑该功能。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="metadata">
+            <h4>元数据</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/bruce-devlin-metadata.html">Metadata in production workflows</a>
+                  <br/>讲者 Bruce Devlin
+                </li>
+                <li>
+                  <a href="talks/julian-fernandez-campon-ipaas.html">The Power of an iPaaS for Media</a>
+                  <br/>讲者 Julian Fernandez-Campon
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-3.html#metadata">在线讨论（第三部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Ametadata">相关GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Bruce Devlin <a href="session-3.html#metadata-preserve">概述了元数据的一个核心问题</a>：在媒体采集阶段产生的元数据很容易在随后的媒体处理步骤中丢失，往往需要事后重新创建。往好了说，不方便，成本也很高。元数据也可能在传输过程中丢失，或者在播放过程中无法从应用中获取。<b>元数据该如何才能保存下来呢</b>？
+            </p>
+
+            <p>
+              Bruce Devlin 沿着两个轴对元数据进行分类：格式轴（文本或二进制？）和时间轴（与每一帧同步，或更不规则，或是嵌入定时的块状？）。管理和暴露元数据的解决方案要取决于元数据在这两个轴上的位置，以及为该元数据设想了哪些用例。用例之一是添加<b>出处和真实信息</b>，<a href="https://c2pa.org/">内容来源和真实性联盟</a>（C2PA）目前正在探索这方面的用例。出处信息可在媒体播放期间或当用户按暂停时显示。在这样的场景中，元数据和帧之间实现同步是必不可少的。
+            </p>
+
+            <p>
+              标准化工作可以侧重于定义<b>暴露不同类型元数据的 API</b>。例如，<a href="https://wicg.github.io/datacue/">DataCue API</a> 建议可以在容器层面暴露元数据。<a href="https://github.com/w3c/webcodecs/issues/198">WebCodecs 中对 SEI 元数据的支持</a>（<a href="session-1.html#webcodecs-sei">在研讨会期间讨论过</a>）可以暴露编解码器层面的元数据。
+            </p>
+
+            <p>
+              元数据也需要使用<b>标准化词汇表</b>，以便媒体制作工作流可以用更抽象的转换术语来定义，并广泛应用于各种输入和输出源。Julian Fernandez-Campon 展示了使用标准化词汇表来介绍工作流中的处理步骤，这些处理步骤可以利用各种工具和服务。对于媒体内容而言，SMPTE ST2065(ACES)标准应该很合用。Brendan Quinn 指出<a href="https://iptc.org/standards/video-metadata-hub/">IPTC 视频元数据中心</a>可以使用其他标准。W3C 是否应该开发一个现有标准之间的映射词汇表？
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="accessibility">
+            <h4>无障碍</h4>
+
+            <aside class="box compact">
+              <p>相关演讲:</p>
+              <ul>
+                <li>
+                  <a href="talks/ed-gray-accessibility.html">Accessibility in creative tools discussion</a>
+                  <br/>讲者 Ed Gray
+                </li>
+              </ul>
+              <p>进一步参阅:</p>
+              <ul>
+                <li><a href="session-3.html#accessibility">在线讨论（第三部分）纪要</a></li>
+                <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Ametadata">相关 GitHub issues</a></li>
+              </ul>
+            </aside>
+
+            <p>
+              Ed Gray 回顾了现有的<b>无障碍指南</b>，特别是<a href="https://www.w3.org/TR/WCAG/">Web 内容无障碍指南</a>（WCAG）和<a href="https://www.w3.org/TR/ATAG/">创作工具无障碍指南</a>（ATAG），<a href="https://www.accessibilityassociation.org/">国际无障碍专业协会</a>（IAAP）和 Web Access In Mind（WebAIM）等<b>实践社区</b>，以及无障碍的<b>自述格式</b>，如<a href="https://www.itic.org/policy/accessibility/vpat">自愿性产品无障碍功能模板</a>。
+             
+            </p>
+
+            <p>
+              媒体创作工具中的无障碍功能覆盖许多层面，从对比度和键盘导航设计，到闭合式字幕支持和相机已连接的通知。正如<a href="https://ncaonline.org/principles-of-universal-design/">通用设计原则</a>中所阐述的那样，这是一项永无止境的工作，当公司设立专门的团队，当无障碍措施真正惠及每个人时，这是最好的解决方案。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+        </section>
+
+        <section id="other">
+          <h3>其他主题</h3>
+
+          <aside class="box compact">
+            <p>相关演讲:</p>
+            <ul>
+              <li>
+                <a href="talks/patrick-brosset-eyedropper-api.html">The Eye Dropper API</a>
+                <br/>讲者 Patrick Brosset
+              </li>
+              <li>
+                <a href="talks/oleg-sidorkin-distributed-content-review.html">Distributed multi-party media-rich content review</a>
+                <br/>讲者 Oleg Sirdokin
+              </li>
+              <li>
+                <a href="talks/christoph-guttandin-all-that-can-be-done.html">Whatever can be done, will be done</a>
+                <br/>讲者 Christoph Guttandin
+              </li>
+              <li>
+                <a href="talks/max-grosse-openexr.html">Reviewing Production OpenEXR files on the Web for ML</a>
+                <br/>讲者 Max Grosse
+              </li>
+            </ul>
+            <p>进一步参阅：</p>
+            <ul>
+              <li><a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture">围绕 Architectural 的 GitHub issues</a>
+              <li><a href="https://github.com/w3c/media-production-workshop/issues/36">围绕 EyeDropper API 的 GitHub issue</a></li>
+            </ul>
+          </aside>
+
+          <p>
+            预录制演讲中提到了线上主题讨论中没有谈到的其他问题，特别是一些<a href="https://github.com/w3c/media-production-workshop/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture">架构问题</a>，能够引人深思，更全面地考虑问题：
+          </p>
+          <ul>
+            <li>总而言之，媒体制作应用需要访问底层功能。这样的应用是否可以通过不同信任模型进行授权？（参见<a href="https://github.com/w3c/media-production-workshop/issues/58">issue #58</a>）</li>
+            <li>在线上主题讨论中提出并讨论了各种同步需求。Web 平台是否也应该暴露比“currenttime”更精确的<b>帧标识原语</b>，例如使用有理数？(参见<a href="https://github.com/w3c/media-production-workshop/issues/47">issue #47</a>)</li>
+            <li>在 Web Workers 中，是否可以暴露某些 API 的<b>同步模式</b>？例如，为了简化运行在同步模型上的 C++/WASM 代码的集成？(参见 <a href="https://github.com/w3c/media-production-workshop/issues/45">issue #45</a>)</li>
+            <li>为了使 Web 平台能够为利用 WebCodecs、WebAssembly、WebGPU和/或WebRTC 等混合技术的音频/视频处理工作流提供<b>安全边界</b>，可能需要进行哪些更改？ (参见<a href="https://github.com/w3c/media-production-workshop/issues/26">issue #26</a>)</li>
+            <li>除了暴露诸如 WebCodecs 之类的底层原语之外，是否应该对媒体制作应用可以直接利用的<b>高级视频编辑 API</b> 进行一些标准化工作？这样的 API 可以采用构建在 WebCodecs 之上的开源库的形式。(参见<a href="https://github.com/w3c/media-production-workshop/issues/55">issue #55</a>)</li>
+            <li>考虑到 Web 技术的复杂性和专业媒体制作应用程序代码库的规模，浏览器厂商能否在新版本的发布周期中集成一种机制，允许开发人员<b>在即将发布的版本中测试他们的应用程序</b>，并在新版本发布前报告错误？(参见 <a href="https://github.com/w3c/media-production-workshop/issues/57">issue #57</a>)</li>
+            <li>在<a href="#proxy-based">基于代理的架构中</a>，应用程序也可以在云端运行，与客户端设备上运行的应用程序同步，这使得创建多用户<b>共同浏览体验</b>成为可能。Oleg Sidorkin 在他的<a href="talks/oleg-sidorkin-distributed-content-review.html">关于分布式多方富媒体内容审查的演讲</a>中回顾了这种场景中可能遇到的困难，例如观察需要在canvas和自定义元素的shadow DOM树等元素上传播的所有事件。</li>
+          </ul>
+
+          <p>
+            在他的演讲中，Patrick Brosset <a href="talks/patrick-brosset-eyedropper-api.html">介绍了 EyeDropper API</a>，一项访问浏览器吸管工具的提案。James Pearce 建议扩展该 API，以便将其<a href="https://github.com/w3c/media-production-workshop/issues/36">限制在特定的 DOM 元素</a>中，以支持用户需要从特定视频帧中提取颜色的场景。
+            
+          </p>
+
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="next">
+          <h3>下一步计划</h3>
+
+          <section id="next-existing">
+            <h4>现有技术</h4>
+
+            <p>
+              研讨会的一个主要收获是，Web 平台已经提供了<b>合适的构建模块</b>，以支持<a href="#proxy-based">基于代理的架构</a>中的核心媒体制作场景：媒体串流和渲染技术（例如，视频元素、基于 canvas 的渲染、MSE、Web 音频 API)、媒体传输技术（Fetch、WebRTC）、媒体处理技术（通过 JavaScript、WebAssembly 或 WebGL）和媒体存储技术（File API、IndexedDB)，这些技术在创作类应用中得到广泛支持和使用。
+            </p>
+
+            <p>
+            然而，很明显，Web 平台现在不能很好地适应专业媒体制作场景的<a href="#no-proxy">无代理架构</a>。研讨会期间提出的技术差距意味着这些场景可以在 Web 应用中实现，但只能在一定程度上实现。例如，在客户端设备上运行的 Web 媒体创作应用在解码和处理视频时可能需要将视频的分辨率限制在 <code>480x270</code> ，因为它们不能利用硬件解码器。这些应用还可能遇到难以解决的同步问题，损失色彩保真度，或者远不及本地应用，因为它们不能获得处理媒体的优化措施，如高级 SIMD 指令。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="next-ongoing">
+            <h4>正在进行的标准化工作</h4>
+
+            <p>
+              研讨会的演讲和讨论表明，正在进行的标准化工作将带来更先进的功能和性能改进，这是媒体制作行业所需要的。这其中包括对 WebCodecs 暴露的<b>对媒体的底层访问</b>、Web 音频 API 中更好的<b>延迟测量功能</b>、WebAssembly 中的增强性能（高级 SIMD、64位内存堆支持）、Web Workers 中所有 API 都可用时<b>更流畅的 UI</b>，以及 WebRTC 中的<b>制作质量支持</b>（多通道音频、更高帧率编解码器支持）。
+            </p>
+
+            <p>
+              这些正在进行的标准化工作横跨多个 W3C 工作组，包括 <a href="https://www.w3.org/groups/wg/media">括媒体工作组</a> (例如 WebCodecs、媒体功能)、<a href="https://www.w3.org/groups/wg/audio">音频工作组</a>、<a href="https://www.w3.org/groups/wg/wasm">WebAssembly 工作组</a>、<a href="https://www.w3.org/groups/wg/webrtc">WebRTC 工作组</a>、<a href="https://www.w3.org/groups/wg/ag">无障碍指南工作组</a> (WCAG)、<a href="https://www.w3.org/groups/wg/gpu">GPU for the Web 工作组</a> (WebGPU)、<a href="https://www.w3.org/groups/wg/timed-text">时序文本工作组</a>或者进行预标准化工作（如域私有文件系统）的<a href="https://www.w3.org/groups/cg/wicg">Web 平台孵化社区组</a> (WICG)。
+            </p>
+
+            <p>
+              这些工作组是公开运作的，并乐意接受对其交付成果的意见，这些意见通常是在 GitHub 存储库上提出的问题。这种单点反馈的方法可以很好地报告特定的需求，一些与会者已经提供了关于 WebCodecs 或 Web Audio API 的反馈。
+            </p>
+
+            <p>
+              这种单点反馈的方式有时是不够的。工作组需要更多的意见来对功能进行评估，来确认该需求在整个行业中广泛存在，来评估将该功能开放给 Web 应用是否是在性能和互操作性之间进行的合理权衡，或者探索其他设计。此外，有些功能只有从更广泛的媒体制作角度来看才有意义，而这些工作组不一定有这样的角度。
+            </p>
+
+            <p>
+              为了集思广益，工作组需要在以下方面协作：
+            </p>
+
+            <ul>
+              <li>WICG 的<a href="https://github.com/WICG/reducing-memory-copies/">减少内存副本</a>计划需要协调与关于减少跨内存边界副本的机制讨论。</li>
+              <li><a href="https://www.w3.org/groups/cg/colorweb">Web 上的色彩社区组</a>需要协调整个 Web 平台在高动态范围（HDR）和宽色域（WCG）方面的工作。</li>
+              <li>在媒体和娱乐兴趣组中，<a href="https://www.w3.org/2011/webtv/wiki/Main_Page/Media_Timed_Events_TF">媒体时序事件特别任务组</a>需要协调关于元数据公开的讨论.</li>
+              <li>更广泛地说，<a href="https://www.w3.org/groups/ig/me">媒体和娱乐兴趣组</a>在 W3C 需要充当媒体标准化工作的指导小组。</li>
+              <li>在 W3C、SMPTE 或其他地方也需要类似的协作，侧重于特定的主题。</li>
+            </ul>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+
+          <section id="next-tf">
+            <h4>计划建立媒体制作特别任务组</h4>
+
+            <p>
+              以上提到的协作方面针对的是与研讨会期间提出的问题有交集的主题。然而，目前还没有任何协调工作将 Web 专业媒体制作需求作为一个整体来看待。此次研讨会是一次性的协调工作，但显然，对研讨会期间开始的一些讨论，需要进行更深入的分析。此外，由于时间不足，研讨会未能涵盖所有相关主题。
+            </p>
+
+            <p>
+              与会者建议在<b>基于 Web 的专业媒体制作方面开展协调工作</b>。这项协调工作的覆盖范围将与研讨会相当：利用Web平台制作专业媒体，包括编辑、质量控制、调色/颜色校正、样片、视觉效果、音频、母带制作、翻译和服务。脱离 Web 平台的基于云端的流程和桌面应用程序将被排除在外。类似地，不操作媒体内容的应用（如文件共享应用）也不包含在内。
+             
+            </p>
+
+            <p>
+              这项协调工作将负责：
+            </p>
+            <ul>
+              <li>连接Web平台和各专业媒体制作社区，</li>
+              <li>记录专业媒体制作的用例和特定需求，</li>
+              <li>当功能可以通过应用层面的现有技术实现时，对性能需求进行量化，</li>
+              <li>确定优先级并向工作组和标准实现者推广提案，</li>
+              <li>跟踪进度和实现情况。</li>
+            </ul>
+
+            <p>
+              考虑到研讨会期间提出的具体议题，这项协调工作可以：
+            </p>
+            <ul>
+              <li>在应用层面进行复用和解复用的代码实验，为 在WebCodecs 中创建（解）复用 API 的可行性提供信息。</li>
+              <li>评估 WebCodecs 中讨论的质量控制选项。</li>
+              <li>围绕元数据管理收集媒体制作用例，特别是 SEI 元数据和编码方面的用例，来提供给媒体时序事件特别任务组和媒体工作组进行讨论。</li>
+              <li>记录对专业编解码器的需求，并在标准实现过程中监测支持。</li>
+              <li>与 WebRTC 工作组合作，记录 WebRTC 的实时字幕需求。</li>
+              <li>探索同步需求和差距，使用代码来量化问题。</li>
+              <li>收集典型的内存工作负载以分析需要跨越内存边界（CPU、GPU、WASM）时的性能问题，并帮助相关工作组调整其API以避免重复出现问题。</li>
+              <li>记录针对媒体制作因文件过大而可能导致的文件资源管理问题。</li>
+              <li>确保在Web上的色彩社区组讨论中考虑媒体制作的角度。</li>
+              <li>探索媒体制作工作流程中对标准化词汇表的需求。</li>
+              <li>探索更具体的需求，如预播放/启动，或从<code>&lt;video&gt;</code>元素获得解码帧的能力。</li>
+            </ul>
+
+            <p>
+              为了取得更好的效果，这样的协调工作应围绕开发 API 的工作组和已经涉及感兴趣主题的主要协调点进行。建议<b>由<a href="https://www.w3.org/groups/ig/me">W3C 媒体和娱乐兴趣组</a>负责这项协调工作</b>：这项工作符合其作为 W3C 媒体标准化工作指导小组的职责，设想的工作范围不包括技术解决方案的开发，而是在负责基础标准的工作组（媒体工作组、音频工作组等）中找到其自然落脚点。
+            </p>
+
+            <p role="navigation" class="back-to-toc">
+              <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+            </p>
+          </section>
+        </section>
+
+        <section id="thanks">
+          <h3>致谢!</h3>
+          <p>
+            研讨会的组织者对那些帮助组织和进行研讨会的人深表感谢，首先要感谢<a href="./#committee">项目委员会</a>的成员和提供最初支持和帮助组织研讨会的<a href="speakers.html">演讲者</a>。由衷感谢 Chris Needham 和 Pierre-Anthony Lemieux 主持研讨会，以及本次研讨会的赞助方 Adobe。非常感谢那些在幕后发挥积极作用的人，特别是 W3C 和 SMPTE 的活动团队和 BizDev 团队，非常感谢 Marie-Claire Forgue 帮助在研讨会后剪辑视频，以及所有以各种方式参加研讨会的 W3C/SMPTE 团队成员。最后，非常感谢全体与会者的大力支持和积极参与，共同营造了一场富有成效而鼓舞人心的研讨会。恭喜大家，我们开了个好头，期待未来更精彩！
+          </p>
+          <p role="navigation" class="back-to-toc">
+            <a href="#toc"><abbr title="Back to the Table of contents">↑</abbr></a>
+          </p>
+        </section>
+
+        <section id="sponsors">
+          <h2>
+            赞助方
+          </h2>
+          <p><a href="https://www.adobe.com/"><img src="media/adobe.png" alt="Adobe" width="70"></a></p>
+          <p class="small">希望赞助研讨会?<br/>参阅<a href="sponsors.html">赞助权益</a>。</p>
+        </section>
+      </section>
+    </main>
+    <footer class="footer" id="footer">
+      <p>
+        W3C 是一个开放包容的组织，专注于高效的讨论以及富有成效的行动。 我们的<a href=
+        "https://www.w3.org/Consortium/cepc/">职业道德与行为准则</a>确保我们积极听取来自各方的意见与声音。 
+      </p>
+      <p>如对研讨会有任何问题，欢迎联系 François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+      <p>
+        有关改进此研讨会页面的建议，例如修正错别字或添加特定主题，请<a href=
+        "https://github.com/w3c/media-production-workshop/">通过 GitHub 提交请求</a>或发送电子邮件给 François Daoust
+        &lt;<a href="mailto:fd@w3.org">fd@w3.org</a>&gt;.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
